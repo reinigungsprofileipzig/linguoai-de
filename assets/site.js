@@ -131,9 +131,14 @@
   if (selectedTab) activateTab(selectedTab);
 
   const prepareHashTarget = (identifier) => {
-    if (identifier === "colab") {
-      const colabTab = tabs.find((tab) => tab.dataset.tab === "colab");
-      if (colabTab) activateTab(colabTab);
+    const panelRoute = {
+      colab: "colab",
+      "panel-desktop": "desktop",
+      "panel-cli": "cli",
+    }[identifier];
+    if (panelRoute) {
+      const routeTab = tabs.find((tab) => tab.dataset.tab === panelRoute);
+      if (routeTab) activateTab(routeTab);
     }
     return identifier ? document.getElementById(identifier) : null;
   };
@@ -160,12 +165,13 @@
     { once: true },
   );
 
-  document.querySelectorAll('a[href="#colab"]').forEach((link) => {
+  document.querySelectorAll('a[href="#colab"], a[href="#panel-desktop"], a[href="#panel-cli"]').forEach((link) => {
     link.addEventListener("click", (event) => {
-      const target = prepareHashTarget("colab");
+      const identifier = link.getAttribute("href").slice(1);
+      const target = prepareHashTarget(identifier);
       if (!target) return;
       event.preventDefault();
-      window.history.pushState(null, "", "#colab");
+      window.history.pushState(null, "", `#${identifier}`);
       scrollToTarget(target);
       closeMenu();
     });

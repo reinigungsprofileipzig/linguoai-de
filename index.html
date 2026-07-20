@@ -26,6 +26,7 @@
 
     <title>LinguoAI – Videos übersetzen und synchron neu vertonen</title>
     <link rel="stylesheet" href="assets/styles.css" />
+    <link rel="stylesheet" href="assets/funnel.css" />
     <script>
       document.documentElement.classList.replace("no-js", "has-js");
     </script>
@@ -127,14 +128,14 @@
         </button>
 
         <nav id="main-navigation" class="main-navigation" aria-label="Hauptnavigation" data-menu>
-          <a href="#funktionen">Funktionen</a>
-          <a href="#ablauf">Ablauf</a>
+          <a href="#startweg">Starten</a>
+          <a href="#funktionen">Vorteile</a>
           <a href="#stimmen">Stimmen</a>
-          <a href="#loslegen">Anleitung</a>
+          <a href="#ablauf">So funktioniert's</a>
           <a href="#fragen">FAQ</a>
         </nav>
 
-        <a class="button button-small header-action" href="#loslegen">Jetzt starten</a>
+        <a class="button button-small header-action" href="#startweg">Kostenlos starten</a>
       </div>
     </header>
 
@@ -145,31 +146,31 @@
           <div class="hero-copy">
             <p class="eyebrow reveal">
               <span class="status-dot"></span>
-              Lokal, online oder in Colab
+              Open Source · lokal oder in Google Colab
             </p>
             <h1 class="reveal" data-delay="1">
-              <span>Videos.</span>
-              <span>Übersetzt.</span>
-              <span class="accent-line">Neu vertont.</span>
+              <span>Dein Video.</span>
+              <span>Eine neue Sprache.</span>
+              <span class="accent-line">Natürlich vertont.</span>
             </h1>
             <p class="hero-intro reveal" data-delay="2">
-              LinguoAI macht aus einem Video eine verständliche neue Fassung: Sprache erkennen,
-              Texte übersetzen, eine passende Stimme wählen und alles sauber im Timing halten.
+              Übersetze, untertitele und vertone Videos in einem geführten Ablauf. Starte sofort
+              im Browser oder behalte mit der Desktop-Version alles auf deinem Rechner.
             </p>
             <div class="hero-actions reveal" data-delay="3">
-              <a class="button" href="#loslegen">
-                Lokal einrichten
-                <span aria-hidden="true">↗</span>
-              </a>
-              <a class="text-link" href="#colab">
-                Lieber im Browser arbeiten
+              <a class="button" href="#colab">
+                Im Browser ausprobieren
                 <span aria-hidden="true">→</span>
+              </a>
+              <a class="text-link" href="#panel-desktop">
+                Desktop-Version einrichten
+                <span aria-hidden="true">↓</span>
               </a>
             </div>
             <ul class="hero-facts reveal" data-delay="4" aria-label="Kurzüberblick">
-              <li><strong>3</strong><span>TTS-Engines</span></li>
-              <li><strong>4</strong><span>Übersetzer</span></li>
-              <li><strong>2</strong><span>SRT-Dateien</span></li>
+              <li><strong>0 €</strong><span>kostenlos &amp; offen</span></li>
+              <li><strong>3</strong><span>Stimm-Engines</span></li>
+              <li><strong>CPU</strong><span>oder GPU</span></li>
             </ul>
           </div>
 
@@ -246,6 +247,60 @@
             <li>Google Colab</li>
             <li>CPU &amp; NVIDIA-GPU</li>
           </ul>
+        </div>
+      </section>
+
+      <section class="path-section section-pad" id="startweg">
+        <div class="container">
+          <div class="funnel-heading reveal">
+            <p class="section-kicker">Dein schnellster Start</p>
+            <h2>Wähle den Weg, der zu dir passt.</h2>
+            <p>Keine Registrierung bei LinguoAI. Du entscheidest, wo dein Video verarbeitet wird.</p>
+          </div>
+          <div class="path-grid">
+            <article class="path-card path-card-featured reveal">
+              <div class="path-card-top"><span class="path-number">01</span><span class="recommendation">Einfachster Start</span></div>
+              <h3>Google Colab</h3>
+              <p>Direkt im Browser arbeiten. Ideal zum Testen und wenn du lokal nichts installieren möchtest.</p>
+              <ul class="check-list">
+                <li>Datei hochladen oder Google Drive nutzen</li>
+                <li>CPU oder optionale Colab-GPU</li>
+                <li>Geführte Weboberfläche</li>
+              </ul>
+              <a class="button button-wide" href="#colab">Colab starten <span aria-hidden="true">→</span></a>
+              <small>Notebook herunterladen und in Colab öffnen</small>
+            </article>
+            <article class="path-card reveal" data-delay="1">
+              <div class="path-card-top"><span class="path-number">02</span><span class="privacy-chip">Maximale Kontrolle</span></div>
+              <h3>Desktop-App</h3>
+              <p>Die beste Wahl für regelmäßige Nutzung, sensible Dateien und lokale Sprachmodelle.</p>
+              <ul class="check-list">
+                <li>Moderne grafische Oberfläche</li>
+                <li>Lokale TTS- und Übersetzungsoptionen</li>
+                <li>Windows und Linux</li>
+              </ul>
+              <a class="button button-secondary button-wide" href="#panel-desktop">Lokal installieren <span aria-hidden="true">↓</span></a>
+              <small>Python 3.10+ und FFmpeg erforderlich</small>
+            </article>
+            <article class="path-card reveal" data-delay="2">
+              <div class="path-card-top"><span class="path-number">03</span><span class="pro-chip">Für Workflows</span></div>
+              <h3>Kommandozeile</h3>
+              <p>Für Automatisierung, wiederholbare Abläufe und die Integration in eigene Prozesse.</p>
+              <ul class="check-list">
+                <li>Alle wichtigen Optionen als Parameter</li>
+                <li>Ideal für Batch-Workflows</li>
+                <li>CPU/GPU getrennt steuerbar</li>
+              </ul>
+              <a class="text-link path-link" href="#panel-cli">CLI-Anleitung ansehen <span aria-hidden="true">→</span></a>
+              <small>Für erfahrene Anwenderinnen und Anwender</small>
+            </article>
+          </div>
+          <div class="trust-row reveal" aria-label="Produkteigenschaften">
+            <span><i aria-hidden="true">✓</i> Open Source</span>
+            <span><i aria-hidden="true">✓</i> Ohne LinguoAI-Konto</span>
+            <span><i aria-hidden="true">✓</i> Eigene Stimme optional</span>
+            <span><i aria-hidden="true">✓</i> Video- und SRT-Export</span>
+          </div>
         </div>
       </section>
 
