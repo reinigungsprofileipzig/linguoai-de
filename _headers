@@ -1,0 +1,12 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), microphone=(), payment=(), usb=()
+
+/assets/*
+  Cache-Control: public, max-age=604800, must-revalidate
+
+/downloads/*
+  Cache-Control: public, max-age=3600, must-revalidate
+  Content-Disposition: attachment

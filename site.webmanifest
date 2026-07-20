@@ -1,0 +1,18 @@
+{
+  "name": "LinguoAI",
+  "short_name": "LinguoAI",
+  "description": "Videos übersetzen, untertiteln und synchron neu vertonen.",
+  "lang": "de",
+  "start_url": "./",
+  "display": "browser",
+  "background_color": "#f4f1ea",
+  "theme_color": "#f4f1ea",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

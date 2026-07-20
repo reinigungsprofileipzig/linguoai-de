@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="title">
+  <title id="title">LinguoAI Zeichen</title>
+  <rect width="48" height="48" rx="12" fill="#142d28"/>
+  <path d="M10.5 14.5v19h7M37.5 14.5v19h-7" fill="none" stroke="#9fdbc4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M22 17.5v13l10-6.5-10-6.5Z" fill="#fffdf8"/>
+  <path d="M18.5 37.5h11" stroke="#dc7546" stroke-width="3" stroke-linecap="round"/>
+</svg>
