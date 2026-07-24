@@ -27,6 +27,13 @@ body{background:var(--f-cream)}
 .trust-row{display:flex;justify-content:center;flex-wrap:wrap;gap:.8rem 2.3rem;margin-top:clamp(2rem,5vw,3.6rem);color:var(--muted);font-size:.86rem}.trust-row i{display:inline-grid;width:20px;height:20px;margin-right:.35rem;place-items:center;border-radius:50%;color:var(--f-dark);background:var(--f-mint);font-style:normal;font-weight:900}
 .statement{padding-block:clamp(4rem,8vw,7rem);background:var(--f-cream)}.features,.voices,.hardware,.capabilities,.faq{border-top:1px solid var(--f-border)}
 .feature-card,.engine-card,.setup-step,.capability-group,.faq-list details{border-radius:16px}.setup{background:radial-gradient(circle at 90% 10%,rgba(84,184,135,.12),transparent 26rem),#f0f4ef;border-block:1px solid var(--f-border)}.download-strip{border-radius:18px;box-shadow:var(--f-shadow)}
+.feature-icon{border:1px solid rgba(23,107,77,.14);box-shadow:0 12px 28px rgba(23,107,77,.1)}
+.feature-icon svg{display:block;width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.feature-card-dark .feature-icon{border-color:rgba(255,255,255,.16);box-shadow:0 12px 28px rgba(0,0,0,.2)}
+.workflow-marker{display:block}
+.workflow-marker .workflow-number{display:grid;place-items:center;font-size:.64rem}
+.workflow-icon{display:grid!important;width:48px;height:48px;margin-top:16px;place-items:center;color:#9fddc5;background:rgba(142,208,183,.08);border:1px solid rgba(142,208,183,.32);border-radius:13px;box-shadow:0 12px 28px rgba(0,0,0,.14)}
+.workflow-icon svg{display:block;width:27px;height:27px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .download-actions{gap:.7rem 1rem}
 .download-actions .text-link{white-space:nowrap}
 .download-pictograms{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin:1rem 0}
@@ -91,7 +98,7 @@ body{background:var(--f-cream)}
 @media(max-width:1180px){.voice-grid,.download-pictograms,.cloud-service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:1050px){.path-grid{grid-template-columns:1fr 1fr}.path-card-featured{grid-row:span 2}.hero-copy h1 span{white-space:normal}}
 @media(max-width:1050px){.main-navigation{padding:1rem;border-radius:16px;background:var(--f-cream)}}
-@media(max-width:760px){.hero{padding-top:6.7rem}.hero-copy h1{font-size:clamp(3rem,14vw,4.5rem)}.product-window{transform:none}.path-grid,.voice-grid,.download-pictograms,.resource-addresses,.cloud-service-grid{grid-template-columns:1fr}.download-pictograms article{min-height:0}.resource-address-row{align-items:flex-start;flex-direction:column}.path-card-featured{grid-row:auto}.path-card>p{min-height:0}.trust-row{display:grid;grid-template-columns:1fr 1fr;justify-content:stretch}.compatibility-strip>span{width:100%}}
+@media(max-width:760px){.hero{padding-top:6.7rem}.hero-copy h1{font-size:clamp(3rem,14vw,4.5rem)}.product-window{transform:none}.path-grid,.voice-grid,.download-pictograms,.resource-addresses,.cloud-service-grid{grid-template-columns:1fr}.download-pictograms article{min-height:0}.resource-address-row{align-items:flex-start;flex-direction:column}.path-card-featured{grid-row:auto}.path-card>p{min-height:0}.trust-row{display:grid;grid-template-columns:1fr 1fr;justify-content:stretch}.compatibility-strip>span{width:100%}.workflow-icon{width:42px;height:42px;margin-top:10px;border-radius:11px}.workflow-icon svg{width:24px;height:24px}}
 @media(max-width:480px){.hero-actions,.hero-actions .button,.hero-actions .text-link{width:100%}.hero-actions .button,.hero-actions .text-link{justify-content:space-between}.trust-row{grid-template-columns:1fr}.path-card{padding:1.35rem}}
 @media(max-width:1050px){.colab-start-hero{grid-template-columns:1fr}.colab-start-summary{max-width:620px}.colab-start-steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){.colab-start-main{padding-top:3rem}.colab-start-hero h1{font-size:clamp(2.8rem,14vw,4.3rem)}.colab-start-actions,.colab-start-actions .button{width:100%}.colab-start-actions .button{justify-content:space-between}.colab-start-steps,.colab-start-details{grid-template-columns:1fr}.colab-start-local{align-items:flex-start;flex-direction:column}}

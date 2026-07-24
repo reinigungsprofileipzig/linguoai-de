@@ -3005,7 +3005,7 @@ code {
   transform: translateY(0);
 }
 
-.has-js .reveal {
+.has-js.reveal-ready .reveal {
   opacity: 0;
   transform: translateY(14px);
   transition:
@@ -3013,28 +3013,28 @@ code {
     transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.has-js .reveal.is-visible {
+.has-js.reveal-ready .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.has-js .reveal[data-delay="1"] {
+.has-js.reveal-ready .reveal[data-delay="1"] {
   transition-delay: 80ms;
 }
 
-.has-js .reveal[data-delay="2"] {
+.has-js.reveal-ready .reveal[data-delay="2"] {
   transition-delay: 150ms;
 }
 
-.has-js .reveal[data-delay="3"] {
+.has-js.reveal-ready .reveal[data-delay="3"] {
   transition-delay: 220ms;
 }
 
-.has-js .reveal[data-delay="4"] {
+.has-js.reveal-ready .reveal[data-delay="4"] {
   transition-delay: 290ms;
 }
 
-.has-js .reveal[data-delay="5"] {
+.has-js.reveal-ready .reveal[data-delay="5"] {
   transition-delay: 360ms;
 }
 
@@ -3520,7 +3520,7 @@ code {
     transition-duration: 0.01ms !important;
   }
 
-  .has-js .reveal {
+  .has-js.reveal-ready .reveal {
     opacity: 1;
     transform: none;
   }
