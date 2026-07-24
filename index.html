@@ -55,7 +55,7 @@
             "featureList": [
               "Faster-Whisper-Transkription",
               "Lokale oder cloudbasierte Übersetzung",
-              "Edge-, Piper- und Chatterbox-Sprachausgabe",
+              "Edge-, gTTS-, Piper- und Chatterbox-Sprachausgabe",
               "Zeitlich angepasste neue Sprachspur",
               "Original- und Übersetzungsuntertitel",
               "Desktop-GUI, CLI und Google-Colab-Oberfläche"
@@ -71,7 +71,7 @@
                 "name": "Kann LinguoAI meine eigene Stimme verwenden?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Ja. Chatterbox verwendet eine autorisierte Referenzaufnahme. Piper lädt alternativ ein bereits trainiertes eigenes ONNX-Modell."
+                  "text": "Ja. Chatterbox verwendet eine autorisierte Referenzaufnahme. Piper lädt alternativ ein bereits trainiertes eigenes ONNX-Modell. gTTS und Edge bieten Online-Stimmen, aber keine Stimmkopie."
                 }
               },
               {
@@ -79,7 +79,7 @@
                 "name": "Läuft das Programm vollständig lokal?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Mit Faster-Whisper, NLLB und Piper oder Chatterbox läuft die Verarbeitung nach erstmaligen Modell-Downloads in der gewählten Laufzeit. In Colab ist das die temporäre Google-VM. Edge, Google, DeepL und Gemini sind Onlinedienste."
+                  "text": "Mit Faster-Whisper, NLLB und Piper oder Chatterbox läuft die Verarbeitung nach erstmaligen Modell-Downloads in der gewählten Laufzeit. In Colab ist das die temporäre Google-VM. Edge TTS, gTTS, Google Translate, DeepL und Gemini sind Onlinedienste."
                 }
               },
               {
@@ -471,7 +471,7 @@
       <section class="voices section-pad" id="stimmen">
         <div class="container">
           <div class="section-heading reveal">
-            <p class="section-kicker">Drei Wege zur Sprachspur</p>
+            <p class="section-kicker">Vier Wege zur Sprachspur</p>
             <h2>Die Stimme passt sich deinem Projekt an.</h2>
             <p>
               „Eigene Stimme“ kann Unterschiedliches bedeuten. Dieser Vergleich hilft dir bei der
@@ -481,6 +481,9 @@
 
           <div class="voice-grid">
             <article class="voice-option reveal">
+              <span class="pictogram" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M8 5h8v14H8z"/><path d="M5 9v6"/><path d="M19 9v6"/></svg>
+              </span>
               <div class="voice-topline"><span class="engine-dot edge"></span><span>Online</span></div>
               <h3>Edge TTS</h3>
               <p>Der unkomplizierte Einstieg mit fertigen Stimmen aus dem Microsoft-Katalog.</p>
@@ -493,6 +496,24 @@
             </article>
 
             <article class="voice-option reveal" data-delay="1">
+              <span class="pictogram" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 4v16"/><path d="M5 8c4 3 10 3 14 0"/><path d="M5 16c4-3 10-3 14 0"/></svg>
+              </span>
+              <div class="voice-topline"><span class="engine-dot gtts"></span><span>Google online</span></div>
+              <h3>gTTS</h3>
+              <p>Schnelle Google-Voice über Google Translate Text-to-Speech mit Sprachcode.</p>
+              <dl>
+                <div><dt>Eigene Stimme</dt><dd>Nein, Sprachcode</dd></div>
+                <div><dt>Internet</dt><dd>Erforderlich</dd></div>
+                <div><dt>Hardware</dt><dd>Cloud-Dienst</dd></div>
+              </dl>
+              <span class="recommendation">Gut für einfache Google-Ausgabe</span>
+            </article>
+
+            <article class="voice-option reveal" data-delay="2">
+              <span class="pictogram" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 17h16"/><path d="M7 17V7h10v10"/><path d="M9 10h6"/><path d="M9 13h4"/></svg>
+              </span>
               <div class="voice-topline"><span class="engine-dot piper"></span><span>Lokal</span></div>
               <h3>Piper</h3>
               <p>Schnelle lokale Ausgabe mit einem vorhandenen oder selbst trainierten ONNX-Modell.</p>
@@ -504,7 +525,10 @@
               <span class="recommendation">Gut für Tempo &amp; Datenschutz</span>
             </article>
 
-            <article class="voice-option voice-option-accent reveal" data-delay="2">
+            <article class="voice-option voice-option-accent reveal" data-delay="3">
+              <span class="pictogram" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v4a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4z"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg>
+              </span>
               <div class="voice-topline"><span class="engine-dot chatterbox"></span><span>Referenzstimme</span></div>
               <h3>Chatterbox V2</h3>
               <p>Übernimmt Stimmcharakter und Sprechweise aus einer kurzen, sauberen Aufnahme.</p>
@@ -552,7 +576,7 @@
             <div class="data-route-grid">
               <article><span>LOKAL</span><strong>NLLB · Piper · Chatterbox</strong><p>Nach dem Download in deiner gewählten Laufzeit. In Colab bedeutet das innerhalb der temporären Google-VM.</p></article>
               <article><span>ONLINE</span><strong>Google · DeepL · Gemini</strong><p>Erhalten Textabschnitte nur bei Auswahl oder als ausdrücklich aktivierter Fallback.</p></article>
-              <article><span>ONLINE</span><strong>Edge TTS</strong><p>Sendet jeden zu vertonenden übersetzten Cue an den Microsoft-Read-Aloud-Dienst.</p></article>
+              <article><span>ONLINE</span><strong>Edge TTS · gTTS</strong><p>Senden jeden zu vertonenden übersetzten Cue an den jeweiligen Online-Sprachdienst.</p></article>
             </div>
             <p class="biometric-note">
               Referenzstimmen enthalten biometrisch sensible Merkmale. Die Bestätigung in LinguoAI
@@ -577,13 +601,47 @@
           <div class="download-strip reveal" data-delay="1">
             <div>
               <span class="panel-label">Version 2.0.0</span>
-              <strong>Projekt zuerst herunterladen und ZIP-Datei entpacken.</strong>
-              <p>Dasselbe Projektpaket funktioniert lokal und als Upload im Colab-Notebook.</p>
+              <strong>Programm herunterladen, entpacken und lokal oder in Colab starten.</strong>
+              <p>
+                Direkte Download-URL:
+                <code>https://reinigungsprofileipzig.github.io/linguoai-de/downloads/LinguoAI-2.0.0-source.zip</code>
+              </p>
             </div>
             <div class="download-actions">
-              <a class="button" href="downloads/LinguoAI-2.0.0-source.zip" download>Projekt-ZIP <span aria-hidden="true">↓</span></a>
-              <a class="text-link" href="downloads/linguoai-2.0.0-py3-none-any.whl" download>Python-Wheel <span aria-hidden="true">↓</span></a>
+              <a class="button" href="downloads/LinguoAI-2.0.0-source.zip" download>
+                Programm-ZIP <span aria-hidden="true">↓</span>
+              </a>
+              <a class="text-link" href="downloads/linguoai-2.0.0-py3-none-any.whl" download>
+                Python-Wheel <span aria-hidden="true">↓</span>
+              </a>
+              <a class="text-link" href="downloads/LinguoAI_Colab.ipynb" download>
+                Colab-Notebook <span aria-hidden="true">↓</span>
+              </a>
             </div>
+          </div>
+
+          <div class="download-pictograms reveal" data-delay="2" aria-label="Download-Optionen">
+            <article>
+              <span class="pictogram" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+              </span>
+              <strong>Programm-ZIP</strong>
+              <p>Für die lokale Installation entpacken, dann im Ordner die PowerShell-Befehle ausführen.</p>
+            </article>
+            <article>
+              <span class="pictogram" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M6 4h12v16H6z"/><path d="M9 8h6"/><path d="M9 12h6"/><path d="M9 16h3"/></svg>
+              </span>
+              <strong>Wheel</strong>
+              <p>Für Python-Nutzer, die das Paket direkt mit <code>pip install</code> installieren möchten.</p>
+            </article>
+            <article>
+              <span class="pictogram" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 1 1 1.2-7.8A5 5 0 0 1 18 11a3.5 3.5 0 0 1-.5 7H7z"/><path d="M12 9v6"/><path d="m9 12 3-3 3 3"/></svg>
+              </span>
+              <strong>Colab-Notebook</strong>
+              <p>Bei Google Colab hochladen, Projekt-ZIP auswählen und die Browser-Oberfläche starten.</p>
+            </article>
           </div>
 
           <div class="setup-tabs reveal" role="tablist" aria-label="Anleitung auswählen">
@@ -688,12 +746,21 @@ python -m linguoai</code></pre>
                 Das Beispiel richtet bewusst die CPU-Version ein. Für NVIDIA wählst du zuerst den
                 passenden Befehl im
                 <a href="https://pytorch.org/get-started/locally/" target="_blank" rel="noopener noreferrer">PyTorch-Installationsassistenten</a>.
-                Für Piper installierst du <code>.[desktop,piper]</code>, für Chatterbox in einer
-                eigenen Umgebung <code>.[desktop,voice-clone]</code>.
+                Edge TTS und gTTS sind bereits dabei. Für Piper installierst du
+                <code>.[desktop,piper]</code>, für Chatterbox in einer eigenen Umgebung
+                <code>.[desktop,voice-clone]</code>.
               </p>
             </div>
 
             <div class="engine-install-guides">
+              <details>
+                <summary>gTTS / Google-Voice nutzen <span aria-hidden="true">+</span></summary>
+                <div>
+                  <p>gTTS ist im Basispaket enthalten. Einzeln kann es so installiert werden:</p>
+                  <pre><code>python -m pip install gTTS
+python -m linguoai -i quelle.mp4 -o ziel.mp4 -l de --tts-engine gtts</code></pre>
+                </div>
+              </details>
               <details>
                 <summary>Piper lokal ergänzen <span aria-hidden="true">+</span></summary>
                 <div>
@@ -722,7 +789,7 @@ python -m linguoai</code></pre>
                 <li><span>01</span><div><strong>Video wählen</strong><p>Unter „Start“ auf „Datei …“ klicken. Der Zielpfad wird vorgeschlagen.</p></div></li>
                 <li><span>02</span><div><strong>Sprachen festlegen</strong><p>Zielsprache wählen; die Quellsprache darf automatisch erkannt werden.</p></div></li>
                 <li><span>03</span><div><strong>Übersetzer wählen</strong><p>Für lokal: NLLB. Für einen schnellen Test: Google. DeepL/Gemini brauchen ihren Schlüssel; die separate Gemini-Optimierung ebenfalls.</p></div></li>
-                <li><span>04</span><div><strong>Stimme bestimmen</strong><p>Edge sofort testen oder unter „Erweitert“ Piper beziehungsweise Chatterbox einrichten.</p></div></li>
+                <li><span>04</span><div><strong>Stimme bestimmen</strong><p>Edge oder gTTS sofort testen; Piper beziehungsweise Chatterbox richtest du unter „Erweitert“ ein.</p></div></li>
                 <li><span>05</span><div><strong>Verarbeitung starten</strong><p>Fortschritt beobachten; am Ende Video und beide SRT-Dateien direkt öffnen.</p></div></li>
               </ol>
             </div>
@@ -759,7 +826,7 @@ python -m linguoai</code></pre>
                 <li><span>1</span><p>Notebook bei <strong>Google Colab</strong> hochladen und öffnen.</p></li>
                 <li><span>2</span><p>Optional unter Laufzeit eine <strong>T4-GPU</strong> auswählen.</p></li>
                 <li><span>3</span><p>Das Projekt-ZIP dieser Seite in der Projektzelle hochladen oder eine eigene Git-URL verwenden.</p></li>
-                <li><span>4</span><p><code>LOCAL_TTS_EXTRA</code> auf <code>none</code>, <code>piper</code> oder <code>chatterbox</code> setzen.</p></li>
+                <li><span>4</span><p><code>LOCAL_TTS_EXTRA</code> auf <code>none</code>, <code>piper</code> oder <code>chatterbox</code> setzen. Edge und gTTS funktionieren mit <code>none</code>.</p></li>
                 <li><span>5</span><p>Zellen ausführen, anmelden und Video hochladen oder einen relativen <strong>MyDrive</strong>-Pfad angeben.</p></li>
                 <li><span>6</span><p>Ergebnisse herunterladen oder in einen gewünschten Drive-Ordner speichern.</p></li>
               </ol>
@@ -926,16 +993,17 @@ python -m linguoai</code></pre>
             </details>
 
             <details>
-              <summary><span>04</span><strong>Edge, Piper und Chatterbox</strong><i aria-hidden="true">+</i></summary>
+              <summary><span>04</span><strong>Edge, gTTS, Piper und Chatterbox</strong><i aria-hidden="true">+</i></summary>
               <div class="capability-content">
                 <ul>
                   <li>Edge: automatische Standardstimme oder eigene vollständige Edge-Stimmen-ID.</li>
+                  <li>gTTS: Google Translate Text-to-Speech mit automatischer Zielsprache oder Sprachcode.</li>
                   <li>Piper: ONNX plus passende JSON, optionale Sprecher-ID und einstellbares Sprechtempo.</li>
                   <li>Chatterbox V2: Referenzprüfung, Ausdruck, CFG-Stärke, Rechtebestätigung und Wasserzeichen.</li>
                   <li>Lokale Engine auf CPU, CUDA oder automatisch mit CPU-Fallback betreiben.</li>
                   <li>Modelle werden nur für die ausgewählte Engine geladen und anschließend wieder freigegeben.</li>
                 </ul>
-                <p>LinguoAI lädt Piper-Modelle, trainiert sie aber nicht. Pro Auftrag wird eine Stimme verwendet. Chatterbox lehnt Referenzen unter 0,5 oder über 60 Sekunden ab und empfiehlt praktisch 6–10 Sekunden.</p>
+                <p>gTTS und Edge sind Online-Dienste und keine Stimmklone. LinguoAI lädt Piper-Modelle, trainiert sie aber nicht. Pro Auftrag wird eine Stimme verwendet. Chatterbox lehnt Referenzen unter 0,5 oder über 60 Sekunden ab und empfiehlt praktisch 6–10 Sekunden.</p>
               </div>
             </details>
 
@@ -1007,7 +1075,8 @@ python -m linguoai</code></pre>
               <p>
                 Ja. Chatterbox übernimmt eine autorisierte Stimme aus einer kurzen Referenzaufnahme.
                 Alternativ kannst du mit Piper ein bereits trainiertes eigenes ONNX-Modell laden.
-                Edge TTS bietet nur fertige Katalogstimmen.
+                Edge TTS bietet nur fertige Katalogstimmen; gTTS nutzt Google-Sprachcodes, aber
+                keine eigene Stimmkopie.
               </p>
             </details>
             <details>
@@ -1015,8 +1084,8 @@ python -m linguoai</code></pre>
               <p>
                 Mit Faster-Whisper, NLLB und Piper oder Chatterbox läuft die Verarbeitung nach den
                 erstmaligen Modell-Downloads in der gewählten Laufzeit. Auf dem Desktop ist das dein
-                Rechner; in Colab ist es die temporäre Google-VM. Edge, Google, DeepL und Gemini sind
-                Onlinedienste.
+                Rechner; in Colab ist es die temporäre Google-VM. Edge TTS, gTTS, Google
+                Translate, DeepL und Gemini sind Onlinedienste.
               </p>
             </details>
             <details>
@@ -1046,6 +1115,7 @@ python -m linguoai</code></pre>
                 Chatterbox Multilingual V2 unterstützt 23 Basissprachen, darunter Deutsch, Englisch,
                 Französisch, Spanisch, Italienisch, Portugiesisch, Polnisch, Türkisch, Japanisch,
                 Koreanisch und Chinesisch. Piper hängt von der Sprache des gewählten Modells ab.
+                gTTS unterstützt viele Google-Translate-Sprachcodes, aber keine Referenzstimmen.
               </p>
             </details>
           </div>
@@ -1057,8 +1127,8 @@ python -m linguoai</code></pre>
           <p class="section-kicker">Bereit für die erste Fassung?</p>
           <h2>Ein kurzes Testvideo ist der beste Anfang.</h2>
           <p>
-            Starte mit Edge TTS und den Standardwerten. Wenn der Ablauf passt, wechselst du in Ruhe
-            zu einer lokalen oder eigenen Stimme.
+            Starte mit Edge TTS oder gTTS und den Standardwerten. Wenn der Ablauf passt, wechselst
+            du in Ruhe zu einer lokalen oder eigenen Stimme.
           </p>
           <div class="cta-actions">
             <a class="button button-light" href="#loslegen">Anleitung öffnen <span aria-hidden="true">↑</span></a>
