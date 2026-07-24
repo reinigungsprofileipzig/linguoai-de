@@ -1,8 +1,8 @@
 # linguoai.de veröffentlichen
 
 Die Website ist statisch. Es gibt keinen Build-Schritt, keine externen Laufzeitpakete und kein
-Tracking. Die Dateien aus `website/` liegen im öffentlichen GitHub-Repository im Root, damit
-GitHub Pages sie direkt ausliefert. Das Colab-Notebook wird von dort geöffnet und lädt das
+Tracking. Die Dateien aus `website/` liegen im öffentlichen Hosting-Repository im Root, damit
+der Pages-Hoster sie direkt ausliefert. Das Colab-Notebook wird über linguoai.de angeboten und lädt das
 geprüfte Quellcode-ZIP anschließend automatisch über die kanonische HTTPS-Downloadadresse.
 
 Beim Synchronisieren den vorhandenen `CNAME`-Eintrag für `linguoai.de` erhalten.
@@ -12,7 +12,7 @@ Beim Synchronisieren den vorhandenen `CNAME`-Eintrag für `linguoai.de` erhalten
 1. `impressum.html` mit den echten Betreiberangaben vervollständigen.
 2. `datenschutz.html` an Betreiber, Hoster, Server-Logs und Kontaktweg anpassen.
 3. Beide Seiten fachlich prüfen und danach `noindex,nofollow` durch `index,follow` ersetzen.
-4. Prüfen, dass alle Verweise auf `https://github.com/reinigungsprofileipzig/linguoai-de` zeigen.
+4. Prüfen, dass alle öffentlichen Projekt- und Downloadlinks auf `https://linguoai.de/` zeigen.
 5. Prüfen, dass `downloads/LinguoAI_Colab.ipynb` und die Projektdatei
    `notebooks/LinguoAI_Colab.ipynb` bytegleich sind.
 6. Das Quellcode-ZIP neu bauen und testen, wenn Programm, README, Tests oder Notebook geändert wurden.
@@ -29,21 +29,20 @@ python -m http.server 8080 --directory website
 
 Danach `http://localhost:8080/` öffnen. Der Server lässt sich mit `Strg+C` beenden.
 
-## Aktueller Weg: GitHub Pages
+## Aktueller Weg: Pages-Hosting
 
-- Repository: `https://github.com/reinigungsprofileipzig/linguoai-de`
 - Produktionsbranch: `main`
 - Veröffentlichungsordner: Repository-Root
 - Eigene Domain: `linguoai.de` über `CNAME`
 
-Nach einem Push warten, bis GitHub Pages die neue Revision veröffentlicht hat. Danach Startseite,
+Nach einem Push warten, bis der Pages-Hoster die neue Revision veröffentlicht hat. Danach Startseite,
 Colab-Link, Git-Klon und alle drei Downloads live prüfen. HTTPS im Pages- beziehungsweise
 Cloudflare-Setup erzwingen.
 
 ## Alternative: Cloudflare Pages
 
 Cloudflare Pages kann alternativ als statischer Hoster eingesetzt werden. Vor einem Wechsel die
-bestehende GitHub-Pages-Domain, DNS-Einträge und HTTPS-Weiterleitungen dokumentieren und eine
+bestehende Pages-Domain, DNS-Einträge und HTTPS-Weiterleitungen dokumentieren und eine
 Vorschau vollständig prüfen.
 
 ### Direkter Upload im Dashboard

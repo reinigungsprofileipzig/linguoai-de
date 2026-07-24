@@ -2,13 +2,14 @@
 
 Statische Produktwebsite für `https://linguoai.de/`.
 
-Öffentliches Repository: `https://github.com/reinigungsprofileipzig/linguoai-de`. Dort liegen
-Website, Colab-Notebook und Downloads. Das Notebook lädt das geprüfte Quellcode-ZIP beim Start
-automatisch über `https://linguoai.de/`.
+Öffentliche Projektadresse: `https://linguoai.de/`. Website, Colab-Notebook und Downloads werden
+dort direkt über die eigene Domain angeboten. Das Notebook lädt das geprüfte Quellcode-ZIP beim
+Start ebenfalls über `https://linguoai.de/`.
 
 ## Struktur
 
 - `index.html`: vollständige Produkt- und Nutzungsseite
+- `colab.html`: domainbasierter Einstieg mit Notebook-Download und Colab-Anleitung
 - `assets/styles.css` und `assets/funnel.css`: responsives Design, Funnel und Animationen
 - `assets/site.js`: Navigation, Tabs, Copy-Buttons und Scroll-Reveals
 - `downloads/`: direkt angebotene Projektdateien

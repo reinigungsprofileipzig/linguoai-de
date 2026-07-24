@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f1ea" />
+    <meta
+      name="description"
+      content="LinguoAI ohne lokale Installation in Google Colab starten – mit Notebook-Download direkt über linguoai.de und einer einfachen Schritt-für-Schritt-Anleitung."
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://linguoai.de/colab.html" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <title>LinguoAI in Google Colab starten</title>
+    <link rel="stylesheet" href="assets/styles.css?v=20260724-3" />
+    <link rel="stylesheet" href="assets/funnel.css?v=20260724-3" />
+  </head>
+  <body class="colab-start-page">
+    <a class="skip-link" href="#main">Direkt zur Anleitung</a>
+
+    <header class="legal-header">
+      <div class="container header-inner">
+        <a class="brand" href="https://linguoai.de/" aria-label="LinguoAI Startseite">
+          <img src="assets/logo-mark.svg" width="38" height="38" alt="" />
+          <span>LinguoAI</span>
+        </a>
+        <span></span>
+        <a class="text-link" href="https://linguoai.de/">Zur Startseite <span aria-hidden="true">→</span></a>
+      </div>
+    </header>
+
+    <main id="main" class="colab-start-main">
+      <section class="container colab-start-hero">
+        <div>
+          <p class="section-kicker">Ohne dauerhafte Installation</p>
+          <h1>LinguoAI in Google Colab starten.</h1>
+          <p class="colab-start-intro">
+            Lade zuerst das vorbereitete Notebook direkt von linguoai.de herunter. Öffne danach
+            Google Colab und lade die Notebook-Datei dort hoch. Das Projekt-ZIP wird anschließend
+            automatisch über die eigene Domain geladen.
+          </p>
+          <div class="colab-start-actions">
+            <a
+              class="button"
+              href="https://linguoai.de/downloads/LinguoAI_Colab.ipynb"
+              download
+            >
+              1. Notebook herunterladen <span aria-hidden="true">↓</span>
+            </a>
+            <a
+              class="button button-secondary"
+              href="https://colab.research.google.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              2. Google Colab öffnen <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <p class="colab-start-note">
+            Die heruntergeladene Datei heißt <code>LinguoAI_Colab.ipynb</code>. Bewahre sie
+            unverändert auf und wähle genau diese Datei beim Hochladen in Colab aus.
+          </p>
+        </div>
+
+        <aside class="colab-start-summary" aria-label="Kurzüberblick">
+          <span class="panel-label">Dafür brauchst du</span>
+          <ul>
+            <li>ein Google-Konto</li>
+            <li>ein kurzes Testvideo</li>
+            <li>eine aktive Internetverbindung</li>
+          </ul>
+          <p>Eine Colab-GPU ist optional. LinguoAI kann auch auf der CPU starten.</p>
+        </aside>
+      </section>
+
+      <section class="container colab-start-guide" aria-labelledby="guide-title">
+        <div class="colab-start-heading">
+          <p class="section-kicker">Schritt für Schritt</p>
+          <h2 id="guide-title">So öffnest du das Notebook.</h2>
+        </div>
+        <ol class="colab-start-steps">
+          <li>
+            <span>01</span>
+            <div>
+              <strong>Notebook herunterladen</strong>
+              <p>Oben auf „Notebook herunterladen“ klicken. Die Datei landet normalerweise im Download-Ordner.</p>
+            </div>
+          </li>
+          <li>
+            <span>02</span>
+            <div>
+              <strong>Google Colab öffnen</strong>
+              <p>Mit deinem Google-Konto anmelden und im Startfenster „Hochladen“ auswählen.</p>
+            </div>
+          </li>
+          <li>
+            <span>03</span>
+            <div>
+              <strong>Datei hochladen</strong>
+              <p><code>LinguoAI_Colab.ipynb</code> aus dem Download-Ordner auswählen und öffnen.</p>
+            </div>
+          </li>
+          <li>
+            <span>04</span>
+            <div>
+              <strong>Notebook ausführen</strong>
+              <p>Im Colab-Menü „Laufzeit → Alle ausführen“ wählen und die Installation abwarten.</p>
+            </div>
+          </li>
+          <li>
+            <span>05</span>
+            <div>
+              <strong>Weboberfläche starten</strong>
+              <p>Den angezeigten Gradio-Link öffnen, anmelden, Video hochladen und die Verarbeitung starten.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="container colab-start-details">
+        <article>
+          <span class="service-badge">ERSTER TEST</span>
+          <h2>Diese Einstellungen kannst du lassen.</h2>
+          <p>
+            <code>PROJECT_SOURCE = "download_zip"</code> lädt LinguoAI automatisch von
+            <code>https://linguoai.de/</code>. Mit <code>LOCAL_TTS_EXTRA = "none"</code>
+            funktionieren Edge TTS und gTTS ohne großes zusätzliches Stimmenpaket.
+          </p>
+        </article>
+        <article>
+          <span class="service-badge">WICHTIG</span>
+          <h2>Colab-Sitzungen sind temporär.</h2>
+          <p>
+            Lade fertiges Video und beide SRT-Dateien herunter oder speichere sie in Google Drive.
+            Dateien unter <code>/content</code> verschwinden nach dem Ende der Sitzung.
+          </p>
+        </article>
+      </section>
+
+      <section class="container colab-start-local">
+        <div>
+          <p class="section-kicker">Lieber auf dem eigenen Rechner?</p>
+          <h2>Die lokale Anleitung bleibt verfügbar.</h2>
+        </div>
+        <a class="text-link" href="https://linguoai.de/#downloads">
+          Downloads und Windows-Anleitung öffnen <span aria-hidden="true">→</span>
+        </a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-bottom">
+        <span>© 2026 LinguoAI</span>
+        <span>Downloads direkt über linguoai.de</span>
+      </div>
+    </footer>
+  </body>
+</html>
