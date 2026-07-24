@@ -1,15 +1,21 @@
 # linguoai.de veröffentlichen
 
 Die Website ist statisch. Es gibt keinen Build-Schritt, keine externen Laufzeitpakete und kein
-Tracking. Veröffentlicht wird der komplette Inhalt des Ordners `website/`.
+Tracking. Die Dateien aus `website/` liegen im öffentlichen GitHub-Repository im Root, damit
+GitHub Pages sie direkt ausliefert. Das Colab-Notebook wird von dort geöffnet und lädt das
+geprüfte Quellcode-ZIP anschließend automatisch über die kanonische HTTPS-Downloadadresse.
+
+Beim Synchronisieren den vorhandenen `CNAME`-Eintrag für `linguoai.de` erhalten.
 
 ## Vor dem Livegang
 
 1. `impressum.html` mit den echten Betreiberangaben vervollständigen.
 2. `datenschutz.html` an Betreiber, Hoster, Server-Logs und Kontaktweg anpassen.
 3. Beide Seiten fachlich prüfen und danach `noindex,nofollow` durch `index,follow` ersetzen.
-4. Optional eine echte Projekt-/Repository-Adresse ergänzen, sobald sie öffentlich feststeht.
-5. Prüfen, dass `downloads/LinguoAI_Colab.ipynb` der aktuellen Anwendungsversion entspricht.
+4. Prüfen, dass alle Verweise auf `https://github.com/reinigungsprofileipzig/linguoai-de` zeigen.
+5. Prüfen, dass `downloads/LinguoAI_Colab.ipynb` und die Projektdatei
+   `notebooks/LinguoAI_Colab.ipynb` bytegleich sind.
+6. Das Quellcode-ZIP neu bauen und testen, wenn Programm, README, Tests oder Notebook geändert wurden.
 
 Die Vorlagen erfinden bewusst keine fehlenden Namen, Anschriften oder Kontaktangaben.
 
@@ -23,12 +29,22 @@ python -m http.server 8080 --directory website
 
 Danach `http://localhost:8080/` öffnen. Der Server lässt sich mit `Strg+C` beenden.
 
-## Empfohlener Weg: Cloudflare Pages
+## Aktueller Weg: GitHub Pages
 
-Der DNS-Check vom 20. Juli 2026 zeigt Cloudflare-Nameserver für `linguoai.de`, aber noch
-keinen auflösbaren A-/AAAA-/CNAME-Eintrag für die Hauptdomain und keinen `www`-CNAME. Daher
-passt Cloudflare Pages als einfacher statischer Hoster, die Domain ist derzeit aber noch nicht
-mit einer veröffentlichten Website verbunden.
+- Repository: `https://github.com/reinigungsprofileipzig/linguoai-de`
+- Produktionsbranch: `main`
+- Veröffentlichungsordner: Repository-Root
+- Eigene Domain: `linguoai.de` über `CNAME`
+
+Nach einem Push warten, bis GitHub Pages die neue Revision veröffentlicht hat. Danach Startseite,
+Colab-Link, Git-Klon und alle drei Downloads live prüfen. HTTPS im Pages- beziehungsweise
+Cloudflare-Setup erzwingen.
+
+## Alternative: Cloudflare Pages
+
+Cloudflare Pages kann alternativ als statischer Hoster eingesetzt werden. Vor einem Wechsel die
+bestehende GitHub-Pages-Domain, DNS-Einträge und HTTPS-Weiterleitungen dokumentieren und eine
+Vorschau vollständig prüfen.
 
 ### Direkter Upload im Dashboard
 
@@ -83,4 +99,3 @@ Pages-Projekt nötig.
 - HTTPS, Canonical und Weiterleitung von `www` prüfen.
 - Download des Colab-Notebooks testen.
 - Impressum und Datenschutz ohne Platzhalter veröffentlichen.
-

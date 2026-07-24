@@ -2,10 +2,14 @@
 
 Statische Produktwebsite für `https://linguoai.de/`.
 
+Öffentliches Repository: `https://github.com/reinigungsprofileipzig/linguoai-de`. Dort liegen
+Website, Colab-Notebook und Downloads. Das Notebook lädt das geprüfte Quellcode-ZIP beim Start
+automatisch über `https://linguoai.de/`.
+
 ## Struktur
 
 - `index.html`: vollständige Produkt- und Nutzungsseite
-- `assets/styles.css`: responsives Design und Animationen
+- `assets/styles.css` und `assets/funnel.css`: responsives Design, Funnel und Animationen
 - `assets/site.js`: Navigation, Tabs, Copy-Buttons und Scroll-Reveals
 - `downloads/`: direkt angebotene Projektdateien
 - `impressum.html` und `datenschutz.html`: noch auszufüllende Entwürfe
@@ -22,4 +26,3 @@ python -m http.server 8080 --directory website
 ```
 
 Dann `http://localhost:8080/` öffnen.
-

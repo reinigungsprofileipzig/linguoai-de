@@ -67,7 +67,7 @@
     }
   });
 
-  window.matchMedia("(min-width: 901px)").addEventListener("change", (event) => {
+  window.matchMedia("(min-width: 1051px)").addEventListener("change", (event) => {
     if (event.matches) closeMenu();
   });
 
@@ -219,7 +219,7 @@
       const label = button.querySelector("[data-copy-label]");
       const oldLabel = label?.textContent;
       if (label) label.textContent = copied ? "Kopiert" : "Bitte markieren";
-      showToast(copied ? "Befehl in die Zwischenablage kopiert." : "Kopieren war nicht möglich.");
+      showToast(copied ? "In die Zwischenablage kopiert." : "Kopieren war nicht möglich.");
       window.setTimeout(() => {
         if (label && oldLabel) label.textContent = oldLabel;
       }, 1800);
