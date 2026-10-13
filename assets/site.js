@@ -1,6 +1,73 @@
 (() => {
   "use strict";
 
+  const locale = document.documentElement.lang.split("-")[0].toLowerCase();
+  const uiText = {
+    de: {
+      menuOpen: "Navigation öffnen",
+      menuClose: "Navigation schließen",
+      copied: "Kopiert",
+      select: "Bitte markieren",
+      copiedToast: "In die Zwischenablage kopiert.",
+      copyFailed: "Kopieren war nicht möglich.",
+    },
+    en: {
+      menuOpen: "Open navigation",
+      menuClose: "Close navigation",
+      copied: "Copied",
+      select: "Please select manually",
+      copiedToast: "Copied to the clipboard.",
+      copyFailed: "Could not copy the text.",
+    },
+    ru: {
+      menuOpen: "Открыть навигацию",
+      menuClose: "Закрыть навигацию",
+      copied: "Скопировано",
+      select: "Выделите вручную",
+      copiedToast: "Скопировано в буфер обмена.",
+      copyFailed: "Не удалось скопировать текст.",
+    },
+    uk: {
+      menuOpen: "Відкрити навігацію",
+      menuClose: "Закрити навігацію",
+      copied: "Скопійовано",
+      select: "Виділіть вручну",
+      copiedToast: "Скопійовано в буфер обміну.",
+      copyFailed: "Не вдалося скопіювати текст.",
+    },
+    tr: {
+      menuOpen: "Navigasyonu aç",
+      menuClose: "Navigasyonu kapat",
+      copied: "Kopyalandı",
+      select: "Lütfen elle seçin",
+      copiedToast: "Panoya kopyalandı.",
+      copyFailed: "Metin kopyalanamadı.",
+    },
+    es: {
+      menuOpen: "Abrir navegación",
+      menuClose: "Cerrar navegación",
+      copied: "Copiado",
+      select: "Selecciona el texto manualmente",
+      copiedToast: "Copiado al portapapeles.",
+      copyFailed: "No se pudo copiar el texto.",
+    },
+    it: {
+      menuOpen: "Apri navigazione",
+      menuClose: "Chiudi navigazione",
+      copied: "Copiato",
+      select: "Seleziona il testo manualmente",
+      copiedToast: "Copiato negli appunti.",
+      copyFailed: "Impossibile copiare il testo.",
+    },
+  }[locale] ?? {
+    menuOpen: "Open navigation",
+    menuClose: "Close navigation",
+    copied: "Copied",
+    select: "Please select manually",
+    copiedToast: "Copied to the clipboard.",
+    copyFailed: "Could not copy the text.",
+  };
+
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const header = document.querySelector("[data-header]");
   const progressBar = document.querySelector(".scroll-progress span");
@@ -39,7 +106,7 @@
   const closeMenu = ({ returnFocus = false } = {}) => {
     if (!menuButton || !menu) return;
     menuButton.setAttribute("aria-expanded", "false");
-    menuButton.querySelector(".sr-only").textContent = "Navigation öffnen";
+    menuButton.querySelector(".sr-only").textContent = uiText.menuOpen;
     menu.classList.remove("is-open");
     document.body.classList.remove("menu-open");
     if (returnFocus) menuButton.focus();
@@ -52,7 +119,7 @@
       return;
     }
     menuButton.setAttribute("aria-expanded", "true");
-    menuButton.querySelector(".sr-only").textContent = "Navigation schließen";
+    menuButton.querySelector(".sr-only").textContent = uiText.menuClose;
     menu?.classList.add("is-open");
     document.body.classList.add("menu-open");
   });
@@ -219,8 +286,8 @@
 
       const label = button.querySelector("[data-copy-label]");
       const oldLabel = label?.textContent;
-      if (label) label.textContent = copied ? "Kopiert" : "Bitte markieren";
-      showToast(copied ? "In die Zwischenablage kopiert." : "Kopieren war nicht möglich.");
+      if (label) label.textContent = copied ? uiText.copied : uiText.select;
+      showToast(copied ? uiText.copiedToast : uiText.copyFailed);
       window.setTimeout(() => {
         if (label && oldLabel) label.textContent = oldLabel;
       }, 1800);

@@ -1,0 +1,1225 @@
+<!doctype html>
+HTML
+<html class="no-js" data-locale-detect="false" data-locale-page="es" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#f4f1ea" name="theme-color"/>
+<meta content="LinguoAI traduce vídeos, crea subtítulos y crea una pista de voz sincronizada, localmente en CPU/GPU o cómodamente en Google Colab." name="description"/>
+<meta content="index,follow,max-image-preview:large" name="robots"/>
+<link href="https://linguoai.de/es/" rel="canonical"/>
+<link href="https://linguoai.de/" hreflang="de" rel="alternate"/>
+<link href="https://linguoai.de/en/" hreflang="en" rel="alternate"/>
+<link href="https://linguoai.de/ru/" hreflang="ru" rel="alternate"/>
+<link href="https://linguoai.de/uk/" hreflang="uk" rel="alternate"/>
+<link href="https://linguoai.de/tr/" hreflang="tr" rel="alternate"/>
+<link href="https://linguoai.de/es/" hreflang="es" rel="alternate"/>
+<link href="https://linguoai.de/it/" hreflang="it" rel="alternate"/>
+<link href="https://linguoai.de/en/" hreflang="x-default" rel="alternate"/>
+<link href="/assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/site.webmanifest" rel="manifest"/>
+<meta content="website" property="og:type"/>
+<meta content="es_ES" property="og:locale"/>
+<meta content="LinguoAI" property="og:site_name"/>
+<meta content="LinguoAI – Traducir y volver a calificar videos" property="og:title"/>
+<meta content="Desde vídeo original hasta pistas de voz traducidas y sincronizadas, con la interfaz web de escritorio GUI, CLI y Colab." property="og:description"/>
+<meta content="https://linguoai.de/es/" property="og:url"/>
+<meta content="summary" name="twitter:card"/>
+<title>LinguoAI: traduce y dobla vídeos de forma sincronizada</title>
+<link href="/assets/styles.css?v=20261012-1" rel="stylesheet"/>
+<link href="/assets/funnel.css?v=20261012-1" rel="stylesheet"/>
+<script>
+      document.documentElement.classList.replace("no-js", "has-js");
+      (() => {
+        if (document.documentElement.dataset.localeDetect !== "true") return;
+        const supported = new Set(["de", "en", "ru", "uk", "tr", "es", "it"]);
+        const route = { de: "/", en: "/en/", ru: "/ru/", uk: "/uk/", tr: "/tr/", es: "/es/", it: "/it/" };
+        let selected = "";
+        try {
+          const saved = window.localStorage.getItem("linguoai.locale") || "";
+          if (supported.has(saved)) selected = saved;
+        } catch (_error) {
+          // Private browsing may block storage; browser detection still works.
+        }
+        if (!selected) {
+          const requested = Array.isArray(navigator.languages) ? navigator.languages : [navigator.language];
+          selected = requested
+            .map((value) => String(value || "").toLowerCase().split("-")[0])
+            .find((value) => supported.has(value)) || "en";
+        }
+        if (selected !== "de") {
+          window.location.replace(`${route[selected]}${window.location.hash}`);
+        }
+      })();
+    </script>
+<script defer="" src="/assets/locale.js?v=20261012-1"></script>
+<script defer="" src="/assets/site.js?v=20261012-1"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://linguoai.de/#website",
+      "url": "https://linguoai.de/es/",
+      "name": "LinguoAI",
+      "inLanguage": "es"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://linguoai.de/#software",
+      "name": "LinguoAI",
+      "url": "https://linguoai.de/es/",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Windows, Linux, Google Colab",
+      "description": "Transcripción de vídeo, traducción, subtitulado y síntesis de voz sincronizada en el tiempo con la interfaz web de escritorio GUI, CLI y Colab.",
+      "softwareVersion": "2.2.1",
+      "softwareRequirements": "Python 3.10 o posterior y FFmpeg; Se recomienda Python 3.11 para Chatterbox",
+      "downloadUrl": "https://linguoai.de/downloads/LinguoAI-2.2.1-source.zip",
+      "featureList": [
+        "Transcripción Faster-Whisper",
+        "Traducción local o basada en la nube",
+        "Salida de voz Edge, gTTS, Piper y Chatterbox",
+        "Nueva pista de voz ajustada en el tiempo",
+        "Subtítulos originales y traducidos.",
+        "Interfaz de escritorio GUI, CLI y Google Colab"
+      ],
+      "inLanguage": "es"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://linguoai.de/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Puedo LinguoAI usar mi propia voz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Chatterbox utiliza una grabación de referencia autorizada. Alternativamente, Piper carga su propio modelo ONNX que ya ha sido entrenado. gTTS y Edge ofrecen voces en línea, pero no copia de voz."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿El programa se ejecuta completamente localmente?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Con Faster-Whisper, NLLB y Piper o Chatterbox, el procesamiento se ejecuta en el tiempo de ejecución seleccionado después de las descargas iniciales del modelo. En Colab, esta es la máquina virtual temporal de Google. Edge TTS, gTTS, Google Translate, DeepL y Gemini son servicios en línea."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Necesito una tarjeta gráfica potente?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Los números Whisper, NLLB y Piper funcionan en el CPU. Chatterbox es posible en el CPU, pero un NVIDIA-GPU tiene sentido para proyectos más largos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué obtengo al final?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un vídeo recién doblado, un archivo SRT con el texto original reconocido y un segundo archivo SRT con la traducción."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Ir directamente al contenido</a>
+<div aria-hidden="true" class="scroll-progress"><span></span></div>
+<header class="site-header" data-header="">
+<div class="container header-inner">
+<a aria-label="LinguoAI Página de inicio" class="brand" href="#top">
+<img alt="" height="38" src="/assets/logo-mark.svg" width="38"/>
+<span>LinguoAI</span>
+</a>
+<nav aria-label="Navegación principal" class="main-navigation" data-menu="" id="main-navigation">
+<a href="#startweg">Empezar</a>
+<a href="#funktionen">Ventajas</a>
+<a href="#stimmen">Voces</a>
+<a href="#ablauf">Así es como funciona</a>
+<a href="#fragen">Preguntas frecuentes</a>
+<a href="#downloads">Descargas</a>
+</nav>
+<div class="header-tools">
+<details class="language-switcher" data-language-switcher="">
+<summary aria-label="Seleccionar idioma">
+<span data-locale-code="">ES</span><span aria-hidden="true">⌄</span>
+</summary>
+<div class="language-options" data-i18n-ignore="">
+<a data-locale-link="de" href="/" hreflang="de" lang="de">Deutsch</a>
+<a data-locale-link="en" href="/en/" hreflang="en" lang="en">English</a>
+<a data-locale-link="ru" href="/ru/" hreflang="ru" lang="ru">Русский</a>
+<a data-locale-link="uk" href="/uk/" hreflang="uk" lang="uk">Українська</a>
+<a data-locale-link="tr" href="/tr/" hreflang="tr" lang="tr">Türkçe</a>
+<a aria-current="page" data-locale-link="es" href="/es/" hreflang="es" lang="es">Español</a>
+<a data-locale-link="it" href="/it/" hreflang="it" lang="it">Italiano</a>
+</div>
+</details>
+<a class="button button-small header-action" href="#startweg">Empieza gratis</a>
+<button aria-controls="main-navigation" aria-expanded="false" class="menu-button" data-menu-button="" type="button">
+<span class="sr-only">Abrir navegación</span>
+<span aria-hidden="true"></span>
+<span aria-hidden="true"></span>
+</button>
+</div>
+</div>
+</header>
+<main id="main">
+<section class="hero" id="top">
+<div aria-hidden="true" class="hero-grid"></div>
+<div class="container hero-layout">
+<div class="hero-copy">
+<p class="eyebrow reveal">
+<span class="status-dot"></span>
+              Código abierto · localmente o en Google Colab
+            </p>
+<h1 class="reveal" data-delay="1">
+<span>Tu vídeo.</span>
+<span>Un nuevo idioma.</span>
+<span class="accent-line">Doblaje natural.</span>
+</h1>
+<p class="hero-intro reveal" data-delay="2">
+              Traducir, subtitular y doblar vídeos en un proceso guiado. Comience inmediatamente en el navegador o mantenga todo en su computadora con la versión de escritorio.
+            </p>
+<div class="hero-actions reveal" data-delay="3">
+<a class="button" href="https://linguoai.de/es/colab.html">
+                Abrir el manual de Colab
+                <span aria-hidden="true">↗</span>
+</a>
+<a class="text-link" href="#downloads">
+                Descargar e instalar
+                <span aria-hidden="true">↓</span>
+</a>
+</div>
+<ul aria-label="Descripción rápida" class="hero-facts reveal" data-delay="4">
+<li><strong>0 €</strong><span>gratis y abierto</span></li>
+<li><strong>4</strong><span>motores vocales</span></li>
+<li><strong>CPU</strong><span>o GPU</span></li>
+</ul>
+</div>
+<div class="product-stage reveal" data-delay="2">
+<div class="product-window" data-product-demo="">
+<div class="window-bar">
+<div aria-hidden="true" class="window-dots"><i></i><i></i><i></i></div>
+<span>Nueva tarea</span>
+<span class="window-status"><i></i> listo</span>
+</div>
+<div class="window-body">
+<div class="demo-file">
+<div aria-hidden="true" class="file-icon">▶</div>
+<div>
+<strong>entrevista_final.mp4</strong>
+<span>Fuente · 18:42 minutos</span>
+</div>
+<span aria-label="Archivo seleccionado" class="file-check">✓</span>
+</div>
+<div aria-label="Del inglés al alemán" class="demo-route">
+<div><span>Fuente</span><strong>ingles</strong></div>
+<span aria-hidden="true" class="route-arrow">→</span>
+<div><span>Objetivo</span><strong>alemán</strong></div>
+</div>
+<div class="demo-label">Elige voz</div>
+<div class="engine-switch" role="presentation">
+<span>Edge</span>
+<span>Piper</span>
+<span class="is-selected">Voz propia</span>
+</div>
+<div class="voice-card">
+<div aria-hidden="true" class="voice-avatar">
+<span></span><span></span><span></span><span></span><span></span>
+</div>
+<div>
+<strong>mi-voz.wav</strong>
+<span>8,4 s · Referencia comprobada</span>
+</div>
+<span class="local-badge">LOCALES</span>
+</div>
+<div class="demo-progress">
+<div class="progress-meta">
+<span>Sincronizar pista de voz</span>
+<strong data-demo-percent="">72 %</strong>
+</div>
+<div class="progress-track"><span></span></div>
+<div aria-hidden="true" class="waveform">
+<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+</div>
+</div>
+</div>
+</div>
+<div class="stage-note stage-note-top">
+<span>CPU / GPU</span>
+              se puede seleccionar por separado
+            </div>
+<div class="stage-note stage-note-bottom">
+<span>PRIVADO</span>
+              opciones locales
+            </div>
+</div>
+</div>
+<div class="container compatibility-strip reveal">
+<span>Creado para flujos de trabajo reales</span>
+<ul>
+<li>Escritorio GUI</li>
+<li>línea de comando</li>
+<li>Google Colab</li>
+<li>CPU y NVIDIA-GPU</li>
+</ul>
+</div>
+</section>
+<section class="path-section section-pad" id="startweg">
+<div class="container">
+<div class="funnel-heading reveal">
+<p class="section-kicker">Tu comienzo más rápido</p>
+<h2>Elige el camino que más te convenga.</h2>
+<p>Sin registro con LinguoAI. Tú decides dónde se procesa tu vídeo.</p>
+</div>
+<div class="path-grid">
+<article class="path-card path-card-featured reveal">
+<div class="path-card-top"><span class="path-number">01</span><span class="recommendation">comienzo más fácil</span></div>
+<h3>Google Colab</h3>
+<p>Trabaja directamente en el navegador. Ideal para pruebas y si no quieres instalar nada localmente.</p>
+<ul class="check-list">
+<li>Sube el archivo o usa Google Drive</li>
+<li>CPU o Colab-GPU opcional</li>
+<li>Interfaz web guiada</li>
+</ul>
+<a class="button button-wide" href="https://linguoai.de/es/colab.html">Abrir el manual de Colab <span aria-hidden="true">→</span></a>
+<small>Descargue Notebook de forma segura a través de linguoai.de</small>
+</article>
+<article class="path-card reveal" data-delay="1">
+<div class="path-card-top"><span class="path-number">02</span><span class="privacy-chip">Control máximo</span></div>
+<h3>aplicación de escritorio</h3>
+<p>La mejor opción para uso habitual, archivos confidenciales y modelos de idioma local.</p>
+<ul class="check-list">
+<li>Interfaz gráfica moderna</li>
+<li>TTS local y opciones de traducción</li>
+<li>Windows y Linux</li>
+</ul>
+<a class="button button-secondary button-wide" href="#panel-desktop">Instalar localmente <span aria-hidden="true">↓</span></a>
+<small>Se requieren Python 3.10+ y FFmpeg</small>
+</article>
+<article class="path-card reveal" data-delay="2">
+<div class="path-card-top"><span class="path-number">03</span><span class="pro-chip">Para flujos de trabajo</span></div>
+<h3>línea de comando</h3>
+<p>Para automatización, procesos repetibles e integración en sus propios procesos.</p>
+<ul class="check-list">
+<li>Todas las opciones importantes como parámetros.</li>
+<li>Ideal para flujos de trabajo por lotes</li>
+<li>CPU/GPU se puede controlar por separado</li>
+</ul>
+<a class="text-link path-link" href="#panel-cli">Ver instrucciones de CLI <span aria-hidden="true">→</span></a>
+<small>Para usuarios experimentados</small>
+</article>
+</div>
+<div aria-label="Características del producto" class="trust-row reveal">
+<span><i aria-hidden="true">✓</i> Código abierto</span>
+<span><i aria-hidden="true">✓</i> Sin cuenta LinguoAI</span>
+<span><i aria-hidden="true">✓</i> Voz propia opcional</span>
+<span><i aria-hidden="true">✓</i> Exportación de vídeo y SRT</span>
+</div>
+</div>
+</section>
+<section class="statement section-pad">
+<div class="container statement-grid">
+<p class="section-kicker reveal">Una herramienta, un proceso claro</p>
+<div class="statement-copy reveal" data-delay="1">
+<h2>Tú cuidas el idioma. LinguoAI se encarga del resto.</h2>
+<p>
+              No hay magia oscura con un solo clic: todos los componentes importantes siguen siendo seleccionables, desde la transcripción hasta el traductor, pasando por la voz y el dispositivo utilizado.
+            </p>
+</div>
+</div>
+</section>
+<section class="features section-pad" id="funktionen">
+<div class="container">
+<div class="section-heading reveal">
+<p class="section-kicker">Qué puede hacer el LinguoAI</p>
+<h2>Todo para la nueva versión de idioma.</h2>
+<p>
+              La interfaz de escritorio, la versión CLI y Colab utilizan el mismo procesamiento robusto en segundo plano.
+            </p>
+</div>
+<div class="feature-grid">
+<article class="feature-card feature-card-wide reveal">
+<div class="feature-index">01</div>
+<div aria-hidden="true" class="feature-icon">
+<svg fill="none" height="32" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="32">
+<rect height="14" rx="3" width="18" x="3" y="5"></rect>
+<path d="M6.5 12h2l1.4-3.2 3.1 6.4 1.5-3.2h3"></path>
+</svg>
+</div>
+<h3>Reconocer el lenguaje con precisión</h3>
+<p>
+                Faster-Whisper procesa la pista de audio en secciones superpuestas y conserva marcas de tiempo real. Usted mismo configura el modelo Whisper, CPU/GPU y el formato de cálculo.
+              </p>
+<ul aria-label="Detalles" class="tag-list">
+<li>Faster-Whisper</li>
+<li>Reconocimiento de voz automático o fijo</li>
+<li>Archivo y carpeta</li>
+</ul>
+</article>
+<article class="feature-card reveal" data-delay="1">
+<div class="feature-index">02</div>
+<div aria-hidden="true" class="feature-icon">
+<svg fill="none" height="32" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="32">
+<path d="M4 16 7.5 7l3.5 9M5.2 13h4.6"></path>
+<path d="M14 7h6M17 5v2M14.5 10.5c1.5 2.2 3.2 3.8 5.5 5"></path>
+<path d="M20 10.5c-1.4 2.2-3.1 3.9-5.5 5"></path>
+</svg>
+</div>
+<h3>Traducir apropiadamente</h3>
+<p>
+                Elija Google, DeepL, Gemini o el NLLB-200 local. Solo se utilizará un segundo servicio si lo activa explícitamente como alternativa.
+              </p>
+<ul class="plain-list">
+<li>NLLB localmente en CPU o CUDA</li>
+<li>Modelos propios NLLB compatibles</li>
+<li>Optimización de texto opcional Gemini</li>
+</ul>
+</article>
+<article class="feature-card feature-card-dark reveal" data-delay="2">
+<div class="feature-index">03</div>
+<div aria-hidden="true" class="feature-icon">
+<svg fill="none" height="32" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="32">
+<rect height="11" rx="3" width="6" x="9" y="3"></rect>
+<path d="M6.5 11a5.5 5.5 0 0 0 11 0M12 16.5V21M9 21h6"></path>
+<path d="M4 8.5v5M20 8.5v5"></path>
+</svg>
+</div>
+<h3>Elige la voz adecuada</h3>
+<p>
+                Voz online, modelo local ONNX o una grabación de referencia autorizada: Edge, gTTS, Piper y Chatterbox se pueden seleccionar libremente por pedido.
+              </p>
+<a href="#stimmen">Comparar voces <span aria-hidden="true">→</span></a>
+</article>
+<article class="feature-card reveal">
+<div class="feature-index">04</div>
+<div aria-hidden="true" class="feature-icon">
+<svg fill="none" height="32" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="32">
+<circle cx="12" cy="12" r="8.5"></circle>
+<path d="M12 7.5V12l3 2M4.5 4.5 2.8 6.2M19.5 4.5l1.7 1.7"></path>
+</svg>
+</div>
+<h3>Mantente en el tiempo</h3>
+<p>
+                Cada clip de voz se normaliza, se adapta a su ventana de tiempo y se clasifica con precisión de muestra. Las oraciones posteriores no se mueven simplemente.
+              </p>
+<ul class="plain-list">
+<li>PCM monocromático de 48 kHz</li>
+<li>Ajuste de tempo limitado</li>
+<li>Final exacto de los medios</li>
+</ul>
+</article>
+<article class="feature-card reveal" data-delay="1">
+<div class="feature-index">05</div>
+<div aria-hidden="true" class="feature-icon">
+<svg fill="none" height="32" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="32">
+<rect height="14" rx="3" width="18" x="3" y="5"></rect>
+<path d="M6.5 12.5h4M13.5 12.5h4M6.5 15.5h6M14.5 15.5h3"></path>
+</svg>
+</div>
+<h3>Subtítulos incluidos</h3>
+<p>
+                De cada vídeo terminado se crea un archivo SRT con el texto original y un segundo con la traducción. Esto significa que el resultado se puede utilizar de forma flexible.
+              </p>
+<ul aria-label="Resultados" class="tag-list">
+<li>Vídeo</li>
+<li>Originales SRT.</li>
+<li>Traducido SRT</li>
+</ul>
+</article>
+<article class="feature-card feature-card-wide reveal" data-delay="2">
+<div class="feature-index">06</div>
+<div aria-hidden="true" class="feature-icon">
+<svg fill="none" height="32" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="32">
+<path d="M12 3 20 6v5.4c0 4.8-3.2 8.1-8 9.6-4.8-1.5-8-4.8-8-9.6V6l8-3Z"></path>
+<path d="m8.5 12 2.2 2.2 4.8-5"></path>
+</svg>
+</div>
+<h3>Trabajar de forma segura y comprensible</h3>
+<p>
+                Los resultados temporales no se publicarán hasta que el vídeo y ambos subtítulos estén completos. La cancelación, los reintentos limitados, las rutas de destino protegidas y las claves API redactadas evitan sorpresas desagradables.
+              </p>
+<ul aria-label="Funciones de seguridad" class="tag-list">
+<li>Cancelar</li>
+<li>Revertir</li>
+<li>Tiempos de espera</li>
+<li>No hay claves en los registros</li>
+</ul>
+</article>
+</div>
+</div>
+</section>
+<section class="workflow section-pad" id="ablauf">
+<div class="container">
+<div class="workflow-heading reveal">
+<div>
+<p class="section-kicker">Así funciona LinguoAI</p>
+<h2>Seis pasos. Un vídeo terminado.</h2>
+</div>
+<p>
+              En el área de progreso puedes ver lo que está sucediendo actualmente en cualquier momento. Los modelos individuales sólo se cargan cuando realmente son necesarios.
+            </p>
+</div>
+<ol class="workflow-list" data-workflow="">
+<li class="reveal">
+<span class="workflow-marker">
+<span class="workflow-number">01</span>
+<span aria-hidden="true" class="workflow-icon">
+<svg fill="none" height="27" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="27">
+<rect height="14" rx="3" width="18" x="3" y="5"></rect>
+<path d="m10 9 5 3-5 3V9Z"></path>
+</svg>
+</span>
+</span>
+<div><strong>Leer vídeo</strong><span>FFmpeg comprueba la imagen, el sonido y la duración.</span></div>
+</li>
+<li class="reveal" data-delay="1">
+<span class="workflow-marker">
+<span class="workflow-number">02</span>
+<span aria-hidden="true" class="workflow-icon">
+<svg fill="none" height="27" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="27">
+<path d="M5 14h3l4 3V7l-4 3H5v4Z"></path>
+<path d="M15 9.5c1.5 1.4 1.5 3.6 0 5M18 7c3 2.7 3 7.3 0 10"></path>
+</svg>
+</span>
+</span>
+<div><strong>extraer sonido</strong><span>La fuente está preparada como audio de 16 kHz.</span></div>
+</li>
+<li class="reveal" data-delay="2">
+<span class="workflow-marker">
+<span class="workflow-number">03</span>
+<span aria-hidden="true" class="workflow-icon">
+<svg fill="none" height="27" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="27">
+<path d="M3.5 9h2l1.3-3 2.5 6 2.4-8 2.6 7 1.4-2H20.5"></path>
+<path d="M5 16h14M5 20h9"></path>
+</svg>
+</span>
+</span>
+<div><strong>Transcribir</strong><span>Whisper reconoce texto y ventanas de tiempo.</span></div>
+</li>
+<li class="reveal" data-delay="3">
+<span class="workflow-marker">
+<span class="workflow-number">04</span>
+<span aria-hidden="true" class="workflow-icon">
+<svg fill="none" height="27" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="27">
+<path d="M4 7h10M11 4l3 3-3 3M20 17H10M13 14l-3 3 3 3"></path>
+<path d="M5.5 12.5 3.5 18h4l-2-5.5ZM16.5 6l2 5.5M15 9.5h4"></path>
+</svg>
+</span>
+</span>
+<div><strong>Traducir</strong><span>El servicio seleccionado transmite cada señal.</span></div>
+</li>
+<li class="reveal" data-delay="4">
+<span class="workflow-marker">
+<span class="workflow-number">05</span>
+<span aria-hidden="true" class="workflow-icon">
+<svg fill="none" height="27" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="27">
+<rect height="10" rx="3" width="6" x="9" y="3"></rect>
+<path d="M6.5 10.5a5.5 5.5 0 0 0 11 0M12 16v4M9 20h6"></path>
+<path d="M19 9v4M21 10.5v1"></path>
+</svg>
+</span>
+</span>
+<div><strong>Doblar</strong><span>Su motor TTS genera la nueva voz.</span></div>
+</li>
+<li class="reveal" data-delay="5">
+<span class="workflow-marker">
+<span class="workflow-number">06</span>
+<span aria-hidden="true" class="workflow-icon">
+<svg fill="none" height="27" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="27">
+<path d="m12 3 8 4-8 4-8-4 8-4Z"></path>
+<path d="m4 11 8 4 8-4M4 15l8 4 8-4"></path>
+<path d="m16.5 18.5 1.4 1.4 3.1-3.2"></path>
+</svg>
+</span>
+</span>
+<div><strong>fusionar</strong><span>Se publican vídeo, pista de voz y SRT.</span></div>
+</li>
+</ol>
+</div>
+</section>
+<section class="voices section-pad" id="stimmen">
+<div class="container">
+<div class="section-heading reveal">
+<p class="section-kicker">Cuatro formas de obtener una pista de voz</p>
+<h2>La voz se adapta a tu proyecto.</h2>
+<p>
+              “Voz propia” puede significar cosas diferentes. Esta comparación le ayudará a tomar la decisión correcta.
+            </p>
+</div>
+<div class="voice-grid">
+<article class="voice-option reveal">
+<span aria-hidden="true" class="pictogram">
+<svg viewbox="0 0 24 24"><path d="M8 5h8v14H8z"></path><path d="M5 9v6"></path><path d="M19 9v6"></path></svg>
+</span>
+<div class="voice-topline"><span class="engine-dot edge"></span><span>En línea</span></div>
+<h3>Edge TTS</h3>
+<p>La manera fácil de comenzar con voces listas para usar del catálogo de Microsoft.</p>
+<dl>
+<div><dt>Voz propia</dt><dd>No, voz de catálogo</dd></div>
+<div><dt>Internet</dt><dd>Requerido</dd></div>
+<div><dt>Ferretería</dt><dd>Servicio en la nube</dd></div>
+</dl>
+<span class="recommendation">Bueno para la primera prueba.</span>
+</article>
+<article class="voice-option reveal" data-delay="1">
+<span aria-hidden="true" class="pictogram">
+<svg viewbox="0 0 24 24"><path d="M12 4v16"></path><path d="M5 8c4 3 10 3 14 0"></path><path d="M5 16c4-3 10-3 14 0"></path></svg>
+</span>
+<div class="voice-topline"><span class="engine-dot gtts"></span><span>Google en línea</span></div>
+<h3>gTTS</h3>
+<p>Rápido Google Voice a través de Google Translate Text-to-Speech con código de voz.</p>
+<dl>
+<div><dt>Voz propia</dt><dd>No, código de idioma</dd></div>
+<div><dt>Internet</dt><dd>Requerido</dd></div>
+<div><dt>Ferretería</dt><dd>Servicio en la nube</dd></div>
+</dl>
+<span class="recommendation">Bueno para salida simple de Google</span>
+</article>
+<article class="voice-option reveal" data-delay="2">
+<span aria-hidden="true" class="pictogram">
+<svg viewbox="0 0 24 24"><path d="M4 17h16"></path><path d="M7 17V7h10v10"></path><path d="M9 10h6"></path><path d="M9 13h4"></path></svg>
+</span>
+<div class="voice-topline"><span class="engine-dot piper"></span><span>locales</span></div>
+<h3>Piper</h3>
+<p>Salida local rápida con un modelo ONNX existente o autodidacta.</p>
+<dl>
+<div><dt>Voz propia</dt><dd>Como modelo entrenado</dd></div>
+<div><dt>Internet</dt><dd>Después de la descarga, no</dd></div>
+<div><dt>Ferretería</dt><dd>CPU, opcional CUDA</dd></div>
+</dl>
+<span class="recommendation">Bueno para la velocidad y la protección de datos</span>
+</article>
+<article class="voice-option voice-option-accent reveal" data-delay="3">
+<span aria-hidden="true" class="pictogram">
+<svg viewbox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v4a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4z"></path><path d="M5 11a7 7 0 0 0 14 0"></path><path d="M12 18v3"></path></svg>
+</span>
+<div class="voice-topline"><span class="engine-dot chatterbox"></span><span>Voz de referencia</span></div>
+<h3>Chatterbox V2</h3>
+<p>Adopta carácter vocal y forma de hablar a partir de una grabación breve y limpia.</p>
+<dl>
+<div><dt>Voz propia</dt><dd>Sí, a través de audio de referencia.</dd></div>
+<div><dt>Internet</dt><dd>Sólo para descarga de modelos</dd></div>
+<div><dt>Ferretería</dt><dd>GPU recomendado</dd></div>
+</dl>
+<span class="recommendation">Bueno para versiones personales.</span>
+</article>
+</div>
+<div class="consent-note reveal">
+<div aria-hidden="true" class="consent-symbol">!</div>
+<div>
+<strong>Usa tu voz responsablemente</strong>
+<p>
+                Para Chatterbox, es obligatoria la confirmación de que puede utilizar la voz. Utilice su propia grabación u obtenga un permiso explícito. El resultado también contiene una marca de agua PerTh incrustada.
+              </p>
+</div>
+</div>
+<div class="voice-practical reveal" data-delay="1">
+<div>
+<span>Buen tiro de referencia</span>
+<strong>6-10 segundos, una persona, poca reverberación, sin música ni ruido de fondo.</strong>
+</div>
+<div>
+<span>Primer lanzamiento de Chatterbox</span>
+<strong>Descarga del modelo de aproximadamente 3,7 GB; CPU es posible, pero muy lento para vídeos más largos.</strong>
+</div>
+<div>
+<span>Nota Windows</span>
+<strong>La instalación nativa es experimental; Colab o Linux son más confiables para problemas de paquetes de audio.</strong>
+</div>
+</div>
+<div class="data-routes reveal">
+<div class="data-routes-title">
+<p class="section-kicker">Dónde se procesan tus datos</p>
+<h3>“Local” y “en línea” permanecen claramente separados.</h3>
+</div>
+<div class="data-route-grid">
+<article><span>LOCALES</span><strong>NLLB · Piper · Chatterbox</strong><p>Después de descargar en el término elegido. En Colab eso significa dentro de la máquina virtual temporal de Google.</p></article>
+<article><span>EN LÍNEA</span><strong>Google · DeepL · Gemini</strong><p>Reciba solo secciones de texto cuando estén seleccionadas o como un respaldo activado explícitamente.</p></article>
+<article><span>EN LÍNEA</span><strong>Edge TTS · gTTS</strong><p>Envíe cada pista traducida para doblarla al servicio de idioma en línea respectivo.</p></article>
+</div>
+<p class="biometric-note">
+              Las voces de referencia contienen características biométricamente sensibles. La confirmación en LinguoAI no reemplaza el consentimiento; El motor Piper y el modelo de voz también pueden tener licencias independientes.
+            </p>
+</div>
+</div>
+</section>
+<section class="setup section-pad" id="loslegen">
+<div class="container">
+<div class="setup-intro reveal">
+<p class="section-kicker">Configuración sencilla</p>
+<h2>¿Cómo te gustaría empezar?</h2>
+<p>
+              Para comenzar más fácilmente, abra LinguoAI directamente en Google Colab. Para uso local, puede encontrar el código fuente, el paquete Python y las instrucciones detalladas de Windows aquí.
+            </p>
+</div>
+<div class="download-strip reveal" data-delay="1" id="downloads">
+<div>
+<span class="panel-label">Recomendación para principiantes.</span>
+<strong>Inicie directamente en el navegador sin instalación.</strong>
+<p>
+                El Notebook carga automáticamente el ZIP del proyecto marcado y luego abre la interfaz web protegida.
+              </p>
+</div>
+<div class="download-actions">
+<a class="button" href="https://linguoai.de/es/colab.html">
+                Abrir el manual de Colab <span aria-hidden="true">→</span>
+</a>
+<a class="text-link" href="#colab">Ver secuencia de pasos <span aria-hidden="true">↓</span></a>
+</div>
+</div>
+<div aria-label="Opciones de descarga" class="download-pictograms reveal" data-delay="2">
+<article>
+<span aria-hidden="true" class="pictogram">
+<svg viewbox="0 0 24 24"><path d="M7 18a4 4 0 1 1 1.2-7.8A5 5 0 0 1 18 11a3.5 3.5 0 0 1-.5 7H7z"></path><path d="M12 9v6"></path><path d="m9 12 3-3 3 3"></path></svg>
+</span>
+<span class="option-label">Sin instalación</span>
+<strong>Google Colab</strong>
+<p>Ejecútalo en el navegador, sube el vídeo y descarga el resultado nuevamente o guárdalo en Drive.</p>
+<div class="download-card-links">
+<a href="https://linguoai.de/es/colab.html">Abrir instrucciones →</a>
+<a download="" href="https://linguoai.de/downloads/LinguoAI_Colab.ipynb">Cargar Notebook ↓</a>
+</div>
+</article>
+<article>
+<span aria-hidden="true" class="pictogram">
+<svg viewbox="0 0 24 24"><path d="M12 3v12"></path><path d="m7 10 5 5 5-5"></path><path d="M5 21h14"></path></svg>
+</span>
+<span class="option-label">Windows y Linux</span>
+<strong>Código fuente ZIP</strong>
+<p>Descargue, descomprima completamente y luego siga las instrucciones locales.</p>
+<div class="download-card-links">
+<a download="" href="https://linguoai.de/downloads/LinguoAI-2.2.1-source.zip">Cargar versión 2.2.1 ↓</a>
+<a href="#panel-desktop">Instrucciones Windows →</a>
+</div>
+</article>
+<article>
+<span aria-hidden="true" class="pictogram">
+<svg viewbox="0 0 24 24"><path d="M6 4h12v16H6z"></path><path d="M9 8h6"></path><path d="M9 12h6"></path><path d="M9 16h3"></path></svg>
+</span>
+<span class="option-label">Para usuarios de Python</span>
+<strong>Python-Wheel</strong>
+<p>El paquete terminado para un entorno Python existente; Aún se requiere FFmpeg.</p>
+<div class="download-card-links">
+<a download="" href="https://linguoai.de/downloads/linguoai-2.2.1-py3-none-any.whl">Cargar Wheel ↓</a>
+<a href="#panel-cli">Instrucciones CLI →</a>
+</div>
+</article>
+<article>
+<span aria-hidden="true" class="pictogram">
+<svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a14 14 0 0 1 0 18"></path><path d="M12 3a14 14 0 0 0 0 18"></path></svg>
+</span>
+<span class="option-label">dirección central</span>
+<strong>linguoai.de</strong>
+<p>Sitio web, instrucciones, Notebook y descargas actuales directamente desde su propio dominio.</p>
+<div class="download-card-links">
+<a href="https://linguoai.de/es/">Abrir página del proyecto →</a>
+</div>
+</article>
+</div>
+<div aria-label="Direcciones directas del proyecto" class="resource-addresses reveal" data-delay="2">
+<article>
+<span>Descarga directa del Colab-Notebook</span>
+<div class="resource-address-row">
+<code id="colab-download-url">https://linguoai.de/downloads/LinguoAI_Colab.ipynb</code>
+<button class="copy-button" data-copy="colab-download-url" type="button">
+<span aria-hidden="true" class="copy-icon">⧉</span>
+<span data-copy-label="">Copiar</span>
+</button>
+</div>
+</article>
+<article>
+<span>Descarga directa del código fuente ZIP</span>
+<div class="resource-address-row">
+<code id="source-download-url">https://linguoai.de/downloads/LinguoAI-2.2.1-source.zip</code>
+<button class="copy-button" data-copy="source-download-url" type="button">
+<span aria-hidden="true" class="copy-icon">⧉</span>
+<span data-copy-label="">Copiar</span>
+</button>
+</div>
+</article>
+</div>
+<div aria-label="Seleccionar instrucciones" class="setup-tabs reveal" role="tablist">
+<button aria-controls="panel-desktop" aria-selected="true" class="setup-tab is-active" data-tab="desktop" id="tab-desktop" role="tab" type="button">
+<span>01</span> Escritorio Windows
+            </button>
+<button aria-controls="panel-colab" aria-selected="false" class="setup-tab" data-tab="colab" id="tab-colab" role="tab" type="button">
+<span>02</span> Google Colab
+            </button>
+<button aria-controls="panel-cli" aria-selected="false" class="setup-tab" data-tab="cli" id="tab-cli" role="tab" type="button">
+<span>03</span> línea de comando
+            </button>
+</div>
+<div aria-labelledby="tab-desktop" class="setup-panel is-active" data-panel="desktop" id="panel-desktop" role="tabpanel">
+<div class="steps-column">
+<article class="setup-step">
+<span class="step-number">1</span>
+<div>
+<h3>Instalar requisitos previos</h3>
+<p>
+                    Necesita Python 3.10 o posterior, así como FFmpeg y ffprobe. Se recomienda Python 3.11 para Chatterbox. Luego abra un nuevo PowerShell.
+                  </p>
+</div>
+</article>
+<article class="setup-step">
+<span class="step-number">2</span>
+<div>
+<h3>Crea tu propio entorno</h3>
+<p>
+                    El entorno virtual mantiene al LinguoAI y sus paquetes claramente separados del resto del sistema.
+                  </p>
+</div>
+</article>
+<article class="setup-step">
+<span class="step-number">3</span>
+<div>
+<h3>Abrir interfaz</h3>
+<p>
+                    Elige vídeo, destino, traductor y voz. La verificación del sistema le muestra directamente si aún falta un paquete o modelo.
+                  </p>
+</div>
+</article>
+</div>
+<div class="code-card">
+<div class="code-card-head">
+<span>PowerShell · Configuración básica</span>
+<button class="copy-button" data-copy="desktop-code" type="button">
+<span aria-hidden="true" class="copy-icon">⧉</span>
+<span data-copy-label="">Copiar</span>
+</button>
+</div>
+<pre id="desktop-code"><code><span class="code-comment"># FFmpeg einmalig installieren</span>
+winget install --id Gyan.FFmpeg --exact
+
+<span class="code-comment"># Im Projektordner ausführen</span>
+cd <span class="code-string">"C:\Pfad\zu\LinguoAI-2.2.1"</span>
+py -3.11 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+
+python -m pip install --upgrade pip
+python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+python -m pip install -e <span class="code-string">".[desktop]"</span>
+ffmpeg -version
+ffprobe -version
+python -m linguoai</code></pre>
+<p class="code-note">
+                El ejemplo configura deliberadamente la versión CPU. Para NVIDIA, primero seleccione el comando apropiado en
+                <a href="https://pytorch.org/get-started/locally/" rel="noopener noreferrer" target="_blank">Asistente de instalación PyTorch</a>. Edge TTS y gTTS ya están incluidos. Para Piper usted instala
+                <code>.[desktop,piper]</code>, para Chatterbox en su propio entorno
+                <code>.[desktop,voice-clone]</code>.
+              </p>
+</div>
+<div class="engine-install-guides">
+<details>
+<summary>gTTS / Usar Google Voice <span aria-hidden="true">+</span></summary>
+<div>
+<p>gTTS está incluido en el paquete básico. Se puede instalar individualmente así:</p>
+<pre><code>python -m pip install gTTS
+python -m linguoai -i quelle.mp4 -o ziel.mp4 -l de --tts-engine gtts</code></pre>
+</div>
+</details>
+<details>
+<summary>Agregue Piper localmente <span aria-hidden="true">+</span></summary>
+<div>
+<p>Instale en el mismo entorno virtual y luego cargue una voz adecuada:</p>
+<pre><code>python -m pip install -e <span class="code-string">".[desktop,piper]"</span>
+New-Item -ItemType Directory -Force <span class="code-string">".\Stimmen"</span>
+python -m piper.download_voices --download-dir <span class="code-string">".\Stimmen"</span> de_DE-thorsten-medium</code></pre>
+</div>
+</details>
+<details>
+<summary>Voz propia de referencia con Chatterbox <span aria-hidden="true">+</span></summary>
+<div>
+<p>Debido a las dependencias de audio/antorcha, se recomienda un entorno Python-3.11 dedicado:</p>
+<pre><code>py -3.11 -m venv .venv-chatterbox
+.\.venv-chatterbox\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -e <span class="code-string">".[desktop,voice-clone]"</span>
+python -m linguoai</code></pre>
+</div>
+</details>
+</div>
+<div class="gui-guide">
+<h3>Tu primera tarea en la interfaz</h3>
+<ol>
+<li><span>01</span><div><strong>Seleccionar vídeo</strong><p>Haga clic en "Archivo..." en "Inicio". Se sugiere la ruta de destino.</p></div></li>
+<li><span>02</span><div><strong>Establecer idiomas</strong><p>elegir el idioma de destino; el idioma de origen puede reconocerse automáticamente.</p></div></li>
+<li><span>03</span><div><strong>Elige traductor</strong><p>Para locales: NLLB. Para una prueba rápida: Google. DeepL/Gemini necesitan su clave; la optimización separada Gemini también.</p></div></li>
+<li><span>04</span><div><strong>determinar la voz</strong><p>Pruebe Edge o gTTS inmediatamente; Configure Piper o Chatterbox en "Avanzado".</p></div></li>
+<li><span>05</span><div><strong>Iniciar procesamiento</strong><p>monitorear el progreso; al final del video y ambos archivos SRT se abren directamente.</p></div></li>
+</ol>
+</div>
+</div>
+<div aria-labelledby="tab-colab" class="setup-panel" data-panel="colab" hidden="" id="panel-colab" role="tabpanel">
+<div class="colab-layout" id="colab">
+<div>
+<span class="panel-label">Sin instalación permanente</span>
+<h3>Utilice LinguoAI en Google Colab</h3>
+<p>
+                  El Notebook carga el código fuente verificado ZIP de linguoai.de, lo instala en una máquina virtual temporal de Google y abre una interfaz web amigable.
+                </p>
+<div class="colab-downloads">
+<a class="button" href="https://linguoai.de/es/colab.html">
+                    Instrucciones Colab <span aria-hidden="true">→</span>
+</a>
+<a class="text-link" download="" href="https://linguoai.de/downloads/LinguoAI_Colab.ipynb">
+                    Carga Notebook <span aria-hidden="true">↓</span>
+</a>
+<a class="text-link" download="" href="https://linguoai.de/downloads/LinguoAI-2.2.1-source.zip">
+                    Alternativa ZIP <span aria-hidden="true">↓</span>
+</a>
+</div>
+<p class="colab-note">
+<strong>Para la primera prueba:</strong> Lasse <code>PROJECT_SOURCE = "download_zip"</code>
+                  y <code>LOCAL_TTS_EXTRA = "none"</code> sin cambios. Por lo tanto, Edge TTS y gTTS funcionan sin un gran paquete de voz local.
+                </p>
+</div>
+<ol class="colab-steps">
+<li><span>1</span><p>el <strong>Instrucciones Colab</strong> Abra, descargue el Notebook de linguoai.de y cárguelo en Google Colab.</p></li>
+<li><span>2</span><p>Opcional a continuación <strong>Tiempo de ejecución → Cambiar tipo de tiempo de ejecución</strong> Elija un T4-GPU. El CPU también funciona.</p></li>
+<li><span>3</span><p>Elige «Entorno de ejecución → Ejecutar todo». Una sola celda de código con autocomprobación instala e inicia LinguoAI. Google Drive es opcional.</p></li>
+<li><span>4</span><p>Espere la instalación. Al final aparece un nombre de usuario, una contraseña aleatoria y un enlace público Gradio.</p></li>
+<li><span>5</span><p>Abre el enlace de Gradio e inicia sesión. Sube uno o varios vídeos o introduce rutas relativas de archivos de MyDrive, una por línea.</p></li>
+<li><span>6</span><p>Para una prueba rápida, seleccione Google Translate, así como Edge TTS o gTTS y comience a procesar.</p></li>
+<li><span>7</span><p>Descargue el video terminado y ambos archivos SRT o cópielos permanentemente a una carpeta de Drive.</p></li>
+</ol>
+</div>
+<div class="tip-row">
+<article><strong>Carga del navegador</strong><span>Uno o varios vídeos; hasta 5 GB por archivo con Gradio.</span></article>
+<article><strong>Google Drive</strong><span>Útil para archivos grandes, caché de modelos y resultados persistentes.</span></article>
+<article><strong>importante</strong><span>El enlace Gradio y todo lo que aparece a continuación <code>/content</code> desaparece al final de la sesión Colab.</span></article>
+</div>
+<div class="cloud-explainer">
+<p class="colab-note">Predeterminado: enlace dinámico de Gradio sin cuenta de Cloudflare, dominio propio ni token de túnel. Opcional: Cloudflare Tunnel con nombre, tu dominio y un límite predeterminado de 95 MB por carga; consulta la guía de Colab para configurarlo.</p>
+<div class="cloud-explainer-heading">
+<span class="panel-label">Cloud &amp; Co. simplemente explicado</span>
+<h3>¿Qué servicio realmente hace qué?</h3>
+</div>
+<div class="cloud-service-grid">
+<article>
+<span class="service-badge">EJECUTAR</span>
+<strong>Google Colab</strong>
+<p>Inicia LinguoAI en una máquina temporal de Google. Esta es la ruta del navegador compatible.</p>
+</article>
+<article>
+<span class="service-badge">GUARDAR</span>
+<strong>Google Drive</strong>
+<p>Guarda vídeos, modelos y resultados. Drive no ejecuta el programa en sí.</p>
+</article>
+<article>
+<span class="service-badge">ARCHIVOS</span>
+<strong>linguoai.de</strong>
+<p>Proporciona ZIP del proyecto, Colab-Notebook e instrucciones directamente a través de su propio dominio.</p>
+</article>
+<article>
+<span class="service-badge">MANUALES</span>
+<strong>Otras máquinas virtuales en la nube</strong>
+<p>Linux, GPU o nubes de servidores son posibles con el código fuente ZIP y CLI, pero requieren Python, FFmpeg y conocimientos de servidores.</p>
+</article>
+</div>
+</div>
+</div>
+<div aria-labelledby="tab-cli" class="setup-panel" data-panel="cli" hidden="" id="panel-cli" role="tabpanel">
+<div class="cli-layout">
+<div>
+<span class="panel-label">Para procesos repetibles</span>
+<h3>Una tarea local completa</h3>
+<p>
+                  Este ejemplo se traduce localmente a NLLB y utiliza un modelo Piper. Las mismas configuraciones que en el GUI están disponibles para la automatización.
+                </p>
+<ul class="check-list">
+<li>Vídeo único o carpeta completa</li>
+<li>Salida propia y rutas de modelo.</li>
+<li>Asociación explícita CPU/GPU</li>
+<li>Modo de depuración silencioso o detallado</li>
+</ul>
+</div>
+<div class="code-card">
+<div class="code-card-head">
+<span>PowerShell · Piper localmente</span>
+<button class="copy-button" data-copy="cli-code" type="button">
+<span aria-hidden="true" class="copy-icon">⧉</span>
+<span data-copy-label="">Copiar</span>
+</button>
+</div>
+<pre id="cli-code"><code>python -m linguoai `
+  --input <span class="code-string">"C:\Videos\quelle.mp4"</span> `
+  --output <span class="code-string">"C:\Videos\quelle.de.mp4"</span> `
+  --language de `
+  --service nllb `
+  --device cpu `
+  --nllb-device cpu `
+  --tts-engine piper `
+  --tts-device cpu `
+  --piper-model <span class="code-string">"C:\Stimmen\thorsten.onnx"</span> `
+  --piper-config <span class="code-string">"C:\Stimmen\thorsten.onnx.json"</span></code></pre>
+<p class="code-note">
+                  Ver todas las opciones: <code>python -m linguoai --help</code>
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="hardware section-pad">
+<div class="container hardware-grid">
+<div class="hardware-copy reveal">
+<p class="section-kicker">Distribuya la potencia informática de forma sensata</p>
+<h2>CPU y GPU no son una decisión de todo o nada.</h2>
+<p>
+              Whisper, NLLB y la voz local se pueden colocar por separado. Por lo tanto, puede empezar poco a poco y colocar en el GPU solo la pieza que realmente se beneficia.
+            </p>
+</div>
+<div class="hardware-map reveal" data-delay="1">
+<div class="hardware-row">
+<span>Whisper</span><strong>CPU·int8</strong><i style="--load: 42%"></i>
+</div>
+<div class="hardware-row">
+<span>NLLB</span><strong>GPU · CUDA</strong><i style="--load: 74%"></i>
+</div>
+<div class="hardware-row">
+<span>Piper</span><strong>CPU</strong><i style="--load: 28%"></i>
+</div>
+<div class="hardware-foot">
+<span><i class="auto-dot"></i> “Automático” comprueba CUDA y, en caso contrario, vuelve a CPU.</span>
+</div>
+</div>
+<div class="gpu-requirements reveal">
+<strong>Importante: Seleccionar “GPU” no instala automáticamente CUDA.</strong>
+<ul>
+<li><span>NLLB y Chatterbox</span><p>Necesita una edición CUDA correspondiente de PyTorch.</p><a href="https://pytorch.org/get-started/locally/" rel="noopener noreferrer" target="_blank">Selección PyTorch ↗</a></li>
+<li><span>Faster-Whisper</span><p>Además requiere CUDA-12-cuBLAS y cuDNN 9 en la ruta del sistema.</p></li>
+<li><span>Piper</span><p>Utiliza el tiempo de ejecución ONNX: <code>onnxruntime-gpu</code> instalar en lugar de la edición CPU.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section class="formats section-pad">
+<div class="container format-layout reveal">
+<div>
+<p class="section-kicker">Entrada y salida</p>
+<h2>Con los formatos de vídeo habituales en casa.</h2>
+</div>
+<div class="format-groups">
+<div><span>Entrada</span><ul><li>MP4</li><li>MKV</li><li>MOV</li><li>AVI</li><li>WEBM</li><li>M4V</li></ul></div>
+<div><span>Salida</span><ul><li>MP4</li><li>MKV</li><li>MOV</li><li>SRT × 2</li></ul></div>
+</div>
+</div>
+</section>
+<section class="capabilities section-pad" id="alle-funktionen">
+<div class="container">
+<div class="capability-heading reveal">
+<div>
+<p class="section-kicker">La caja de herramientas completa</p>
+<h2>Todas las funciones en detalle.</h2>
+</div>
+<p>
+              No es necesario conocer todas las configuraciones para comenzar. Si necesita más control más adelante, encontrará todo el alcance aquí, sin promesas ocultas.
+            </p>
+</div>
+<div class="capability-list reveal" data-delay="1">
+<details open="">
+<summary><span>01</span><strong>Archivos y pedidos</strong><i aria-hidden="true">+</i></summary>
+<div class="capability-content">
+<ul>
+<li>Procese un solo video o todos los videos contenidos directamente en una carpeta.</li>
+<li>Entradas: MP4, MKV, MOV, AVI, WEBM y M4V; Ediciones: MP4, MKV o MOV.</li>
+<li>Sugerencia de salida automática, nombres sin colisiones y sobrescritura controlada.</li>
+<li>Avance por expediente, paso de trabajo actual, cancelación y registro técnico.</li>
+</ul>
+<p>Las carpetas no se buscan deliberadamente de forma recursiva. En Colab se reproduce un vídeo por pedido.</p>
+</div>
+</details>
+<details>
+<summary><span>02</span><strong>Transcripción con Faster-Whisper</strong><i aria-hidden="true">+</i></summary>
+<div class="capability-content">
+<ul>
+<li>Modelos de <code>tiny</code> hasta <code>large-v3</code>, además valores propios del modelo.</li>
+<li>Detecta automáticamente el idioma de origen o lo establece como código de idioma.</li>
+<li>CPU, NVIDIA-CUDA o selección automática; int8, float16 y float32 configurables.</li>
+<li>Secciones de audio superpuestas, compensaciones en tiempo real y limpieza de segmentos duplicados.</li>
+<li>Longitudes de fragmentos, superposición y número de trabajadores a través de opciones avanzadas o CLI.</li>
+</ul>
+</div>
+</details>
+<details>
+<summary><span>03</span><strong>Traducción y protección de textos</strong><i aria-hidden="true">+</i></summary>
+<div class="capability-content">
+<ul>
+<li>NLLB-200 local, Google Translate sin llave, DeepL-SDK o Gemini.</li>
+<li>Reserva opcional solo después de una selección explícita; de lo contrario, solo se contactará a un proveedor.</li>
+<li>URL, direcciones de correo electrónico, monedas, unidades y porcentajes están protegidos durante la traducción.</li>
+<li>Tiempos de espera, repeticiones limitadas y caché para secciones de texto idénticas.</li>
+<li>Opcionalmente, Gemini corrige la transcripción Whisper sin cambiar los ID de segmento ni los tiempos.</li>
+<li>Modelos propios compatibles con NLLB, revisiones fijas, códigos FLORES, límites de lotes y tokens.</li>
+</ul>
+<p>El modelo predeterminado NLLB-600M está bajo CC-BY-NC-4.0, es un modelo de investigación y no una traducción de producción certificada. Comprueba siempre los resultados.</p>
+</div>
+</details>
+<details>
+<summary><span>04</span><strong>Edge, gTTS, Piper y Chatterbox</strong><i aria-hidden="true">+</i></summary>
+<div class="capability-content">
+<ul>
+<li>Edge: voz predeterminada automática o ID de voz propia y completa Edge.</li>
+<li>gTTS: Google Translate Texto a voz con idioma de destino automático o código de idioma.</li>
+<li>Piper: ONNX más JSON coincidente, ID de altavoz opcional y velocidad de conversación ajustable.</li>
+<li>Chatterbox V2: Comprobación de referencias, impresión, solidez CFG, confirmación de derechos y marca de agua.</li>
+<li>Ejecute el motor local en CPU, CUDA o automáticamente con el respaldo CPU.</li>
+<li>Los modelos solo se cargan para el motor seleccionado y luego se lanzan nuevamente.</li>
+</ul>
+<p>gTTS y Edge son servicios en línea y no clones de voz. LinguoAI carga modelos Piper pero no los entrena. Se utiliza un voto por pedido. Chatterbox rechaza referencias inferiores a 0,5 o superiores a 60 segundos y prácticamente recomienda 6-10 segundos.</p>
+</div>
+</details>
+<details>
+<summary><span>05</span><strong>Sincronización, tono y exportación.</strong><i aria-hidden="true">+</i></summary>
+<div class="capability-content">
+<ul>
+<li>Normalice cada clip a PCM mono de 48 kHz y colóquelo con precisión de muestra.</li>
+<li>Acelere el habla demasiado larga dentro de un límite configurable.</li>
+<li>Advertencia al acelerar rápidamente; error controlado en lugar de resultados incomprensibles.</li>
+<li>Duración exacta del final, metadatos/capítulos adoptados y, si es posible, transmisión de video sin cambios.</li>
+<li>Grupo de resultados atómicos del nuevo vídeo, SRT original y traducción SRT.</li>
+</ul>
+</div>
+</details>
+<details>
+<summary><span>06</span><strong>Interfaz de escritorio y CLI</strong><i aria-hidden="true">+</i></summary>
+<div class="capability-content">
+<ul>
+<li>Tres pestañas GUI: Inicio, Avanzado y Registro; además del modo claro y oscuro.</li>
+<li>Campos dinámicos, verificación del sistema, etiquetado local/online y aviso de protección de datos.</li>
+<li>Abra el vídeo de resultados o la carpeta de salida directamente; Copiar o vaciar el registro.</li>
+<li>Teclado: <kbd>Strg+O</kbd>, <kbd>Strg+Enter</kbd> y <kbd>Esc</kbd>.</li>
+<li>CLI para trabajos de archivos/carpetas con todas las opciones de dispositivo, modelo, tiempo de espera y depuración.</li>
+</ul>
+</div>
+</details>
+<details>
+<summary><span>07</span><strong>Colab, Conducción y caminos seguros</strong><i aria-hidden="true">+</i></summary>
+<div class="capability-content">
+<ul>
+<li>Interfaz web Gradio protegida con contraseña aleatoria por sesión.</li>
+<li>Procesamiento individual y por lotes: sube varios vídeos o introduce rutas de archivos de MyDrive, una por línea. Sube los archivos de Piper y la grabación de referencia o indica sus rutas en MyDrive.</li>
+<li>Caché de modelo opcional y copia de resultados atómicos en Google Drive.</li>
+<li>Vídeo resultante y ambos archivos SRT por tarea; 5 GB por carga con Gradio o 95 MB de forma predeterminada mediante el Cloudflare Tunnel opcional.</li>
+<li>Los caminos de acceso permanecen dentro de MyDrive; Drive no se comparte como una carpeta de descarga pública.</li>
+</ul>
+</div>
+</details>
+<details class="capability-limit">
+<summary><span>08</span><strong>Lo que el LinguoAI no promete deliberadamente</strong><i aria-hidden="true">+</i></summary>
+<div class="capability-content">
+<ul>
+<li>La sincronización sincrónica no es sincronización del movimiento de los labios; la imagen no se cambia.</li>
+<li>La nueva pista de voz reemplaza completamente el sonido original. Actualmente no se adoptan música, atmósfera ni sonidos.</li>
+<li>Sin reconocimiento de locutor ni asignación automática de múltiples locutores.</li>
+<li>Siempre verifique la transcripción, la traducción, la pronunciación y la similitud de voz antes de publicar.</li>
+<li>Colab-GPU, la duración de la sesión y la finalización de trabajos grandes no están garantizados.</li>
+</ul>
+</div>
+</details>
+</div>
+</div>
+</section>
+<section class="faq section-pad" id="fragen">
+<div class="container faq-layout">
+<div class="faq-heading reveal">
+<p class="section-kicker">¿Aún no estás seguro?</p>
+<h2>Preguntas frecuentes, claramente respondidas.</h2>
+<p>Para el primer intento, basta con un vídeo corto, Edge TTS y la configuración estándar.</p>
+</div>
+<div class="faq-list reveal" data-delay="1">
+<details>
+<summary>¿Puedo usar LinguoAI sin instalación?<span aria-hidden="true">+</span></summary>
+<p>
+                Sí. Abra el Notebook preparado usando el botón "Abrir en Colab" y seleccione "Tiempo de ejecución → Ejecutar todo". El Notebook descarga automáticamente el código fuente ZIP a través de la dirección de descarga segura en este sitio web. Todo lo que necesitas es una cuenta de Google; el enlace Gradio funciona mientras la sesión Colab esté activa.
+              </p>
+</details>
+<details>
+<summary>¿Puedo LinguoAI usar mi propia voz?<span aria-hidden="true">+</span></summary>
+<p>
+                Sí. Chatterbox adopta una voz autorizada a partir de una breve grabación de referencia. Alternativamente, puede usar Piper para cargar su propio modelo ONNX que ya haya sido entrenado. Edge TTS solo ofrece piezas terminadas del catálogo; gTTS utiliza códigos de voz de Google, pero no su propia copia de voz.
+              </p>
+</details>
+<details>
+<summary>¿El programa se ejecuta completamente localmente?<span aria-hidden="true">+</span></summary>
+<p>
+                Con Faster-Whisper, NLLB y Piper o Chatterbox, el procesamiento se ejecuta en el tiempo de ejecución seleccionado después de las descargas iniciales del modelo. En el escritorio, esta es tu computadora; en Colab es la VM temporal de Google. Edge TTS, gTTS, Google Translate, DeepL y Gemini son servicios en línea.
+              </p>
+</details>
+<details>
+<summary>¿Necesito una tarjeta gráfica potente?<span aria-hidden="true">+</span></summary>
+<p>
+                Los números Whisper, NLLB y Piper funcionan en el CPU. Chatterbox también se ejecuta, pero es significativamente más lento. Un NVIDIA-GPU es útil para proyectos más largos.
+              </p>
+</details>
+<details>
+<summary>¿Qué obtengo al final?<span aria-hidden="true">+</span></summary>
+<p>
+                Un vídeo recién doblado y dos archivos SRT: uno con el texto original reconocido y otro con la traducción. El vídeo fuente en sí permanece sin cambios.
+              </p>
+</details>
+<details>
+<summary>¿Puedo cargar archivos directamente desde Google Drive?<span aria-hidden="true">+</span></summary>
+<p>
+                Sí, en la interfaz Colab. Puede especificar una ruta relativa segura dentro de MyDrive y escribir los resultados en una carpeta de Drive.
+              </p>
+</details>
+<details>
+<summary>¿Qué idiomas admite su propia voz de referencia?<span aria-hidden="true">+</span></summary>
+<p>
+                Chatterbox Multilingual V2 admite 23 idiomas básicos, incluidos alemán, inglés, francés, español, italiano, portugués, polaco, turco, japonés, coreano y chino. Piper depende del idioma del modelo seleccionado. gTTS admite muchos códigos de idioma de Google Translate, pero no voces de referencia.
+              </p>
+</details>
+</div>
+</div>
+</section>
+<section class="final-cta">
+<div class="container cta-inner reveal">
+<p class="section-kicker">¿Listo para el primer borrador?</p>
+<h2>Un breve vídeo de prueba es el mejor lugar para empezar.</h2>
+<p>
+            Comience con Edge TTS o gTTS y los valores predeterminados. Si el proceso te conviene, puedes cambiar tranquilamente a un local o a tu propia voz.
+          </p>
+<div class="cta-actions">
+<a class="button button-light" href="https://linguoai.de/es/colab.html">Abrir el manual de Colab <span aria-hidden="true">→</span></a>
+<a class="text-link text-link-light" href="#downloads">Descargas e instrucciones <span aria-hidden="true">↑</span></a>
+</div>
+</div>
+<div aria-hidden="true" class="cta-wave">
+<span></span><span></span><span></span><span></span><span></span><span></span>
+<span></span><span></span><span></span><span></span><span></span><span></span>
+<span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container footer-main">
+<div class="footer-brand">
+<a class="brand" href="#top">
+<img alt="" height="38" src="/assets/logo-mark.svg" width="38"/>
+<span>LinguoAI</span>
+</a>
+<p>Traduce, subtitula y sincroniza vídeos con una nueva voz.</p>
+</div>
+<div class="footer-links">
+<div><strong>Descubrir</strong><a href="#funktionen">Características</a><a href="#stimmen">Voces</a><a href="#fragen">Preguntas frecuentes</a></div>
+<div><strong>Empezar</strong><a href="#downloads">Descargas</a><a href="#colab">Google Colab</a><a download="" href="https://linguoai.de/downloads/LinguoAI_Colab.ipynb">Notebook</a></div>
+<div><strong>Legales</strong><a href="/impressum.html">Pie de imprenta</a><a href="/datenschutz.html">Protección de datos</a></div>
+</div>
+</div>
+<div class="container footer-bottom">
+<span>© <span data-current-year="">2026</span> LinguoAI</span>
+<span>Sin rastreador. Sin fuentes web externas.</span>
+</div>
+</footer>
+<div aria-live="polite" class="copy-toast" data-toast="" role="status"></div>
+</body>
+</html>

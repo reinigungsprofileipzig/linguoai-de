@@ -1,0 +1,195 @@
+<!doctype html>
+HTML
+<html class="no-js" data-locale-detect="false" data-locale-page="tr" lang="tr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#f4f1ea" name="theme-color"/>
+<meta content="LinguoAI'yi yerel kurulum olmadan Google Colab'de başlatın - Notebook'yi doğrudan linguoai.de adresinden indirin ve basit adım adım talimatlarla." name="description"/>
+<meta content="index,follow" name="robots"/>
+<link href="https://linguoai.de/tr/colab.html" rel="canonical"/>
+<link href="https://linguoai.de/colab.html" hreflang="de" rel="alternate"/>
+<link href="https://linguoai.de/en/colab.html" hreflang="en" rel="alternate"/>
+<link href="https://linguoai.de/ru/colab.html" hreflang="ru" rel="alternate"/>
+<link href="https://linguoai.de/uk/colab.html" hreflang="uk" rel="alternate"/>
+<link href="https://linguoai.de/tr/colab.html" hreflang="tr" rel="alternate"/>
+<link href="https://linguoai.de/es/colab.html" hreflang="es" rel="alternate"/>
+<link href="https://linguoai.de/it/colab.html" hreflang="it" rel="alternate"/>
+<link href="https://linguoai.de/en/colab.html" hreflang="x-default" rel="alternate"/>
+<link href="/assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+<title>LinguoAI'yi Google Colab'de başlatın</title>
+<link href="/assets/styles.css?v=20261012-1" rel="stylesheet"/>
+<link href="/assets/funnel.css?v=20261012-1" rel="stylesheet"/>
+<script>
+      document.documentElement.classList.replace("no-js", "has-js");
+      (() => {
+        if (document.documentElement.dataset.localeDetect !== "true") return;
+        const supported = new Set(["de", "en", "ru", "uk", "tr", "es", "it"]);
+        const route = {
+          de: "/colab.html",
+          en: "/en/colab.html",
+          ru: "/ru/colab.html",
+          uk: "/uk/colab.html",
+          tr: "/tr/colab.html",
+          es: "/es/colab.html",
+          it: "/it/colab.html"
+        };
+        let selected = "";
+        try {
+          const saved = window.localStorage.getItem("linguoai.locale") || "";
+          if (supported.has(saved)) selected = saved;
+        } catch (_error) {
+          // Private browsing may block storage; browser detection still works.
+        }
+        if (!selected) {
+          const requested = Array.isArray(navigator.languages) ? navigator.languages : [navigator.language];
+          selected = requested
+            .map((value) => String(value || "").toLowerCase().split("-")[0])
+            .find((value) => supported.has(value)) || "en";
+        }
+        if (selected !== "de") {
+          window.location.replace(`${route[selected]}${window.location.hash}`);
+        }
+      })();
+    </script>
+<script defer="" src="/assets/locale.js?v=20261012-1"></script>
+</head>
+<body class="colab-start-page">
+<a class="skip-link" href="#main">Doğrudan talimatlara gidin</a>
+<header class="legal-header">
+<div class="container header-inner">
+<a aria-label="LinguoAI Ana sayfa" class="brand" href="https://linguoai.de/tr/">
+<img alt="" height="38" src="/assets/logo-mark.svg" width="38"/>
+<span>LinguoAI</span>
+</a>
+<span></span>
+<div class="header-tools">
+<details class="language-switcher" data-language-switcher="">
+<summary aria-label="Dil seçin">
+<span data-locale-code="">TR</span><span aria-hidden="true">⌄</span>
+</summary>
+<div class="language-options" data-i18n-ignore="">
+<a data-locale-link="de" href="/colab.html" hreflang="de" lang="de">Deutsch</a>
+<a data-locale-link="en" href="/en/colab.html" hreflang="en" lang="en">English</a>
+<a data-locale-link="ru" href="/ru/colab.html" hreflang="ru" lang="ru">Русский</a>
+<a data-locale-link="uk" href="/uk/colab.html" hreflang="uk" lang="uk">Українська</a>
+<a aria-current="page" data-locale-link="tr" href="/tr/colab.html" hreflang="tr" lang="tr">Türkçe</a>
+<a data-locale-link="es" href="/es/colab.html" hreflang="es" lang="es">Español</a>
+<a data-locale-link="it" href="/it/colab.html" hreflang="it" lang="it">Italiano</a>
+</div>
+</details>
+<a class="text-link" href="https://linguoai.de/tr/">Ana sayfaya <span aria-hidden="true">→</span></a>
+</div>
+</div>
+</header>
+<main class="colab-start-main" id="main">
+<section class="container colab-start-hero">
+<div>
+<p class="section-kicker">Kalıcı kurulum olmadan</p>
+<h1>LinguoAI'yi Google Colab'de başlatın.</h1>
+<p class="colab-start-intro">
+            Önce hazır Notebook dosyasını doğrudan linguoai.de adresinden indirin. Ardından Google Colab uygulamasını açıp Notebook dosyasını yükleyin. Projenin ZIP dosyası otomatik olarak linguoai.de adresinden indirilir.
+          </p>
+<div class="colab-start-actions">
+<a class="button" download="" href="https://linguoai.de/downloads/LinguoAI_Colab.ipynb">
+              1. Notebook'yi indirin <span aria-hidden="true">↓</span>
+</a>
+<a class="button button-secondary" href="https://colab.research.google.com/" rel="noopener noreferrer" target="_blank">
+              2. Google Colab'yi açın <span aria-hidden="true">↗</span>
+</a>
+</div>
+<p class="colab-start-note">
+            İndirilen dosyanın adı <code>LinguoAI_Colab.ipynb</code>. Olduğu gibi tutun ve Colab'ye yüklerken tam olarak bu dosyayı seçin.
+          </p>
+</div>
+<aside aria-label="Hızlı genel bakış" class="colab-start-summary">
+<span class="panel-label">İhtiyacın olan şey bu</span>
+<ul>
+<li>bir Google hesabı</li>
+<li>kısa bir deneme videosu</li>
+<li>aktif bir internet bağlantısı</li>
+</ul>
+<p>Colab GPU isteğe bağlıdır. Dinamik Gradio bağlantısı için Cloudflare hesabı, kendi alan adınız veya tünel belirteci gerekmez.</p>
+</aside>
+</section>
+<section aria-labelledby="guide-title" class="container colab-start-guide">
+<div class="colab-start-heading">
+<p class="section-kicker">Adım adım</p>
+<h2 id="guide-title">Notebook'yi bu şekilde açarsınız.</h2>
+</div>
+<ol class="colab-start-steps">
+<li>
+<span>01</span>
+<div>
+<strong>Notebook'yi indirin</strong>
+<p>Yukarıdaki “Notebook'yi İndir” seçeneğine tıklayın. Dosya genellikle İndirilenler klasöründe bulunur.</p>
+</div>
+</li>
+<li>
+<span>02</span>
+<div>
+<strong>Google Colab'yi açın</strong>
+<p>Google hesabınızla oturum açın ve ana pencerede "Yükle"yi seçin.</p>
+</div>
+</li>
+<li>
+<span>03</span>
+<div>
+<strong>Dosya yükle</strong>
+<p>İndirilenler klasöründeki LinguoAI_Colab.ipynb dosyasını seçip açın.</p>
+</div>
+</li>
+<li>
+<span>04</span>
+<div>
+<strong>Notebook'yi çalıştırın</strong>
+<p>Colab menüsünde “Çalışma zamanı → Tümünü çalıştır” seçeneğini seçin. Kendini denetleyen tek bir kod hücresi LinguoAI uygulamasını kurar ve arayüzü başlatır.</p>
+</div>
+</li>
+<li>
+<span>05</span>
+<div>
+<strong>Gradio web arayüzünü açın</strong>
+<p>Oluşturulan Gradio bağlantısını açın ve gösterilen bilgilerle giriş yapın. Bir veya birden fazla video yükleyin ya da her satıra bir tane olacak şekilde Google Drive dosya yollarını girin.</p>
+</div>
+</li>
+</ol>
+</section>
+<section class="container colab-start-details">
+<article>
+<span class="service-badge">İLK TEST</span>
+<h2>Bu ayarları bırakabilirsiniz.</h2>
+<p>PROJECT_SOURCE = "download_zip", LinguoAI uygulamasını otomatik olarak linguoai.de adresinden indirir. LOCAL_TTS_EXTRA = "none" ile Edge TTS ve gTTS büyük bir ek ses paketi olmadan çalışır.</p>
+<p>SHARE_PROVIDER = "gradio" ile otomatik olarak dinamik bir bağlantı alırsınız. Google Drive isteğe bağlıdır.</p>
+</article>
+<article>
+<span class="service-badge">ÖNEMLİ</span>
+<h2>Colab oturumları geçicidir.</h2>
+<p>Her işlem için tamamlanan videoları ve iki SRT dosyasını indirin veya Google Drive üzerine kaydedin. /content altındaki dosyalar ve Gradio bağlantısı oturum sona erdiğinde kaybolur.</p>
+</article>
+<article>
+<span class="service-badge">İSTEĞE BAĞLI</span>
+<h2>Cloudflare Tunnel ile kendi adresiniz.</h2>
+<p>Yalnızca kendi sabit adresiniz için: kendi alan adınız ve http://127.0.0.1:7860 hizmetiyle adlandırılmış bir Cloudflare Tunnel yapılandırın. Bu, herkese açık olarak sunulan bir LinguoAI sunucusu değildir.</p>
+<p>Notebook içinde SHARE_PROVIDER değerini "cloudflare" olarak ayarlayın, CLOUDFLARE_TUNNEL_HOSTNAME alanına kendi ana bilgisayar adınızı girin ve CLOUDFLARE_TUNNEL_TOKEN değerini Colab Secret olarak kaydedin. Belirteci asla yayımlamayın.</p>
+<p>Cloudflare: varsayılan olarak yükleme başına 95 MB. Gradio: dosya başına en fazla 5 GB. Büyük videolar için Google Drive kullanın. Geçici trycloudflare.com bağlantıları SSE desteği olmadığından kullanılmaz.</p>
+</article>
+</section>
+<section class="container colab-start-local">
+<div>
+<p class="section-kicker">Kendi bilgisayarınızı kullanmayı mı tercih edersiniz?</p>
+<h2>Yerel rehberlik mevcut olmaya devam ediyor.</h2>
+</div>
+<a class="text-link" href="https://linguoai.de/tr/#downloads">
+          İndirilenleri ve Windows talimatlarını açın <span aria-hidden="true">→</span>
+</a>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container footer-bottom">
+<span>© 2026 LinguoAI</span>
+<span>Linguoai.de üzerinden doğrudan indirmeler</span>
+</div>
+</footer>
+</body>
+</html>

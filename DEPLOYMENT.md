@@ -1,100 +1,73 @@
 # linguoai.de veröffentlichen
 
-Die Website ist statisch. Es gibt keinen Build-Schritt, keine externen Laufzeitpakete und kein
-Tracking. Die Dateien aus `website/` liegen im öffentlichen Hosting-Repository im Root, damit
-der Pages-Hoster sie direkt ausliefert. Das Colab-Notebook wird über linguoai.de angeboten und lädt das
-geprüfte Quellcode-ZIP anschließend automatisch über die kanonische HTTPS-Downloadadresse.
+Die statische Website wird aus dem Root von
+`reinigungsprofileipzig/linguoai-de`, Branch `main`, über GitHub Pages veröffentlicht.
+Den bestehenden `CNAME` mit `linguoai.de` erhalten. Cloudflare Tunnel ist ausschließlich
+eine optionale Verbindung zur kurzlebigen Colab-App, kein Ersatz für das Website-Hosting.
 
-Beim Synchronisieren den vorhandenen `CNAME`-Eintrag für `linguoai.de` erhalten.
+## Release prüfen und erstellen
 
-## Vor dem Livegang
-
-1. `impressum.html` mit den echten Betreiberangaben vervollständigen.
-2. `datenschutz.html` an Betreiber, Hoster, Server-Logs und Kontaktweg anpassen.
-3. Beide Seiten fachlich prüfen und danach `noindex,nofollow` durch `index,follow` ersetzen.
-4. Prüfen, dass alle öffentlichen Projekt- und Downloadlinks auf `https://linguoai.de/` zeigen.
-5. Prüfen, dass `downloads/LinguoAI_Colab.ipynb` und die Projektdatei
-   `notebooks/LinguoAI_Colab.ipynb` bytegleich sind.
-6. Das Quellcode-ZIP neu bauen und testen, wenn Programm, README, Tests oder Notebook geändert wurden.
-
-Die Vorlagen erfinden bewusst keine fehlenden Namen, Anschriften oder Kontaktangaben.
-
-## Lokal ansehen
-
-Im Projektordner:
+Das lokale Arbeitsprojekt hat die Website im Unterordner `website/`; das Hosting-Repository
+hat dieselben Dateien im Root. Die Build-Skripte unterstützen beide Strukturen.
 
 ```powershell
-python -m http.server 8080 --directory website
+python -m pip install -e ".[dev]"
+python scripts/build_notebook.py
+python scripts/build_site_i18n.py
+python scripts/build_release.py
+python -m pytest
+python -m ruff check linguoai tests scripts
 ```
 
-Danach `http://localhost:8080/` öffnen. Der Server lässt sich mit `Strg+C` beenden.
+`build_release.py` erstellt das Wheel in einer sauberen temporären Kopie des Quellcode-ZIPs,
+vergleicht jedes Python-Modul mit dem Arbeitsstand und veröffentlicht erst nach erfolgreicher
+Prüfung Notebook, ZIP, Wheel und `SHA256SUMS-<Version>.txt` im Downloadordner.
+Bei einer neuen Version auch Notebook-Vorlage, Paketmetadaten und Website-Texte anpassen.
+Ältere Downloads für bestehende Links unverändert aufbewahren.
 
-## Aktueller Weg: Pages-Hosting
-
-- Produktionsbranch: `main`
-- Veröffentlichungsordner: Repository-Root
-- Eigene Domain: `linguoai.de` über `CNAME`
-
-Nach einem Push warten, bis der Pages-Hoster die neue Revision veröffentlicht hat. Danach Startseite,
-Colab-Link, Git-Klon und alle drei Downloads live prüfen. HTTPS im Pages- beziehungsweise
-Cloudflare-Setup erzwingen.
-
-## Alternative: Cloudflare Pages
-
-Cloudflare Pages kann alternativ als statischer Hoster eingesetzt werden. Vor einem Wechsel die
-bestehende Pages-Domain, DNS-Einträge und HTTPS-Weiterleitungen dokumentieren und eine
-Vorschau vollständig prüfen.
-
-### Direkter Upload im Dashboard
-
-1. Im Cloudflare-Dashboard **Workers & Pages** öffnen.
-2. **Create application → Get started → Drag and drop your files** wählen.
-3. Als Projektnamen zum Beispiel `linguoai` eintragen.
-4. Den vollständigen Ordner `website/` hochladen und **Deploy site** wählen.
-5. Erst die erzeugte `*.pages.dev`-Vorschau vollständig prüfen.
-6. Im Pages-Projekt **Custom domains → Set up a domain** öffnen.
-7. Zuerst `linguoai.de` verbinden. Da die Zone bereits Cloudflare-Nameserver verwendet,
-   kann Cloudflare den benötigten DNS-Eintrag nach Bestätigung anlegen.
-8. Optional `www.linguoai.de` ebenfalls verbinden und konsequent auf die Hauptdomain umleiten.
-
-Cloudflare beschreibt den direkten Upload und die Domain-Verknüpfung hier:
-
-- [Direct Upload](https://developers.cloudflare.com/pages/get-started/direct-upload/)
-- [Custom domains](https://developers.cloudflare.com/pages/configuration/custom-domains/)
-
-Wichtig: Die Domain zuerst über **Custom domains** mit dem Pages-Projekt verbinden. Laut
-Cloudflare kann ein nur manuell gesetzter CNAME ohne diese Zuordnung zu einem 522-Fehler führen.
-
-### Optional per Wrangler
-
-Nach Anmeldung bei Cloudflare:
+## Vorschau und GitHub-Push
 
 ```powershell
-npx wrangler pages deploy website --project-name=linguoai
+# Lokales Arbeitsprojekt:
+python -m http.server 8080 --bind 127.0.0.1 --directory website
+# Im Hosting-Repository stattdessen --directory . verwenden.
 ```
 
-Das lädt genau diesen statischen Ordner hoch. Externe Änderungen sollten erst nach Prüfung der
-Vorschau und der Rechtstexte erfolgen.
+Desktop- und Mobilnavigation, alle Sprachversionen, Colab-Anleitung und Downloads prüfen.
+Im Hosting-Repository Quellcode, Tests, Skripte und Website gemeinsam committen und normal
+nach `main` pushen; keine fremde Historie überschreiben und keinen Force-Push verwenden.
+Die Website-Dokumentation heißt dort `WEBSITE.md`, die Projektanleitung `README.md`.
 
-## Git-Integration
+Nach erfolgreichem Pages-Build die tatsächliche Domain prüfen: Startseite und Colab-Seite
+müssen die neue Version zeigen, Notebook und Downloads mit den lokalen Prüfsummen übereinstimmen.
 
-Bei einer späteren Veröffentlichung des Projekts in einem Git-Repository kann Pages auch direkt
-mit dem Repository verbunden werden:
+## Colab: dynamischer Gradio-Link (Standard)
 
-- Build-Befehl: leer
-- Build-Ausgabeordner: `website`
-- Produktionsbranch: der tatsächlich verwendete Hauptbranch
+`SHARE_PROVIDER = "gradio"` benötigt kein Cloudflare-Konto, keine eigene Domain und keinen
+Tunnel-Token. Die einzelne Startzelle installiert das Projekt und zeigt einen dynamischen,
+passwortgeschützten Gradio-Link. Die Sitzung muss aktiv bleiben. Die Uploadgrenze ist 5 GB
+je Datei; für große Dateien steht alternativ Google Drive zur Verfügung.
 
-Vorher entscheiden: Cloudflare weist darauf hin, dass ein als **Direct Upload** angelegtes
-Pages-Projekt nicht nachträglich auf Git-Integration umgestellt wird; dafür wäre ein neues
-Pages-Projekt nötig.
+## Optional: eigener benannter Cloudflare Tunnel
 
-## Abschließende Kontrolle
+1. Einen remotely managed Tunnel im eigenen Cloudflare-Konto erstellen.
+2. Eine Published-application-Route für einen eigenen Hostnamen zum Service
+   `http://127.0.0.1:7860` konfigurieren.
+3. Den Token ausschließlich in Colab Secrets als `CLOUDFLARE_TUNNEL_TOKEN` hinterlegen.
+   Niemals in Git, URLs, Notebook-Quelltext oder Chat kopieren.
+4. `SHARE_PROVIDER = "cloudflare"` und `CLOUDFLARE_TUNNEL_HOSTNAME` setzen.
+5. Startzelle ausführen; sie installiert `cloudflared` nur bei Bedarf, wartet auf dessen
+   Bereitschaft und räumt den Prozess beim Abbruch wieder auf.
+6. Die eigene HTTPS-Route und den Login im Browser prüfen. Optional Cloudflare Access ergänzen.
 
-- Desktop: Navigation, Tabs, Kopierbuttons und alle Links testen.
-- Mobil: 360 px und 768 px Breite prüfen.
-- „Bewegung reduzieren“ im Betriebssystem aktivieren und kontrollieren.
-- `https://linguoai.de/robots.txt` und `/sitemap.xml` abrufen.
-- HTTPS, Canonical und Weiterleitung von `www` prüfen.
-- Download des Colab-Notebooks testen.
-- Impressum und Datenschutz ohne Platzhalter veröffentlichen.
+`app.linguoai.de` ist ein Beispiel, kein von diesem Projekt bereitgestellter Server.
+Die Adresse ist nur bei aktiver Colab-Sitzung erreichbar. Für diesen Modus gilt eine
+vorsorgliche Uploadgrenze von 95 MB pro Datei; größere Videos über Drive einlesen.
+Quick Tunnels werden wegen fehlender Unterstützung für Server-Sent Events nicht verwendet.
+Siehe [Cloudflare Quick Tunnels](https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/).
+
+## Betreiberangaben
+
+Impressum und Datenschutz sind weiterhin zu vervollständigende Entwürfe. Keine Namen,
+Anschriften oder rechtlichen Zusicherungen erfinden. Der Betreiber muss diese Angaben prüfen
+und ergänzen; bis dahin die vorhandene Kennzeichnung und `noindex,nofollow` beibehalten.
