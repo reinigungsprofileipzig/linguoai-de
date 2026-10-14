@@ -33,10 +33,11 @@ und prüfen Auftragsablauf, Besitzerschutz, Abbruch und Ergebnisübertragung.
 Der reale Anbieter-Test prüft zusätzlich die externe Übersetzung und zeigte die
 oben genannte Google-Ratenbegrenzung.
 
-Dateien liegen derzeit in **privatem lokalem Speicher** unter
-`/var/lib/linguoai-web`. SQLite speichert Warteschlange, Besitzer, Optionen,
-Fortschritt und Ablaufdaten. Google Drive ist als austauschbares Speicher-Backend
-implementiert, aber noch nicht verbunden oder autorisiert.
+Neue Dateien liegen seit dem 15. Oktober 2026 im **privaten Google-Drive-Ordner
+„linguoai uploads“** des Betreibers. SQLite unter `/var/lib/linguoai-web` speichert
+Warteschlange, Besitzer, Optionen, Fortschritt und Ablaufdaten. Lokaler Zwischenspeicher
+wird weiterhin für Übertragung und Verarbeitung benötigt; vorhandene lokale
+Dateireferenzen bleiben nach dem Speicherwechsel erreichbar.
 
 ```mermaid
 sequenceDiagram
@@ -153,8 +154,8 @@ die Integration allein ist keine Qualitäts- oder Geschwindigkeitsgarantie.
 
 ## Google Drive bleibt eine Betreiberanbindung
 
-Vorgesehen ist **ein privater Ordner des Betreibers**, den nur die Server-API nutzt.
-Dieser Ordner wurde noch nicht angelegt und autorisiert. Nutzer benötigen kein
+Eingerichtet ist **ein privater Ordner des Betreibers**, den nur die Server-API nutzt.
+Ordner und OAuth-Freigabe wurden angelegt und serverseitig geprüft. Nutzer benötigen kein
 eigenes Google-Konto; Drive erscheint nicht als zusätzliche Anmeldung oder Freigabe
 im Nutzerablauf. Dateien gelangen über dieselbe API hinein und wieder als Download zurück.
 
@@ -166,10 +167,15 @@ Drive nicht. Der Ordner darf nicht öffentlich freigegeben werden.
 
 Nach Einrichtung setzt der Betreiber `storage_backend`, `drive_folder_id`,
 `drive_credentials_path` und gegebenenfalls `drive_shared` in der privaten
-Serverkonfiguration. Zugangsdaten bleiben ausschließlich auf dem Server.
+Serverkonfiguration. Zugangsdaten bleiben in der geschützten Betreiberablage und auf dem Server.
 Speicherquoten, Übertragungsgrenzen und Anbieterbedingungen gelten weiterhin.
 Ein kleiner Testauftrag mit anschließendem Download und Löschung bestätigt erst
-den tatsächlichen Drive-Betrieb.
+den tatsächlichen Drive-Betrieb. Der serverseitige Upload-, Download- und Löschtest
+war erfolgreich; die öffentliche API meldet das aktive Drive-Backend. Die Google-App
+ist auf „In Produktion“ gestellt. Die danach erneuerte Betreiberfreigabe mit demselben
+Scope `drive.file` wurde auf dem Server installiert und erneut geprüft; ihre feste
+siebentägige Testing-Frist entfällt. Die Datennutzung beschreibt die
+[Drive-Datenschutzseite](https://linguoai.de/drive-datenschutz.html).
 
 ## Installation und reine Job-Bots
 

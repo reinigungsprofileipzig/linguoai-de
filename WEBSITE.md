@@ -44,8 +44,12 @@ Das Studio benötigt die API und einen Job-Worker. Die statische Vorschau unten
 stellt diese Dienste nicht bereit. Die API bestimmt verfügbare ASR-, Übersetzungs-
 und Sprachausgabeoptionen aus den tatsächlichen Worker-Fähigkeiten. Die
 Übersetzungszugänge werden später eingerichtet; ein echtes vollständig übersetztes
-Server-Ergebnis ist noch nicht bestätigt. Die Dateien liegen derzeit privat auf
-dem Server. Drive ist implementiert, aber noch nicht per Betreiber-OAuth verbunden.
+Server-Ergebnis ist noch nicht bestätigt. Seit dem 15. Oktober 2026 nutzt die API
+den privaten Google-Drive-Ordner „linguoai uploads“ mit echter Betreiber-OAuth-Freigabe.
+Der serverseitige Upload-, Download- und Löschtest sowie ein isolierter HTTP-Rundlauf
+mit synthetischen Dateien und geschützten Downloads waren erfolgreich. Vorhandene
+lokale Downloads bleiben über den Speicherrouter erreichbar; für Verarbeitung und
+Transfers werden weiterhin begrenzte lokale Arbeits- und Zwischenspeicher benötigt.
 
 `studio.linguoai.de` ist als neue Adresse vorbereitet. Die Aktivierung bleibt bis
 zur öffentlichen Prüfung unbestätigt. Die gewählte Proxyvorlage verwendet HTTP

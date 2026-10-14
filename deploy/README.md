@@ -1,6 +1,6 @@
 # Betrieb und Remote-Worker
 
-Stand: 14. Oktober 2026. Der Dienst ist auf Debian 13 unter
+Stand: 15. Oktober 2026. Der Dienst ist auf Debian 13 unter
 [Webversion öffnen](https://stayinleipzig.de/linguoai/web.html) eingerichtet.
 Die API lauscht auf `127.0.0.1:8765`; Nginx veröffentlicht den HTTPS-Unterpfad
 `/linguoai/`. `linguoai-web.service` und `linguoai-worker.service` sind aktiviert.
@@ -24,7 +24,7 @@ Adresswechsel. Andere Domains und ihre TLS-Konfigurationen bleiben unverändert.
 | Zustand / Arbeitsdateien | `/var/lib/linguoai-web`, `/var/lib/linguoai-web/work` |
 | Private Konfiguration | `/etc/linguoai-web/server.json`, `/etc/linguoai-web/worker.env` |
 | Parakeet-v3-Modell | `/var/lib/linguoai-web/models/parakeet-v3` |
-| Dateispeicher | Privat und lokal; Drive noch nicht verbunden |
+| Dateispeicher | Privater Google-Drive-Ordner „linguoai uploads“; seit 15. Oktober 2026 aktiv |
 | Eingabe / Ergebnis je Datei | 100 MiB / 1 GiB |
 | Aktive Aufträge je Benutzer / insgesamt | 2 / 20 |
 | Aufbewahrung / Worker-Lease | 24 Stunden / 90 Sekunden |
@@ -33,7 +33,7 @@ Adresswechsel. Andere Domains und ihre TLS-Konfigurationen bleiben unverändert.
 
 Ein Worker verarbeitet jeweils einen Auftrag. Parakeet verwendet vier Threads
 und 30-Sekunden-Audioabschnitte. Wartende Aufträge benötigen trotzdem Speicher;
-Modelle, Zwischendateien und fertige Videos müssen auf die vorhandene Platte passen.
+Modelle, Arbeitsdateien und lokale Transferpuffer müssen auf die vorhandene Platte passen.
 Die API entfernt abgeschlossene Dateien nach Ablauf der Aufbewahrungsfrist.
 
 ## Aktuelle Übersetzungsgrenze
@@ -49,8 +49,8 @@ Der Nutzer hat entschieden, den Übersetzungszugang später einzurichten. Für D
 oder Gemini muss der Betreiber die jeweilige Abhängigkeit installieren und den
 entsprechenden Schlüssel privat in `worker.env` konfigurieren. Danach den Worker
 neu starten und einen echten kleinen Auftrag samt Downloads prüfen. Dafür wurden
-bislang keine neuen Anbieterzugänge eingerichtet. Drive bleibt unabhängig davon
-bis zur echten Betreiber-OAuth-Freigabe im lokalen Speichermodus.
+bislang keine neuen Anbieterzugänge eingerichtet. Der private Drive-Zwischenspeicher
+ist unabhängig von diesen Übersetzungszugängen aktiv.
 
 ## Installation auf einem weiteren API-Host
 
@@ -225,24 +225,34 @@ Ressourcen sind unabhängig vom kleinen API-Host.
 
 ## Google Drive als privater Betreiber-Zwischenspeicher
 
-Der laufende Dienst verwendet `storage_backend: local`. Ein gemeinsamer privater
-Betreiberordner ist vorgesehen, aber noch nicht angelegt oder per OAuth autorisiert.
+Der laufende Dienst verwendet seit dem 15. Oktober 2026 `storage_backend: drive`.
+Der private persönliche Betreiberordner „linguoai uploads“ ist angelegt und mit
+echten OAuth-Zugangsdaten autorisiert. Der serverseitige Upload-, Download- und
+Löschtest war erfolgreich. Ein isolierter HTTP-Rundlauf mit synthetischen Dateien
+bestätigte außerdem Worker-Abruf, drei Ergebnisse und geschützte Downloads;
+alle Downloads waren bytegleich, anonyme Ergebnisdownloads wurden mit HTTP 401
+abgewiesen. Die produktive Queue blieb bei diesem Test unverändert und die vier
+erzeugten Drive-Testdateien wurden gelöscht.
 **Endnutzer benötigen kein Google-Konto; Drive bleibt im Nutzerablauf verborgen.**
 
-Der konkrete Freigabeschritt mit privater Ordneranlage und Upload-/Download-/Löschtest steht in [Google Drive einrichten](GOOGLE_DRIVE.md). Der Speicherrouter erhält vorhandene lokale Downloads beim späteren Wechsel.
+Der konkrete Einrichtungsablauf steht in [Google Drive einrichten](GOOGLE_DRIVE.md).
+Der Speicherrouter hält vorhandene lokale Dateien weiterhin für Downloads und
+Bereinigung erreichbar. Für Verarbeitung, Uploads und Downloads werden weiterhin
+begrenzte lokale Arbeits- und Transferpuffer benötigt.
 
-Nach echter Betreiberfreigabe zusätzlich in `server.json` setzen:
+Die private `server.json` verwendet diese Speicherfelder:
 
 - `storage_backend`: `drive`
 - `drive_folder_id`: ID des privaten, für die App erreichbaren Betreiberordners
 - `drive_credentials_path`: `/etc/linguoai-web/drive-credentials.json`
-- `drive_shared`: `false` für persönlichen OAuth-Zugriff oder `true` für Shared Drive
+- `drive_shared`: `false` beim aktiven persönlichen OAuth-Zugriff; `true` nur für Shared Drive
 
 Für persönliches Drive ist `authorized_user`-JSON mit `drive.file`-Zugriff nötig.
 `service_account`-JSON benötigt einen echten Workspace Shared Drive; ein bloß
 freigegebener persönlicher Ordner reicht nicht. Zugangsdaten bleiben serverseitig,
-der Ordner bleibt privat. Danach die API neu starten und Upload, Download und
-Löschung mit einem kleinen Auftrag prüfen. Drive-Quoten und Anbieterbedingungen
+der Ordner bleibt privat. Nach Änderungen an der Speicheranbindung die API neu
+starten und Upload, Download und Löschung mit einem kleinen Auftrag prüfen.
+Drive-Quoten und Anbieterbedingungen
 gelten weiterhin; temporäre Verarbeitung benötigt weiterhin lokalen Speicher.
 
 ## Kontrolle, Updates und optionale Container

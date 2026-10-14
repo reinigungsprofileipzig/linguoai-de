@@ -103,11 +103,14 @@ ein vollständig übersetztes echtes Ergebnis ist noch nicht bestätigt.
 Der Übersetzungszugang wird gemäß Nutzerentscheidung später eingerichtet.
 DeepL oder Gemini benötigen private Worker-Konfiguration und ihre Abhängigkeiten.
 
-Der Dienst nutzt derzeit **privaten lokalen Speicher**. Google Drive ist als
-alternatives Backend implementiert, aber noch nicht verbunden: Dafür fehlen der
-private Betreiberordner und dessen echte OAuth-Freigabe. Die spätere Drive-Anbindung
-bleibt serverseitig; Endnutzer benötigen weder ein Google-Konto noch eine eigene
-Drive-Freigabe.
+Der Dienst nutzt seit dem 15. Oktober 2026 **Google Drive als private Ablage**.
+Die echte OAuth-Freigabe und der private Ordner „linguoai uploads“ sind eingerichtet;
+Upload, bytegleicher Download und Löschen wurden lokal und auf dem Server geprüft.
+Die öffentliche API bestätigt das aktive Drive-Backend. Die Google-App ist auf
+„In Produktion“ gestellt; die danach erneuerte Betreiberfreigabe ist auf dem Server
+installiert und geprüft. Die feste siebentägige Testfrist gilt damit für die neue
+Freigabe nicht mehr. Die Drive-Anbindung bleibt serverseitig;
+Endnutzer benötigen weder ein Google-Konto noch eine eigene Drive-Freigabe.
 
 Aktuelle Grenzen: 100 MiB je Eingabe, bis 1 GiB je Ergebnis, zwei aktive Aufträge
 je Benutzer und 20 insgesamt. Ergebnisse werden 24 Stunden nach Abschluss

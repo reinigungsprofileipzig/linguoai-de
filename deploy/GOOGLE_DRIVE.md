@@ -44,4 +44,10 @@ Neue Uploads gehen nach der Aktivierung zu Drive. Der Speicherrouter hält vorha
 
 ## Aktueller Stand
 
-Einrichtungshelfer und Speicherrouter sind implementiert und mit simulierten Google-Diensten getestet. Es gibt noch keine echte Betreiberfreigabe, keinen tatsächlich angelegten Drive-Ordner und keine aktive Drive-Serverkonfiguration. Für die Aktivierung fehlen derzeit die Google-Anmeldung und die Desktop-OAuth-Client-Datei.
+Am 15. Oktober 2026 wurden die echte Betreiberfreigabe und der private Ordner „linguoai uploads“ eingerichtet. Der Einrichtungshelfer hat eine eigene Testdatei hochgeladen, bytegleich heruntergeladen und gelöscht. Desktop-Client, autorisierte Refresh-Zugangsdaten und das geprüfte Konfigurationsfragment liegen ausschließlich in der privaten lokalen Betreiberablage.
+
+Nach wiederhergestellter Serververbindung wurde Drive am selben Tag aktiviert: Der serverseitige Upload-, Download- und Löschtest war erfolgreich, die vorhandene Konfiguration wurde gesichert und nur die vier Speicherfelder übernommen. Die Credentials sind ausschließlich für root und die Dienstgruppe lesbar (`0640`). API und Worker laufen; sowohl die lokale als auch die öffentliche API melden `storage: drive` und einen erfolgreichen Healthcheck.
+
+Google führt die App als „In Produktion“. Nach dem Wechsel wurde mit demselben Desktop-Client und unverändertem `drive.file` eine neue Betreiberfreigabe erteilt. Die aktualisierten Zugangsdaten sind auf dem Server installiert; ein erneuter echter Upload-/Download-/Löschtest sowie ein isolierter HTTP-Rundlauf mit drei geschützten Ergebnisdownloads waren erfolgreich. Die feste siebentägige Testing-Frist gilt für diese neu erteilte Produktionsfreigabe nicht.
+
+Die [Datenschutzhinweise zur Drive-Anbindung](https://linguoai.de/drive-datenschutz.html) sind veröffentlicht, von der Homepage verlinkt und im Google-Branding hinterlegt. Veröffentlichungsstatus und eine optionale separate Markenprüfung sind unterschiedliche Einstellungen. Einzelheiten und nicht geheime Prüfergebnisse stehen in `artifacts/DEPLOYMENT-20261015.md` und `artifacts/drive-production-verification-20261015.json`.
