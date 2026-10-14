@@ -350,6 +350,62 @@ class ColabTests(unittest.TestCase):
             process_colab_batch(**self.batch_options(), continue_after_error=False)
         self.assertEqual(job.call_count, 1)
 
+    def test_batch_passes_optional_parakeet_options_to_each_job(self) -> None:
+        with mock.patch("linguoai.colab_ui.process_colab_job", return_value=("ready", [])) as job:
+            process_colab_batch(
+                **self.batch_options(),
+                asr_engine="parakeet",
+                parakeet_model_directory="/content/models/parakeet",
+                parakeet_profile="german-primeline",
+                parakeet_threads=4,
+            )
+        self.assertEqual(job.call_count, 2)
+        for call in job.call_args_list:
+            self.assertEqual(call.kwargs["asr_engine"], "parakeet")
+            self.assertEqual(call.kwargs["parakeet_model_directory"], "/content/models/parakeet")
+            self.assertEqual(call.kwargs["parakeet_profile"], "german-primeline")
+            self.assertEqual(call.kwargs["parakeet_threads"], 4)
+
+    def test_job_passes_optional_parakeet_options_to_shared_pipeline(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            model_directory = root / "models"
+            model_directory.mkdir()
+            video = root / "video.mp4"
+            video.write_bytes(b"video")
+            options = self.batch_options()
+            options.pop("uploaded_videos")
+            options.pop("drive_paths")
+            options["source_language"] = "de"
+            with (
+                mock.patch("linguoai.colab_ui.COLAB_ROOT", root),
+                mock.patch("linguoai.colab_ui.JOB_ROOT", root / "jobs"),
+                mock.patch("linguoai.colab_ui.OUTPUT_ROOT", root / "outputs"),
+                mock.patch("linguoai.colab_ui.VideoDubbingPipeline") as factory,
+                mock.patch(
+                    "linguoai.colab_ui.shutil.disk_usage",
+                    return_value=SimpleNamespace(free=10 * 1024**3),
+                ),
+                self.assertRaisesRegex(RuntimeError, "stop after config validation"),
+            ):
+                factory.return_value.run_path.side_effect = RuntimeError(
+                    "stop after config validation"
+                )
+                process_colab_job(
+                    str(video),
+                    "",
+                    **options,
+                    asr_engine="parakeet",
+                    parakeet_model_directory=str(model_directory),
+                    parakeet_profile="german-primeline",
+                    parakeet_threads=4,
+                )
+            config = factory.call_args.args[0].validated()
+            self.assertEqual(config.asr_engine, "parakeet")
+            self.assertEqual(config.parakeet_model_directory, model_directory)
+            self.assertEqual(config.parakeet_profile, "german-primeline")
+            self.assertEqual(config.parakeet_threads, 4)
+
     def test_batch_does_not_swallow_cancellation(self) -> None:
         with (
             mock.patch(

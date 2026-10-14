@@ -1,0 +1,72 @@
+services:
+  api:
+    image: linguoai-web:local
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    command: ["python", "-m", "linguoai.web_api", "--host", "0.0.0.0", "--port", "8765"]
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8765:8765"
+    environment:
+      LINGUOAI_WEB_CONFIG: /etc/linguoai-web/server.json
+      LINGUOAI_WEB_STATE: /var/lib/linguoai-web
+      LINGUOAI_PUBLIC_URL: https://stayinleipzig.de/linguoai
+    volumes:
+      - type: bind
+        source: ${LINGUOAI_CONFIG_DIRECTORY:?Set the private configuration directory}
+        target: /etc/linguoai-web
+        read_only: true
+      - type: bind
+        source: ${LINGUOAI_STATE_DIRECTORY:?Set the writable state directory owned by UID 10001}
+        target: /var/lib/linguoai-web
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 512m
+    mem_reservation: 256m
+    cpus: 0.5
+    pids_limit: 96
+    stop_signal: SIGINT
+    stop_grace_period: 30s
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/healthz', timeout=5).read()"]
+      interval: 30s
+      timeout: 6s
+      retries: 3
+      start_period: 30s
+
+  worker:
+    image: linguoai-web:local
+    network_mode: "service:api"
+    command: ["python", "-m", "linguoai.web_worker", "--server", "http://127.0.0.1:8765", "--worker-id", "container-cpu"]
+    restart: unless-stopped
+    depends_on:
+      api:
+        condition: service_healthy
+    env_file:
+      - ${LINGUOAI_WORKER_ENV_FILE:?Set the private worker environment file}
+    environment:
+      HOME: /var/lib/linguoai-web
+      HF_HOME: /var/lib/linguoai-web/cache/huggingface
+      XDG_CACHE_HOME: /var/lib/linguoai-web/cache
+      TMPDIR: /var/lib/linguoai-web/tmp
+      LINGUOAI_WORKER_DEVICE: cpu
+      LINGUOAI_WORKER_COMPUTE_TYPE: int8
+    volumes:
+      - type: bind
+        source: ${LINGUOAI_STATE_DIRECTORY:?Set the writable state directory owned by UID 10001}
+        target: /var/lib/linguoai-web
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 2g
+    mem_reservation: 1536m
+    cpus: 1.5
+    pids_limit: 96
+    stop_signal: SIGINT
+    stop_grace_period: 30s

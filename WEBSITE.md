@@ -8,10 +8,16 @@ Start ebenfalls über `https://linguoai.de/`.
 
 ## Struktur
 
-- `index.html`: vollständige Produkt- und Nutzungsseite
-- `colab.html`: Ein-Zellen-Start mit dynamischem Gradio-Link und optionalem Cloudflare Tunnel
-- `assets/styles.css` und `assets/funnel.css`: responsives Design, Funnel und Animationen
-- `assets/site.js`: Navigation, Tabs, Copy-Buttons und Scroll-Reveals
+- `index.html`: kompakter Einstieg, Nutzen, Ablauf, Downloads und häufige Fragen
+- `colab.html`: direkter Notebook-Start und kurze Drei-Schritt-Anleitung
+- `anleitung.html`: lokale Installation, Stimmen, CLI, Hardware und optionaler Cloudflare Tunnel
+- `assets/simple.css`: gemeinsames responsives Design für Startseite und Anleitungen
+- `assets/guide.css` und `assets/colab-guide.css`: ergänzende Anleitungs-Layouts
+- `assets/styles.css`: bestehendes Layout der Rechtstexte und Fehlerseite
+- `assets/site.js`: zugängliche Mobilnavigation, Copy-Buttons und FAQ
+- `web.html`: Video Studio mit Anmeldung, Upload, Auftragsstatus und Ergebnisdownloads
+- `assets/web-app.css` und `assets/web-app.js`: responsives Studio und `chunks-v1`-Uploads
+- `REMOTE_WORKER.md`: Betriebsübersicht für Upload, Remote-Verarbeitung und private Drive-Ablage
 - `downloads/`: direkt angebotene Projektdateien
 - `downloads/SHA256SUMS-2.2.1.txt`: Prüfsummen der aktuellen Release-Dateien
 - `impressum.html` und `datenschutz.html`: noch auszufüllende Entwürfe
@@ -19,7 +25,32 @@ Start ebenfalls über `https://linguoai.de/`.
 - `_headers`: optionale Sicherheits-/Cache-Header für Cloudflare Pages und kompatible Hoster
 - `DEPLOYMENT.md`: Vorschau- und Domainanleitung
 
-Es werden keine externen Fonts, JavaScript-Bibliotheken, Analysewerkzeuge oder Cookies geladen.
+Die statischen Produktseiten laden keine externen Fonts, JavaScript-Bibliotheken,
+Analysewerkzeuge oder Cookies. Das separate Video Studio benötigt ein geschütztes
+Sitzungscookie für Login und eigene Aufträge.
+
+## Video Studio
+
+Die aktuelle Dienstadresse ist
+[Webversion öffnen](https://stayinleipzig.de/linguoai/web.html).
+Die Oberfläche lädt Videos in maximal 8 MiB großen Blöcken mit SHA-256 und
+bestätigten Offsets hoch. Vorübergehende Verbindungsfehler werden begrenzt
+wiederholt; der Upload kann in der geöffneten Seite am bestätigten Stand fortsetzen.
+Abbruch beendet den Upload und den zugehörigen Auftrag. Verarbeitung und Downloads
+bleiben über die eigene Auftragsliste erreichbar; ein fertiger Auftrag zeigt
+Verfügbarkeitszeit und Ende der Downloadfrist.
+
+Das Studio benötigt die API und einen Job-Worker. Die statische Vorschau unten
+stellt diese Dienste nicht bereit. Die API bestimmt verfügbare ASR-, Übersetzungs-
+und Sprachausgabeoptionen aus den tatsächlichen Worker-Fähigkeiten. Die
+Übersetzungszugänge werden später eingerichtet; ein echtes vollständig übersetztes
+Server-Ergebnis ist noch nicht bestätigt. Die Dateien liegen derzeit privat auf
+dem Server. Drive ist implementiert, aber noch nicht per Betreiber-OAuth verbunden.
+
+`studio.linguoai.de` ist als neue Adresse vorbereitet. Die Aktivierung bleibt bis
+zur öffentlichen Prüfung unbestätigt. Die gewählte Proxyvorlage verwendet HTTP
+zum Origin und erhält die vorhandenen Cloudflare-SSL-Einstellungen. Siehe
+[Domainmigration](../deploy/DOMAIN_MIGRATION.md).
 
 ## Vorschau
 
@@ -31,3 +62,7 @@ Dann `http://localhost:8080/` öffnen.
 
 Im Hosting-Repository liegen diese Dateien direkt im Root; dort `--directory .` verwenden.
 Release-Erstellung und GitHub-Pages-Veröffentlichung sind in `DEPLOYMENT.md` beschrieben.
+
+Die drei Nutzungsseiten werden in sieben Sprachen ausgeliefert. Nach Textänderungen alle
+Kataloge in `assets/locales/` ergänzen und `python scripts/build_site_i18n.py` ausführen.
+Website-Änderungen allein verändern die bereits veröffentlichten Software-Artefakte nicht.

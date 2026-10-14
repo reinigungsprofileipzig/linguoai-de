@@ -1,11 +1,10 @@
 <!doctype html>
-HTML
 <html class="no-js" data-locale-detect="false" data-locale-page="es" lang="es">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="#f4f1ea" name="theme-color"/>
-<meta content="Inicie LinguoAI en Google Colab sin instalación local, con la descarga de Notebook directamente desde linguoai.de e instrucciones sencillas paso a paso." name="description"/>
+<meta content="Abre LinguoAI directamente en Google Colab: inicia el Notebook, traduce un vídeo y guarda los resultados. Una guía rápida con requisitos y alternativas." name="description"/>
 <meta content="index,follow" name="robots"/>
 <link href="https://linguoai.de/es/colab.html" rel="canonical"/>
 <link href="https://linguoai.de/colab.html" hreflang="de" rel="alternate"/>
@@ -18,8 +17,8 @@ HTML
 <link href="https://linguoai.de/en/colab.html" hreflang="x-default" rel="alternate"/>
 <link href="/assets/favicon.svg" rel="icon" type="image/svg+xml"/>
 <title>Iniciar LinguoAI en Google Colab</title>
-<link href="/assets/styles.css?v=20261012-1" rel="stylesheet"/>
-<link href="/assets/funnel.css?v=20261012-1" rel="stylesheet"/>
+<link href="/assets/simple.css?v=20261013-2" rel="stylesheet"/>
+<link href="/assets/colab-guide.css?v=20261013-1" rel="stylesheet"/>
 <script>
       document.documentElement.classList.replace("no-js", "has-js");
       (() => {
@@ -52,7 +51,7 @@ HTML
         }
       })();
     </script>
-<script defer="" src="/assets/locale.js?v=20261012-1"></script>
+<script defer="" src="/assets/locale.js?v=20261013-1"></script>
 </head>
 <body class="colab-start-page">
 <a class="skip-link" href="#main">Ir directamente a las instrucciones</a>
@@ -85,21 +84,18 @@ HTML
 <main class="colab-start-main" id="main">
 <section class="container colab-start-hero">
 <div>
-<p class="section-kicker">Sin instalación permanente</p>
+<p class="section-kicker">La guía rápida para el navegador</p>
 <h1>Inicie LinguoAI en Google Colab.</h1>
 <p class="colab-start-intro">
-            Primero descarga el Notebook preparado directamente de linguoai.de. Después abre Google Colab y sube el archivo Notebook. El ZIP del proyecto se descarga automáticamente de linguoai.de.
+            Abre directamente el Notebook preparado. La celda de inicio configura LinguoAI y después muestra el enlace a tu interfaz web protegida.
           </p>
 <div class="colab-start-actions">
-<a class="button" download="" href="https://linguoai.de/downloads/LinguoAI_Colab.ipynb">
-              1. Descargar Notebook <span aria-hidden="true">↓</span>
-</a>
-<a class="button button-secondary" href="https://colab.research.google.com/" rel="noopener noreferrer" target="_blank">
-              2. Abra Google Colab <span aria-hidden="true">↗</span>
+<a class="button" data-colab-start="" href="https://colab.research.google.com/github/reinigungsprofileipzig/linguoai-de/blob/main/notebooks/LinguoAI_Colab.ipynb" rel="noopener noreferrer" target="_blank">
+              Iniciar en Google Colab <span aria-hidden="true">↗</span>
 </a>
 </div>
 <p class="colab-start-note">
-            El archivo descargado se llama <code>LinguoAI_Colab.ipynb</code>. Manténgalo como está y seleccione este archivo exacto cuando lo cargue en Colab.
+            Se requiere una cuenta de Google. La configuración se ejecuta en Colab, en lugar de en tu ordenador. Reserva tiempo para la instalación y la descarga de modelos al iniciar por primera vez.
           </p>
 </div>
 <aside aria-label="Descripción rápida" class="colab-start-summary">
@@ -109,86 +105,86 @@ HTML
 <li>un breve vídeo de prueba</li>
 <li>una conexión a internet activa</li>
 </ul>
-<p>La GPU de Colab es opcional. El enlace dinámico de Gradio no necesita cuenta de Cloudflare, dominio propio ni token de túnel.</p>
+<p>Los ajustes predeterminados están preparados. La GPU y Google Drive son opcionales.</p>
 </aside>
 </section>
+<aside aria-labelledby="policy-title" class="container colab-policy">
+<h2 id="policy-title">Disponibilidad y costes</h2>
+<p>Google restringe el uso predominante de interfaces web externas en sesiones gratuitas de Colab sin un saldo positivo de Compute. Revisa las condiciones de Colab antes de empezar.</p>
+<div class="colab-policy-links">
+<a class="text-link" href="https://research.google.com/colaboratory/faq.html" rel="noopener noreferrer" target="_blank">Leer las condiciones de Colab <span aria-hidden="true">↗</span></a>
+<a class="text-link" href="/es/anleitung.html#desktop">O instalar de forma local <span aria-hidden="true">→</span></a>
+</div>
+</aside>
 <section aria-labelledby="guide-title" class="container colab-start-guide">
 <div class="colab-start-heading">
 <p class="section-kicker">paso a paso</p>
-<h2 id="guide-title">Así se abre el Notebook.</h2>
+<h2 id="guide-title">Tres pasos. Tu resultado.</h2>
 </div>
 <ol class="colab-start-steps">
 <li>
 <span>01</span>
 <div>
-<strong>Descargar Notebook</strong>
-<p>Haga clic en "Descargar Notebook" arriba. El archivo normalmente termina en la carpeta Descargas.</p>
+<strong>Abrir e iniciar el Notebook</strong>
+<p>Haz clic en «Iniciar en Google Colab» arriba e inicia sesión en Google. En el Notebook, elige «Entorno de ejecución → Ejecutar todas». La celda de inicio instala LinguoAI; espera hasta que aparezcan el enlace y las credenciales.</p>
 </div>
 </li>
 <li>
 <span>02</span>
 <div>
-<strong>Abrir Google Colab</strong>
-<p>Inicie sesión con su cuenta de Google y seleccione "Cargar" en la ventana de inicio.</p>
+<strong>Elegir el vídeo y el idioma</strong>
+<p>Abre el enlace de Gradio generado e inicia sesión con las credenciales que aparecen. Sube un vídeo corto, elige el idioma de destino e inicia la tarea. Para la primera prueba puedes dejar los demás ajustes como están.</p>
 </div>
 </li>
 <li>
 <span>03</span>
 <div>
-<strong>Subir archivo</strong>
-<p>Selecciona el archivo LinguoAI_Colab.ipynb de la carpeta de descargas y ábrelo.</p>
-</div>
-</li>
-<li>
-<span>04</span>
-<div>
-<strong>Ejecute Notebook</strong>
-<p>En el menú de Colab, elige «Entorno de ejecución → Ejecutar todo». Una sola celda de código con autocomprobación instala LinguoAI y abre la interfaz.</p>
-</div>
-</li>
-<li>
-<span>05</span>
-<div>
-<strong>Abrir la interfaz web de Gradio</strong>
-<p>Abre el enlace de Gradio generado e inicia sesión con las credenciales mostradas. Sube uno o varios vídeos o introduce rutas de archivos de Google Drive, una por línea.</p>
+<strong>Guardar los resultados</strong>
+<p>Descarga el vídeo con el nuevo doblaje y ambos archivos de subtítulos, o guárdalos en Google Drive. Mantén activa la celda del Notebook durante el procesamiento; el enlace y los archivos temporales dejan de estar disponibles al terminar la sesión.</p>
 </div>
 </li>
 </ol>
 </section>
 <section class="container colab-start-details">
 <article>
-<span class="service-badge">PRIMERA PRUEBA</span>
-<h2>Puedes dejar estas configuraciones.</h2>
-<p>PROJECT_SOURCE = "download_zip" descarga LinguoAI automáticamente de linguoai.de. Con LOCAL_TTS_EXTRA = "none", Edge TTS y gTTS funcionan sin un gran paquete de voces adicional.</p>
-<p>Con SHARE_PROVIDER = "gradio" obtienes automáticamente un enlace dinámico. Google Drive es opcional.</p>
+<span class="service-badge">TU RESULTADO</span>
+<h2>Vídeo y subtítulos.</h2>
+<p>La nueva pista de audio sustituye por completo el sonido anterior, incluida la música y los ruidos de fondo. No incluye sincronización labial ni asignación automática de varios hablantes.</p>
 </article>
 <article>
-<span class="service-badge">IMPORTANTE</span>
-<h2>Las sesiones Colab son temporales.</h2>
-<p>Descarga los vídeos terminados y ambos archivos SRT de cada tarea o guárdalos en Google Drive. Los archivos de /content y el enlace de Gradio desaparecen al finalizar la sesión.</p>
-</article>
-<article>
-<span class="service-badge">OPCIONAL</span>
-<h2>Tu propia dirección con Cloudflare Tunnel.</h2>
-<p>Solo para una dirección fija propia: configura un Cloudflare Tunnel con nombre, tu dominio y el servicio http://127.0.0.1:7860. No se trata de un servidor público de LinguoAI.</p>
-<p>En el Notebook, establece SHARE_PROVIDER en "cloudflare", introduce tu nombre de host en CLOUDFLARE_TUNNEL_HOSTNAME y guarda CLOUDFLARE_TUNNEL_TOKEN como Colab Secret. Nunca publiques el token.</p>
-<p>Cloudflare: 95 MB por carga de forma predeterminada. Gradio: hasta 5 GB por archivo. Usa Google Drive para vídeos grandes. No se usan enlaces temporales de trycloudflare.com porque no admiten SSE.</p>
+<span class="service-badge">TUS DATOS</span>
+<h2>Elige con criterio.</h2>
+<p>Colab procesa los archivos en un entorno temporal de Google. Los traductores y las voces en línea reciben los textos que necesitan para su tarea. Usa únicamente vídeos y voces para los que tengas los derechos necesarios.</p>
 </article>
 </section>
-<section class="container colab-start-local">
-<div>
-<p class="section-kicker">¿Preferirías usar tu propia computadora?</p>
-<h2>La orientación local sigue disponible.</h2>
+<section aria-labelledby="help-title" class="container colab-help">
+<h2 id="help-title">Cuando necesitas más.</h2>
+<details>
+<summary>El enlace directo al Notebook no funciona</summary>
+<p>También puedes descargar el Notebook y abrirlo en Google Colab mediante «Archivo → Abrir Notebook → Subir».</p>
+<a class="text-link" download="" href="https://linguoai.de/downloads/LinguoAI_Colab.ipynb">Descargar Notebook <span aria-hidden="true">↓</span></a>
+</details>
+<details>
+<summary>Usar varios vídeos o Google Drive</summary>
+<p>Los vídeos se procesan uno tras otro. Puedes subirlos juntos o introducir rutas relativas de archivos de MyDrive, una por línea. Para usar Drive, activa primero la opción correspondiente en el Notebook.</p>
+<p>Gradio permite hasta 5 GB por archivo de forma predeterminada. Para vídeos grandes, Google Drive es una alternativa; el tiempo de ejecución y el almacenamiento disponibles siguen siendo limitados.</p>
+</details>
+<details>
+<summary>Opciones avanzadas: voces y Cloudflare</summary>
+<p>Para empezar con la configuración estándar no necesitas un dominio propio ni un token de túnel. Las voces locales y tu propio Cloudflare Tunnel son opciones adicionales.</p>
+<div class="colab-policy-links">
+<a class="text-link" href="/es/anleitung.html#stimmen">Configurar las voces <span aria-hidden="true">→</span></a>
+<a class="text-link" href="/es/anleitung.html#cloudflare">Configurar Cloudflare <span aria-hidden="true">→</span></a>
 </div>
-<a class="text-link" href="https://linguoai.de/es/#downloads">
-          Abrir descargas e instrucciones Windows <span aria-hidden="true">→</span>
-</a>
+</details>
+<a class="text-link colab-local-link" href="/es/anleitung.html#desktop">¿Prefieres trabajar de forma local? Ve a la instalación <span aria-hidden="true">→</span></a>
 </section>
 </main>
 <footer class="site-footer">
 <div class="container footer-bottom">
 <span>© 2026 LinguoAI</span>
-<span>Descargas directamente a través de linguoai.de</span>
+<a href="/impressum.html">Pie de imprenta</a>
+<a href="/datenschutz.html">Protección de datos</a>
 </div>
 </footer>
 </body>

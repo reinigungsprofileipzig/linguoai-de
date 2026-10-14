@@ -16,7 +16,7 @@ Direkte Einstiege:
 ```text
 Video
   → FFmpeg extrahiert die Tonspur
-  → Faster-Whisper erkennt Sprache und Zeitmarken
+  → Faster-Whisper oder optional Parakeet erkennt Text und Zeitmarken
   → NLLB lokal oder ein gewählter Online-Dienst übersetzt die Textabschnitte
   → Edge TTS, gTTS, Piper oder Chatterbox erzeugt die gewählte Stimme
   → LinguoAI passt jeden Sprachclip an sein Zeitfenster an
@@ -27,6 +27,101 @@ Das Quellvideo wird nicht verändert. Neben dem neu vertonten Video entstehen ei
 Original-Untertiteldatei (`*.original.srt`) und eine übersetzte Untertiteldatei
 (`*.translated.srt`). Bei einem Fehler werden unvollständige Ergebnisgruppen nicht als
 fertige Ausgabe stehen gelassen.
+
+## Optionale CPU-Spracherkennung mit Parakeet
+
+Whisper bleibt die Voreinstellung. Zusätzlich kann Parakeet über `sherpa-onnx`
+auf der CPU mit standardmäßig vier Threads gewählt werden:
+
+| Profil | Geeignet für | Modell |
+| --- | --- | --- |
+| `multilingual-v3` | 25 europäische Quellsprachen | NVIDIA parakeet-tdt-0.6b-v3 als sherpa-onnx-Export |
+| `german-primeline` | Deutsch | primeline-Fine-Tune als kompatibler sherpa-onnx-Export |
+
+Das optionale Paket installieren und einen vollständigen lokalen Modellordner
+bereitstellen. Ein Modell wird nicht automatisch heruntergeladen:
+
+```powershell
+python -m pip install -e ".[parakeet]"
+python -m linguoai --input "C:\Videos\quelle.mp4" --output "C:\Videos\quelle.en.mp4" --source-language de --language en --asr-engine parakeet --parakeet-profile multilingual-v3 --parakeet-model-directory "C:\Modelle\parakeet-v3" --parakeet-threads 4
+```
+
+Der Modellordner enthält `encoder.int8.onnx`, `decoder.int8.onnx`,
+`joiner.int8.onnx` und `tokens.txt` (alternativ jeweils die unquantisierten
+`encoder.onnx`, `decoder.onnx`, `joiner.onnx`). Externe `.onnx.data`-Dateien müssen
+beim Export bleiben. Eine `.nemo`-Datei allein funktioniert hier nicht. Das Profil
+wählt die Sprachprüfung; die ONNX-Dateien müssen tatsächlich zum gewählten Modell
+gehören.
+
+Desktop und Colab bieten dieselbe Auswahl in den erweiterten Einstellungen. In
+Colab vor dem Start `INSTALL_PARAKEET` aktivieren und den Modellordner dort
+bereitstellen. Bei Parakeet ist die **Quellsprache erforderlich**:
+Der Decoder erkennt zwar mehrsprachigen Text, liefert im verwendeten Adapter aber
+keine verlässlichen Sprachmetadaten für die Übersetzungsstufe. Das Deutsch-Profil
+akzeptiert Deutsch; das NVIDIA-Profil die 25 veröffentlichten Sprachen.
+
+Untertitel verwenden Token-Anfangszeiten; Wortenden werden geschätzt. Der Abbruch
+eines nativen Decoderlaufs wird nach dem aktuellen Audioabschnitt wirksam. Vor
+regelmäßiger Nutzung Text und Timing mit eigenen Aufnahmen prüfen. Automatisierte Tests
+verwenden simulierte Decoder-Ausgaben; zusätzlich hat ein echter CPU-Server-Test
+deutsches Audio mit Parakeet erkannt. Ein umfassender Geschwindigkeits- und
+Qualitätsvergleich mit eigenen Aufnahmen bleibt offen.
+
+[NVIDIA-Modellkarte](https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3),
+[primeline-Modellkarte](https://huggingface.co/primeline/parakeet-primeline),
+[sherpa-onnx-Modelle](https://k2-fsa.github.io/sherpa/onnx/pretrained_models/offline-transducer/nemo-transducer-models.html).
+Parakeet ersetzt ausschließlich die Erkennung; Übersetzung und Sprachausgabe
+laufen anschließend durch die gewählten Dienste.
+
+## Webversion und Google Drive
+
+Die [Webversion öffnen](https://stayinleipzig.de/linguoai/web.html) ist als eigener
+Dienst eingerichtet: anmelden, Video hochladen, Zielsprache wählen und das fertige
+Video mit Original- und übersetzten Untertiteln herunterladen. Eine persistente
+SQLite-Warteschlange verwaltet Besitzer, Fortschritt, Abbruch und Worker-Leases.
+Ein CPU-Worker verarbeitet die Aufträge; zusätzliche Rechner können als reine
+Job-Worker über HTTPS angeschlossen werden.
+
+Browser-Uploads verwenden `chunks-v1`: maximal 8 MiB je Request, bestätigte
+Offsets und SHA-256 je Block. Bei vorübergehenden Verbindungsfehlern setzt die
+geöffnete Oberfläche am bestätigten Stand fort; der Fortschritt zählt die bereits
+übertragenen Bytes. Abbrechen beendet die Übertragung und den zugehörigen Auftrag.
+Worker übertragen Ergebnisse über 8 MiB auf demselben Weg, kleinere Dateien weiterhin
+per Multipart. Die Warteschlange gibt eine Eingabe erst nach vollständiger privater
+Speicherung frei; Downloads erscheinen erst, wenn Video und beide SRT-Dateien
+vollständig vorliegen.
+
+Für `studio.linguoai.de` ist ein HTTP-Origin hinter dem orangefarbenen
+Cloudflare-Proxy vorbereitet. Die vorhandenen Cloudflare-SSL-Einstellungen bleiben
+bestehen; ein Origin-Zertifikat ist für den gewählten Weg nicht erforderlich.
+Die öffentliche Domainmigration ist noch nicht bestätigt. Die genaue Konfiguration
+und ihre Prüfungen stehen in [Domainmigration](deploy/DOMAIN_MIGRATION.md).
+
+Der echte Server-Test hat Parakeet-Erkennung mit deutschem Audio bestätigt.
+Die anschließende öffentliche Google-Übersetzung wurde mit HTTP 429 abgewiesen;
+ein vollständig übersetztes echtes Ergebnis ist noch nicht bestätigt.
+Der Übersetzungszugang wird gemäß Nutzerentscheidung später eingerichtet.
+DeepL oder Gemini benötigen private Worker-Konfiguration und ihre Abhängigkeiten.
+
+Der Dienst nutzt derzeit **privaten lokalen Speicher**. Google Drive ist als
+alternatives Backend implementiert, aber noch nicht verbunden: Dafür fehlen der
+private Betreiberordner und dessen echte OAuth-Freigabe. Die spätere Drive-Anbindung
+bleibt serverseitig; Endnutzer benötigen weder ein Google-Konto noch eine eigene
+Drive-Freigabe.
+
+Aktuelle Grenzen: 100 MiB je Eingabe, bis 1 GiB je Ergebnis, zwei aktive Aufträge
+je Benutzer und 20 insgesamt. Ergebnisse werden 24 Stunden nach Abschluss
+entfernt. Parakeet v3 läuft auf dem CPU-Worker mit vier Threads und 30-Sekunden-
+Audioabschnitten; Faster-Whisper bleibt wählbar. Die Weboberfläche berücksichtigt
+die tatsächlich verfügbaren Worker-Engines und Anbieter. Die Dateigrenzen gelten
+für die gesamte Datei; 8-MiB-Blöcke ändern diese Grenzen nicht. Der Reverse Proxy
+behält `1025m` für kompatible ältere Worker-Multipart-Uploads bei. Große Transfers
+über die öffentliche Cloudflare-Adresse verwenden die kleinen Blöcke.
+
+[Betriebsübersicht](website/REMOTE_WORKER.md) und
+[Installation, private Konfiguration und Remote-Worker](deploy/README.md) beschreiben
+den eingerichteten Dienst. Colab bleibt als separate sitzungsgebundene Weboberfläche
+verfügbar.
 
 ## Wichtigste Verbesserungen
 

@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="de" class="no-js" data-locale-page="de" data-locale-detect="true">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f1ea" />
+    <meta name="description" content="LinguoAI lokal installieren: Desktop-Anleitung, Stimmen, Kommandozeile und erweiterte Optionen." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://linguoai.de/anleitung.html" />
+    <link rel="alternate" hreflang="de" href="https://linguoai.de/anleitung.html" />
+    <link rel="alternate" hreflang="en" href="https://linguoai.de/en/anleitung.html" />
+    <link rel="alternate" hreflang="ru" href="https://linguoai.de/ru/anleitung.html" />
+    <link rel="alternate" hreflang="uk" href="https://linguoai.de/uk/anleitung.html" />
+    <link rel="alternate" hreflang="tr" href="https://linguoai.de/tr/anleitung.html" />
+    <link rel="alternate" hreflang="es" href="https://linguoai.de/es/anleitung.html" />
+    <link rel="alternate" hreflang="it" href="https://linguoai.de/it/anleitung.html" />
+    <link rel="alternate" hreflang="x-default" href="https://linguoai.de/en/anleitung.html" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="LinguoAI" />
+    <meta property="og:title" content="LinguoAI – Installation und erweiterte Optionen" />
+    <meta property="og:description" content="LinguoAI lokal installieren: Desktop-Anleitung, Stimmen, Kommandozeile und erweiterte Optionen." />
+    <meta property="og:url" content="https://linguoai.de/anleitung.html" />
+    <title>LinguoAI – Installation und erweiterte Optionen</title>
+    <link rel="stylesheet" href="/assets/simple.css?v=20261013-2" />
+    <link rel="stylesheet" href="/assets/guide.css?v=20261013-1" />
+    <script>
+      document.documentElement.classList.replace("no-js", "has-js");
+      (() => {
+        if (document.documentElement.dataset.localeDetect !== "true") return;
+        const supported = new Set(["de", "en", "ru", "uk", "tr", "es", "it"]);
+        let selected = "";
+        try {
+          const saved = window.localStorage.getItem("linguoai.locale") || "";
+          if (supported.has(saved)) selected = saved;
+        } catch (_error) {
+          // Browser preferences remain available when storage is blocked.
+        }
+        if (!selected) {
+          const requested = Array.isArray(navigator.languages) ? navigator.languages : [navigator.language];
+          selected = requested
+            .map((value) => String(value || "").toLowerCase().split("-")[0])
+            .find((value) => supported.has(value)) || "en";
+        }
+        if (selected !== "de") window.location.replace(`/${selected}/anleitung.html${window.location.hash}`);
+      })();
+    </script>
+    <script defer src="/assets/locale.js?v=20261013-1"></script>
+    <script defer src="/assets/site.js?v=20261013-2"></script>
+  </head>
+  <body class="guide-page">
+    <a class="skip-link" href="#main">Direkt zum Inhalt</a>
+    <header class="site-header" data-header>
+      <div class="container header-inner">
+        <a class="brand" href="/" aria-label="LinguoAI Startseite">
+          <img src="/assets/logo-mark.svg" width="38" height="38" alt="" />
+          <span>LinguoAI</span>
+        </a>
+        <nav id="main-navigation" class="main-navigation" aria-label="Hauptnavigation" data-menu>
+          <a href="/#funktionen">Funktionen</a>
+          <a href="/colab.html">Anleitung</a>
+          <a href="/#downloads">Downloads</a>
+          <a href="/#fragen">Hilfe</a>
+        </nav>
+        <div class="header-tools">
+          <details class="language-switcher" data-language-switcher>
+            <summary aria-label="Sprache auswählen"><span data-locale-code>DE</span><span aria-hidden="true">⌄</span></summary>
+            <div class="language-options" data-i18n-ignore>
+              <a href="/anleitung.html" lang="de" hreflang="de" data-locale-link="de" aria-current="page">Deutsch</a>
+              <a href="/en/anleitung.html" lang="en" hreflang="en" data-locale-link="en">English</a>
+              <a href="/ru/anleitung.html" lang="ru" hreflang="ru" data-locale-link="ru">Русский</a>
+              <a href="/uk/anleitung.html" lang="uk" hreflang="uk" data-locale-link="uk">Українська</a>
+              <a href="/tr/anleitung.html" lang="tr" hreflang="tr" data-locale-link="tr">Türkçe</a>
+              <a href="/es/anleitung.html" lang="es" hreflang="es" data-locale-link="es">Español</a>
+              <a href="/it/anleitung.html" lang="it" hreflang="it" data-locale-link="it">Italiano</a>
+            </div>
+          </details>
+          <a class="button button-small header-action" data-colab-start href="https://colab.research.google.com/github/reinigungsprofileipzig/linguoai-de/blob/main/notebooks/LinguoAI_Colab.ipynb">In Google Colab starten</a>
+          <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-navigation" data-menu-button>
+            <span class="sr-only">Navigation öffnen</span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="container guide-main">
+      <div class="guide-intro">
+        <p class="section-kicker">Für Fortgeschrittene</p>
+        <h1>Installation und erweiterte Optionen</h1>
+        <p>Du musst nicht jede Einstellung kennen, um anzufangen. Wenn du später mehr Kontrolle brauchst, findest du hier den kompletten Umfang – ohne versteckte Versprechen.</p>
+        <div class="guide-actions">
+          <a class="button" data-colab-start href="https://colab.research.google.com/github/reinigungsprofileipzig/linguoai-de/blob/main/notebooks/LinguoAI_Colab.ipynb">In Google Colab starten</a>
+          <a class="text-link" href="/colab.html">Colab-Anleitung öffnen <span aria-hidden="true">→</span></a>
+          <a class="text-link" href="/">Zur Startseite <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <nav class="guide-toc" aria-label="Auf dieser Seite">
+        <a href="#desktop">Lokal installieren</a>
+        <a href="#stimmen">Stimmen</a>
+        <a href="#spracherkennung">Spracherkennung</a>
+        <a href="#cli">Kommandozeile</a>
+        <a href="#hardware">CPU / GPU</a>
+        <a href="#details">Alle Funktionen im Detail</a>
+        <a href="#cloudflare">Cloudflare optional</a>
+        <a href="#webversion">Browser und Server</a>
+      </nav>
+
+      <section id="desktop" class="guide-section" aria-labelledby="desktop-title">
+        <p class="section-kicker">Windows &amp; Linux</p>
+        <h2 id="desktop-title">Lokal installieren</h2>
+        <p>Du brauchst Python 3.10 oder neuer sowie FFmpeg und ffprobe. Für Chatterbox wird Python 3.11 empfohlen. Öffne danach eine neue PowerShell.</p>
+        <p><a class="text-link" href="/downloads/LinguoAI-2.2.1-source.zip" download>Version 2.2.1 laden ↓</a></p>
+        <p>Herunterladen, vollständig entpacken und anschließend die lokale Anleitung ausführen.</p>
+        <div class="code-card">
+          <div class="code-card-head">
+            <span>PowerShell · Basiseinrichtung</span>
+            <button type="button" class="copy-button" data-copy="desktop-code"><span class="copy-icon" aria-hidden="true">⧉</span><span data-copy-label>Kopieren</span></button>
+          </div>
+          <pre id="desktop-code"><code><span class="code-comment"># FFmpeg einmalig installieren</span>
+winget install --id Gyan.FFmpeg --exact
+
+<span class="code-comment"># Im entpackten Projektordner ausführen; Pfad anpassen</span>
+cd <span class="code-string">"C:\Pfad\zu\LinguoAI-2.2.1"</span>
+py -3.11 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+
+python -m pip install --upgrade pip
+python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+python -m pip install -e <span class="code-string">".[desktop]"</span>
+ffmpeg -version
+ffprobe -version
+python -m linguoai</code></pre>
+          <p class="code-note">Das Beispiel richtet bewusst die CPU-Version ein. Für NVIDIA wählst du zuerst den passenden Befehl im <a href="https://pytorch.org/get-started/locally/" target="_blank" rel="noopener noreferrer">PyTorch-Installationsassistenten</a>. Edge TTS und gTTS sind bereits dabei. Für Piper installierst du <code>.[desktop,piper]</code>, für Chatterbox in einer eigenen Umgebung <code>.[desktop,voice-clone]</code>.</p>
+        </div>
+        <details class="guide-detail">
+          <summary>Linux</summary>
+          <div>
+            <p>Python 3.10+ und FFmpeg erforderlich</p>
+            <pre><code># FFmpeg, ffprobe und Tkinter über die Paketverwaltung installieren.
+# Im entpackten Projektordner:
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+python -m pip install -e ".[desktop]"
+ffmpeg -version
+ffprobe -version
+python -m linguoai</code></pre>
+          </div>
+        </details>
+        <details class="guide-detail">
+          <summary>Dein erster Auftrag in der Oberfläche</summary>
+          <div>
+            <ol>
+              <li><strong>Video wählen</strong><p>Unter „Start“ auf „Datei …“ klicken. Der Zielpfad wird vorgeschlagen.</p></li>
+              <li><strong>Sprachen festlegen</strong><p>Zielsprache wählen; die Quellsprache darf automatisch erkannt werden.</p></li>
+              <li><strong>Übersetzer wählen</strong><p>Für lokal: NLLB. Für einen schnellen Test: Google. DeepL/Gemini brauchen ihren Schlüssel; die separate Gemini-Optimierung ebenfalls.</p></li>
+              <li><strong>Stimme bestimmen</strong><p>Edge oder gTTS sofort testen; Piper beziehungsweise Chatterbox richtest du unter „Erweitert“ ein.</p></li>
+              <li><strong>Verarbeitung starten</strong><p>Fortschritt beobachten; am Ende Video und beide SRT-Dateien direkt öffnen.</p></li>
+            </ol>
+          </div>
+        </details>
+      </section>
+
+      <section id="stimmen" class="guide-section" aria-labelledby="voices-title">
+        <p class="section-kicker">Vier Wege zur Sprachspur</p>
+        <h2 id="voices-title">Stimmen vergleichen</h2>
+        <p>„Eigene Stimme“ kann Unterschiedliches bedeuten. Dieser Vergleich hilft dir bei der richtigen Wahl.</p>
+        <div class="guide-engine-grid">
+          <article><h3>Edge TTS</h3><p>Der unkomplizierte Einstieg mit fertigen Stimmen aus dem Microsoft-Katalog.</p><p><strong>Online</strong> · <span>Nein, Katalogstimme</span></p></article>
+          <article><h3>gTTS</h3><p>Schnelle Google-Voice über Google Translate Text-to-Speech mit Sprachcode.</p><p><strong>Online</strong> · <span>Nein, Sprachcode</span></p></article>
+          <article><h3>Piper</h3><p>Schnelle lokale Ausgabe mit einem vorhandenen oder selbst trainierten ONNX-Modell.</p><p><strong>Lokal</strong> · <span>CPU, optional CUDA</span></p></article>
+          <article><h3>Chatterbox V2</h3><p>Übernimmt Stimmcharakter und Sprechweise aus einer kurzen, sauberen Aufnahme.</p><p><strong>Referenzstimme</strong> · <span>GPU empfohlen</span></p></article>
+        </div>
+        <details class="guide-detail">
+          <summary>Piper lokal ergänzen</summary>
+          <div>
+            <p>In derselben virtuellen Umgebung installieren und danach eine passende Stimme laden:</p>
+            <pre><code>python -m pip install -e ".[desktop,piper]"
+New-Item -ItemType Directory -Force ".\Stimmen"
+python -m piper.download_voices --download-dir ".\Stimmen" de_DE-thorsten-medium</code></pre>
+            <p>Piper: ONNX plus passende JSON, optionale Sprecher-ID und einstellbares Sprechtempo.</p>
+          </div>
+        </details>
+        <details class="guide-detail">
+          <summary>Eigene Referenzstimme mit Chatterbox</summary>
+          <div>
+            <p>Wegen der Audio-/Torch-Abhängigkeiten wird eine eigene Python-3.11-Umgebung empfohlen:</p>
+            <pre><code>py -3.11 -m venv .venv-chatterbox
+.\.venv-chatterbox\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -e ".[desktop,voice-clone]"
+python -m linguoai</code></pre>
+            <ul>
+              <li>6–10 Sekunden, eine Person, wenig Hall, keine Musik oder Nebengeräusche.</li>
+              <li>Etwa 3,7 GB Modelldownload; CPU ist möglich, für längere Videos aber sehr langsam.</li>
+              <li>Die native Installation ist experimentell; Colab oder Linux ist bei Audio-Paketproblemen verlässlicher.</li>
+            </ul>
+          </div>
+        </details>
+        <aside class="guide-note">
+          <strong>Stimme mit Verantwortung verwenden</strong>
+          <p>Für Chatterbox ist die Bestätigung verpflichtend, dass du die Stimme verwenden darfst. Nutze deine eigene Aufnahme oder hole eine ausdrückliche Erlaubnis ein. Die Ausgabe enthält außerdem ein eingebettetes PerTh-Wasserzeichen.</p>
+          <p>Referenzstimmen enthalten biometrisch sensible Merkmale. Die Bestätigung in LinguoAI ersetzt keine Einwilligung; auch Piper-Engine und Stimmenmodell können getrennte Lizenzen besitzen.</p>
+        </aside>
+      </section>
+
+      <section id="cli" class="guide-section" aria-labelledby="cli-title">
+        <p class="section-kicker">Für wiederholbare Abläufe</p>
+        <h2 id="cli-title">Kommandozeile</h2>
+        <p>Dieses Beispiel übersetzt lokal mit NLLB und verwendet ein Piper-Modell. Für Automatisierung stehen dieselben Einstellungen wie in der GUI zur Verfügung.</p>
+        <p>Eigene Ausgabe- und Modellpfade</p>
+        <div class="code-card">
+          <div class="code-card-head">
+            <span>PowerShell · Piper lokal</span>
+            <button type="button" class="copy-button" data-copy="cli-code"><span class="copy-icon" aria-hidden="true">⧉</span><span data-copy-label>Kopieren</span></button>
+          </div>
+          <pre id="cli-code"><code>python -m linguoai `
+  --input "C:\Videos\quelle.mp4" `
+  --output "C:\Videos\quelle.de.mp4" `
+  --language de `
+  --service nllb `
+  --device cpu `
+  --nllb-device cpu `
+  --tts-engine piper `
+  --tts-device cpu `
+  --piper-model "C:\Stimmen\de_DE-thorsten-medium.onnx" `
+  --piper-config "C:\Stimmen\de_DE-thorsten-medium.onnx.json"</code></pre>
+          <p class="code-note">Alle Optionen anzeigen: <code>python -m linguoai --help</code></p>
+        </div>
+        <details class="guide-detail">
+          <summary>Python-Wheel</summary>
+          <div>
+            <p>Das fertige Paket für eine vorhandene Python-Umgebung; FFmpeg wird weiterhin benötigt.</p>
+            <p><a class="text-link" href="/downloads/linguoai-2.2.1-py3-none-any.whl" download>Wheel laden ↓</a></p>
+            <pre><code>python -m pip install ".\linguoai-2.2.1-py3-none-any.whl[desktop]"
+python -m linguoai</code></pre>
+          </div>
+        </details>
+      </section>
+
+      <section id="hardware" class="guide-section" aria-labelledby="hardware-title">
+        <p class="section-kicker">Rechenleistung sinnvoll verteilen</p>
+        <h2 id="hardware-title">CPU und GPU sind keine Alles-oder-nichts-Entscheidung.</h2>
+        <p>Whisper, NLLB und die lokale Stimme lassen sich getrennt platzieren. So kannst du klein anfangen und nur den Teil auf die GPU legen, der wirklich davon profitiert.</p>
+        <p>„Automatisch“ prüft CUDA und fällt sonst auf CPU zurück.</p>
+        <details class="guide-detail">
+          <summary>Wichtig: Die Auswahl „GPU“ installiert CUDA nicht automatisch.</summary>
+          <div>
+            <ul>
+              <li><strong>NLLB &amp; Chatterbox</strong><p>Benötigen eine passende CUDA-Ausgabe von PyTorch.</p><a href="https://pytorch.org/get-started/locally/" target="_blank" rel="noopener noreferrer">PyTorch-Auswahl ↗</a></li>
+              <li><strong>Faster-Whisper</strong><p>Benötigt zusätzlich CUDA-12-cuBLAS und cuDNN 9 im Systempfad.</p></li>
+              <li><strong>Piper</strong><p>Nutzt ONNX Runtime: <code>onnxruntime-gpu</code> statt der CPU-Ausgabe installieren.</p></li>
+            </ul>
+          </div>
+        </details>
+      </section>
+
+      <section id="spracherkennung" class="guide-section" aria-labelledby="asr-title">
+        <p class="section-kicker">Optional schneller auf der CPU</p>
+        <h2 id="asr-title">Parakeet oder Whisper?</h2>
+        <div class="guide-engine-grid">
+          <article><h3>Parakeet · 25 Sprachen</h3><p>NVIDIA Parakeet v3 erkennt 25 europäische Sprachen. Der optionale sherpa-onnx-Adapter arbeitet lokal auf der CPU mit standardmäßig vier Threads.</p><p><a href="https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3">NVIDIA-Modellkarte ↗</a></p></article>
+          <article><h3>Whisper · vielseitig</h3><p>Faster-Whisper bleibt die Voreinstellung mit automatischer Spracherkennung, größerer Sprachauswahl und CPU- oder GPU-Verarbeitung.</p><p><a href="https://github.com/SYSTRAN/faster-whisper">Faster-Whisper ↗</a></p></article>
+        </div>
+        <p>Der primeline-Fine-Tune ist auf Deutsch spezialisiert. Wähle dafür das Deutsch-Profil mit einem passenden ONNX-Export; für mehrere europäische Sprachen das NVIDIA-Profil. Ein Geschwindigkeits- oder Qualitätsvorteil ist ohne Vergleich mit deinen Dateien nicht garantiert.</p>
+        <details class="guide-detail">
+          <summary>Parakeet einrichten</summary>
+          <div>
+            <p>Das optionale Paket installieren und einen kompatiblen Modellordner bereitstellen. Ein Modell wird nicht automatisch heruntergeladen.</p>
+            <pre><code>python -m pip install -e ".[parakeet]"
+python -m linguoai --help</code></pre>
+            <p>Den vollständigen sherpa-onnx-Modellordner mit Encoder, Decoder, Joiner und Token-Datei verwenden. Beim Deutsch-Export auch die externe Encoder-Datei behalten, falls sie zum Modell gehört.</p>
+            <p>In Desktop und Colab die Spracherkennung, das Profil und den Modellordner wählen. Die Quellsprache ausdrücklich angeben, damit die Übersetzung den richtigen Sprachcode erhält. Parakeet transkribiert; die gewählte Übersetzung und Stimme folgen danach.</p>
+            <p><a href="https://k2-fsa.github.io/sherpa/onnx/pretrained_models/offline-transducer/nemo-transducer-models.html">sherpa-onnx-Modelle und Einrichtung ↗</a> · <a href="https://huggingface.co/primeline/parakeet-primeline">primeline-Modellkarte ↗</a></p>
+          </div>
+        </details>
+      </section>
+
+      <section id="webversion" class="guide-section" aria-labelledby="web-title">
+        <p class="section-kicker">Upload → Verarbeitung → Download</p>
+        <h2 id="web-title">Im Browser arbeiten.</h2>
+        <p>Die Colab-Weboberfläche nimmt bereits Uploads und Google-Drive-Dateipfade an. Sie verarbeitet die Videos auf der laufenden Colab-Maschine und bietet Video und Untertitel zum Download an. Ergebnisse lassen sich zusätzlich in deinem Drive sichern.</p>
+        <details class="guide-detail">
+          <summary>Ausbau: ein eigener dauerhaft laufender Server</summary>
+          <div>
+            <p>Technisch möglich: Die Website nimmt einen Upload an, eine Warteschlange verwaltet den Auftrag und ein separater Worker lädt die Datei, erkennt und übersetzt die Sprache und speichert das Ergebnis. Danach bietet die Website einen geschützten Download an.</p>
+            <p>Google Drive kann als privater Zwischenspeicher dienen. Nutzerzugang per OAuth oder eine Workspace Shared Drive sind nötig; ein Service Account besitzt keinen eigenen MyDrive-Speicher. Status und Auftragsverteilung gehören in eine eigene Datenbank.</p>
+            <p>Dieser Serverdienst ist noch nicht eingerichtet. Bis dahin wird die Weboberfläche über eine aktive Colab-Sitzung gestartet.</p>
+            <p><a href="https://developers.google.com/workspace/drive/api/guides/manage-uploads">Drive-Uploads ↗</a> · <a href="https://developers.google.com/workspace/drive/api/guides/about-shareddrives">Shared Drives ↗</a></p>
+          </div>
+        </details>
+      </section>
+
+      <section id="details" class="guide-section" aria-labelledby="details-title">
+        <p class="section-kicker">Der vollständige Werkzeugkasten</p>
+        <h2 id="details-title">Alle Funktionen im Detail.</h2>
+        <details class="guide-detail">
+          <summary>Dateien und Aufträge</summary>
+          <div>
+            <ul>
+              <li>Ein einzelnes Video oder alle direkt enthaltenen Videos eines Ordners verarbeiten.</li>
+              <li>Eingaben: MP4, MKV, MOV, AVI, WEBM und M4V; Ausgaben: MP4, MKV oder MOV.</li>
+              <li>Automatischer Ausgabevorschlag, kollisionsfreie Namen und kontrolliertes Überschreiben.</li>
+              <li>Fortschritt pro Datei, aktueller Arbeitsschritt, Abbruch und technisches Protokoll.</li>
+              <li>Einzel- und Stapelverarbeitung: mehrere Videos hochladen oder MyDrive-Dateipfade eingeben, einen pro Zeile. Piper-Dateien und Referenzaufnahme per Upload oder MyDrive-Pfad.</li>
+            </ul>
+          </div>
+        </details>
+        <details class="guide-detail">
+          <summary>Transkription mit Faster-Whisper</summary>
+          <div><ul>
+            <li>Modelle von <code>tiny</code> bis <code>large-v3</code>, zusätzlich eigene Modellwerte.</li>
+            <li>Quellsprache automatisch erkennen oder als Sprachcode festlegen.</li>
+            <li>CPU, NVIDIA-CUDA oder automatische Auswahl; int8, float16 und float32 konfigurierbar.</li>
+            <li>Überlappende Audioabschnitte, echte Zeit-Offsets und Bereinigung doppelter Segmente.</li>
+            <li>Chunklänge, Überlappung und Worker-Anzahl über erweiterte Optionen beziehungsweise CLI.</li>
+          </ul></div>
+        </details>
+        <details class="guide-detail">
+          <summary>Übersetzung und Textschutz</summary>
+          <div>
+            <ul>
+              <li>NLLB-200 lokal, Google Translate ohne Schlüssel, DeepL-SDK oder Gemini.</li>
+              <li>Optionaler Fallback nur nach ausdrücklicher Auswahl – sonst wird nur ein Anbieter kontaktiert.</li>
+              <li>URLs, E-Mail-Adressen, Währungen, Einheiten und Prozentwerte werden beim Übersetzen geschützt.</li>
+              <li>Timeouts, begrenzte Wiederholungen und Cache für identische Textabschnitte.</li>
+              <li>Optional korrigiert Gemini das Whisper-Transkript, ohne Segment-IDs oder Zeiten zu ändern.</li>
+              <li>Eigene NLLB-kompatible Modelle, feste Revisionen, FLORES-Codes, Batch- und Tokenlimits.</li>
+            </ul>
+            <p>Das voreingestellte NLLB-600M-Modell steht unter CC-BY-NC-4.0, ist ein Forschungsmodell und keine zertifizierte Produktionsübersetzung. Ergebnisse immer prüfen.</p>
+          </div>
+        </details>
+        <details class="guide-detail">
+          <summary>Timing, Ton und Export</summary>
+          <div><ul>
+            <li>Jeden Clip auf 48-kHz-Mono-PCM normalisieren und samplegenau positionieren.</li>
+            <li>Zu lange Sprache innerhalb einer konfigurierbaren Grenze beschleunigen.</li>
+            <li>Warnung bei starker Beschleunigung; kontrollierter Fehler statt unverständlicher Ausgabe.</li>
+            <li>Exakte Enddauer, übernommene Metadaten/Kapitel und möglichst unveränderter Videostream.</li>
+            <li>Atomare Ergebnisgruppe aus neuem Video, Original-SRT und Übersetzungs-SRT.</li>
+          </ul></div>
+        </details>
+        <details class="guide-detail">
+          <summary>Wo deine Daten verarbeitet werden</summary>
+          <div>
+            <ul>
+              <li><strong>NLLB · Piper · Chatterbox</strong><p>Nach dem Download in deiner gewählten Laufzeit. In Colab bedeutet das innerhalb der temporären Google-VM.</p></li>
+              <li><strong>Google · DeepL · Gemini</strong><p>Erhalten Textabschnitte nur bei Auswahl oder als ausdrücklich aktivierter Fallback.</p></li>
+              <li><strong>Edge TTS · gTTS</strong><p>Senden jeden zu vertonenden übersetzten Cue an den jeweiligen Online-Sprachdienst.</p></li>
+              <li>Geschützte Gradio-Weboberfläche mit zufälligem Passwort pro Sitzung.</li>
+              <li>Optionaler Modellcache und atomare Ergebniskopie in Google Drive.</li>
+              <li>Drive-Pfade bleiben innerhalb von MyDrive; Drive wird nicht als öffentlicher Downloadordner freigegeben.</li>
+            </ul>
+            <p>Temporäre Ergebnisse werden erst veröffentlicht, wenn Video und beide Untertitel vollständig sind. Abbruch, begrenzte Wiederholungen, geschützte Zielpfade und redigierte API-Schlüssel vermeiden böse Überraschungen.</p>
+          </div>
+        </details>
+        <aside class="guide-note">
+          <h3>Was LinguoAI bewusst nicht verspricht</h3>
+          <ul>
+            <li>Synchrones Timing ist keine Lippenbewegungs-Synchronisation; das Bild wird nicht verändert.</li>
+            <li>Die neue Sprachspur ersetzt den Originalton vollständig. Musik, Atmosphäre und Geräusche werden derzeit nicht übernommen.</li>
+            <li>Keine Sprechererkennung und keine automatische Mehrsprecher-Zuweisung.</li>
+            <li>Transkript, Übersetzung, Aussprache und Stimmähnlichkeit vor Veröffentlichung immer prüfen.</li>
+            <li>Colab-GPU, Sitzungslänge und Abschluss großer Jobs sind nicht garantiert.</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section id="cloudflare" class="guide-section" aria-labelledby="cloudflare-title">
+        <p class="section-kicker">OPTIONAL</p>
+        <h2 id="cloudflare-title">Eigene Adresse mit Cloudflare Tunnel.</h2>
+        <p>Mit SHARE_PROVIDER = "gradio" erhältst du automatisch einen dynamischen Link. Google Drive ist optional.</p>
+        <details class="guide-detail">
+          <summary>Cloudflare optional</summary>
+          <div>
+            <p>Nur für eine eigene feste Adresse: einen benannten Cloudflare Tunnel mit eigener Domain und dem Service http://127.0.0.1:7860 einrichten. Dies ist kein öffentlich bereitgestellter LinguoAI-Server.</p>
+            <p>Im Notebook SHARE_PROVIDER auf "cloudflare" setzen, CLOUDFLARE_TUNNEL_HOSTNAME mit dem eigenen Hostnamen füllen und CLOUDFLARE_TUNNEL_TOKEN als Colab Secret speichern. Token nie veröffentlichen.</p>
+            <p>Cloudflare: standardmäßig 95 MB pro Upload. Gradio: bis zu 5 GB pro Datei. Für große Videos Google Drive verwenden. Temporäre trycloudflare.com-Links werden wegen fehlender SSE-Unterstützung nicht verwendet.</p>
+          </div>
+        </details>
+        <p><a class="text-link" href="/colab.html">Colab-Anleitung öffnen <span aria-hidden="true">→</span></a></p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-bottom">
+        <span>© 2026 LinguoAI</span>
+        <nav class="guide-footer-links" aria-label="Rechtliches">
+          <a href="/">Zur Startseite</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

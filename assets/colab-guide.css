@@ -1,0 +1,32 @@
+/* Short, task-first browser guide. Shared branding comes from simple.css. */
+.colab-start-page .colab-start-main { padding-top: 0; }
+.colab-start-page .colab-start-hero { padding-top: 3rem; padding-bottom: 2rem; gap: 2.5rem; }
+.colab-start-page h1 { font-size: clamp(2.25rem, 4vw, 3.8rem); line-height: 1.08; max-width: 18ch; }
+.colab-start-page .colab-start-intro { font-size: 1.1rem; }
+.colab-start-page .colab-start-note { font-size: .92rem; padding: 0; background: none; border: 0; margin-top: 1rem; }
+.colab-start-page .colab-start-summary { padding: 1.75rem; }
+.colab-policy { padding: 1.5rem 1.75rem; border: 1px solid #c7d2c6; border-radius: 18px; background: #eef2e9; }
+.colab-policy h2 { font-size: 1.2rem; margin: 0 0 .55rem; }
+.colab-policy p { max-width: 86ch; margin: 0; line-height: 1.65; }
+.colab-policy-links { display: flex; gap: .8rem 1.5rem; flex-wrap: wrap; margin-top: .8rem; }
+.colab-start-page .colab-start-guide { padding-top: 3rem; padding-bottom: 2rem; }
+.colab-start-page .colab-start-heading { margin-bottom: 1.5rem; }
+.colab-start-page .colab-start-steps li { padding: 1.2rem 0; }
+.colab-start-page .colab-start-details { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 0 auto; padding-top: 1rem; padding-bottom: 2rem; }
+.colab-start-page .colab-start-details article { padding: 1.5rem; }
+.colab-start-page .colab-start-details h2 { font-size: 1.35rem; }
+.colab-help { padding-top: 1rem; padding-bottom: 3rem; }
+.colab-help > h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 1.25rem; }
+.colab-help details { border-top: 1px solid #d8ded6; padding: 1rem 0; }
+.colab-help summary { cursor: pointer; font-weight: 650; line-height: 1.6; }
+.colab-help details p { max-width: 85ch; margin: .8rem 0; color: #4e5c54; line-height: 1.7; }
+.colab-help a, .colab-policy a { overflow-wrap: anywhere; }
+.colab-local-link { margin-top: 1.5rem; display: inline-block; }
+.colab-start-page .footer-bottom { gap: 1rem; flex-wrap: wrap; }
+@media (max-width: 700px) {
+  .colab-start-page .colab-start-hero { padding-top: 2rem; gap: 1.4rem; }
+  .colab-start-page .colab-start-summary { padding: 1.25rem; }
+  .colab-start-page .colab-start-details { grid-template-columns: 1fr; }
+  .colab-policy { width: calc(100% - 2rem); padding: 1.15rem; }
+  .colab-policy-links { flex-direction: column; align-items: flex-start; }
+}

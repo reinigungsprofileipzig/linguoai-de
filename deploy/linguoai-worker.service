@@ -1,0 +1,47 @@
+[Unit]
+Description=LinguoAI CPU transcription and translation worker
+After=network-online.target linguoai-web.service
+Wants=network-online.target linguoai-web.service
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=linguoai-web
+Group=linguoai-web
+WorkingDirectory=/opt/linguoai-web
+EnvironmentFile=/etc/linguoai-web/worker.env
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=HOME=/var/lib/linguoai-web
+Environment=HF_HOME=/var/lib/linguoai-web/cache/huggingface
+Environment=XDG_CACHE_HOME=/var/lib/linguoai-web/cache
+Environment=TMPDIR=/var/lib/linguoai-web/tmp
+ExecStartPre=/usr/bin/mkdir -p /var/lib/linguoai-web/tmp /var/lib/linguoai-web/cache
+ExecStart=/opt/linguoai-web/.venv/bin/python -m linguoai.web_worker --server http://127.0.0.1:8765 --worker-id mars-cpu
+Restart=on-failure
+RestartSec=5
+KillSignal=SIGINT
+TimeoutStopSec=30
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+CapabilityBoundingSet=
+AmbientCapabilities=
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ReadOnlyPaths=/etc/linguoai-web
+ReadWritePaths=/var/lib/linguoai-web
+MemoryHigh=1536M
+MemoryMax=2048M
+CPUQuota=150%
+TasksMax=96
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target

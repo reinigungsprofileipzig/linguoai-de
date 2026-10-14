@@ -1,6 +1,6 @@
 """Build static LinguoAI website variants from the German source pages.
 
-The German files in ``website/index.html`` and ``website/colab.html`` remain the
+The German homepage, Colab quick start, and detailed guide remain the
 authoritative templates. Locale catalogs map their visible German strings to
 translations. The generated pages are completely static and therefore remain
 usable without JavaScript.
@@ -14,8 +14,9 @@ import re
 from collections.abc import Iterable
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit, urlunsplit
 
-from bs4 import BeautifulSoup, NavigableString, Tag
+from bs4 import BeautifulSoup, Comment, Doctype, NavigableString, Tag
 
 ROOT = Path(__file__).resolve().parents[1]
 WEBSITE = ROOT / "website" if (ROOT / "website" / "index.html").is_file() else ROOT
@@ -23,6 +24,7 @@ CATALOG_DIR = WEBSITE / "assets" / "locales"
 SOURCE_PAGES = {
     "index": WEBSITE / "index.html",
     "colab": WEBSITE / "colab.html",
+    "anleitung": WEBSITE / "anleitung.html",
 }
 
 LOCALES = {
@@ -223,6 +225,8 @@ def should_translate(value: str) -> bool:
 
 
 def is_ignored(node: NavigableString | Tag) -> bool:
+    if isinstance(node, (Comment, Doctype)):
+        return True
     parent = node.parent if isinstance(node, NavigableString) else node
     while isinstance(parent, Tag):
         if parent.name in SKIP_TAGS or parent.has_attr("data-i18n-ignore"):
@@ -300,7 +304,11 @@ def load_catalog(locale: str) -> dict[str, str]:
 
 def save_catalog(locale: str, translations: dict[str, str]) -> None:
     CATALOG_DIR.mkdir(parents=True, exist_ok=True)
-    translations.update(MANUAL_OVERRIDES.get(locale, {}))
+    translations.update(
+        (source, target)
+        for source, target in MANUAL_OVERRIDES.get(locale, {}).items()
+        if source in translations
+    )
     payload = {
         "locale": locale,
         "name": LOCALES[locale]["name"],
@@ -432,30 +440,55 @@ def translate_json_ld(value: Any, catalog: dict[str, str], *, parent_key: str = 
 
 
 def page_url(locale: str, page: str) -> str:
-    prefix = "" if locale == "de" else f"{locale}/"
-    suffix = "" if page == "index" else "colab.html"
-    return f"https://linguoai.de/{prefix}{suffix}"
+    return f"https://linguoai.de{route_path(locale, page)}"
 
 
 def route_path(locale: str, page: str) -> str:
+    if page not in SOURCE_PAGES:
+        raise ValueError(f"Unbekannte Seite: {page}")
     prefix = "" if locale == "de" else f"{locale}/"
-    suffix = "" if page == "index" else "colab.html"
+    suffix = "" if page == "index" else f"{page}.html"
     return f"/{prefix}{suffix}"
 
 
-def localize_links(soup: BeautifulSoup, locale: str, page: str) -> None:
-    home_url = page_url(locale, "index")
-    colab_url = page_url(locale, "colab")
-    home_downloads = f"{home_url}#downloads"
+def localize_site_url(value: str, locale: str) -> str:
+    """Localize source-page URLs, preserving external URLs and local anchors."""
+    parts = urlsplit(value)
+    if parts.scheme and parts.scheme not in {"http", "https"}:
+        return value
+    if parts.netloc and parts.netloc != "linguoai.de":
+        return value
+    if not parts.path:
+        return value
+    source_routes = {"/": "index", "/index.html": "index", "index.html": "index"}
+    for page in SOURCE_PAGES:
+        if page != "index":
+            source_routes[f"/{page}.html"] = page
+            source_routes[f"{page}.html"] = page
+    target_page = source_routes.get(parts.path)
+    if target_page is None:
+        return value
+    return urlunsplit(
+        (parts.scheme, parts.netloc, route_path(locale, target_page), parts.query, parts.fragment)
+    )
 
+
+def localize_json_ld_urls(value: Any, locale: str) -> Any:
+    if isinstance(value, dict):
+        return {
+            key: localize_site_url(item, locale)
+            if key in {"url", "@id"} and isinstance(item, str)
+            else localize_json_ld_urls(item, locale)
+            for key, item in value.items()
+        }
+    if isinstance(value, list):
+        return [localize_json_ld_urls(item, locale) for item in value]
+    return value
+
+
+def localize_links(soup: BeautifulSoup, locale: str, page: str) -> None:
     for link in soup.find_all("a", href=True):
-        href = str(link["href"])
-        if href == "https://linguoai.de/":
-            link["href"] = home_url
-        elif href == "https://linguoai.de/colab.html":
-            link["href"] = colab_url
-        elif href == "https://linguoai.de/#downloads":
-            link["href"] = home_downloads
+        link["href"] = localize_site_url(str(link["href"]), locale)
 
     for link in soup.select("[data-locale-link]"):
         target = str(link.get("data-locale-link", "de"))
@@ -512,16 +545,19 @@ def build_page(locale: str, page: str, catalog: dict[str, str]) -> str:
     og_locale = soup.select_one('meta[property="og:locale"]')
     if og_locale:
         og_locale["content"] = LOCALES[locale]["og"]
+    for alternate in soup.select('link[rel="alternate"][hreflang]'):
+        target = str(alternate["hreflang"])
+        if target == "x-default":
+            target = "en"
+        if target in LOCALES:
+            alternate["href"] = page_url(target, page)
 
     json_catalog = {**catalog, "__locale__": locale}
     for script in soup.select('script[type="application/ld+json"]'):
         if not script.string:
             continue
         data = json.loads(script.string)
-        localized = translate_json_ld(data, json_catalog)
-        for item in localized.get("@graph", []):
-            if isinstance(item, dict) and item.get("url") == "https://linguoai.de/":
-                item["url"] = page_url(locale, "index")
+        localized = localize_json_ld_urls(translate_json_ld(data, json_catalog), locale)
         script.string = "\n" + json.dumps(localized, ensure_ascii=False, indent=2) + "\n"
 
     localize_links(soup, locale, page)
@@ -529,7 +565,10 @@ def build_page(locale: str, page: str, catalog: dict[str, str]) -> str:
     if locale_code:
         locale_code.string = locale.upper()
 
-    return "<!doctype html>\n" + str(soup)
+    for node in list(soup.contents):
+        if isinstance(node, Doctype):
+            node.extract()
+    return "<!doctype html>\n" + str(soup).lstrip()
 
 
 def validate_catalogs() -> None:
@@ -556,7 +595,7 @@ def build_localized_pages() -> None:
         target_dir = WEBSITE / locale
         target_dir.mkdir(parents=True, exist_ok=True)
         for page in SOURCE_PAGES:
-            output_name = "index.html" if page == "index" else "colab.html"
+            output_name = f"{page}.html"
             (target_dir / output_name).write_text(
                 build_page(locale, page, catalog),
                 encoding="utf-8",

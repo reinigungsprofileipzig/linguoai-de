@@ -48,6 +48,16 @@ WHISPER_DISPLAY = {
     "turbo · schnell auf GPU": "turbo",
 }
 
+ASR_ENGINE_DISPLAY = {
+    "Whisper · automatisch / viele Sprachen": "whisper",
+    "Parakeet · schnelle CPU-Alternative": "parakeet",
+}
+
+PARAKEET_PROFILE_DISPLAY = {
+    "NVIDIA V3 · 25 europäische Sprachen": "multilingual-v3",
+    "primeline · Deutsch-Fine-Tune": "german-primeline",
+}
+
 DEVICE_DISPLAY = {
     "Automatisch (empfohlen)": "auto",
     "Nur CPU": "cpu",
@@ -154,6 +164,10 @@ class LinguoAIApp:
         self.source_language = tk.StringVar(value="Automatisch erkennen")
         self.service = tk.StringVar(value=self._default_service_display())
         self.whisper_model = tk.StringVar(value="small · guter Einstieg")
+        self.asr_engine = tk.StringVar(value=next(iter(ASR_ENGINE_DISPLAY)))
+        self.parakeet_model_directory = tk.StringVar()
+        self.parakeet_profile = tk.StringVar(value=next(iter(PARAKEET_PROFILE_DISPLAY)))
+        self.parakeet_threads = tk.IntVar(value=4)
         self.device = tk.StringVar(value="Automatisch (empfohlen)")
         self.compute_type = tk.StringVar(value="Automatisch")
         self.nllb_device = tk.StringVar(value="Automatisch (empfohlen)")
@@ -709,6 +723,65 @@ class LinguoAIApp:
         self._register(compute_combo, "readonly")
         self._register(asr_workers, "normal")
         self._register(tts_workers, "normal", tts_engine="edge")
+
+        asr_combo = self._form_combo(
+            performance,
+            "Spracherkennung",
+            self.asr_engine,
+            list(ASR_ENGINE_DISPLAY),
+            row=4,
+            column=0,
+        )
+        profile_combo = self._form_combo(
+            performance,
+            "Parakeet-Modellprofil",
+            self.parakeet_profile,
+            list(PARAKEET_PROFILE_DISPLAY),
+            row=4,
+            column=1,
+        )
+        ttk.Label(performance, text="Parakeet-Modellordner", style="Muted.TLabel").grid(
+            row=6, column=0, columnspan=2, sticky="w"
+        )
+        parakeet_row = ttk.Frame(performance)
+        parakeet_row.grid(row=7, column=0, columnspan=2, sticky="ew", pady=(4, 8))
+        parakeet_row.columnconfigure(0, weight=1)
+        parakeet_path = ttk.Entry(parakeet_row, textvariable=self.parakeet_model_directory)
+        parakeet_path.grid(row=0, column=0, sticky="ew")
+        parakeet_browse = ttk.Button(
+            parakeet_row,
+            text="Ordner …",
+            command=self._select_parakeet_model,
+            bootstyle="primary-outline",
+        )
+        parakeet_browse.grid(row=0, column=1, padx=(7, 0))
+        parakeet_threads = self._form_spinbox(
+            performance,
+            "Parakeet-CPU-Threads",
+            self.parakeet_threads,
+            1,
+            32,
+            row=8,
+            column=0,
+        )
+        parakeet_help = ttk.Label(
+            performance,
+            text="Parakeet: Quellsprache auswählen, sherpa-onnx-Export lokal laden. "
+            "CPU, standardmäßig 4 Threads. Whisper-Modell/Hardware gelten nur für Whisper.",
+            style="Muted.TLabel",
+            justify=tk.LEFT,
+            wraplength=350,
+        )
+        parakeet_help.grid(row=10, column=0, columnspan=2, sticky="ew", pady=(4, 0))
+        self._bind_dynamic_wrap(parakeet_help, performance, inset=24)
+        for widget, state in (
+            (asr_combo, "readonly"),
+            (profile_combo, "readonly"),
+            (parakeet_path, "normal"),
+            (parakeet_browse, "normal"),
+            (parakeet_threads, "normal"),
+        ):
+            self._register(widget, state)
 
         nllb = ttk.LabelFrame(tab, text="Lokales NLLB-Modell", padding=12)
         nllb.grid(row=0, column=1, sticky="nsew", padx=(7, 0), pady=(0, 9))
@@ -1266,6 +1339,9 @@ class LinguoAIApp:
         self.source_language.trace_add("write", self._selection_changed)
         self.service.trace_add("write", self._provider_changed)
         self.whisper_model.trace_add("write", self._selection_changed)
+        self.asr_engine.trace_add("write", self._selection_changed)
+        self.parakeet_profile.trace_add("write", self._selection_changed)
+        self.parakeet_model_directory.trace_add("write", self._selection_changed)
         self.device.trace_add("write", self._hardware_changed)
         self.compute_type.trace_add("write", self._hardware_changed)
         self.nllb_device.trace_add("write", self._hardware_changed)
@@ -1396,6 +1472,13 @@ class LinguoAIApp:
         selected = filedialog.askdirectory(title="Lokales NLLB-Modell auswählen")
         if selected:
             self.nllb_model.set(selected)
+
+    def _select_parakeet_model(self) -> None:
+        if self._running:
+            return
+        selected = filedialog.askdirectory(title="Parakeet-sherpa-onnx-Modellordner wählen")
+        if selected:
+            self.parakeet_model_directory.set(selected)
 
     def _select_piper_model(self) -> None:
         if self._running:
@@ -1584,6 +1667,14 @@ class LinguoAIApp:
             whisper_model=WHISPER_DISPLAY.get(
                 self.whisper_model.get(), self.whisper_model.get().strip()
             ),
+            asr_engine=ASR_ENGINE_DISPLAY.get(self.asr_engine.get(), "whisper"),
+            parakeet_model_directory=(
+                Path(self.parakeet_model_directory.get().strip())
+                if self.parakeet_model_directory.get().strip()
+                else None
+            ),
+            parakeet_profile=PARAKEET_PROFILE_DISPLAY[self.parakeet_profile.get()],
+            parakeet_threads=self.parakeet_threads.get(),
             device=device_code,
             compute_type=compute_type,
             transcription_workers=self.transcription_workers.get(),
@@ -1870,6 +1961,12 @@ class LinguoAIApp:
             else source_value
         )
         model = WHISPER_DISPLAY.get(self.whisper_model.get(), self.whisper_model.get())
+        asr_summary = (
+            f"Parakeet · {self.parakeet_profile.get()} · "
+            f"CPU ({self.parakeet_threads.get()} Threads)"
+            if ASR_ENGINE_DISPLAY.get(self.asr_engine.get()) == "parakeet"
+            else f"Whisper {model} · {self.device.get()}"
+        )
         tts_engine = self._tts_engine_code()
         if tts_engine == "edge":
             voice = self.tts_voice.get().strip()
@@ -1890,7 +1987,7 @@ class LinguoAIApp:
             tts_summary = f"Chatterbox {generation} · {reference_name} · {self.tts_device.get()}"
         self.job_summary.set(
             f"{source_name}\n{source_name_display}  →  {target_name}\n"
-            f"Whisper {model} · {self.device.get()}\nStimme: {tts_summary}"
+            f"{asr_summary}\nStimme: {tts_summary}"
         )
 
     def _check_environment(self) -> None:
@@ -1901,7 +1998,12 @@ class LinguoAIApp:
             missing.append("FFmpeg")
         if not shutil.which("ffprobe"):
             missing.append("ffprobe")
-        missing.extend(self._missing_modules(("faster_whisper",)))
+        asr_modules = (
+            ("sherpa_onnx", "numpy")
+            if ASR_ENGINE_DISPLAY.get(self.asr_engine.get()) == "parakeet"
+            else ("faster_whisper",)
+        )
+        missing.extend(self._missing_modules(asr_modules))
         service_code = SERVICE_DISPLAY.get(self.service.get(), "google")
         if service_code == "nllb":
             missing.extend(self._missing_modules(("torch", "transformers", "sentencepiece")))
@@ -1980,7 +2082,8 @@ class LinguoAIApp:
             self.environment_label.configure(bootstyle="warning")
         else:
             self.environment_status.set(
-                "FFmpeg, Whisper, Übersetzung und die gewählte TTS-Engine sind einsatzbereit."
+                "FFmpeg, Spracherkennung, Übersetzung und die gewählte TTS-Engine "
+                "sind einsatzbereit."
             )
             self.environment_label.configure(bootstyle="success")
 

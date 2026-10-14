@@ -1,0 +1,44 @@
+[Unit]
+Description=LinguoAI private upload and download API
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=linguoai-web
+Group=linguoai-web
+WorkingDirectory=/opt/linguoai-web
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=LINGUOAI_WEB_CONFIG=/etc/linguoai-web/server.json
+Environment=LINGUOAI_WEB_STATE=/var/lib/linguoai-web
+Environment=HOME=/var/lib/linguoai-web
+ExecStart=/opt/linguoai-web/.venv/bin/python -m linguoai.web_api --host 127.0.0.1 --port 8765
+Restart=on-failure
+RestartSec=5
+KillSignal=SIGINT
+TimeoutStopSec=30
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+CapabilityBoundingSet=
+AmbientCapabilities=
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ReadOnlyPaths=/etc/linguoai-web
+ReadWritePaths=/var/lib/linguoai-web
+MemoryHigh=256M
+MemoryMax=512M
+CPUQuota=50%
+TasksMax=96
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target

@@ -21,7 +21,15 @@ from typing import Any, NoReturn
 from urllib.parse import urlsplit
 from urllib.request import ProxyHandler, build_opener
 
-from .config import LANGUAGES, TTS_DEVICES, TTS_ENGINES, VIDEO_EXTENSIONS, AppConfig
+from .config import (
+    ASR_ENGINES,
+    LANGUAGES,
+    PARAKEET_PROFILES,
+    TTS_DEVICES,
+    TTS_ENGINES,
+    VIDEO_EXTENSIONS,
+    AppConfig,
+)
 from .domain import ProgressUpdate
 from .errors import CancelledError, LinguoAIError
 from .pipeline import VideoDubbingPipeline
@@ -137,6 +145,10 @@ def process_colab_job(
     save_to_drive: bool,
     drive_output_folder: str,
     *,
+    asr_engine: str = "whisper",
+    parakeet_model_directory: str = "",
+    parakeet_profile: str = "multilingual-v3",
+    parakeet_threads: int = 4,
     tts_engine: str = "edge",
     tts_device: str = "auto",
     uploaded_tts_reference: str | None = None,
@@ -249,6 +261,12 @@ def process_colab_job(
                 else ()
             ),
             whisper_model=whisper_model,
+            asr_engine=asr_engine,
+            parakeet_model_directory=(
+                Path(parakeet_model_directory.strip()) if parakeet_model_directory.strip() else None
+            ),
+            parakeet_profile=parakeet_profile,
+            parakeet_threads=int(parakeet_threads),
             device=device,
             transcription_workers=1,
             nllb_device=nllb_device,
@@ -387,6 +405,10 @@ def process_colab_batch(
     save_to_drive: bool,
     drive_output_folder: str,
     *,
+    asr_engine: str = "whisper",
+    parakeet_model_directory: str = "",
+    parakeet_profile: str = "multilingual-v3",
+    parakeet_threads: int = 4,
     tts_engine: str = "edge",
     tts_device: str = "auto",
     uploaded_tts_reference: str | None = None,
@@ -451,6 +473,10 @@ def process_colab_batch(
                 optimize_transcript,
                 save_to_drive,
                 drive_output_folder,
+                asr_engine=asr_engine,
+                parakeet_model_directory=parakeet_model_directory,
+                parakeet_profile=parakeet_profile,
+                parakeet_threads=parakeet_threads,
                 tts_engine=tts_engine,
                 tts_device=tts_device,
                 uploaded_tts_reference=uploaded_tts_reference,
@@ -721,6 +747,28 @@ def build_demo(
                     step=0.05,
                     label="Prompt-Treue (CFG)",
                 )
+        with gr.Accordion("Spracherkennung: optionale Parakeet-CPU-Alternative", open=False):
+            with gr.Row():
+                asr_engine = gr.Dropdown(
+                    choices=list(ASR_ENGINES), value="whisper", label="Spracherkennung"
+                )
+                parakeet_profile = gr.Dropdown(
+                    choices=list(PARAKEET_PROFILES),
+                    value="multilingual-v3",
+                    label="Parakeet-Modellprofil",
+                )
+            parakeet_model_directory = gr.Textbox(
+                label="Lokaler Parakeet-Modellordner auf dem Server / in Colab",
+                placeholder="/content/models/sherpa-onnx-nemo-parakeet-tdt-0.6b-v3-int8",
+            )
+            parakeet_threads = gr.Slider(1, 32, value=4, step=1, label="Parakeet-CPU-Threads")
+            gr.Markdown(
+                'Parakeet benötigt `pip install -e ".[parakeet]"` und einen vollständigen '
+                "sherpa-onnx-Export (Encoder, Decoder, Joiner, tokens.txt und ggf. .onnx.data). "
+                "Wähle die Quellsprache oben ausdrücklich aus. NVIDIA V3 unterstützt "
+                "25 europäische Sprachen; das primeline-Profil ist für Deutsch. "
+                "Whisper-Modell und ASR-GPU-Auswahl gelten für Whisper."
+            )
         with gr.Accordion("Cloud-Schlüssel und Optimierung", open=False):
             deepl_api_key = gr.Textbox(label="DeepL API-Key", type="password")
             gemini_api_key = gr.Textbox(label="Gemini API-Key", type="password")
@@ -803,6 +851,10 @@ def build_demo(
             continue_after_error,
             save_to_drive,
             drive_output_folder,
+            asr_engine,
+            parakeet_model_directory,
+            parakeet_profile,
+            parakeet_threads,
         ]
 
         progress_tracker = gr.Progress()
@@ -852,6 +904,10 @@ def build_demo(
             continue_after_error_value: bool,
             save_to_drive_value: bool,
             drive_output_folder_value: str,
+            asr_engine_value: str,
+            parakeet_model_directory_value: str,
+            parakeet_profile_value: str,
+            parakeet_threads_value: int,
             progress: Any = progress_tracker,
         ) -> tuple[str, list[str]]:
             ui_cancel_event.clear()
@@ -875,6 +931,10 @@ def build_demo(
                 optimize_transcript_value,
                 save_to_drive_value,
                 drive_output_folder_value,
+                asr_engine=asr_engine_value,
+                parakeet_model_directory=parakeet_model_directory_value,
+                parakeet_profile=parakeet_profile_value,
+                parakeet_threads=parakeet_threads_value,
                 tts_engine=tts_engine_value,
                 tts_device=tts_device_value,
                 uploaded_tts_reference=uploaded_tts_reference_value,

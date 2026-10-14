@@ -1,11 +1,10 @@
 <!doctype html>
-HTML
 <html class="no-js" data-locale-detect="false" data-locale-page="tr" lang="tr">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="#f4f1ea" name="theme-color"/>
-<meta content="LinguoAI, yerel olarak CPU/GPU'de veya rahatlıkla Google Colab'de videoları çevirir, altyazılar oluşturur ve senkronize bir ses parçası oluşturur." name="description"/>
+<meta content="Videoları çevirin ve altyazılarla yeni bir ses kanalı oluşturun. LinguoAI bilgisayarınızda veya Google Colab'da çalışır. Adım adım, kolay başlangıç." name="description"/>
 <meta content="index,follow,max-image-preview:large" name="robots"/>
 <link href="https://linguoai.de/tr/" rel="canonical"/>
 <link href="https://linguoai.de/" hreflang="de" rel="alternate"/>
@@ -21,13 +20,12 @@ HTML
 <meta content="website" property="og:type"/>
 <meta content="tr_TR" property="og:locale"/>
 <meta content="LinguoAI" property="og:site_name"/>
-<meta content="LinguoAI – Videoları çevirin ve yeniden puanlayın" property="og:title"/>
-<meta content="Orijinal videodan çevrilmiş, senkronize ses kaydına - masaüstü GUI, CLI ve Colab web arayüzüyle." property="og:description"/>
+<meta content="LinguoAI – Videoları çevirin ve seslendirin" property="og:title"/>
+<meta content="Videodan yeni dil sürümüne: çevirin, seslendirin ve altyazıları kaydedin. Bilgisayarınızda veya Google Colab'da." property="og:description"/>
 <meta content="https://linguoai.de/tr/" property="og:url"/>
 <meta content="summary" name="twitter:card"/>
-<title>LinguoAI – Videoları çevirin ve senkronize şekilde seslendirin</title>
-<link href="/assets/styles.css?v=20261012-1" rel="stylesheet"/>
-<link href="/assets/funnel.css?v=20261012-1" rel="stylesheet"/>
+<title>LinguoAI – Videoları çevirin ve seslendirin</title>
+<link href="/assets/simple.css?v=20261013-2" rel="stylesheet"/>
 <script>
       document.documentElement.classList.replace("no-js", "has-js");
       (() => {
@@ -39,87 +37,59 @@ HTML
           const saved = window.localStorage.getItem("linguoai.locale") || "";
           if (supported.has(saved)) selected = saved;
         } catch (_error) {
-          // Private browsing may block storage; browser detection still works.
+          // Browser language remains available when storage is blocked.
         }
         if (!selected) {
           const requested = Array.isArray(navigator.languages) ? navigator.languages : [navigator.language];
-          selected = requested
-            .map((value) => String(value || "").toLowerCase().split("-")[0])
+          selected = requested.map((value) => String(value || "").toLowerCase().split("-")[0])
             .find((value) => supported.has(value)) || "en";
         }
-        if (selected !== "de") {
-          window.location.replace(`${route[selected]}${window.location.hash}`);
-        }
+        if (selected !== "de") window.location.replace(route[selected] + window.location.hash);
       })();
     </script>
 <script defer="" src="/assets/locale.js?v=20261012-1"></script>
-<script defer="" src="/assets/site.js?v=20261012-1"></script>
+<script defer="" src="/assets/site.js?v=20261013-2"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://linguoai.de/#website",
+      "@id": "https://linguoai.de/tr/#website",
       "url": "https://linguoai.de/tr/",
       "name": "LinguoAI",
       "inLanguage": "tr"
     },
     {
       "@type": "SoftwareApplication",
-      "@id": "https://linguoai.de/#software",
+      "@id": "https://linguoai.de/tr/#software",
       "name": "LinguoAI",
       "url": "https://linguoai.de/tr/",
       "applicationCategory": "MultimediaApplication",
       "operatingSystem": "Windows, Linux, Google Colab",
-      "description": "Masaüstü GUI, CLI ve Colab web arayüzü ile video transkripsiyon, çeviri, altyazı ve zaman senkronize konuşma sentezi.",
+      "description": "Video transkripsiyonu, çeviri, altyazı ve zamanlamaya uyarlanmış yeni ses kanalı.",
       "softwareVersion": "2.2.1",
       "softwareRequirements": "Python 3.10 veya üstü ve FFmpeg; Chatterbox için Python 3.11 önerilir",
       "downloadUrl": "https://linguoai.de/downloads/LinguoAI-2.2.1-source.zip",
-      "featureList": [
-        "Faster-Whisper transkripsiyonu",
-        "Yerel veya bulut tabanlı çeviri",
-        "Edge, gTTS, Piper ve Chatterbox ses çıkışı",
-        "Zaman ayarlı yeni ses kaydı",
-        "Orijinal ve çeviri altyazılar",
-        "Masaüstü GUI, CLI ve Google Colab arayüzü"
-      ],
       "inLanguage": "tr"
     },
     {
       "@type": "FAQPage",
-      "@id": "https://linguoai.de/#faq",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "LinguoAI kendi sesimi kullanabilir mi?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Evet. Chatterbox yetkili bir referans kaydı kullanır. Alternatif olarak Piper, önceden eğitilmiş olan kendi ONNX modelini yükler. gTTS ve Edge çevrimiçi sesler sunar ancak sesli kopya sunmaz."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Program tamamen yerel olarak mı çalışıyor?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Faster-Whisper, NLLB ve Piper veya Chatterbox ile işleme, ilk model indirildikten sonra seçilen çalışma zamanında çalışır. Colab'de bu, geçici Google VM'sidir. Edge TTS, gTTS, Google Translate, DeepL ve Gemini çevrimiçi hizmetlerdir."
-          }
-        },
         {
           "@type": "Question",
           "name": "Güçlü bir grafik kartına ihtiyacım var mı?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Hayır. Whisper, NLLB ve Piper, CPU üzerinde çalışır. Chatterbox, CPU'de mümkündür, ancak NVIDIA-GPU daha uzun projeler için mantıklıdır."
+            "text": "Hayır. CPU üzerinde de işlem yapılabilir ancak daha uzun sürer. Başlamak için kısa bir video yeterlidir. GPU isteğe bağlıdır."
           }
         },
         {
           "@type": "Question",
-          "name": "Sonunda ne elde edeceğim?",
+          "name": "Colab bağlantım ne kadar süre çalışır?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yeni dublajlı bir video, tanınan orijinal metni içeren bir SRT dosyası ve çeviriyi içeren ikinci bir SRT dosyası."
+            "text": "Yalnızca ilgili Colab oturumu ve arayüz çalışırken. Gradio bağlantısı dinamiktir ve yalnızca güvendiğiniz kişilerle paylaşılmalıdır. Sonuçları zamanında indirin veya Google Drive'a kaydedin."
           }
         }
       ]
@@ -128,28 +98,23 @@ HTML
 }
 </script>
 </head>
-<body>
+<body class="simple-site simple-home">
 <a class="skip-link" href="#main">Doğrudan içeriğe gidin</a>
-<div aria-hidden="true" class="scroll-progress"><span></span></div>
 <header class="site-header" data-header="">
 <div class="container header-inner">
 <a aria-label="LinguoAI Ana sayfa" class="brand" href="#top">
-<img alt="" height="38" src="/assets/logo-mark.svg" width="38"/>
-<span>LinguoAI</span>
+<img alt="" height="38" src="/assets/logo-mark.svg" width="38"/><span>LinguoAI</span>
 </a>
 <nav aria-label="Ana gezinme" class="main-navigation" data-menu="" id="main-navigation">
-<a href="#startweg">Başlat</a>
-<a href="#funktionen">Avantajları</a>
-<a href="#stimmen">Sesler</a>
-<a href="#ablauf">İşte nasıl çalışıyor?</a>
-<a href="#fragen">SSS</a>
+<a href="#funktionen">Özellikler</a>
+<a href="/tr/colab.html">Kılavuz</a>
 <a href="#downloads">İndirilenler</a>
+<a data-i18n-ignore="" href="https://stayinleipzig.de/linguoai/web.html">Video Studio</a>
+<a href="#fragen">Yardım</a>
 </nav>
 <div class="header-tools">
 <details class="language-switcher" data-language-switcher="">
-<summary aria-label="Dil seçin">
-<span data-locale-code="">TR</span><span aria-hidden="true">⌄</span>
-</summary>
+<summary aria-label="Dil seçin"><span data-locale-code="">TR</span><span aria-hidden="true">⌄</span></summary>
 <div class="language-options" data-i18n-ignore="">
 <a data-locale-link="de" href="/" hreflang="de" lang="de">Deutsch</a>
 <a data-locale-link="en" href="/en/" hreflang="en" lang="en">English</a>
@@ -160,1066 +125,97 @@ HTML
 <a data-locale-link="it" href="/it/" hreflang="it" lang="it">Italiano</a>
 </div>
 </details>
-<a class="button button-small header-action" href="#startweg">Ücretsiz başlayın</a>
+<a class="text-link header-action" href="#ablauf">İşte nasıl çalışıyor? <span aria-hidden="true">↓</span></a>
 <button aria-controls="main-navigation" aria-expanded="false" class="menu-button" data-menu-button="" type="button">
-<span class="sr-only">Gezinmeyi aç</span>
-<span aria-hidden="true"></span>
-<span aria-hidden="true"></span>
+<span class="sr-only">Gezinmeyi aç</span><span aria-hidden="true"></span><span aria-hidden="true"></span>
 </button>
 </div>
 </div>
 </header>
 <main id="main">
-<section class="hero" id="top">
-<div aria-hidden="true" class="hero-grid"></div>
-<div class="container hero-layout">
-<div class="hero-copy">
-<p class="eyebrow reveal">
-<span class="status-dot"></span>
-              Açık Kaynak · yerel olarak veya Google Colab'de
-            </p>
-<h1 class="reveal" data-delay="1">
-<span>Videonuz.</span>
-<span>Yeni bir dil.</span>
-<span class="accent-line">Doğal seslendirme.</span>
-</h1>
-<p class="hero-intro reveal" data-delay="2">
-              Rehberli bir süreçte videoları çevirin, altyazı yapın ve dublaj yapın. Hemen tarayıcıdan başlayın veya masaüstü sürümüyle her şeyi bilgisayarınızda tutun.
-            </p>
-<div class="hero-actions reveal" data-delay="3">
-<a class="button" href="https://linguoai.de/tr/colab.html">
-                Colab kılavuzunu açın
-                <span aria-hidden="true">↗</span>
-</a>
-<a class="text-link" href="#downloads">
-                İndir ve Yükle
-                <span aria-hidden="true">↓</span>
-</a>
+<section class="simple-hero" id="top">
+<div class="container simple-hero-grid">
+<div class="simple-hero-copy">
+<p class="eyebrow"><span class="status-dot"></span>Açık Kaynak · yerel olarak veya Google Colab'de</p>
+<h1>Videonuz.<br/><span>Yeni bir dil.</span></h1>
+<p class="simple-intro">Videoları çevirin, yeni bir ses kanalı oluşturun ve uygun altyazıları kaydedin. Adım adım — tarayıcıda veya bilgisayarınızda.</p>
+<div class="simple-actions">
+<a class="button" data-colab-start="" href="https://colab.research.google.com/github/reinigungsprofileipzig/linguoai-de/blob/main/notebooks/LinguoAI_Colab.ipynb">Google Colab'da başlat <span aria-hidden="true">↗</span></a>
+<a class="text-link" href="/tr/anleitung.html#desktop">Yerel olarak yükle <span aria-hidden="true">→</span></a>
 </div>
-<ul aria-label="Hızlı genel bakış" class="hero-facts reveal" data-delay="4">
-<li><strong>0 €</strong><span>ücretsiz ve açık</span></li>
-<li><strong>4</strong><span>Vokal motorları</span></li>
-<li><strong>CPU</strong><span>veya GPU</span></li>
-</ul>
+<p class="simple-start-note">Colab için bir Google hesabı gerekir. Kurulum birkaç dakika sürer; çalışma süresi ve GPU kullanılabilirliği garanti edilmez.</p>
+<a class="simple-help-link" href="/tr/colab.html">İlk kez mi? Kısa kılavuza gidin →</a>
 </div>
-<div class="product-stage reveal" data-delay="2">
-<div class="product-window" data-product-demo="">
-<div class="window-bar">
-<div aria-hidden="true" class="window-dots"><i></i><i></i><i></i></div>
-<span>Yeni işlem</span>
-<span class="window-status"><i></i> hazır</span>
+<figure class="simple-preview">
+<div class="simple-preview-heading"><span>LinguoAI</span><span>Video → yeni dil sürümü</span></div>
+<div class="simple-preview-route">
+<div><span>Orijinal video</span><strong>İngilizce</strong></div>
+<span aria-hidden="true" class="simple-route-arrow">→</span>
+<div><span>Yeni dil sürümü</span><strong>Almanca</strong></div>
 </div>
-<div class="window-body">
-<div class="demo-file">
-<div aria-hidden="true" class="file-icon">▶</div>
-<div>
-<strong>röportaj_final.mp4</strong>
-<span>Kaynak · 18:42 dakika</span>
-</div>
-<span aria-label="Dosya seçildi" class="file-check">✓</span>
-</div>
-<div aria-label="İngilizceden Almancaya" class="demo-route">
-<div><span>Kaynak</span><strong>İngilizce</strong></div>
-<span aria-hidden="true" class="route-arrow">→</span>
-<div><span>Hedef</span><strong>Almanca</strong></div>
-</div>
-<div class="demo-label">Sesi seçin</div>
-<div class="engine-switch" role="presentation">
-<span>Edge</span>
-<span>Piper</span>
-<span class="is-selected">Kendi sesi</span>
-</div>
-<div class="voice-card">
-<div aria-hidden="true" class="voice-avatar">
-<span></span><span></span><span></span><span></span><span></span>
-</div>
-<div>
-<strong>sesim.wav</strong>
-<span>8,4 sn · Referans kontrol edildi</span>
-</div>
-<span class="local-badge">YEREL</span>
-</div>
-<div class="demo-progress">
-<div class="progress-meta">
-<span>Ses parçasını senkronize et</span>
-<strong data-demo-percent="">72 %</strong>
-</div>
-<div class="progress-track"><span></span></div>
-<div aria-hidden="true" class="waveform">
-<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-</div>
-</div>
-</div>
-</div>
-<div class="stage-note stage-note-top">
-<span>CPU / GPU</span>
-              ayrı ayrı seçilebilir
-            </div>
-<div class="stage-note stage-note-bottom">
-<span>ÖZEL</span>
-              yerel seçenekler
-            </div>
-</div>
-</div>
-<div class="container compatibility-strip reveal">
-<span>Gerçek iş akışları için tasarlandı</span>
-<ul>
-<li>Masaüstü GUI</li>
-<li>Komut satırı</li>
-<li>Google Colab</li>
-<li>CPU ve NVIDIA-GPU</li>
-</ul>
+<div aria-hidden="true" class="simple-preview-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="simple-preview-outputs"><span>Yeni sesle video</span><span>Orijinal + çeviri, SRT olarak</span></div>
+<figcaption>Şematik örnek; canlı demo değildir.</figcaption>
+</figure>
 </div>
 </section>
-<section class="path-section section-pad" id="startweg">
+<section class="simple-section simple-benefits" id="funktionen">
 <div class="container">
-<div class="funnel-heading reveal">
-<p class="section-kicker">En hızlı başlangıcınız</p>
-<h2>Size uygun yolu seçin.</h2>
-<p>LinguoAI ile kayıt yok. Videonuzun nerede işleneceğine siz karar verirsiniz.</p>
+<div class="simple-heading"><p class="section-kicker">Önemli olan sonuç</p><h2>Bir kayıttan yeni dil sürümüne.</h2></div>
+<div class="simple-three-grid">
+<article class="simple-benefit"><span aria-hidden="true" class="simple-icon">Aa</span><h3>Çevirin ve altyazı ekleyin</h3><p>Konuşmayı metne dönüştürün, hedef dile çevirin ve her iki sürümü SRT olarak kaydedin.</p></article>
+<article class="simple-benefit"><span aria-hidden="true" class="simple-icon">≋</span><h3>Yeni bir sesle seslendirin</h3><p>Hazır bir ses seçin veya isteğe bağlı olarak kullanma izniniz olan kendi referans sesinizi kullanın.</p></article>
+<article class="simple-benefit"><span aria-hidden="true" class="simple-icon">↗</span><h3>Nerede çalışacağınızı seçin</h3><p>Tarayıcıda Google Colab ile başlayın veya masaüstü uygulamasında yerel modellerle çalışın.</p></article>
 </div>
-<div class="path-grid">
-<article class="path-card path-card-featured reveal">
-<div class="path-card-top"><span class="path-number">01</span><span class="recommendation">En kolay başlangıç</span></div>
-<h3>Google Colab</h3>
-<p>Doğrudan tarayıcıda çalışın. Test için ve yerel olarak herhangi bir şey yüklemek istemiyorsanız idealdir.</p>
-<ul class="check-list">
-<li>Dosyayı yükleyin veya Google Drive kullanın</li>
-<li>CPU veya isteğe bağlı Colab-GPU</li>
-<li>Kılavuzlu web arayüzü</li>
-</ul>
-<a class="button button-wide" href="https://linguoai.de/tr/colab.html">Colab kılavuzunu açın <span aria-hidden="true">→</span></a>
-<small>Notebook'yi linguoai.de aracılığıyla güvenle indirin</small>
-</article>
-<article class="path-card reveal" data-delay="1">
-<div class="path-card-top"><span class="path-number">02</span><span class="privacy-chip">Maksimum kontrol</span></div>
-<h3>Masaüstü uygulaması</h3>
-<p>Düzenli kullanım, hassas dosyalar ve yerel dil modelleri için en iyi seçim.</p>
-<ul class="check-list">
-<li>Modern grafik arayüzü</li>
-<li>Yerel TTS ve çeviri seçenekleri</li>
-<li>Windows ve Linux</li>
-</ul>
-<a class="button button-secondary button-wide" href="#panel-desktop">Yerel olarak yükle <span aria-hidden="true">↓</span></a>
-<small>Python 3.10+ ve FFmpeg gereklidir</small>
-</article>
-<article class="path-card reveal" data-delay="2">
-<div class="path-card-top"><span class="path-number">03</span><span class="pro-chip">İş akışları için</span></div>
-<h3>Komut satırı</h3>
-<p>Otomasyon, tekrarlanabilir süreçler ve kendi süreçlerinize entegrasyon için.</p>
-<ul class="check-list">
-<li>Parametre olarak tüm önemli seçenekler</li>
-<li>Toplu iş akışları için idealdir</li>
-<li>CPU/GPU ayrı olarak kontrol edilebilir</li>
-</ul>
-<a class="text-link path-link" href="#panel-cli">CLI talimatlarını görüntüleyin <span aria-hidden="true">→</span></a>
-<small>Deneyimli kullanıcılar için</small>
-</article>
-</div>
-<div aria-label="Ürün özellikleri" class="trust-row reveal">
-<span><i aria-hidden="true">✓</i> Açık kaynak</span>
-<span><i aria-hidden="true">✓</i> LinguoAI hesabı olmadan</span>
-<span><i aria-hidden="true">✓</i> Kendi sesi isteğe bağlı</span>
-<span><i aria-hidden="true">✓</i> Video ve SRT dışa aktarma</span>
-</div>
+<p class="simple-honest-note">Önemli: yeni ses kanalı, müzik ve gürültüler dahil orijinal sesi değiştirir. Görüntü değişmez; dudak hareketleri uyarlanmaz.</p>
 </div>
 </section>
-<section class="statement section-pad">
-<div class="container statement-grid">
-<p class="section-kicker reveal">Tek araç, tek net süreç</p>
-<div class="statement-copy reveal" data-delay="1">
-<h2>Sen dile dikkat et. Gerisini LinguoAI halleder.</h2>
-<p>
-              Tek tıklamayla sihir yok: Transkripsiyondan çevirmene, sese ve kullanılan cihaza kadar her önemli bileşen seçilebilir durumda kalıyor.
-            </p>
-</div>
-</div>
-</section>
-<section class="features section-pad" id="funktionen">
+<section class="simple-section simple-workflow" id="ablauf">
 <div class="container">
-<div class="section-heading reveal">
-<p class="section-kicker">LinguoAI neler yapabilir?</p>
-<h2>Yeni dil sürümü için her şey.</h2>
-<p>
-              Masaüstü arayüzü, CLI ve Colab sürümü aynı sağlam arka plan işlemeyi kullanır.
-            </p>
-</div>
-<div class="feature-grid">
-<article class="feature-card feature-card-wide reveal">
-<div class="feature-index">01</div>
-<div aria-hidden="true" class="feature-icon">
-<svg fill="none" height="32" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="32">
-<rect height="14" rx="3" width="18" x="3" y="5"></rect>
-<path d="M6.5 12h2l1.4-3.2 3.1 6.4 1.5-3.2h3"></path>
-</svg>
-</div>
-<h3>Dili tam olarak tanıyın</h3>
-<p>
-                Faster-Whisper, ses parçasını örtüşen bölümlerde işler ve gerçek zamanlı damgaları korur. Whisper modelini, CPU/GPU'yi ve hesaplama formatını kendiniz ayarlarsınız.
-              </p>
-<ul aria-label="Ayrıntılar" class="tag-list">
-<li>Faster-Whisper</li>
-<li>Konuşma tanıma otomatik veya sabit</li>
-<li>Dosya ve Klasör</li>
-</ul>
-</article>
-<article class="feature-card reveal" data-delay="1">
-<div class="feature-index">02</div>
-<div aria-hidden="true" class="feature-icon">
-<svg fill="none" height="32" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="32">
-<path d="M4 16 7.5 7l3.5 9M5.2 13h4.6"></path>
-<path d="M14 7h6M17 5v2M14.5 10.5c1.5 2.2 3.2 3.8 5.5 5"></path>
-<path d="M20 10.5c-1.4 2.2-3.1 3.9-5.5 5"></path>
-</svg>
-</div>
-<h3>Uygun şekilde tercüme edin</h3>
-<p>
-                Google, DeepL, Gemini veya yerel NLLB-200'yi seçin. İkinci bir hizmet yalnızca onu açıkça bir geri dönüş olarak etkinleştirmeniz durumunda kullanılacaktır.
-              </p>
-<ul class="plain-list">
-<li>NLLB yerel olarak CPU veya CUDA üzerinde</li>
-<li>Kendi uyumlu NLLB modelleri</li>
-<li>İsteğe bağlı Gemini metin optimizasyonu</li>
-</ul>
-</article>
-<article class="feature-card feature-card-dark reveal" data-delay="2">
-<div class="feature-index">03</div>
-<div aria-hidden="true" class="feature-icon">
-<svg fill="none" height="32" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="32">
-<rect height="11" rx="3" width="6" x="9" y="3"></rect>
-<path d="M6.5 11a5.5 5.5 0 0 0 11 0M12 16.5V21M9 21h6"></path>
-<path d="M4 8.5v5M20 8.5v5"></path>
-</svg>
-</div>
-<h3>Doğru sesi seçin</h3>
-<p>
-                Çevrimiçi ses, yerel ONNX modeli veya yetkili referans kaydı: Edge, gTTS, Piper ve Chatterbox, siparişe göre serbestçe seçilebilir.
-              </p>
-<a href="#stimmen">Sesleri karşılaştır <span aria-hidden="true">→</span></a>
-</article>
-<article class="feature-card reveal">
-<div class="feature-index">04</div>
-<div aria-hidden="true" class="feature-icon">
-<svg fill="none" height="32" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="32">
-<circle cx="12" cy="12" r="8.5"></circle>
-<path d="M12 7.5V12l3 2M4.5 4.5 2.8 6.2M19.5 4.5l1.7 1.7"></path>
-</svg>
-</div>
-<h3>Zamanlamaya sadık kalın</h3>
-<p>
-                Her konuşma klibi normalleştirilir, zaman penceresine uyarlanır ve örnek doğruluğuyla sınıflandırılır. Sonraki cümleler basitçe taşınmaz.
-              </p>
-<ul class="plain-list">
-<li>48kHz mono PCM</li>
-<li>Sınırlı tempo ayarı</li>
-<li>Tam medya sonu</li>
-</ul>
-</article>
-<article class="feature-card reveal" data-delay="1">
-<div class="feature-index">05</div>
-<div aria-hidden="true" class="feature-icon">
-<svg fill="none" height="32" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="32">
-<rect height="14" rx="3" width="18" x="3" y="5"></rect>
-<path d="M6.5 12.5h4M13.5 12.5h4M6.5 15.5h6M14.5 15.5h3"></path>
-</svg>
-</div>
-<h3>Altyazılar dahil</h3>
-<p>
-                Tamamlanan her video için orijinal metinle birlikte bir SRT dosyası ve çeviriyle birlikte bir saniye oluşturulur. Bu, sonucun esnek bir şekilde kullanılabileceği anlamına gelir.
-              </p>
-<ul aria-label="Çıktılar" class="tag-list">
-<li>video</li>
-<li>Orijinal SRT</li>
-<li>Çevrilmiş SRT</li>
-</ul>
-</article>
-<article class="feature-card feature-card-wide reveal" data-delay="2">
-<div class="feature-index">06</div>
-<div aria-hidden="true" class="feature-icon">
-<svg fill="none" height="32" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="32">
-<path d="M12 3 20 6v5.4c0 4.8-3.2 8.1-8 9.6-4.8-1.5-8-4.8-8-9.6V6l8-3Z"></path>
-<path d="m8.5 12 2.2 2.2 4.8-5"></path>
-</svg>
-</div>
-<h3>Güvenli ve anlaşılır bir şekilde çalışın</h3>
-<p>
-                Video ve her iki altyazı da tamamlanana kadar geçici sonuçlar yayınlanmayacaktır. İptal etme, sınırlı yeniden denemeler, korumalı hedef yolları ve düzeltilmiş API anahtarları hoş olmayan sürprizleri önler.
-              </p>
-<ul aria-label="Güvenlik özellikleri" class="tag-list">
-<li>İptal</li>
-<li>Geri alma</li>
-<li>Zaman Aşımları</li>
-<li>Günlüklerde anahtar yok</li>
-</ul>
-</article>
-</div>
-</div>
-</section>
-<section class="workflow section-pad" id="ablauf">
-<div class="container">
-<div class="workflow-heading reveal">
-<div>
-<p class="section-kicker">LinguoAI bu şekilde çalışır</p>
-<h2>Altı adım. Bitmiş bir video.</h2>
-</div>
-<p>
-              İlerleme alanında istediğiniz zaman şu anda neler olduğunu görebilirsiniz. Bireysel modeller yalnızca gerçekten ihtiyaç duyulduğunda yüklenir.
-            </p>
-</div>
-<ol class="workflow-list" data-workflow="">
-<li class="reveal">
-<span class="workflow-marker">
-<span class="workflow-number">01</span>
-<span aria-hidden="true" class="workflow-icon">
-<svg fill="none" height="27" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="27">
-<rect height="14" rx="3" width="18" x="3" y="5"></rect>
-<path d="m10 9 5 3-5 3V9Z"></path>
-</svg>
-</span>
-</span>
-<div><strong>Videoyu oku</strong><span>FFmpeg görüntüyü, sesi ve süreyi kontrol eder.</span></div>
-</li>
-<li class="reveal" data-delay="1">
-<span class="workflow-marker">
-<span class="workflow-number">02</span>
-<span aria-hidden="true" class="workflow-icon">
-<svg fill="none" height="27" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="27">
-<path d="M5 14h3l4 3V7l-4 3H5v4Z"></path>
-<path d="M15 9.5c1.5 1.4 1.5 3.6 0 5M18 7c3 2.7 3 7.3 0 10"></path>
-</svg>
-</span>
-</span>
-<div><strong>Sesi çıkar</strong><span>Kaynak 16 kHz ses olarak hazırlanmıştır.</span></div>
-</li>
-<li class="reveal" data-delay="2">
-<span class="workflow-marker">
-<span class="workflow-number">03</span>
-<span aria-hidden="true" class="workflow-icon">
-<svg fill="none" height="27" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="27">
-<path d="M3.5 9h2l1.3-3 2.5 6 2.4-8 2.6 7 1.4-2H20.5"></path>
-<path d="M5 16h14M5 20h9"></path>
-</svg>
-</span>
-</span>
-<div><strong>Metne dönüştür</strong><span>Whisper, metin ve zaman pencerelerini tanır.</span></div>
-</li>
-<li class="reveal" data-delay="3">
-<span class="workflow-marker">
-<span class="workflow-number">04</span>
-<span aria-hidden="true" class="workflow-icon">
-<svg fill="none" height="27" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="27">
-<path d="M4 7h10M11 4l3 3-3 3M20 17H10M13 14l-3 3 3 3"></path>
-<path d="M5.5 12.5 3.5 18h4l-2-5.5ZM16.5 6l2 5.5M15 9.5h4"></path>
-</svg>
-</span>
-</span>
-<div><strong>Çevir</strong><span>Seçilen hizmet her ipucunu yayınlar.</span></div>
-</li>
-<li class="reveal" data-delay="4">
-<span class="workflow-marker">
-<span class="workflow-number">05</span>
-<span aria-hidden="true" class="workflow-icon">
-<svg fill="none" height="27" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="27">
-<rect height="10" rx="3" width="6" x="9" y="3"></rect>
-<path d="M6.5 10.5a5.5 5.5 0 0 0 11 0M12 16v4M9 20h6"></path>
-<path d="M19 9v4M21 10.5v1"></path>
-</svg>
-</span>
-</span>
-<div><strong>Seslendir</strong><span>TTS motorunuz yeni sesi üretir.</span></div>
-</li>
-<li class="reveal" data-delay="5">
-<span class="workflow-marker">
-<span class="workflow-number">06</span>
-<span aria-hidden="true" class="workflow-icon">
-<svg fill="none" height="27" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="27">
-<path d="m12 3 8 4-8 4-8-4 8-4Z"></path>
-<path d="m4 11 8 4 8-4M4 15l8 4 8-4"></path>
-<path d="m16.5 18.5 1.4 1.4 3.1-3.2"></path>
-</svg>
-</span>
-</span>
-<div><strong>Birleştir</strong><span>Video, ses kaydı ve SRT'ler yayınlandı.</span></div>
-</li>
+<div class="simple-heading"><p class="section-kicker">İşte nasıl çalışıyor?</p><h2>İlk videonuz üç adımda.</h2></div>
+<ol class="simple-steps">
+<li><span aria-hidden="true" class="simple-step-number">01</span><div><h3>Arayüzü başlatın</h3><p>Notebook dosyasını Colab'da açıp çalıştırın. Ardından oluşturulan Gradio bağlantısını açın.</p></div></li>
+<li><span aria-hidden="true" class="simple-step-number">02</span><div><h3>Video ve dil seçin</h3><p>Kısa bir deneme videosu yükleyin, hedef dili ve sesi seçin. Birden fazla video da kullanabilirsiniz.</p></div></li>
+<li><span aria-hidden="true" class="simple-step-number">03</span><div><h3>Sonucu kontrol edin ve kaydedin</h3><p>Çeviriyi ve telaffuzu kontrol edin. Oturum bitmeden videoyu ve altyazıları indirin.</p></div></li>
 </ol>
+<a class="text-link" href="/tr/colab.html">Adım adım kılavuza gidin <span aria-hidden="true">→</span></a>
 </div>
 </section>
-<section class="voices section-pad" id="stimmen">
-<div class="container">
-<div class="section-heading reveal">
-<p class="section-kicker">Ses kaydı almanın dört yolu</p>
-<h2>Ses projenize uyum sağlar.</h2>
-<p>
-              “Kendi sesiniz” farklı anlamlara gelebilir. Bu karşılaştırma doğru seçimi yapmanıza yardımcı olacaktır.
-            </p>
-</div>
-<div class="voice-grid">
-<article class="voice-option reveal">
-<span aria-hidden="true" class="pictogram">
-<svg viewbox="0 0 24 24"><path d="M8 5h8v14H8z"></path><path d="M5 9v6"></path><path d="M19 9v6"></path></svg>
-</span>
-<div class="voice-topline"><span class="engine-dot edge"></span><span>Çevrimiçi</span></div>
-<h3>Edge TTS</h3>
-<p>Microsoft kataloğundaki hazır seslerle başlamanın kolay yolu.</p>
-<dl>
-<div><dt>Kendi sesi</dt><dd>Hayır, katalog sesi</dd></div>
-<div><dt>internet</dt><dd>Gerekli</dd></div>
-<div><dt>Donanım</dt><dd>Bulut hizmeti</dd></div>
-</dl>
-<span class="recommendation">İlk sınav için iyi</span>
-</article>
-<article class="voice-option reveal" data-delay="1">
-<span aria-hidden="true" class="pictogram">
-<svg viewbox="0 0 24 24"><path d="M12 4v16"></path><path d="M5 8c4 3 10 3 14 0"></path><path d="M5 16c4-3 10-3 14 0"></path></svg>
-</span>
-<div class="voice-topline"><span class="engine-dot gtts"></span><span>Google çevrimiçi</span></div>
-<h3>gTTS</h3>
-<p>Ses koduyla Google Translate Metin-Konuşma aracılığıyla hızlı Google Voice.</p>
-<dl>
-<div><dt>Kendi sesi</dt><dd>Hayır, dil kodu</dd></div>
-<div><dt>internet</dt><dd>Gerekli</dd></div>
-<div><dt>Donanım</dt><dd>Bulut hizmeti</dd></div>
-</dl>
-<span class="recommendation">Basit Google çıktısı için iyi</span>
-</article>
-<article class="voice-option reveal" data-delay="2">
-<span aria-hidden="true" class="pictogram">
-<svg viewbox="0 0 24 24"><path d="M4 17h16"></path><path d="M7 17V7h10v10"></path><path d="M9 10h6"></path><path d="M9 13h4"></path></svg>
-</span>
-<div class="voice-topline"><span class="engine-dot piper"></span><span>Yerel</span></div>
-<h3>Piper</h3>
-<p>Mevcut veya kendi kendini eğiten ONNX modeliyle hızlı yerel çıktı.</p>
-<dl>
-<div><dt>Kendi sesi</dt><dd>Eğitimli bir model olarak</dd></div>
-<div><dt>internet</dt><dd>İndirdikten sonra hayır</dd></div>
-<div><dt>Donanım</dt><dd>CPU, isteğe bağlı CUDA</dd></div>
-</dl>
-<span class="recommendation">Hız ve veri koruması açısından iyi</span>
-</article>
-<article class="voice-option voice-option-accent reveal" data-delay="3">
-<span aria-hidden="true" class="pictogram">
-<svg viewbox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v4a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4z"></path><path d="M5 11a7 7 0 0 0 14 0"></path><path d="M12 18v3"></path></svg>
-</span>
-<div class="voice-topline"><span class="engine-dot chatterbox"></span><span>Referans sesi</span></div>
-<h3>Chatterbox V2</h3>
-<p>Kısa, temiz bir kayıttan vokal karakterini ve konuşma tarzını benimser.</p>
-<dl>
-<div><dt>Kendi sesi</dt><dd>Evet, referans ses aracılığıyla</dd></div>
-<div><dt>internet</dt><dd>Yalnızca model indirmek için</dd></div>
-<div><dt>Donanım</dt><dd>GPU önerilir</dd></div>
-</dl>
-<span class="recommendation">Kişisel versiyonlar için iyi</span>
-</article>
-</div>
-<div class="consent-note reveal">
-<div aria-hidden="true" class="consent-symbol">!</div>
-<div>
-<strong>Sesinizi sorumlu bir şekilde kullanın</strong>
-<p>
-                Chatterbox için sesi kullanabildiğinizin onaylanması zorunludur. Kendi kaydınızı kullanın veya açık izin alın. Çıktı ayrıca gömülü bir PerTh filigranı içerir.
-              </p>
-</div>
-</div>
-<div class="voice-practical reveal" data-delay="1">
-<div>
-<span>İyi referans çekimi</span>
-<strong>6-10 saniye, tek kişi, az yankı, müzik veya arka plan gürültüsü yok.</strong>
-</div>
-<div>
-<span>İlk Chatterbox lansmanı</span>
-<strong>Yaklaşık 3,7GB model indirme; CPU mümkündür ancak daha uzun videolar için çok yavaştır.</strong>
-</div>
-<div>
-<span>Windows notu</span>
-<strong>Yerel kurulum deneyseldir; Colab veya Linux, ses paketi sorunları için daha güvenilirdir.</strong>
-</div>
-</div>
-<div class="data-routes reveal">
-<div class="data-routes-title">
-<p class="section-kicker">Verileriniz nerede işleniyor?</p>
-<h3>“Yerel” ve “çevrimiçi” net bir şekilde ayrılıyor.</h3>
-</div>
-<div class="data-route-grid">
-<article><span>YEREL</span><strong>NLLB · Piper · Chatterbox</strong><p>Seçtiğiniz dönemde indirdikten sonra. Colab'de bu, geçici Google VM'nin içinde olduğu anlamına gelir.</p></article>
-<article><span>ÇEVRİMİÇİ</span><strong>Google · DeepL · Gemini</strong><p>Metin bölümlerini yalnızca seçildiğinde veya açıkça etkinleştirilen bir geri dönüş olarak alın.</p></article>
-<article><span>ÇEVRİMİÇİ</span><strong>Edge TTS · gTTS</strong><p>Dublajlanacak her çevrilmiş ipucunu ilgili çevrimiçi dil hizmetine gönderin.</p></article>
-</div>
-<p class="biometric-note">
-              Referans sesleri biyometrik olarak hassas özellikler içerir. LinguoAI'deki onay onayın yerine geçmez; Piper motor ve ses modelinin ayrı lisansları da olabilir.
-            </p>
+<section class="simple-section" id="downloads">
+<div class="container simple-download-grid">
+<div><p class="section-kicker">Bilgisayarınızda da</p><h2>Yerel olarak kurun.</h2><p>Düzenli çalışma ve dosyalarınız üzerinde daha fazla kontrol için. Python ve FFmpeg gerekir; kılavuz kurulum adımlarında size yardımcı olur.</p><a class="text-link" href="/tr/anleitung.html#desktop">Yerel kuruluma gidin <span aria-hidden="true">→</span></a></div>
+<div class="simple-download-card">
+<span class="simple-version">LinguoAI 2.2.1</span>
+<h3>Projenin tamamı</h3><p>Kaynak kodu, masaüstü uygulaması ve Notebook.</p>
+<a class="button button-secondary" download="" href="https://linguoai.de/downloads/LinguoAI-2.2.1-source.zip">Kaynak kodu ZIP dosyasını indir <span aria-hidden="true">↓</span></a>
+<details class="simple-more"><summary>İleri düzey kullanıcılar için</summary><div><a download="" href="https://linguoai.de/downloads/linguoai-2.2.1-py3-none-any.whl">Python Wheel indir</a><a href="/tr/anleitung.html#cli">Komut satırı ve diğer seçenekler</a><a href="https://github.com/reinigungsprofileipzig/linguoai-de">GitHub'da kaynak kodu</a></div></details>
 </div>
 </div>
 </section>
-<section class="setup section-pad" id="loslegen">
-<div class="container">
-<div class="setup-intro reveal">
-<p class="section-kicker">Kolay kurulum</p>
-<h2>Nasıl başlamak istersin?</h2>
-<p>
-              En kolay başlangıç için LinguoAI'yi doğrudan Google Colab'de açın. Yerel kullanım için kaynak kodunu, Python paketini ve ayrıntılı Windows talimatlarını burada bulabilirsiniz.
-            </p>
+<section class="simple-section simple-faq" id="fragen">
+<div class="container simple-faq-grid">
+<div><p class="section-kicker">Bilmenizde fayda var</p><h2>Temel sorular.</h2><p>Teknik bilgiler, sesler ve gelişmiş ayarlar için <a href="/tr/anleitung.html">ayrıntılı kılavuza bakın</a>.</p></div>
+<div class="faq-list">
+<details><summary>LinguoAI ücretsiz mi?<span aria-hidden="true">+</span></summary><p>LinguoAI kaynak kodu ücretsiz olarak sunulur. Harici hizmetler ve Colab seçenekleri ücretli olabilir.</p><p>Google, pozitif Compute bakiyesi olmayan ücretsiz Colab oturumlarında harici web arayüzlerinin ağırlıklı kullanımını sınırlar. Başlamadan önce Colab koşullarını kontrol edin.</p><p><a href="https://research.google.com/colaboratory/faq.html">Google Colab SSS</a></p></details>
+<details><summary>Dosyalarıma ne olur?<span aria-hidden="true">+</span></summary><p>Masaüstünde yerel modelleri kullanabilirsiniz. Colab'da dosyalar geçici bir Google sanal makinesinde işlenir; çevrimiçi çevirmenler ve ses hizmetleri verileri kendi sağlayıcılarına gönderir. Yalnızca gerekli haklara sahip olduğunuz içerikleri ve sesleri kullanın.</p></details>
+<details><summary>Güçlü bir grafik kartına ihtiyacım var mı?<span aria-hidden="true">+</span></summary><p>Hayır. CPU üzerinde de işlem yapılabilir ancak daha uzun sürer. Başlamak için kısa bir video yeterlidir. GPU isteğe bağlıdır.</p></details>
+<details><summary>Colab bağlantım ne kadar süre çalışır?<span aria-hidden="true">+</span></summary><p>Yalnızca ilgili Colab oturumu ve arayüz çalışırken. Gradio bağlantısı dinamiktir ve yalnızca güvendiğiniz kişilerle paylaşılmalıdır. Sonuçları zamanında indirin veya Google Drive'a kaydedin.</p></details>
+<details><summary>Daha hızlı konuşma tanıma seçebilir miyim?<span aria-hidden="true">+</span></summary><p>Parakeet, CPU üzerinde isteğe bağlı konuşma tanıma sunar: NVIDIA v3, 25 Avrupa dilini destekler; primeline Almanca için özelleştirilmiştir. Whisper çok yönlü varsayılan seçenek olmaya devam eder. Hız ve kalite kayda ve bilgisayara bağlıdır.</p><p><a href="/tr/anleitung.html#spracherkennung">Konuşma tanıma seçin →</a></p></details>
+<details><summary>Doğrudan tarayıcıda yükleme ve indirme mümkün mü?<span aria-hidden="true">+</span></summary><p>Evet, başlatılmış Colab web arayüzü üzerinden: video yükleyin veya Google Drive'dan seçin, işleyin ve sonuçları indirin. Sonraki adım olarak kendi sunucunuzda sürekli kullanılabilir bir işleme hizmeti kurulabilir.</p><p><a href="/tr/anleitung.html#webversion">Tarayıcı ve sunucu →</a></p></details>
 </div>
-<div class="download-strip reveal" data-delay="1" id="downloads">
-<div>
-<span class="panel-label">Yeni başlayanlar için öneri</span>
-<strong>Kurulum yapmadan doğrudan tarayıcıdan başlayın.</strong>
-<p>
-                Notebook, kontrol edilen proje ZIP'ini otomatik olarak yükler ve ardından korumalı web arayüzünü açar.
-              </p>
-</div>
-<div class="download-actions">
-<a class="button" href="https://linguoai.de/tr/colab.html">
-                Colab kılavuzunu açın <span aria-hidden="true">→</span>
-</a>
-<a class="text-link" href="#colab">Adım sırasını görüntüle <span aria-hidden="true">↓</span></a>
-</div>
-</div>
-<div aria-label="İndirme seçenekleri" class="download-pictograms reveal" data-delay="2">
-<article>
-<span aria-hidden="true" class="pictogram">
-<svg viewbox="0 0 24 24"><path d="M7 18a4 4 0 1 1 1.2-7.8A5 5 0 0 1 18 11a3.5 3.5 0 0 1-.5 7H7z"></path><path d="M12 9v6"></path><path d="m9 12 3-3 3 3"></path></svg>
-</span>
-<span class="option-label">Kurulum olmadan</span>
-<strong>Google Colab</strong>
-<p>Tarayıcıda çalıştırın, videoyu yükleyin ve sonucu tekrar indirin veya Drive'a kaydedin.</p>
-<div class="download-card-links">
-<a href="https://linguoai.de/tr/colab.html">Talimatları aç →</a>
-<a download="" href="https://linguoai.de/downloads/LinguoAI_Colab.ipynb">Yük Notebook ↓</a>
-</div>
-</article>
-<article>
-<span aria-hidden="true" class="pictogram">
-<svg viewbox="0 0 24 24"><path d="M12 3v12"></path><path d="m7 10 5 5 5-5"></path><path d="M5 21h14"></path></svg>
-</span>
-<span class="option-label">Windows ve Linux</span>
-<strong>Kaynak kodu Posta Kodu</strong>
-<p>İndirin, paketi tamamen açın ve ardından yerel talimatları izleyin.</p>
-<div class="download-card-links">
-<a download="" href="https://linguoai.de/downloads/LinguoAI-2.2.1-source.zip">Sürüm 2.2.1'ı yükle ↓</a>
-<a href="#panel-desktop">Windows talimatları →</a>
-</div>
-</article>
-<article>
-<span aria-hidden="true" class="pictogram">
-<svg viewbox="0 0 24 24"><path d="M6 4h12v16H6z"></path><path d="M9 8h6"></path><path d="M9 12h6"></path><path d="M9 16h3"></path></svg>
-</span>
-<span class="option-label">Python kullanıcıları için</span>
-<strong>Python-Wheel</strong>
-<p>Mevcut bir Python ortamı için tamamlanmış paket; FFmpeg hala gereklidir.</p>
-<div class="download-card-links">
-<a download="" href="https://linguoai.de/downloads/linguoai-2.2.1-py3-none-any.whl">Yük Wheel ↓</a>
-<a href="#panel-cli">CLI talimatları →</a>
-</div>
-</article>
-<article>
-<span aria-hidden="true" class="pictogram">
-<svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a14 14 0 0 1 0 18"></path><path d="M12 3a14 14 0 0 0 0 18"></path></svg>
-</span>
-<span class="option-label">Merkezi adres</span>
-<strong>linguoai.de</strong>
-<p>Web sitesi, talimatlar, Notebook ve güncel indirmeler doğrudan kendi alanınızdan.</p>
-<div class="download-card-links">
-<a href="https://linguoai.de/tr/">Proje sayfasını aç →</a>
-</div>
-</article>
-</div>
-<div aria-label="Doğrudan proje adresleri" class="resource-addresses reveal" data-delay="2">
-<article>
-<span>Colab-Notebook'nin doğrudan indirilmesi</span>
-<div class="resource-address-row">
-<code id="colab-download-url">https://linguoai.de/downloads/LinguoAI_Colab.ipynb</code>
-<button class="copy-button" data-copy="colab-download-url" type="button">
-<span aria-hidden="true" class="copy-icon">⧉</span>
-<span data-copy-label="">Kopyala</span>
-</button>
-</div>
-</article>
-<article>
-<span>Kaynak kodu ZIP'in doğrudan indirilmesi</span>
-<div class="resource-address-row">
-<code id="source-download-url">https://linguoai.de/downloads/LinguoAI-2.2.1-source.zip</code>
-<button class="copy-button" data-copy="source-download-url" type="button">
-<span aria-hidden="true" class="copy-icon">⧉</span>
-<span data-copy-label="">Kopyala</span>
-</button>
-</div>
-</article>
-</div>
-<div aria-label="Talimatları seçin" class="setup-tabs reveal" role="tablist">
-<button aria-controls="panel-desktop" aria-selected="true" class="setup-tab is-active" data-tab="desktop" id="tab-desktop" role="tab" type="button">
-<span>01</span> Windows masaüstü
-            </button>
-<button aria-controls="panel-colab" aria-selected="false" class="setup-tab" data-tab="colab" id="tab-colab" role="tab" type="button">
-<span>02</span> Google Colab
-            </button>
-<button aria-controls="panel-cli" aria-selected="false" class="setup-tab" data-tab="cli" id="tab-cli" role="tab" type="button">
-<span>03</span> Komut satırı
-            </button>
-</div>
-<div aria-labelledby="tab-desktop" class="setup-panel is-active" data-panel="desktop" id="panel-desktop" role="tabpanel">
-<div class="steps-column">
-<article class="setup-step">
-<span class="step-number">1</span>
-<div>
-<h3>Önkoşulları yükleyin</h3>
-<p>
-                    Python 3.10 veya daha yenisinin yanı sıra FFmpeg ve ffprobe'ye de ihtiyacınız var. Chatterbox için Python 3.11 önerilir. Ardından yeni bir PowerShell açın.
-                  </p>
-</div>
-</article>
-<article class="setup-step">
-<span class="step-number">2</span>
-<div>
-<h3>Kendi ortamınızı yaratın</h3>
-<p>
-                    Sanal ortam, LinguoAI ve paketlerini sistemin geri kalanından düzgün bir şekilde ayrı tutar.
-                  </p>
-</div>
-</article>
-<article class="setup-step">
-<span class="step-number">3</span>
-<div>
-<h3>Arayüzü aç</h3>
-<p>
-                    Videoyu, hedefi, çevirmeni ve sesi seçin. Sistem kontrolü, bir paket veya modelin hâlâ eksik olup olmadığını size doğrudan gösterir.
-                  </p>
-</div>
-</article>
-</div>
-<div class="code-card">
-<div class="code-card-head">
-<span>PowerShell · Temel kurulum</span>
-<button class="copy-button" data-copy="desktop-code" type="button">
-<span aria-hidden="true" class="copy-icon">⧉</span>
-<span data-copy-label="">Kopyala</span>
-</button>
-</div>
-<pre id="desktop-code"><code><span class="code-comment"># FFmpeg einmalig installieren</span>
-winget install --id Gyan.FFmpeg --exact
-
-<span class="code-comment"># Im Projektordner ausführen</span>
-cd <span class="code-string">"C:\Pfad\zu\LinguoAI-2.2.1"</span>
-py -3.11 -m venv .venv
-.\.venv\Scripts\Activate.ps1
-
-python -m pip install --upgrade pip
-python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
-python -m pip install -e <span class="code-string">".[desktop]"</span>
-ffmpeg -version
-ffprobe -version
-python -m linguoai</code></pre>
-<p class="code-note">
-                Örnek kasıtlı olarak CPU sürümünü kuruyor. NVIDIA için öncelikle uygun komutu seçin.
-                <a href="https://pytorch.org/get-started/locally/" rel="noopener noreferrer" target="_blank">PyTorch kurulum sihirbazı</a>. Edge TTS ve gTTS zaten dahil edilmiştir. Piper için yükleyeceğiniz
-                <code>.[desktop,piper]</code>, Chatterbox için kendi ortamında
-                <code>.[desktop,voice-clone]</code>.
-              </p>
-</div>
-<div class="engine-install-guides">
-<details>
-<summary>gTTS / Google Voice'u Kullan <span aria-hidden="true">+</span></summary>
-<div>
-<p>gTTS temel pakete dahildir. Bu şekilde ayrı ayrı kurulabilir:</p>
-<pre><code>python -m pip install gTTS
-python -m linguoai -i quelle.mp4 -o ziel.mp4 -l de --tts-engine gtts</code></pre>
-</div>
-</details>
-<details>
-<summary>Piper'yi yerel olarak ekleyin <span aria-hidden="true">+</span></summary>
-<div>
-<p>Aynı sanal ortama kurulum yapın ve ardından uygun bir ses yükleyin:</p>
-<pre><code>python -m pip install -e <span class="code-string">".[desktop,piper]"</span>
-New-Item -ItemType Directory -Force <span class="code-string">".\Stimmen"</span>
-python -m piper.download_voices --download-dir <span class="code-string">".\Stimmen"</span> de_DE-thorsten-medium</code></pre>
-</div>
-</details>
-<details>
-<summary>Chatterbox ile kendi referans sesi <span aria-hidden="true">+</span></summary>
-<div>
-<p>Ses/el feneri bağımlılıkları nedeniyle özel bir Python-3.11 ortamı önerilir:</p>
-<pre><code>py -3.11 -m venv .venv-chatterbox
-.\.venv-chatterbox\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-python -m pip install -e <span class="code-string">".[desktop,voice-clone]"</span>
-python -m linguoai</code></pre>
-</div>
-</details>
-</div>
-<div class="gui-guide">
-<h3>Arayüzdeki ilk işleminiz</h3>
-<ol>
-<li><span>01</span><div><strong>Videoyu seçin</strong><p>“Başlat”ın altındaki “Dosya…”ya tıklayın. Hedef yol önerilmektedir.</p></div></li>
-<li><span>02</span><div><strong>Dilleri ayarla</strong><p>hedef dili seçin; kaynak dil otomatik olarak tanınabilir.</p></div></li>
-<li><span>03</span><div><strong>Çevirmen seç</strong><p>Yerel için: NLLB. Hızlı bir test için: Google. DeepL/Gemini'nin anahtarlarına ihtiyacı var; ayrı Gemini optimizasyonu da.</p></div></li>
-<li><span>04</span><div><strong>Sesi belirle</strong><p>Edge veya gTTS'yi hemen test edin; Piper veya Chatterbox'yi "Gelişmiş" altında ayarlarsınız.</p></div></li>
-<li><span>05</span><div><strong>İşlemeyi başlat</strong><p>ilerlemeyi izlemek; videonun sonunda ve her iki SRT dosyası doğrudan açılır.</p></div></li>
-</ol>
-</div>
-</div>
-<div aria-labelledby="tab-colab" class="setup-panel" data-panel="colab" hidden="" id="panel-colab" role="tabpanel">
-<div class="colab-layout" id="colab">
-<div>
-<span class="panel-label">Kalıcı kurulum yok</span>
-<h3>Google Colab'de LinguoAI'yi kullanın</h3>
-<p>
-                  Notebook, linguoai.de adresinden doğrulanmış kaynak kodu ZIP'i yükler, bunu geçici bir Google VM'ye yükler ve kullanımı kolay bir web arayüzü açar.
-                </p>
-<div class="colab-downloads">
-<a class="button" href="https://linguoai.de/tr/colab.html">
-                    Colab talimatları <span aria-hidden="true">→</span>
-</a>
-<a class="text-link" download="" href="https://linguoai.de/downloads/LinguoAI_Colab.ipynb">
-                    Notebook'yi yükleyin <span aria-hidden="true">↓</span>
-</a>
-<a class="text-link" download="" href="https://linguoai.de/downloads/LinguoAI-2.2.1-source.zip">
-                    Posta alternatifi <span aria-hidden="true">↓</span>
-</a>
-</div>
-<p class="colab-note">
-<strong>İlk test için:</strong> Lasse <code>PROJECT_SOURCE = "download_zip"</code>
-                  ve <code>LOCAL_TTS_EXTRA = "none"</code> değişmedi. Edge TTS ve gTTS bu nedenle büyük bir yerel ses paketi olmadan çalışır.
-                </p>
-</div>
-<ol class="colab-steps">
-<li><span>1</span><p>İlk olarak <strong>Colab talimatları</strong> bölümünü açın, Notebook dosyasını linguoai.de adresinden indirin ve Google Colab'a yükleyin.</p></li>
-<li><span>2</span><p>Aşağıda isteğe bağlı <strong>Çalışma zamanı → Çalışma zamanı türünü değiştir</strong> bir T4-GPU seçin. CPU de çalışıyor.</p></li>
-<li><span>3</span><p>“Çalışma zamanı → Tümünü çalıştır” seçeneğini seçin. Kendini denetleyen tek bir kod hücresi LinguoAI uygulamasını kurar ve başlatır. Google Drive isteğe bağlıdır.</p></li>
-<li><span>4</span><p>Kurulumu bekleyin. Sonunda bir kullanıcı adı, rastgele bir şifre ve genel bir Gradio bağlantısı belirir.</p></li>
-<li><span>5</span><p>Gradio bağlantısını açıp giriş yapın. Bir veya birden fazla video yükleyin ya da her satıra bir tane olacak şekilde göreli MyDrive dosya yollarını girin.</p></li>
-<li><span>6</span><p>Hızlı bir test için Google Translate'nin yanı sıra Edge TTS veya gTTS'yi seçin ve işleme başlayın.</p></li>
-<li><span>7</span><p>Bitmiş videoyu ve her iki SRT dosyasını indirin veya bunları kalıcı olarak bir Drive klasörüne kopyalayın.</p></li>
-</ol>
-</div>
-<div class="tip-row">
-<article><strong>Tarayıcı yükleme</strong><span>Bir veya birden fazla video; Gradio ile dosya başına en fazla 5 GB.</span></article>
-<article><strong>Google Drive</strong><span>Büyük dosyalar, model önbelleği ve kalıcı sonuçlar için kullanışlıdır.</span></article>
-<article><strong>Önemli</strong><span>Gradio bağlantısı ve aşağıdaki her şey <code>/content</code> Colab oturumunun sonunda kaybolur.</span></article>
-</div>
-<div class="cloud-explainer">
-<p class="colab-note">Varsayılan: Cloudflare hesabı, kendi alan adınız veya tünel belirteci gerektirmeyen dinamik Gradio bağlantısı. İsteğe bağlı: kendi alan adınızla adlandırılmış Cloudflare Tunnel ve yükleme başına varsayılan 95 MB sınırı; kurulum için Colab kılavuzuna bakın.</p>
-<div class="cloud-explainer-heading">
-<span class="panel-label">Cloud &amp; Co. basitçe açıklandı</span>
-<h3>Hangi hizmet aslında ne yapıyor?</h3>
-</div>
-<div class="cloud-service-grid">
-<article>
-<span class="service-badge">UYGULA</span>
-<strong>Google Colab</strong>
-<p>Geçici bir Google makinesinde LinguoAI'yi başlatır. Bu, desteklenen tarayıcı yoludur.</p>
-</article>
-<article>
-<span class="service-badge">KAYDET</span>
-<strong>Google Drive</strong>
-<p>Videoları, modelleri ve sonuçları kaydeder. Drive, programı kendisi çalıştırmaz.</p>
-</article>
-<article>
-<span class="service-badge">DOSYALAR</span>
-<strong>linguoai.de</strong>
-<p>Proje ZIP'i, Colab-Notebook ve talimatları doğrudan kendi alanınız üzerinden sağlar.</p>
-</article>
-<article>
-<span class="service-badge">MANUEL</span>
-<strong>Diğer bulut sanal makineleri</strong>
-<p>Linux, GPU veya sunucu bulutları ZIP ve CLI kaynak koduyla mümkündür ancak Python, FFmpeg ve sunucu bilgisi gerektirir.</p>
-</article>
-</div>
-</div>
-</div>
-<div aria-labelledby="tab-cli" class="setup-panel" data-panel="cli" hidden="" id="panel-cli" role="tabpanel">
-<div class="cli-layout">
-<div>
-<span class="panel-label">Tekrarlanabilir işlemler için</span>
-<h3>Eksiksiz bir yerel işlem</h3>
-<p>
-                  Bu örnek yerel olarak NLLB'ye çevrilir ve bir Piper modeli kullanır. Otomasyon için GUI'dekiyle aynı ayarlar mevcuttur.
-                </p>
-<ul class="check-list">
-<li>Tek video veya klasörün tamamı</li>
-<li>Kendi çıktısı ve model yolları</li>
-<li>Açık CPU/GPU ilişkilendirmesi</li>
-<li>Sessiz veya ayrıntılı hata ayıklama modu</li>
-</ul>
-</div>
-<div class="code-card">
-<div class="code-card-head">
-<span>PowerShell · Piper yerel olarak</span>
-<button class="copy-button" data-copy="cli-code" type="button">
-<span aria-hidden="true" class="copy-icon">⧉</span>
-<span data-copy-label="">Kopyala</span>
-</button>
-</div>
-<pre id="cli-code"><code>python -m linguoai `
-  --input <span class="code-string">"C:\Videos\quelle.mp4"</span> `
-  --output <span class="code-string">"C:\Videos\quelle.de.mp4"</span> `
-  --language de `
-  --service nllb `
-  --device cpu `
-  --nllb-device cpu `
-  --tts-engine piper `
-  --tts-device cpu `
-  --piper-model <span class="code-string">"C:\Stimmen\thorsten.onnx"</span> `
-  --piper-config <span class="code-string">"C:\Stimmen\thorsten.onnx.json"</span></code></pre>
-<p class="code-note">
-                  Tüm seçenekleri görüntüle: <code>python -m linguoai --help</code>
-</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="hardware section-pad">
-<div class="container hardware-grid">
-<div class="hardware-copy reveal">
-<p class="section-kicker">Bilgi işlem gücünü duyarlı bir şekilde dağıtın</p>
-<h2>CPU ve GPU ya hep ya hiç kararı değildir.</h2>
-<p>
-              Whisper, NLLB ve yerel ses ayrı ayrı yerleştirilebilir. Böylece küçükten başlayabilir ve GPU'ye yalnızca bundan gerçekten fayda sağlayan parçayı yerleştirebilirsiniz.
-            </p>
-</div>
-<div class="hardware-map reveal" data-delay="1">
-<div class="hardware-row">
-<span>Whisper</span><strong>CPU · int8</strong><i style="--load: 42%"></i>
-</div>
-<div class="hardware-row">
-<span>NLLB</span><strong>GPU · CUDA</strong><i style="--load: 74%"></i>
-</div>
-<div class="hardware-row">
-<span>Piper</span><strong>CPU</strong><i style="--load: 28%"></i>
-</div>
-<div class="hardware-foot">
-<span><i class="auto-dot"></i> "Otomatik", CUDA'yi kontrol eder ve aksi takdirde CPU'ye geri döner.</span>
-</div>
-</div>
-<div class="gpu-requirements reveal">
-<strong>Önemli: “GPU” seçildiğinde CUDA otomatik olarak kurulmaz.</strong>
-<ul>
-<li><span>NLLB ve Chatterbox</span><p>PyTorch'nin eşleşen bir CUDA sürümüne ihtiyacınız var.</p><a href="https://pytorch.org/get-started/locally/" rel="noopener noreferrer" target="_blank">PyTorch seçimi ↗</a></li>
-<li><span>Faster-Whisper</span><p>Ayrıca sistem yolunda CUDA-12-cuBLAS ve cuDNN 9 gerektirir.</p></li>
-<li><span>Piper</span><p>ONNX Çalışma Zamanını kullanır: <code>onnxruntime-gpu</code> CPU sürümü yerine yükleyin.</p></li>
-</ul>
-</div>
-</div>
-</section>
-<section class="formats section-pad">
-<div class="container format-layout reveal">
-<div>
-<p class="section-kicker">Giriş ve çıkış</p>
-<h2>Evde olağan video formatlarıyla.</h2>
-</div>
-<div class="format-groups">
-<div><span>Giriş</span><ul><li>MP4</li><li>MKV</li><li>MOV</li><li>AVI</li><li>WEBM</li><li>M4V</li></ul></div>
-<div><span>Çıktı</span><ul><li>MP4</li><li>MKV</li><li>MOV</li><li>SRT × 2</li></ul></div>
-</div>
-</div>
-</section>
-<section class="capabilities section-pad" id="alle-funktionen">
-<div class="container">
-<div class="capability-heading reveal">
-<div>
-<p class="section-kicker">Eksiksiz araç kutusu</p>
-<h2>Tüm işlevler ayrıntılı olarak.</h2>
-</div>
-<p>
-              Başlamak için her ayarı bilmenize gerek yok. Daha sonra daha fazla kontrole ihtiyaç duyarsanız, hiçbir gizli vaat olmaksızın tüm kapsamı burada bulacaksınız.
-            </p>
-</div>
-<div class="capability-list reveal" data-delay="1">
-<details open="">
-<summary><span>01</span><strong>Dosyalar ve siparişler</strong><i aria-hidden="true">+</i></summary>
-<div class="capability-content">
-<ul>
-<li>Tek bir videoyu veya doğrudan bir klasörde bulunan tüm videoları işleyin.</li>
-<li>Girişler: MP4, MKV, MOV, AVI, WEBM ve M4V; Sürümler: MP4, MKV veya MOV.</li>
-<li>Otomatik çıktı önerisi, çakışmayan adlar ve kontrollü üzerine yazma.</li>
-<li>Dosya başına ilerleme, mevcut iş adımı, iptal ve teknik kayıt.</li>
-</ul>
-<p>Klasörler kasıtlı olarak yinelemeli olarak aranmaz. Colab'de sipariş başına bir video çalıştırılır.</p>
-</div>
-</details>
-<details>
-<summary><span>02</span><strong>Faster-Whisper ile Transkripsiyon</strong><i aria-hidden="true">+</i></summary>
-<div class="capability-content">
-<ul>
-<li>Modelleri <code>tiny</code> kadar <code>large-v3</code>, ayrıca kendi model değerleri.</li>
-<li>Kaynak dili otomatik olarak algıla veya dil kodu olarak ayarla.</li>
-<li>CPU, NVIDIA-CUDA veya otomatik seçim; int8, float16 ve float32 yapılandırılabilir.</li>
-<li>Çakışan ses bölümleri, gerçek zamanlı dengelemeler ve yinelenen bölüm temizleme.</li>
-<li>Gelişmiş seçenekler veya CLI aracılığıyla yığın uzunlukları, örtüşme ve işçi sayısı.</li>
-</ul>
-</div>
-</details>
-<details>
-<summary><span>03</span><strong>Çeviri ve metin koruması</strong><i aria-hidden="true">+</i></summary>
-<div class="capability-content">
-<ul>
-<li>NLLB-200 yerel, anahtarsız Google Translate, DeepL-SDK veya Gemini.</li>
-<li>Yalnızca açık seçimden sonra isteğe bağlı geri dönüş - aksi takdirde yalnızca bir sağlayıcıyla iletişime geçilecektir.</li>
-<li>URL'ler, e-posta adresleri, para birimleri, birimler ve yüzdeler çeviri sırasında korunur.</li>
-<li>Aynı metin bölümleri için zaman aşımları, sınırlı tekrarlar ve önbellek.</li>
-<li>İsteğe bağlı olarak Gemini, segment kimliklerini veya zamanlarını değiştirmeden Whisper transkriptini düzeltir.</li>
-<li>Kendi NLLB uyumlu modelleri, sabit revizyonları, FLORES kodları, parti ve jeton limitleri.</li>
-</ul>
-<p>Varsayılan NLLB-600M modeli CC-BY-NC-4.0 kapsamındadır ve bir araştırma modelidir, sertifikalı üretim çevirisi değildir. Her zaman sonuçları kontrol edin.</p>
-</div>
-</details>
-<details>
-<summary><span>04</span><strong>Edge, gTTS, Piper ve Chatterbox</strong><i aria-hidden="true">+</i></summary>
-<div class="capability-content">
-<ul>
-<li>Edge: otomatik varsayılan ses veya kendi tam Edge ses kimliği.</li>
-<li>gTTS: Google Translate Otomatik hedef dil veya dil koduyla metinden konuşmaya.</li>
-<li>Piper: ONNX artı uyumlu JSON, isteğe bağlı hoparlör kimliği ve ayarlanabilir konuşma hızı.</li>
-<li>Chatterbox V2: Referans kontrolü, çıktı, CFG gücü, hak onayı ve filigran.</li>
-<li>Yerel motoru CPU, CUDA üzerinde veya CPU geri dönüşüyle otomatik olarak çalıştırın.</li>
-<li>Modeller yalnızca seçilen motor için yüklenir ve ardından tekrar serbest bırakılır.</li>
-</ul>
-<p>gTTS ve Edge çevrimiçi hizmetlerdir, ses klonları değildir. LinguoAI, Piper modellerini yükler ancak eğitmez. Sipariş başına bir oy kullanılır. Chatterbox, 0,5'in altındaki veya 60 saniyenin üzerindeki referansları reddeder ve pratikte 6-10 saniyeyi önerir.</p>
-</div>
-</details>
-<details>
-<summary><span>05</span><strong>Zamanlama, ton ve dışa aktarma</strong><i aria-hidden="true">+</i></summary>
-<div class="capability-content">
-<ul>
-<li>Her klibi 48 kHz mono PCM'ye normalleştirin ve örnek doğruluğuyla konumlandırın.</li>
-<li>Yapılandırılabilir bir sınır dahilinde çok uzun olan konuşmayı hızlandırın.</li>
-<li>Hızlı hızlanırken uyarı; anlaşılmaz çıktı yerine kontrollü hata.</li>
-<li>Tam bitiş süresi, benimsenen meta veriler/bölümler ve mümkünse değiştirilmemiş video akışı.</li>
-<li>Yeni videodan, orijinal SRT'den ve SRT çevirisinden atomik sonuç grubu.</li>
-</ul>
-</div>
-</details>
-<details>
-<summary><span>06</span><strong>Masaüstü arayüzü ve CLI</strong><i aria-hidden="true">+</i></summary>
-<div class="capability-content">
-<ul>
-<li>Üç GUI sekmesi: Ana Sayfa, Gelişmiş ve Günlük; artı açık ve karanlık mod.</li>
-<li>Dinamik alanlar, sistem kontrolü, yerel/çevrimiçi etiketleme ve veri koruma bildirimi.</li>
-<li>Sonuç videosunu veya çıktı klasörünü doğrudan açın; Günlüğü kopyalayın veya boşaltın.</li>
-<li>Klavye: <kbd>Strg+O</kbd>, <kbd>Strg+Enter</kbd> ve <kbd>Esc</kbd>.</li>
-<li>Tüm cihaz, model, zaman aşımı ve hata ayıklama seçenekleriyle dosya/klasör işleri için CLI.</li>
-</ul>
-</div>
-</details>
-<details>
-<summary><span>07</span><strong>Colab, Sürüş ve güvenli yollar</strong><i aria-hidden="true">+</i></summary>
-<div class="capability-content">
-<ul>
-<li>Oturum başına rastgele parolayla korumalı Gradio web arayüzü.</li>
-<li>Tekli ve toplu işleme: birden fazla video yükleyin veya her satıra bir tane olacak şekilde MyDrive dosya yollarını girin. Piper dosyalarını ve referans kaydını yükleyin ya da MyDrive yollarını belirtin.</li>
-<li>Google Drive'de isteğe bağlı model önbelleği ve atomik sonuç kopyası.</li>
-<li>Her işlem için çıktı videosu ve iki SRT dosyası; Gradio yüklemesi başına 5 GB, isteğe bağlı Cloudflare Tunnel üzerinden varsayılan olarak 95 MB.</li>
-<li>Sürücü yolları MyDrive dahilinde kalır; Drive, herkese açık bir indirme klasörü olarak paylaşılmıyor.</li>
-</ul>
-</div>
-</details>
-<details class="capability-limit">
-<summary><span>08</span><strong>LinguoAI'nin kasıtlı olarak vaat etmediği şeyler</strong><i aria-hidden="true">+</i></summary>
-<div class="capability-content">
-<ul>
-<li>Senkronize zamanlama dudak hareketi senkronizasyonu değildir; görüntü değişmedi.</li>
-<li>Yeni ses parçası orijinal sesin tamamen yerini alıyor. Müzik, atmosfer ve sesler şu anda benimsenmiyor.</li>
-<li>Konuşmacı tanıma yok ve otomatik çoklu hoparlör ataması yok.</li>
-<li>Yayınlamadan önce daima transkript, çeviri, telaffuz ve ses benzerliğini kontrol edin.</li>
-<li>Colab-GPU, oturum süresi ve büyük işlerin tamamlanması garanti edilmez.</li>
-</ul>
-</div>
-</details>
-</div>
-</div>
-</section>
-<section class="faq section-pad" id="fragen">
-<div class="container faq-layout">
-<div class="faq-heading reveal">
-<p class="section-kicker">Hala emin değil misiniz?</p>
-<h2>Sıkça sorulan sorular, net bir şekilde yanıtlandı.</h2>
-<p>İlk deneme için kısa bir video, Edge TTS ve standart ayarlar yeterlidir.</p>
-</div>
-<div class="faq-list reveal" data-delay="1">
-<details>
-<summary>LinguoAI'yi kurulum yapmadan kullanabilir miyim?<span aria-hidden="true">+</span></summary>
-<p>
-                Evet. Hazırlanan Notebook'yi "Colab'de Aç" düğmesini kullanarak açın ve "Çalışma Zamanı → Tümünü Çalıştır"ı seçin. Notebook, bu web sitesindeki güvenli indirme adresi aracılığıyla ZIP kaynak kodunu otomatik olarak indirir. Tek ihtiyacınız olan bir Google hesabı; Gradio bağlantısı, Colab oturumu aktif olduğu sürece çalışır.
-              </p>
-</details>
-<details>
-<summary>LinguoAI kendi sesimi kullanabilir mi?<span aria-hidden="true">+</span></summary>
-<p>
-                Evet. Chatterbox, kısa bir referans kaydından yetkili bir sesi benimser. Alternatif olarak, halihazırda eğitilmiş olan kendi ONNX modelinizi yüklemek için Piper'yi kullanabilirsiniz. Edge TTS yalnızca tamamlanmış katalog parçalarını sunar; gTTS, Google ses kodlarını kullanır ancak kendi ses kopyasını kullanmaz.
-              </p>
-</details>
-<details>
-<summary>Program tamamen yerel olarak mı çalışıyor?<span aria-hidden="true">+</span></summary>
-<p>
-                Faster-Whisper, NLLB ve Piper veya Chatterbox ile işleme, ilk model indirildikten sonra seçilen çalışma zamanında çalıştırılır. Masaüstünde bu sizin bilgisayarınızdır; Colab'de geçici Google VM'sidir. Edge TTS, gTTS, Google Translate, DeepL ve Gemini çevrimiçi hizmetlerdir.
-              </p>
-</details>
-<details>
-<summary>Güçlü bir grafik kartına ihtiyacım var mı?<span aria-hidden="true">+</span></summary>
-<p>
-                Hayır. Whisper, NLLB ve Piper, CPU üzerinde çalışır. Chatterbox de çalışır ancak önemli ölçüde daha yavaştır. NVIDIA-GPU daha uzun projeler için faydalıdır.
-              </p>
-</details>
-<details>
-<summary>Sonunda ne elde edeceğim?<span aria-hidden="true">+</span></summary>
-<p>
-                Yeni dublajlı bir video ve iki SRT dosyası: biri tanınan orijinal metni, diğeri çeviriyi içerir. Kaynak videonun kendisi değişmeden kalır.
-              </p>
-</details>
-<details>
-<summary>Dosyaları doğrudan Google Drive'den yükleyebilir miyim?<span aria-hidden="true">+</span></summary>
-<p>
-                Evet, Colab arayüzünde. MyDrive içinde güvenli bir göreceli yol belirtebilir ve sonuçların bir Drive klasörüne geri yazılmasını sağlayabilirsiniz.
-              </p>
-</details>
-<details>
-<summary>Kendi referans sesiniz hangi dilleri destekliyor?<span aria-hidden="true">+</span></summary>
-<p>
-                Chatterbox Çok Dilli V2, Almanca, İngilizce, Fransızca, İspanyolca, İtalyanca, Portekizce, Lehçe, Türkçe, Japonca, Korece ve Çince dahil olmak üzere 23 temel dili destekler. Piper seçilen modelin diline bağlıdır. gTTS birçok Google Çeviri dil kodunu destekler ancak referans seslerini desteklemez.
-              </p>
-</details>
-</div>
-</div>
-</section>
-<section class="final-cta">
-<div class="container cta-inner reveal">
-<p class="section-kicker">İlk taslağa hazır mısınız?</p>
-<h2>Kısa bir test videosu başlamak için en iyi yerdir.</h2>
-<p>
-            Edge TTS veya gTTS ve varsayılan değerlerle başlayın. Süreç size uygunsa sakin bir şekilde yerel veya kendi sesinize geçebilirsiniz.
-          </p>
-<div class="cta-actions">
-<a class="button button-light" href="https://linguoai.de/tr/colab.html">Colab kılavuzunu açın <span aria-hidden="true">→</span></a>
-<a class="text-link text-link-light" href="#downloads">İndirmeler ve Talimatlar <span aria-hidden="true">↑</span></a>
-</div>
-</div>
-<div aria-hidden="true" class="cta-wave">
-<span></span><span></span><span></span><span></span><span></span><span></span>
-<span></span><span></span><span></span><span></span><span></span><span></span>
-<span></span><span></span><span></span><span></span><span></span><span></span>
 </div>
 </section>
 </main>
 <footer class="site-footer">
 <div class="container footer-main">
-<div class="footer-brand">
-<a class="brand" href="#top">
-<img alt="" height="38" src="/assets/logo-mark.svg" width="38"/>
-<span>LinguoAI</span>
-</a>
-<p>Videoları yeni bir sesle çevirin, altyazılı yapın ve senkronize edin.</p>
-</div>
+<div class="footer-brand"><a class="brand" href="#top"><img alt="" height="38" src="/assets/logo-mark.svg" width="38"/><span>LinguoAI</span></a><p>Videoları çevirin, yeniden seslendirin ve altyazı ekleyin.</p></div>
 <div class="footer-links">
-<div><strong>Keşfet</strong><a href="#funktionen">Özellikler</a><a href="#stimmen">Sesler</a><a href="#fragen">SSS</a></div>
-<div><strong>Başlat</strong><a href="#downloads">İndirilenler</a><a href="#colab">Google Colab</a><a download="" href="https://linguoai.de/downloads/LinguoAI_Colab.ipynb">Notebook</a></div>
+<div><strong>Başlat</strong><a href="/tr/colab.html">Colab talimatları</a><a href="/tr/anleitung.html#desktop">Yerel olarak yükle</a><a href="#downloads">İndirilenler</a></div>
+<div><strong>Daha fazla bilgi</strong><a href="/tr/anleitung.html">Ayrıntılı kılavuz</a><a href="#fragen">Yardım</a><a href="https://github.com/reinigungsprofileipzig/linguoai-de">GitHub</a></div>
 <div><strong>Yasal</strong><a href="/impressum.html">Baskı</a><a href="/datenschutz.html">Veri koruma</a></div>
 </div>
 </div>
-<div class="container footer-bottom">
-<span>© <span data-current-year="">2026</span> LinguoAI</span>
-<span>Takipçi olmadan. Harici web yazı tipleri olmadan.</span>
-</div>
+<div class="container footer-bottom"><span>© <span data-current-year="">2026</span> LinguoAI</span><span>Takipçi olmadan. Harici web yazı tipleri olmadan.</span></div>
 </footer>
-<div aria-live="polite" class="copy-toast" data-toast="" role="status"></div>
 </body>
 </html>

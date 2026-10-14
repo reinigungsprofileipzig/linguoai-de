@@ -11,7 +11,14 @@ from pathlib import Path
 from typing import NoReturn
 
 from . import __version__
-from .config import TRANSLATION_SERVICES, TTS_DEVICES, TTS_ENGINES, AppConfig
+from .config import (
+    ASR_ENGINES,
+    PARAKEET_PROFILES,
+    TRANSLATION_SERVICES,
+    TTS_DEVICES,
+    TTS_ENGINES,
+    AppConfig,
+)
 from .domain import ProgressUpdate
 from .errors import CancelledError, LinguoAIError
 from .pipeline import VideoDubbingPipeline
@@ -25,7 +32,9 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("-i", "--input", help="Videodatei oder Ordner")
     parser.add_argument("-o", "--output", help="Zieldatei oder Zielordner")
     parser.add_argument("-l", "--language", default="en", help="Zielsprache, z. B. de oder en")
-    parser.add_argument("--source-language", help="Whisper-Quellsprache; Standard: automatisch")
+    parser.add_argument(
+        "--source-language", help="Quellsprache: Whisper automatisch, bei Parakeet erforderlich"
+    )
     parser.add_argument(
         "-s",
         "--service",
@@ -41,6 +50,14 @@ def build_parser() -> argparse.ArgumentParser:
         help="Expliziter Cloud-Fallback; Option darf mehrfach vorkommen",
     )
     parser.add_argument("--whisper-model", default="medium", help="z. B. small, medium, large-v3")
+    parser.add_argument("--asr-engine", choices=ASR_ENGINES, default="whisper")
+    parser.add_argument(
+        "--parakeet-model-directory",
+        type=Path,
+        help="Lokaler sherpa-onnx-Export mit encoder, decoder, joiner und tokens.txt",
+    )
+    parser.add_argument("--parakeet-profile", choices=PARAKEET_PROFILES, default="multilingual-v3")
+    parser.add_argument("--parakeet-threads", type=int, default=4, help="Parakeet-CPU-Threads")
     parser.add_argument("--device", choices=("auto", "cpu", "cuda"), default="auto")
     parser.add_argument("--compute-type", default="default", help="z. B. int8 oder float16")
     parser.add_argument("--transcription-workers", type=int, default=2)
@@ -194,6 +211,10 @@ def main(argv: Sequence[str] | None = None) -> int:
         translation_service=args.service,
         fallback_services=tuple(args.fallback_service),
         whisper_model=args.whisper_model,
+        asr_engine=args.asr_engine,
+        parakeet_model_directory=args.parakeet_model_directory,
+        parakeet_profile=args.parakeet_profile,
+        parakeet_threads=args.parakeet_threads,
         device=args.device,
         compute_type=args.compute_type,
         transcription_workers=args.transcription_workers,

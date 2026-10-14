@@ -154,4 +154,81 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://linguoai.de/it/colab.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://linguoai.de/en/colab.html" />
   </url>
+  <url>
+    <loc>https://linguoai.de/anleitung.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://linguoai.de/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://linguoai.de/en/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://linguoai.de/ru/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://linguoai.de/uk/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://linguoai.de/tr/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://linguoai.de/es/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://linguoai.de/it/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://linguoai.de/en/anleitung.html" />
+  </url>
+  <url>
+    <loc>https://linguoai.de/en/anleitung.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://linguoai.de/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://linguoai.de/en/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://linguoai.de/ru/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://linguoai.de/uk/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://linguoai.de/tr/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://linguoai.de/es/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://linguoai.de/it/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://linguoai.de/en/anleitung.html" />
+  </url>
+  <url>
+    <loc>https://linguoai.de/ru/anleitung.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://linguoai.de/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://linguoai.de/en/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://linguoai.de/ru/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://linguoai.de/uk/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://linguoai.de/tr/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://linguoai.de/es/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://linguoai.de/it/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://linguoai.de/en/anleitung.html" />
+  </url>
+  <url>
+    <loc>https://linguoai.de/uk/anleitung.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://linguoai.de/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://linguoai.de/en/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://linguoai.de/ru/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://linguoai.de/uk/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://linguoai.de/tr/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://linguoai.de/es/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://linguoai.de/it/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://linguoai.de/en/anleitung.html" />
+  </url>
+  <url>
+    <loc>https://linguoai.de/tr/anleitung.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://linguoai.de/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://linguoai.de/en/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://linguoai.de/ru/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://linguoai.de/uk/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://linguoai.de/tr/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://linguoai.de/es/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://linguoai.de/it/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://linguoai.de/en/anleitung.html" />
+  </url>
+  <url>
+    <loc>https://linguoai.de/es/anleitung.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://linguoai.de/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://linguoai.de/en/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://linguoai.de/ru/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://linguoai.de/uk/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://linguoai.de/tr/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://linguoai.de/es/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://linguoai.de/it/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://linguoai.de/en/anleitung.html" />
+  </url>
+  <url>
+    <loc>https://linguoai.de/it/anleitung.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://linguoai.de/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://linguoai.de/en/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://linguoai.de/ru/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://linguoai.de/uk/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://linguoai.de/tr/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://linguoai.de/es/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://linguoai.de/it/anleitung.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://linguoai.de/en/anleitung.html" />
+  </url>
 </urlset>

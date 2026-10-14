@@ -18,6 +18,9 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+parakeet = ["sherpa-onnx>=1.12.11,<2", "numpy>=1.26,<3"]
+web = ["fastapi>=0.115,<1", "uvicorn>=0.30,<1", "httpx>=0.27,<1", "python-multipart>=0.0.18,<1"]
+drive = ["google-api-python-client>=2.150,<3", "google-auth>=2.35,<3", "google-auth-httplib2>=0.2,<1", "httplib2>=0.22,<1"]
 gemini = ["google-genai>=2,<3"]
 gui = ["ttkbootstrap>=1.10,<2"]
 piper = ["piper-tts>=1.5.0,<1.6.0"]
@@ -62,12 +65,18 @@ dev = [
 [project.scripts]
 linguoai = "linguoai.cli:entrypoint"
 linguoai-colab = "linguoai.colab_ui:entrypoint"
+linguoai-web = "linguoai.web_api:entrypoint"
+linguoai-worker = "linguoai.web_worker:entrypoint"
 
 [project.gui-scripts]
 linguoai-gui = "linguoai.cli:gui_entrypoint"
 
 [tool.setuptools.packages.find]
 include = ["linguoai*"]
+
+[tool.setuptools.data-files]
+"share/linguoai-web" = ["web.html"]
+"share/linguoai-web/assets" = ["assets/simple.css", "assets/web-app.css", "assets/web-app.js", "assets/favicon.svg", "assets/logo-mark.svg"]
 
 [tool.ruff]
 line-length = 100

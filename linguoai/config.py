@@ -14,6 +14,37 @@ OUTPUT_EXTENSIONS = frozenset({".mp4", ".mkv", ".mov"})
 TRANSLATION_SERVICES = ("google", "deepl", "gemini", "nllb")
 TTS_ENGINES = ("edge", "gtts", "piper", "chatterbox")
 TTS_DEVICES = ("auto", "cpu", "cuda")
+ASR_ENGINES = ("whisper", "parakeet")
+PARAKEET_PROFILES = ("multilingual-v3", "german-primeline")
+PARAKEET_V3_LANGUAGES = frozenset(
+    [
+        "bg",
+        "hr",
+        "cs",
+        "da",
+        "nl",
+        "en",
+        "et",
+        "fi",
+        "fr",
+        "de",
+        "el",
+        "hu",
+        "it",
+        "lv",
+        "lt",
+        "mt",
+        "pl",
+        "pt",
+        "ro",
+        "sk",
+        "sl",
+        "es",
+        "sv",
+        "ru",
+        "uk",
+    ]
+)
 
 # Chatterbox Multilingual uses base language codes. Regional application codes
 # are reduced to their base code before synthesis.
@@ -75,22 +106,29 @@ LANGUAGES: dict[str, str] = {
     "el": "Griechisch",
     "en": "Englisch",
     "es": "Spanisch",
+    "et": "Estnisch",
     "fi": "Finnisch",
     "fr": "Französisch",
     "hi": "Hindi",
     "he": "Hebräisch",
+    "hr": "Kroatisch",
     "hu": "Ungarisch",
     "id": "Indonesisch",
     "it": "Italienisch",
     "ja": "Japanisch",
     "ko": "Koreanisch",
+    "lt": "Litauisch",
+    "lv": "Lettisch",
     "ms": "Malaiisch",
+    "mt": "Maltesisch",
     "nl": "Niederländisch",
     "no": "Norwegisch",
     "pl": "Polnisch",
     "pt": "Portugiesisch",
     "ro": "Rumänisch",
     "ru": "Russisch",
+    "sk": "Slowakisch",
+    "sl": "Slowenisch",
     "sv": "Schwedisch",
     "th": "Thai",
     "tl": "Filipino",
@@ -110,6 +148,10 @@ class AppConfig:
     translation_service: str = "google"
     fallback_services: tuple[str, ...] = ()
     whisper_model: str = "medium"
+    asr_engine: str = "whisper"
+    parakeet_model_directory: Path | None = None
+    parakeet_profile: str = "multilingual-v3"
+    parakeet_threads: int = 4
     device: str = "auto"
     compute_type: str = "default"
     transcription_workers: int = 2
@@ -171,6 +213,8 @@ class AppConfig:
             tuple(service.strip().lower() for service in self.fallback_services),
         )
         object.__setattr__(self, "whisper_model", self.whisper_model.strip())
+        object.__setattr__(self, "asr_engine", self.asr_engine.strip().lower())
+        object.__setattr__(self, "parakeet_profile", self.parakeet_profile.strip().lower())
         object.__setattr__(self, "device", self.device.strip().lower())
         object.__setattr__(self, "compute_type", self.compute_type.strip().lower())
         object.__setattr__(self, "tts_engine", self.tts_engine.strip().lower())
@@ -188,7 +232,12 @@ class AppConfig:
             object.__setattr__(self, "nllb_revision", self.nllb_revision.strip() or None)
         if self.tts_voice is not None:
             object.__setattr__(self, "tts_voice", self.tts_voice.strip() or None)
-        for attribute in ("tts_reference_audio", "piper_model", "piper_config"):
+        for attribute in (
+            "tts_reference_audio",
+            "piper_model",
+            "piper_config",
+            "parakeet_model_directory",
+        ):
             value = getattr(self, attribute)
             if value is not None:
                 object.__setattr__(self, attribute, Path(value).expanduser())
@@ -243,6 +292,23 @@ class AppConfig:
 
         if self.device not in {"auto", "cpu", "cuda"}:
             raise ConfigurationError("Gerät muss 'auto', 'cpu' oder 'cuda' sein.")
+        if self.asr_engine not in ASR_ENGINES:
+            raise ConfigurationError(f"Unbekannte Spracherkennung: {self.asr_engine!r}")
+        if self.parakeet_profile not in PARAKEET_PROFILES:
+            raise ConfigurationError(f"Unbekanntes Parakeet-Profil: {self.parakeet_profile!r}")
+        if not 1 <= self.parakeet_threads <= 32:
+            raise ConfigurationError("Parakeet-CPU-Threads müssen zwischen 1 und 32 liegen.")
+        if self.asr_engine == "parakeet":
+            self.validate_parakeet_language(self.source_language)
+            if self.parakeet_model_directory is None:
+                raise ConfigurationError(
+                    "Parakeet benötigt einen lokalen sherpa-onnx-Modellordner "
+                    "(--parakeet-model-directory)."
+                )
+            if not self.parakeet_model_directory.is_dir():
+                raise ConfigurationError(
+                    f"Parakeet-Modellordner wurde nicht gefunden: {self.parakeet_model_directory}"
+                )
         if self.tts_engine not in TTS_ENGINES:
             raise ConfigurationError(f"Unbekannte TTS-Engine: {self.tts_engine!r}")
         if self.tts_device not in TTS_DEVICES:
@@ -310,6 +376,21 @@ class AppConfig:
                     f"Temporärer Pfad ist kein Verzeichnis: {self.temp_directory}"
                 )
         return self
+
+    def validate_parakeet_language(self, language: str | None) -> str:
+        if not language or language.casefold() == "auto":
+            raise ConfigurationError(
+                "Wähle für Parakeet die Quellsprache ausdrücklich. sherpa-onnx liefert "
+                "für dieses Modell keinen Sprachcode für die anschließende Übersetzung."
+            )
+        base = normalize_language_code(language).split("-", maxsplit=1)[0]
+        supported = {"de"} if self.parakeet_profile == "german-primeline" else PARAKEET_V3_LANGUAGES
+        if base not in supported:
+            raise ConfigurationError(
+                f"Parakeet-Profil {self.parakeet_profile!r} unterstützt {language!r} nicht. "
+                "Nutze Whisper oder ein passendes Modellprofil."
+            )
+        return base
 
     def _validate_tts(self) -> None:
         if self.piper_speaker_id is not None and self.piper_speaker_id < 0:

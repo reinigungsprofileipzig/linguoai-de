@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#096c51" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="description" content="Lade ein Video hoch, wähle die Sprache und lade deine neue Sprachfassung und Untertitel herunter." />
+    <title>Video Studio – LinguoAI</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/simple.css?v=20261013-2" />
+    <link rel="stylesheet" href="assets/web-app.css?v=20261013-2" />
+    <script defer src="assets/web-app.js?v=20261013-2"></script>
+  </head>
+  <body class="simple-site web-site">
+    <a class="skip-link" href="#main">Direkt zum Inhalt</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="https://linguoai.de/" aria-label="LinguoAI Startseite">
+          <img src="assets/logo-mark.svg" width="34" height="34" alt="" /><span>LinguoAI</span><span class="web-brand-context">Video Studio</span>
+        </a>
+        <nav class="web-nav" aria-label="Hauptnavigation">
+          <a href="https://linguoai.de/colab.html">Anleitung</a>
+          <button id="logout" class="web-text-button" type="button" hidden>Abmelden</button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="container web-main">
+      <div class="web-intro">
+        <p class="eyebrow"><span class="web-intro-mark" aria-hidden="true"></span>Dein Video Studio</p>
+        <h1>Dein Video, <span>in einer neuen Sprache.</span></h1>
+        <p>Eine neue Sprachspur und passende Untertitel. Direkt im Browser.</p>
+      </div>
+
+      <ol id="workflow-steps" class="web-steps" aria-label="Ablauf" hidden>
+        <li id="step-file" aria-current="step"><span class="web-step-number">1</span><span>Datei auswählen</span></li>
+        <li id="step-language"><span class="web-step-number">2</span><span>Sprache wählen</span></li>
+        <li id="step-download"><span class="web-step-number">3</span><span>Ergebnis herunterladen</span></li>
+      </ol>
+
+      <div id="connection-notice" class="web-notice" role="status" aria-live="polite">
+        <span id="connection-message">Verbindung wird geprüft …</span>
+        <button id="reconnect" class="web-text-button" type="button" hidden>Erneut verbinden</button>
+      </div>
+      <noscript><p class="web-notice">Für Uploads und den Auftragsstatus wird JavaScript benötigt. Alternativ kannst du LinguoAI auf deinem Rechner oder in <a href="https://linguoai.de/colab.html">Google Colab</a> nutzen.</p></noscript>
+
+      <section id="login-panel" class="web-card web-login" aria-labelledby="login-heading" hidden>
+        <div class="web-login-copy">
+          <span class="web-login-symbol" aria-hidden="true">↗</span>
+          <p class="section-kicker">Dein geschützter Arbeitsbereich</p>
+          <h2 id="login-heading">Willkommen zurück.</h2>
+          <p>Dein Video hochladen, die Sprache wählen und deine neue Fassung herunterladen.</p>
+          <ul class="web-login-benefits">
+            <li>Video mit neuer Sprachspur</li>
+            <li>Originale und übersetzte Untertitel</li>
+            <li>Downloads nur für deinen Zugang</li>
+          </ul>
+        </div>
+        <form id="login-form">
+          <p class="web-form-intro">Melde dich mit deinem erhaltenen Zugang an.</p>
+          <div class="web-field">
+            <label for="username">Benutzername</label>
+            <input id="username" name="username" type="text" autocomplete="username" maxlength="80" required />
+          </div>
+          <div class="web-field">
+            <label for="password">Passwort</label>
+            <input id="password" name="password" type="password" autocomplete="current-password" maxlength="512" required />
+          </div>
+          <p id="login-error" class="web-error" role="alert" hidden></p>
+          <button id="login-submit" class="button" type="submit">Studio öffnen <span aria-hidden="true">→</span></button>
+          <p class="web-login-note">Nach dem Anmelden findest du deine gespeicherten Aufträge wieder.</p>
+        </form>
+      </section>
+
+      <div id="app-panel" class="web-workspace" hidden>
+        <section class="web-card web-upload" aria-labelledby="upload-heading">
+          <div class="web-card-heading">
+            <div><p class="section-kicker">Neuer Auftrag</p><h2 id="upload-heading">Video übersetzen</h2></div>
+            <span id="engine-badge" class="web-badge">Spracherkennung</span>
+          </div>
+          <form id="upload-form">
+            <fieldset id="upload-fields" class="web-fieldset" aria-label="Video und Übersetzungsoptionen">
+              <div id="file-drop-zone" class="web-file-area">
+                <label for="video-file"><span class="web-file-symbol" aria-hidden="true">↑</span><strong>Video hier ablegen</strong><span class="web-file-choice">oder eine Datei auswählen</span></label>
+                <input id="video-file" name="file" type="file" accept=".mp4,.mkv,.mov,.avi,.webm,.m4v" aria-describedby="file-hint file-info" required />
+                <p id="file-hint">MP4, MKV, MOV, AVI, WebM oder M4V</p>
+                <p id="file-info" class="web-file-info" aria-live="polite">Noch keine Datei ausgewählt.</p>
+              </div>
+
+              <div class="web-language-grid">
+                <div class="web-field" id="source-field">
+                  <label for="source-language">Originalsprache</label>
+                  <select id="source-language" name="source_language" aria-describedby="source-hint"><option value="de">Deutsch</option></select>
+                  <p id="source-hint" class="web-field-hint">Wähle die Sprache, die im Video gesprochen wird.</p>
+                </div>
+                <div class="web-field">
+                  <label for="target-language">Zielsprache</label>
+                  <select id="target-language" name="target_language" required><option value="en">Englisch</option></select>
+                  <p class="web-field-hint">Für die neue Sprachspur und deine Untertitel.</p>
+                </div>
+              </div>
+
+              <details class="web-settings">
+                <summary>Erkennung &amp; Stimme <span class="web-settings-summary-note">Optional</span><span aria-hidden="true">⌄</span></summary>
+                <div class="web-settings-grid">
+                  <div class="web-field">
+                    <label for="asr-engine">Spracherkennung</label>
+                    <select id="asr-engine" name="asr_engine" aria-describedby="engine-hint"><option value="whisper">Whisper</option></select>
+                    <p id="engine-hint" class="web-field-hint"></p>
+                  </div>
+                  <div id="profile-field" class="web-field" hidden>
+                    <label for="parakeet-profile">Parakeet-Modell</label>
+                    <select id="parakeet-profile" name="parakeet_profile">
+                      <option value="multilingual-v3">Mehrsprachig · 25 Sprachen</option>
+                      <option value="german-primeline">Deutsch · primeline</option>
+                    </select>
+                  </div>
+                  <div class="web-field">
+                    <label for="translation-service">Übersetzung</label>
+                    <select id="translation-service" name="translation_service">
+                      <option value="google">Google Translate · online</option>
+                      <option value="nllb">NLLB · lokale Übersetzung</option>
+                    </select>
+                  </div>
+                  <div class="web-field">
+                    <label for="tts-engine">Sprachausgabe</label>
+                    <select id="tts-engine" name="tts_engine">
+                      <option value="edge">Microsoft Edge · online</option>
+                      <option value="gtts">Google TTS · online</option>
+                    </select>
+                  </div>
+                  <div class="web-field web-full-row">
+                    <label for="tts-voice">Stimme <span class="web-optional">(optional)</span></label>
+                    <input id="tts-voice" name="tts_voice" type="text" maxlength="100" placeholder="Automatisch zur Zielsprache" aria-describedby="voice-hint" />
+                    <p id="voice-hint" class="web-field-hint">Bei Edge kannst du eine passende Stimme angeben, z. B. en-US-AriaNeural.</p>
+                  </div>
+                </div>
+                <p id="service-note" class="web-service-note">Google Translate erhält den erkannten Text. Microsoft Edge erhält den übersetzten Text für die Sprachausgabe.</p>
+              </details>
+            </fieldset>
+            <p id="upload-error" class="web-error" role="alert" hidden></p>
+            <div class="web-submit-row">
+              <button id="upload-submit" class="button" type="submit">Übersetzung starten <span aria-hidden="true">→</span></button>
+              <p id="storage-note">Geschützte Aufbewahrung ist im Dienst enthalten.</p>
+            </div>
+          </form>
+        </section>
+
+        <aside id="result-preview" class="web-card web-result-preview" aria-labelledby="result-preview-heading">
+          <p class="section-kicker">Dein Ergebnis</p>
+          <h2 id="result-preview-heading">Alles für deine neue Fassung.</h2>
+          <p>Nach der Verarbeitung stehen drei Dateien für dich bereit.</p>
+          <ul class="web-output-list">
+            <li><span class="web-output-icon" aria-hidden="true">▶</span><div><strong>Dein Video</strong><span>Mit neuer Sprachspur · MP4</span></div></li>
+            <li><span class="web-output-icon" aria-hidden="true">≡</span><div><strong>Original-Untertitel</strong><span>Der erkannte Text · SRT</span></div></li>
+            <li><span class="web-output-icon" aria-hidden="true">≡</span><div><strong>Übersetzte Untertitel</strong><span>In deiner Zielsprache · SRT</span></div></li>
+          </ul>
+          <div class="web-protection-note"><span aria-hidden="true">✓</span><p>Deine Dateien sind geschützt. Die Aufbewahrungsfrist siehst du direkt bei deinem Ergebnis.</p></div>
+        </aside>
+
+        <section id="job-panel" class="web-card web-result" aria-labelledby="job-heading" hidden>
+          <div class="web-card-heading">
+            <div><p class="section-kicker">Dein Auftrag</p><h2 id="job-heading">Wird hochgeladen</h2></div>
+            <span id="job-status" class="web-badge">Upload</span>
+          </div>
+          <p id="job-filename" class="web-job-filename"></p>
+          <div class="web-progress-heading"><p id="job-stage" role="status" aria-live="polite"></p><span id="job-percent">0 %</span></div>
+          <progress id="job-progress" max="100" value="0" aria-label="Fortschritt des Auftrags">0 %</progress>
+          <p id="job-note" class="web-job-note"></p>
+          <dl id="job-timing" class="web-job-timing" hidden>
+            <div id="ready-time-row" hidden><dt>Fertiggestellt</dt><dd><time id="ready-time"></time></dd></div>
+            <div id="expiry-time-row" hidden><dt>Download verfügbar bis</dt><dd><time id="expiry-time"></time></dd></div>
+          </dl>
+          <p id="job-error" class="web-error" role="alert" hidden></p>
+          <div id="downloads" class="web-downloads" aria-label="Ergebnisdateien"></div>
+          <div class="web-job-actions">
+            <button id="cancel-job" class="web-secondary-button" type="button">Abbrechen</button>
+            <button id="refresh-job" class="web-text-button" type="button" hidden>Status erneut laden</button>
+            <button id="prepare-job" class="web-secondary-button" type="button" hidden>Neuen Auftrag vorbereiten</button>
+          </div>
+        </section>
+
+        <section id="recent-panel" class="web-recent" aria-labelledby="recent-heading" hidden>
+          <div class="web-recent-heading"><div><p class="section-kicker">Dein Arbeitsbereich</p><h2 id="recent-heading">Letzte Aufträge</h2></div><button id="refresh-recent" class="web-text-button" type="button">Aktualisieren</button></div>
+          <div id="recent-jobs" class="web-recent-list"></div>
+        </section>
+      </div>
+    </main>
+    <footer class="web-footer container">
+      <p>Video mit neuer Sprachspur · Originale und übersetzte Untertitel</p>
+      <div><a href="https://linguoai.de/">Über LinguoAI</a><a href="https://linguoai.de/colab.html">Mit Google Colab starten</a></div>
+    </footer>
+  </body>
+</html>

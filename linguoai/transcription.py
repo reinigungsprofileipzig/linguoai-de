@@ -27,6 +27,14 @@ class _ChunkTranscription:
     language_probability: float | None
 
 
+def create_transcriber(config: AppConfig, *, logger: Callable[[str], None] | None = None) -> Any:
+    if config.asr_engine == "parakeet":
+        from .parakeet import ParakeetTranscriber
+
+        return ParakeetTranscriber(config, logger=logger)
+    return FasterWhisperTranscriber(config, logger=logger)
+
+
 class FasterWhisperTranscriber:
     def __init__(
         self,

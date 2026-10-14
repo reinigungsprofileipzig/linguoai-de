@@ -43,7 +43,7 @@ from .timing import (
     rebalance_neighboring_windows,
     required_speeds,
 )
-from .transcription import FasterWhisperTranscriber
+from .transcription import create_transcriber
 from .translation import (
     GeminiTimingOptimizer,
     GeminiTranscriptOptimizer,
@@ -75,7 +75,7 @@ class VideoDubbingPipeline:
         self._last_update = ProgressUpdate(0, Stage.PREPARING, "Bereit")
 
         self.media = media or MediaTools(logger=self._log)
-        self.transcriber = transcriber or FasterWhisperTranscriber(self.config, logger=self._log)
+        self.transcriber = transcriber or create_transcriber(self.config, logger=self._log)
         self.translator = translator or TranslationManager(self.config, logger=self._log)
         self.optimizer = optimizer
         if self.config.optimize_transcript and self.optimizer is None:
@@ -878,8 +878,8 @@ class VideoDubbingPipeline:
             self._close_service(service)
 
     def _release_upstream_models_for_tts(self) -> None:
-        """Verhindert, dass Whisper/NLLB gleichzeitig mit Chatterbox GPU/RAM belegen."""
-        self._log("Gebe Whisper und lokale Übersetzungsmodelle vor Chatterbox frei …")
+        """Verhindert, dass ASR/NLLB gleichzeitig mit Chatterbox GPU/RAM belegen."""
+        self._log("Gebe Spracherkennung und lokale Übersetzungsmodelle vor Chatterbox frei …")
         self._close_service(self.transcriber)
         required_services = {self.config.translation_service, *self.config.fallback_services}
         if "nllb" in required_services:

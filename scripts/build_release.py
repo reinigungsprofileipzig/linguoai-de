@@ -27,7 +27,7 @@ ROOT_FILES = (
     "main.py",
     "pyproject.toml",
 )
-SOURCE_DIRECTORIES = ("linguoai", "notebooks", "scripts", "tests")
+SOURCE_DIRECTORIES = ("linguoai", "notebooks", "scripts", "tests", "deploy")
 IGNORED_PARTS = {
     ".git",
     ".pytest_cache",
@@ -50,6 +50,18 @@ def project_version() -> str:
 
 def source_files() -> list[Path]:
     files = [ROOT / name for name in ROOT_FILES]
+    remote_guide = WEBSITE / "REMOTE_WORKER.md"
+    if remote_guide.is_file():
+        files.append(remote_guide)
+    web_files = [
+        "web.html",
+        "assets/simple.css",
+        "assets/web-app.css",
+        "assets/web-app.js",
+        "assets/favicon.svg",
+        "assets/logo-mark.svg",
+    ]
+    files.extend(WEBSITE / name for name in web_files)
     for directory_name in SOURCE_DIRECTORIES:
         directory = ROOT / directory_name
         files.extend(

@@ -20,6 +20,7 @@ SHARE_PROVIDER = "gradio"  # @param ["gradio", "cloudflare"]
 CLOUDFLARE_TUNNEL_HOSTNAME = ""  # @param {type:"string"}
 MOUNT_GOOGLE_DRIVE = False  # @param {type:"boolean"}
 CACHE_MODELS_IN_DRIVE = False  # @param {type:"boolean"}
+INSTALL_PARAKEET = False  # @param {type:"boolean"}
 LOCAL_TTS_EXTRA = "none"  # @param ["none", "piper", "chatterbox"]
 MAX_SOURCE_BYTES = 500 * 1024**2
 
@@ -163,6 +164,8 @@ apt-get install -y -qq cloudflared
     subprocess.run(["bash", "-c", cloudflared_install], check=True)
 
 extras = ["colab"]
+if INSTALL_PARAKEET:
+    extras.append("parakeet")
 if LOCAL_TTS_EXTRA == "piper":
     extras.append("piper")
 elif LOCAL_TTS_EXTRA == "chatterbox":

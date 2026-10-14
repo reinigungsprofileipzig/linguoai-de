@@ -1,3 +1,3 @@
-78458e9e49d045ae6d7bd138ca17916d8f7fa5fef008641e504052f0e2f66acd  LinguoAI-2.2.1-source.zip
-9d38b6b5a0f76b8bc11a299d41cb1eb9d5bed5d3dab383b8d5f411b896c9062c  linguoai-2.2.1-py3-none-any.whl
-5a1e1a1158a555d7489887b579948cf52bdaf556c593538c6b01a3fd4efed41c  LinguoAI_Colab.ipynb
+bf693e5dc2199de4aa911d41b2f24752d51fd1afd31dd5b277e2cfdd114f3bdd  LinguoAI-2.2.1-source.zip
+07e707885e7747b7ae7732244c0b49b0f0e5488ec501a0c2a21e3b160d936434  linguoai-2.2.1-py3-none-any.whl
+6f26c9b41d9471ab03c521625aa4aabe491f95b8a1d105bba42a940ad54915bf  LinguoAI_Colab.ipynb

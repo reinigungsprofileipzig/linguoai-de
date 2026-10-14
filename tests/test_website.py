@@ -14,8 +14,12 @@ if not WEBSITE.is_dir():
     WEBSITE = ROOT
 HAS_WEBSITE = (WEBSITE / "index.html").is_file()
 SUPPORTED_LOCALES = ("de", "en", "ru", "uk", "tr", "es", "it")
-LOCALIZED_PAGE_NAMES = ("index.html", "colab.html")
+LOCALIZED_PAGE_NAMES = ("index.html", "colab.html", "anleitung.html")
 CANONICAL_ORIGIN = "https://linguoai.de"
+COLAB_NOTEBOOK_URL = (
+    "https://colab.research.google.com/github/reinigungsprofileipzig/linguoai-de/"
+    "blob/main/notebooks/LinguoAI_Colab.ipynb"
+)
 
 
 class _WebsiteParser(HTMLParser):
@@ -31,6 +35,8 @@ class _WebsiteParser(HTMLParser):
         self._json_ld_depth = 0
         self._json_ld_parts: list[str] = []
         self.json_ld: list[str] = []
+        self.section_count = 0
+        self.primary_colab_links: list[str] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         values = dict(attrs)
@@ -38,6 +44,10 @@ class _WebsiteParser(HTMLParser):
             self.html_language = values.get("lang", "") or ""
         if tag == "h1":
             self.h1_count += 1
+        if tag == "section":
+            self.section_count += 1
+        if tag == "a" and "data-colab-start" in values:
+            self.primary_colab_links.append(values.get("href", "") or "")
         if identifier := values.get("id"):
             self.ids.add(identifier)
 
@@ -98,6 +108,7 @@ class WebsiteTests(unittest.TestCase):
         expected = [
             "index.html",
             "colab.html",
+            "anleitung.html",
             "404.html",
             "impressum.html",
             "datenschutz.html",
@@ -108,6 +119,8 @@ class WebsiteTests(unittest.TestCase):
             "assets/styles.css",
             "assets/site.js",
             "assets/locale.js",
+            "assets/simple.css",
+            "assets/colab-guide.css",
             "assets/favicon.svg",
             "assets/logo-mark.svg",
             "downloads/LinguoAI_Colab.ipynb",
@@ -219,17 +232,21 @@ class WebsiteTests(unittest.TestCase):
                     reference=reference,
                 ):
                     parts = urlsplit(reference)
-                    if parts.scheme or reference.startswith(("mailto:", "tel:")):
+                    if parts.scheme and parts.netloc != "linguoai.de":
+                        continue
+                    if reference.startswith(("mailto:", "tel:")):
                         continue
                     if not parts.path:
                         if parts.fragment:
                             self.assertIn(parts.fragment, parser.ids)
                         continue
-                    if parts.path.startswith("/"):
+                    if parts.netloc == "linguoai.de":
+                        target = WEBSITE / unquote(parts.path.lstrip("/") or "index.html")
+                    elif parts.path.startswith("/"):
                         target = WEBSITE / unquote(parts.path.lstrip("/"))
                     else:
                         target = page.parent / unquote(parts.path)
-                    if parts.path.endswith("/"):
+                    if parts.path.endswith("/") and target.name != "index.html":
                         target /= "index.html"
                     self.assertTrue(target.resolve().is_file(), f"{tag}[{attribute}] -> {target}")
                     if parts.fragment and target.suffix.casefold() == ".html":
@@ -240,14 +257,39 @@ class WebsiteTests(unittest.TestCase):
         parser = _parse(WEBSITE / "index.html")
         self.assertEqual(parser.external_runtime_resources, [])
 
-    def test_feature_and_workflow_icons_are_embedded(self) -> None:
+    def test_homepage_is_compact_and_keeps_technical_setup_in_guide(self) -> None:
         homepage = (WEBSITE / "index.html").read_text(encoding="utf-8")
-        self.assertEqual(homepage.count('class="feature-icon"'), 6)
-        self.assertEqual(homepage.count('class="workflow-icon"'), 6)
-        self.assertEqual(homepage.count("</svg>\n              </div>\n              <h3>"), 6)
-        self.assertGreaterEqual(homepage.count('aria-hidden="true"'), 12)
+        parser = _parse(WEBSITE / "index.html")
+        self.assertLessEqual(parser.section_count, 6)
+        self.assertTrue({"funktionen", "ablauf", "downloads", "fragen"} <= parser.ids)
+        self.assertNotIn("pip install", homepage)
+        self.assertNotIn("cuDNN", homepage)
+        self.assertIn("anleitung.html#desktop", homepage)
         self.assertNotIn("iconify", homepage.casefold())
         self.assertNotIn("fontawesome", homepage.casefold())
+
+    def test_every_start_button_opens_the_same_colab_notebook(self) -> None:
+        for locale in SUPPORTED_LOCALES:
+            for page_name in LOCALIZED_PAGE_NAMES:
+                with self.subTest(locale=locale, page=page_name):
+                    parser = _parse(_localized_page(locale, page_name))
+                    self.assertTrue(parser.primary_colab_links)
+                    self.assertEqual(set(parser.primary_colab_links), {COLAB_NOTEBOOK_URL})
+
+    def test_guide_keeps_advanced_topics_and_colab_constraints(self) -> None:
+        guide = (WEBSITE / "anleitung.html").read_text("utf-8")
+        parser = _parse(WEBSITE / "anleitung.html")
+        self.assertTrue({"desktop", "cli", "stimmen", "hardware", "cloudflare"} <= parser.ids)
+        self.assertIn("pip install", guide)
+        self.assertIn("CLOUDFLARE_TUNNEL_TOKEN", guide)
+        for page_name in ("index.html", "colab.html"):
+            source = (WEBSITE / page_name).read_text("utf-8")
+            self.assertIn("https://research.google.com/colaboratory/faq.html", source)
+            self.assertIn("Compute", source)
+
+    def test_mobile_menu_has_an_inert_state(self) -> None:
+        source = (WEBSITE / "assets" / "site.js").read_text("utf-8")
+        self.assertIn("inert", source)
 
     def test_homepage_structured_data_is_valid_json(self) -> None:
         parser = _parse(WEBSITE / "index.html")
@@ -285,13 +327,10 @@ class WebsiteTests(unittest.TestCase):
         homepage = (WEBSITE / "index.html").read_text(encoding="utf-8")
         colab_page = (WEBSITE / "colab.html").read_text(encoding="utf-8")
         self.assertIn(f"https://linguoai.de/downloads/LinguoAI-{__version__}-source.zip", homepage)
-        self.assertIn("https://linguoai.de/downloads/LinguoAI_Colab.ipynb", homepage)
-        self.assertIn("https://linguoai.de/colab.html", homepage)
+        self.assertIn("colab.html", homepage)
         self.assertIn("https://linguoai.de/downloads/LinguoAI_Colab.ipynb", colab_page)
-        self.assertIn("https://colab.research.google.com/", colab_page)
+        self.assertIn(COLAB_NOTEBOOK_URL, colab_page)
         combined = f"{homepage}\n{colab_page}".casefold()
-        self.assertNotIn("github", combined)
-        self.assertNotIn("reinigungsprofileipzig", combined)
         self.assertNotIn("http://linguoai.de", combined)
 
     def test_download_archives_are_installable_project_artifacts(self) -> None:

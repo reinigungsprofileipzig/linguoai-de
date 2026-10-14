@@ -19,6 +19,14 @@ Piper und Chatterbox brauchen das entsprechende Zusatzpaket. Die Standardeinstel
 ohne automatischen Übersetzerwechsel; ein Google-Fallback muss ausdrücklich aktiviert werden.
 Optional vor dem Start unter Laufzeit → Laufzeittyp ändern eine GPU auswählen.
 
+## Optional: Parakeet auf der CPU
+
+INSTALL_PARAKEET aktivieren, um sherpa-onnx und NumPy mitzuinstallieren. Das Modell wird
+nicht automatisch geladen: einen vollständigen sherpa-onnx-Parakeet-Modellordner unter
+/content oder im eingebundenen Drive bereitstellen und in der Oberfläche auswählen.
+NVIDIA v3 unterstützt 25 europäische Sprachen; das primeline-Profil ist für Deutsch gedacht.
+Bei Parakeet die Quellsprache ausdrücklich wählen. Whisper bleibt die Voreinstellung.
+
 ## Optional: benannter Cloudflare Tunnel
 
 Nur mit SHARE_PROVIDER = "cloudflare": eigenen Cloudflare-Tunnel einrichten und eine öffentliche
