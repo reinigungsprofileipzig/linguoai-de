@@ -7,7 +7,7 @@ from unittest import mock
 import pytest
 
 from linguoai.errors import ConfigurationError, FileOperationError
-from linguoai.web_storage import DriveStorage, LocalStorage
+from linguoai.web_storage import DriveStorage, LocalStorage, StorageRouter
 
 
 def test_local_storage_opaque_unique_refs_and_roundtrip(tmp_path):
@@ -274,3 +274,155 @@ def test_drive_failed_resumable_upload_closes_owned_file(tmp_path):
     ):
         storage.upload(source, job_id="job_1", name="video.mp4")
     assert stream.closed
+
+
+def test_storage_router_drive_activation_preserves_old_local_files(tmp_path):
+    local = LocalStorage(tmp_path / "files")
+    source = tmp_path / "video.mp4"
+    source.write_bytes(b"old local video")
+    old_ref = local.upload(source, job_id="old_job", name="input.mp4")
+    service = FakeDrive()
+    drive = DriveStorage("private-folder", service=service)
+    router = StorageRouter(local, drive)
+    source.write_bytes(b"new drive video")
+    stream = io.BytesIO()
+    with mock.patch(
+        "linguoai.web_storage._media_upload", return_value=SimpleNamespace(stream=lambda: stream)
+    ):
+        new_ref = router.upload(source, job_id="new_job", name="input.mp4")
+    assert new_ref == "drive:new-file"
+    assert stream.closed
+    assert len(service.created) == 1
+    assert list(local.root.iterdir()) == [local.root / old_ref]
+    old_result = tmp_path / "old-result.mp4"
+    router.download(old_ref, old_result)
+    assert old_result.read_bytes() == b"old local video"
+    assert router.file_path(old_ref) == local.root / old_ref
+    assert router.file_path("local:" + old_ref) == local.root / old_ref
+
+    class Download:
+        def __init__(self, output, request):
+            self.output = output
+            self.request = request
+
+        def next_chunk(self, *, num_retries):
+            self.output.write(self.request.value)
+            return None, True
+
+    with mock.patch("linguoai.web_storage._media_download", side_effect=Download):
+        router.download(new_ref, tmp_path / "drive-result.mp4")
+    assert (tmp_path / "drive-result.mp4").read_bytes() == b"drive video"
+    router.delete("local:" + old_ref)
+    router.delete(old_ref)
+    assert not list(local.root.iterdir())
+    router.delete(new_ref)
+    assert service.deleted == [{"fileId": "new-file", "supportsAllDrives": True}]
+    router.close()
+    assert service.closed
+
+
+def test_storage_router_without_drive_keeps_local_uploads_and_rejects_drive_refs(tmp_path):
+    local = LocalStorage(tmp_path / "files")
+    router = StorageRouter(local)
+    source = tmp_path / "video.mp4"
+    source.write_bytes(b"video")
+    ref = router.upload(source, job_id="job", name="input.mp4")
+    assert len(ref) == 32 and router.is_local_ref(ref)
+    router.download("local:" + ref, tmp_path / "copy.mp4")
+    assert (tmp_path / "copy.mp4").read_bytes() == b"video"
+    for operation in (
+        lambda: router.download("drive:" + ref, tmp_path / "wrong.mp4"),
+        lambda: router.delete("drive:" + ref),
+    ):
+        with pytest.raises(ConfigurationError, match="not configured"):
+            operation()
+    assert not (tmp_path / "wrong.mp4").exists()
+    assert router.file_path(ref).read_bytes() == b"video"
+    router.close()
+
+
+def test_storage_router_does_not_fallback_to_local_on_drive_upload_failure(tmp_path):
+    local = LocalStorage(tmp_path / "files")
+    service = FakeDrive()
+    drive = DriveStorage("private-folder", service=service)
+    router = StorageRouter(local, drive)
+    source = tmp_path / "video.mp4"
+    source.write_bytes(b"video")
+    with (
+        mock.patch.object(drive, "upload", side_effect=OSError("Drive unavailable")),
+        pytest.raises(OSError, match="Drive unavailable"),
+    ):
+        router.upload(source, job_id="job", name="input.mp4")
+    assert not list(local.root.iterdir())
+
+
+@pytest.mark.parametrize(
+    "ref",
+    [
+        None,
+        12,
+        "",
+        "../secret",
+        "C:\\secret",
+        "/secret",
+        "local:../secret",
+        "local:" + "A" * 32,
+        "local:" + "a" * 32 + "/",
+        "local:local:" + "a" * 32,
+        "drive:../secret",
+        "drive:/secret",
+        "unknown:" + "a" * 32,
+    ],
+)
+def test_storage_router_rejects_untrusted_refs_before_provider_access(tmp_path, ref):
+    local = LocalStorage(tmp_path / "files")
+    service = FakeDrive()
+    router = StorageRouter(local, DriveStorage("private-folder", service=service))
+    for operation in (
+        lambda: router.download(ref, tmp_path / "out"),
+        lambda: router.delete(ref),
+        lambda: router.file_path(ref),
+    ):
+        with pytest.raises(FileOperationError):
+            operation()
+    assert service.requests == []
+    assert service.media_reads == []
+    assert service.deleted == []
+    assert not (tmp_path / "out").exists()
+
+
+def test_storage_router_preserves_drive_folder_boundary_and_cannot_stream_drive_ids(tmp_path):
+    local = LocalStorage(tmp_path / "files")
+    service = FakeDrive(parent="another-private-folder")
+    router = StorageRouter(local, DriveStorage("private-folder", service=service))
+    for operation in (
+        lambda: router.download("drive:secret", tmp_path / "out"),
+        lambda: router.delete("drive:secret"),
+        lambda: router.file_path("drive:secret"),
+    ):
+        with pytest.raises(FileOperationError):
+            operation()
+    assert not router.is_local_ref("drive:" + "a" * 32)
+    assert service.media_reads == []
+    assert service.deleted == []
+    assert not (tmp_path / "out").exists()
+
+
+def test_storage_router_prefixed_local_symlinks_cannot_escape_store(tmp_path):
+    local = LocalStorage(tmp_path / "files")
+    router = StorageRouter(local, DriveStorage("private-folder", service=FakeDrive()))
+    outside = tmp_path / "secret.txt"
+    outside.write_bytes(b"secret")
+    link = local.root / ("a" * 32)
+    try:
+        link.symlink_to(outside)
+    except OSError:
+        pytest.skip("Creating symlinks is not enabled on this Windows host.")
+    for operation in (
+        lambda: router.download("local:" + link.name, tmp_path / "out"),
+        lambda: router.delete("local:" + link.name),
+        lambda: router.file_path("local:" + link.name),
+    ):
+        with pytest.raises(FileOperationError):
+            operation()
+    assert outside.read_bytes() == b"secret"

@@ -229,6 +229,8 @@ Der laufende Dienst verwendet `storage_backend: local`. Ein gemeinsamer privater
 Betreiberordner ist vorgesehen, aber noch nicht angelegt oder per OAuth autorisiert.
 **Endnutzer benötigen kein Google-Konto; Drive bleibt im Nutzerablauf verborgen.**
 
+Der konkrete Freigabeschritt mit privater Ordneranlage und Upload-/Download-/Löschtest steht in [Google Drive einrichten](GOOGLE_DRIVE.md). Der Speicherrouter erhält vorhandene lokale Downloads beim späteren Wechsel.
+
 Nach echter Betreiberfreigabe zusätzlich in `server.json` setzen:
 
 - `storage_backend`: `drive`

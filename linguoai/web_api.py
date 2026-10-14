@@ -34,7 +34,7 @@ from .config import (
 from .web_chunk_api import install_upload_routes
 from .web_jobs import JobConflict, JobNotFound, JobStore, LeaseLost
 from .web_settings import ServerSettings, Sessions, verify_password
-from .web_storage import DriveStorage, LocalStorage
+from .web_storage import DriveStorage, LocalStorage, StorageRouter
 from .web_uploads import MAX_CHUNK_BYTES
 
 LOG = logging.getLogger(__name__)
@@ -243,10 +243,13 @@ def create_app(
         max_active_total=settings.max_active_total,
     )
     storage = storage or (
-        DriveStorage(
-            settings.drive_folder_id,
-            settings.drive_credentials_path,
-            shared_drive=settings.drive_shared,
+        StorageRouter(
+            LocalStorage(settings.state_directory / "files"),
+            DriveStorage(
+                settings.drive_folder_id,
+                settings.drive_credentials_path,
+                shared_drive=settings.drive_shared,
+            ),
         )
         if settings.storage_backend == "drive"
         else LocalStorage(settings.state_directory / "files")
@@ -634,7 +637,9 @@ def create_app(
         return public_job(store.cancel(job_id, username))
 
     async def stored_file(ref: str, filename: str, size_bytes: int):
-        if isinstance(storage, LocalStorage):
+        if isinstance(storage, LocalStorage) or (
+            isinstance(storage, StorageRouter) and storage.is_local_ref(ref)
+        ):
             try:
                 return FileResponse(
                     storage.file_path(ref), filename=filename, media_type="application/octet-stream"

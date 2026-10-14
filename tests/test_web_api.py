@@ -378,3 +378,59 @@ class WebApiTests(unittest.TestCase):
             self.assertNotIn("api_key", uploaded.text)
         self.assertEqual(self.upload(deepl_api_key="private-provider-key").status_code, 422)
         self.assertEqual(self.upload(gemini_api_key="private-provider-key").status_code, 422)
+
+    def test_drive_activation_preserves_existing_local_downloads_and_routes_new_uploads(self):
+        from dataclasses import replace
+        from unittest.mock import Mock
+
+        source = self.settings.state_directory / "legacy.mp4"
+        source.write_bytes(b"legacy private video")
+        jobs, local = self.app.state.store, self.app.state.storage
+        row = jobs.create("alice", source.name, {"target_language": "de"})
+        ref = local.upload(source, job_id=row["id"], name="input")
+        jobs.queue(row["id"], "alice", ref, source.stat().st_size)
+        claim = jobs.claim("legacy-worker")
+        for name in ("video", "original_srt", "translated_srt"):
+            artifact = local.upload(source, job_id=row["id"], name=name)
+            jobs.add_artifact(
+                row["id"],
+                "legacy-worker",
+                claim["lease_token"],
+                name,
+                artifact,
+                source.stat().st_size,
+            )
+        jobs.complete(row["id"], "legacy-worker", claim["lease_token"])
+        drive = Mock(spec=("upload", "download", "delete"))
+        drive.upload.return_value = "drive:new-file"
+        settings = replace(self.settings, storage_backend="drive", drive_folder_id="private-folder")
+        with patch("linguoai.web_api.DriveStorage", return_value=drive):
+            app = create_app(settings, store=jobs)
+        with TestClient(app, base_url="http://127.0.0.1:8765") as client:
+            login = client.post(
+                "/api/auth/login",
+                json={"username": "alice", "password": "test-browser-password"},
+                headers=self.change_headers,
+            )
+            self.assertEqual(login.status_code, 200)
+            with patch(
+                "linguoai.web_api.tempfile.TemporaryDirectory",
+                side_effect=AssertionError("Local files should stream without a second copy"),
+            ):
+                for name in ("video", "original_srt", "translated_srt"):
+                    downloaded = client.get(f"/api/jobs/{row['id']}/artifacts/{name}")
+                    self.assertEqual(downloaded.status_code, 200)
+                    self.assertEqual(downloaded.content, source.read_bytes())
+                    self.assertEqual(downloaded.headers["cache-control"], "no-store")
+            uploaded = client.post(
+                "/api/jobs",
+                data={"options": json.dumps({"target_language": "de"})},
+                files={"file": ("new.mp4", b"new private video", "video/mp4")},
+                headers=self.change_headers,
+            )
+            self.assertEqual(uploaded.status_code, 201, uploaded.text)
+            drive.upload.assert_called_once()
+            drive.download.assert_not_called()
+            self.assertEqual(
+                jobs.get(uploaded.json()["id"], "alice")["input_ref"], "drive:new-file"
+            )

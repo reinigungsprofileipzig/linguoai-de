@@ -324,3 +324,52 @@ class DriveStorage:
             close = getattr(self.service, "close", None)
             if close is not None:
                 close()
+
+
+class StorageRouter:
+    """Route persisted references while using Drive for new uploads when configured.
+
+    Existing local references remain readable after activating Drive. Provider failures
+    are returned to the caller; new uploads never silently switch to another backend.
+    """
+
+    def __init__(
+        self, local_storage: LocalStorage, drive_storage: DriveStorage | None = None
+    ) -> None:
+        self.local_storage = local_storage
+        self.drive_storage = drive_storage
+
+    @staticmethod
+    def is_local_ref(ref: str) -> bool:
+        return isinstance(ref, str) and re.fullmatch(r"(?:local:)?[0-9a-f]{32}", ref) is not None
+
+    def _target(self, ref: str) -> tuple[Storage, str]:
+        if self.is_local_ref(ref):
+            return self.local_storage, ref.removeprefix("local:")
+        if isinstance(ref, str) and re.fullmatch(r"drive:[A-Za-z0-9_-]{1,200}", ref):
+            if self.drive_storage is None:
+                raise ConfigurationError("Google Drive storage is not configured.")
+            return self.drive_storage, ref
+        raise FileOperationError("Invalid storage reference.")
+
+    def upload(self, path: Path, *, job_id: str, name: str) -> str:
+        storage = self.drive_storage if self.drive_storage is not None else self.local_storage
+        return storage.upload(path, job_id=job_id, name=name)
+
+    def download(self, ref: str, destination: Path) -> None:
+        storage, provider_ref = self._target(ref)
+        storage.download(provider_ref, destination)
+
+    def delete(self, ref: str) -> None:
+        storage, provider_ref = self._target(ref)
+        storage.delete(provider_ref)
+
+    def file_path(self, ref: str) -> Path:
+        """Stream only checked local files; Drive references require a download."""
+        if not self.is_local_ref(ref):
+            raise FileOperationError("Direct streaming requires a local storage reference.")
+        return self.local_storage.file_path(ref.removeprefix("local:"))
+
+    def close(self) -> None:
+        if self.drive_storage is not None:
+            self.drive_storage.close()
