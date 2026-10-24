@@ -83,6 +83,39 @@ strong { color: var(--ink); }
 .simple-preview-outputs { display: grid; gap: .55rem; margin-top: 1.25rem; font-size: .87rem; }
 .simple-preview-outputs span::before { content: '✓'; margin-right: .6rem; color: var(--brand); font-weight: 750; }
 .simple-preview figcaption { margin-top: 1.2rem; color: var(--muted); font-size: .72rem; }
+.version-section { background: #fff; }
+.version-intro { margin-top: 1rem; max-width: 58ch; }
+.version-filter { min-width: 0; margin: 0 0 1.5rem; padding: 0; border: 0; }
+.version-filter legend { margin-bottom: .7rem; font-size: .9rem; font-weight: 650; }
+.version-options { display: flex; flex-wrap: wrap; gap: .6rem; }
+.version-options label { position: relative; cursor: pointer; }
+.version-options input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.version-options span { display: flex; align-items: center; min-height: 46px; padding: .65rem 1rem; border: 1px solid var(--line-strong); border-radius: 100px; font-size: .87rem; line-height: 1.4; }
+.version-options span:hover { background: var(--brand-soft); }
+.version-options input:checked + span { border-color: var(--brand); color: #fff; background: var(--brand); }
+.version-options input:focus-visible + span { outline: 3px solid #dd6a38; outline-offset: 4px; }
+.version-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; }
+.version-card { display: flex; flex-direction: column; min-width: 0; padding: 1.5rem; border: 1px solid var(--line-strong); border-radius: 18px; background: var(--paper); }
+.version-card-top { display: flex; align-items: center; flex-wrap: wrap; gap: .65rem; margin-bottom: 1.1rem; }
+.version-icon { color: var(--brand); font: 600 .85rem var(--font-mono); }
+.version-tag { padding: .25rem .6rem; border-radius: 6px; font-size: .72rem; font-weight: 650; color: var(--brand-dark); background: var(--brand-soft); }
+.version-tag-preview { color: #78481a; background: #fff0da; }
+.version-card h3 { font-size: 1.5rem; }
+.version-description { margin-top: .8rem; font-size: .94rem; }
+.version-facts { margin: 1.25rem 0 1.5rem; font-size: .85rem; }
+.version-facts div { padding-block: .75rem; border-top: 1px solid var(--line); }
+.version-facts dt { font-weight: 650; }
+.version-facts dd { margin: .25rem 0 0; color: var(--muted); }
+.version-card-actions { display: grid; gap: .85rem; margin-top: auto; }
+.version-card-actions .button { text-align: center; }
+.version-card-actions .text-link { justify-content: center; font-size: .83rem; text-align: center; }
+.version-footnote { margin-top: 1.25rem; font-size: .85rem; }
+.version-grid.has-selection { grid-template-columns: minmax(0, 1fr); }
+.version-card.is-selected { display: grid; grid-template-columns: 1fr 1fr; column-gap: 2.5rem; border: 2px solid var(--brand); background: #f2faf5; }
+.version-card.is-selected .version-card-top, .version-card.is-selected h3, .version-card.is-selected .version-description { grid-column: 1; }
+.version-card.is-selected .version-facts { grid-column: 2; grid-row: 1 / span 4; margin: 0; }
+.version-card.is-selected .version-card-actions { grid-column: 1; margin-top: 1.3rem; }
+[data-version][hidden], [data-version-controls][hidden] { display: none; }
 .simple-section { padding-block: clamp(2.75rem, 5vw, 4.5rem); border-top: 1px solid var(--line); }
 .simple-heading { max-width: 690px; margin-bottom: 2rem; }
 .simple-heading h2, .simple-download-grid h2, .simple-faq-grid h2 { margin-top: .6rem; }
@@ -163,6 +196,8 @@ code { font-family: var(--font-mono); font-size: .88em; overflow-wrap: anywhere;
   .no-js .main-navigation a { padding: .3rem; }
   .simple-hero-grid { gap: 2rem; }
   .simple-download-grid, .simple-faq-grid { gap: 2rem; }
+  .version-grid { gap: .75rem; }
+  .version-card { padding: 1.15rem; }
 }
 @media (max-width: 760px) {
   .container { width: calc(100% - 2rem); }
@@ -181,6 +216,13 @@ code { font-family: var(--font-mono); font-size: .88em; overflow-wrap: anywhere;
   .footer-links { gap: 1rem; }
   .footer-bottom { flex-wrap: wrap; }
   .guide-main { padding-top: 2rem; }
+  .version-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .version-card { padding: 1.4rem; }
+  .version-card.is-selected { display: flex; }
+  .version-card.is-selected .version-facts { margin-top: 1.25rem; }
+  .version-options { display: grid; grid-template-columns: 1fr 1fr; }
+  .version-options label, .version-options span { height: 100%; }
+  .version-options span { border-radius: 12px; padding: .7rem; font-size: .8rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

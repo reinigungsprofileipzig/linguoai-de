@@ -25,11 +25,12 @@
 <meta content="https://linguoai.de/ru/" property="og:url"/>
 <meta content="summary" name="twitter:card"/>
 <title>LinguoAI — переводите и озвучивайте видео</title>
-<link href="/assets/simple.css?v=20261013-2" rel="stylesheet"/>
+<link href="/assets/simple.css?v=20261023-1" rel="stylesheet"/>
 <script>
       document.documentElement.classList.replace("no-js", "has-js");
       (() => {
         if (document.documentElement.dataset.localeDetect !== "true") return;
+        if (new URLSearchParams(window.location.search).get("lang") === "de") return;
         const supported = new Set(["de", "en", "ru", "uk", "tr", "es", "it"]);
         const route = { de: "/", en: "/en/", ru: "/ru/", uk: "/uk/", tr: "/tr/", es: "/es/", it: "/it/" };
         let selected = "";
@@ -47,8 +48,8 @@
         if (selected !== "de") window.location.replace(route[selected] + window.location.hash);
       })();
     </script>
-<script defer="" src="/assets/locale.js?v=20261012-1"></script>
-<script defer="" src="/assets/site.js?v=20261013-2"></script>
+<script defer="" src="/assets/locale.js?v=20261023-1"></script>
+<script defer="" src="/assets/site.js?v=20261023-1"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -106,8 +107,8 @@
 <img alt="" height="38" src="/assets/logo-mark.svg" width="38"/><span>LinguoAI</span>
 </a>
 <nav aria-label="Основная навигация" class="main-navigation" data-menu="" id="main-navigation">
+<a href="#versionen">Найти версию</a>
 <a href="#funktionen">Особенности</a>
-<a href="/ru/colab.html">Руководство</a>
 <a href="#downloads">Загрузки</a>
 <a data-i18n-ignore="" href="https://stayinleipzig.de/linguoai/web.html">Video Studio</a>
 <a href="#fragen">Помощь</a>
@@ -136,15 +137,14 @@
 <section class="simple-hero" id="top">
 <div class="container simple-hero-grid">
 <div class="simple-hero-copy">
-<p class="eyebrow"><span class="status-dot"></span>Открытый исходный код · локально или в Google Colab</p>
+<p class="eyebrow"><span class="status-dot"></span>Открытый исходный код · три способа создать своё видео</p>
 <h1>Ваше видео.<br/><span>Новый язык.</span></h1>
 <p class="simple-intro">Переводите видео, создавайте новую звуковую дорожку и сохраняйте подходящие субтитры. Шаг за шагом — в браузере или на вашем компьютере.</p>
 <div class="simple-actions">
-<a class="button" data-colab-start="" href="https://colab.research.google.com/github/reinigungsprofileipzig/linguoai-de/blob/main/notebooks/LinguoAI_Colab.ipynb">Запустить в Google Colab <span aria-hidden="true">↗</span></a>
-<a class="text-link" href="/ru/anleitung.html#desktop">Установить локально <span aria-hidden="true">→</span></a>
+<a class="button" href="#versionen">Найти подходящую версию <span aria-hidden="true">↓</span></a>
+<a class="text-link" href="#ablauf">Вот как это работает <span aria-hidden="true">→</span></a>
 </div>
-<p class="simple-start-note">Для Colab нужен аккаунт Google. Настройка занимает несколько минут; длительность сеанса и доступность GPU не гарантируются.</p>
-<a class="simple-help-link" href="/ru/colab.html">Первый запуск? К краткому руководству →</a>
+<p class="simple-start-note">Google Colab, Desktop или Video Studio: сравните требования и выберите, с чего начать.</p>
 </div>
 <figure class="simple-preview">
 <div class="simple-preview-heading"><span>LinguoAI</span><span>Видео → языковая версия</span></div>
@@ -157,6 +157,45 @@
 <div class="simple-preview-outputs"><span>Видео с новым голосом</span><span>Оригинал + перевод в SRT</span></div>
 <figcaption>Схематичный пример, не живая демонстрация.</figcaption>
 </figure>
+</div>
+</section>
+<section aria-labelledby="versions-title" class="simple-section version-section" data-version-finder="" id="versionen">
+<div class="container">
+<div class="simple-heading"><p class="section-kicker">С чего начать</p><h2 id="versions-title">Какой вариант вам подходит?</h2><p class="version-intro">Выберите вариант под свои задачи. Каждая версия сразу направит вас к нужному следующему шагу.</p></div>
+<fieldset class="version-filter" data-version-controls="" hidden="">
+<legend>Что для вас важно?</legend>
+<div class="version-options">
+<label><input checked="" name="version-need" type="radio" value="all"/><span>Сравнить все</span></label>
+<label><input name="version-need" type="radio" value="colab"/><span>Начать без установки</span></label>
+<label><input name="version-need" type="radio" value="desktop"/><span>Обрабатывать файлы локально</span></label>
+<label><input name="version-need" type="radio" value="studio"/><span>У меня есть доступ к Studio</span></label>
+</div>
+</fieldset>
+<p aria-atomic="true" aria-live="polite" class="version-result" data-version-result="" role="status"></p>
+<div class="version-grid">
+<article aria-labelledby="colab-version-title" class="version-card" data-version="colab" id="version-colab">
+<div class="version-card-top"><span aria-hidden="true" class="version-icon">01</span><span class="version-tag">В браузере · аккаунт Google</span></div>
+<h3 id="colab-version-title">Google Colab</h3>
+<p class="version-description" data-version-description="">Чтобы начать без установки на компьютер. Вы запускаете собственный сеанс в Google.</p>
+<dl class="version-facts"><div><dt>Вам понадобится</dt><dd>Аккаунт Google и интернет</dd></div><div><dt>Настройка</dt><dd>Запустить Notebook и подождать несколько минут</dd></div><div><dt>Полезно знать</dt><dd>Время сеанса ограничено. Доступ к GPU не гарантируется; использование Colab может быть платным.</dd></div></dl>
+<div class="version-card-actions"><a class="button" href="/ru/colab.html">Начать с Colab <span aria-hidden="true">→</span></a><a class="text-link" data-colab-start="" href="https://colab.research.google.com/github/reinigungsprofileipzig/linguoai-de/blob/main/notebooks/LinguoAI_Colab.ipynb">Открыть Notebook напрямую <span aria-hidden="true">↗</span></a></div>
+</article>
+<article aria-labelledby="desktop-version-title" class="version-card" data-version="desktop" id="version-desktop">
+<div class="version-card-top"><span aria-hidden="true" class="version-icon">02</span><span class="version-tag">Windows и Linux</span></div>
+<h3 id="desktop-version-title">Desktop</h3>
+<p class="version-description" data-version-description="">Для регулярной работы и контроля над своими файлами. Обработка выполняется на вашем компьютере.</p>
+<dl class="version-facts"><div><dt>Вам понадобится</dt><dd>Python и FFmpeg</dd></div><div><dt>Настройка</dt><dd>Скачать проект и установить на компьютер</dd></div><div><dt>Полезно знать</dt><dd>GPU необязателен. Содержимое остаётся на вашем компьютере только при использовании локальных моделей.</dd></div></dl>
+<div class="version-card-actions"><a class="button button-secondary" href="/ru/anleitung.html#desktop">Настроить Desktop <span aria-hidden="true">→</span></a><a class="text-link" href="/ru/anleitung.html#cli">Для опытных пользователей: командная строка <span aria-hidden="true">→</span></a></div>
+</article>
+<article aria-labelledby="studio-version-title" class="version-card" data-version="studio" id="version-studio">
+<div class="version-card-top"><span aria-hidden="true" class="version-icon">03</span><span class="version-tag version-tag-preview">Тестовый режим · требуется доступ</span></div>
+<h3 id="studio-version-title">Video Studio</h3>
+<p class="version-description" data-version-description="">Для пользователей, уже получивших доступ к Studio. Войдите и загружайте видео прямо в браузере.</p>
+<dl class="version-facts"><div><dt>Вам понадобится</dt><dd>Имя пользователя и пароль Studio</dd></div><div><dt>Настройка</dt><dd>Без установки и аккаунта Google</dd></div><div><dt>Полезно знать</dt><dd>Обработка на сервере. Возможности перевода пока ограничены; полный рабочий процесс ещё не подтверждён.</dd></div></dl>
+<div class="version-card-actions"><a class="button button-secondary" href="https://stayinleipzig.de/linguoai/web.html">Открыть Video Studio <span aria-hidden="true">↗</span></a><a class="text-link" href="/ru/colab.html">Нет доступа? Используйте Colab <span aria-hidden="true">→</span></a></div>
+</article>
+</div>
+<p class="version-footnote">Позже можно выбрать другой вариант. Для Desktop нужно скачать проект; Colab и Video Studio открываются по соответствующим ссылкам.</p>
 </div>
 </section>
 <section class="simple-section simple-benefits" id="funktionen">
@@ -174,11 +213,11 @@
 <div class="container">
 <div class="simple-heading"><p class="section-kicker">Вот как это работает</p><h2>Ваше первое видео за три шага.</h2></div>
 <ol class="simple-steps">
-<li><span aria-hidden="true" class="simple-step-number">01</span><div><h3>Запустить интерфейс</h3><p>Откройте и выполните Notebook в Colab. Затем откройте созданную ссылку Gradio.</p></div></li>
+<li><span aria-hidden="true" class="simple-step-number">01</span><div><h3>Выбрать версию и начать</h3><p>Запустите Colab по инструкции, установите Desktop или войдите в Video Studio со своими данными доступа.</p></div></li>
 <li><span aria-hidden="true" class="simple-step-number">02</span><div><h3>Выбрать видео и язык</h3><p>Загрузите короткое тестовое видео, выберите язык перевода и голос. Можно обработать и несколько видео.</p></div></li>
-<li><span aria-hidden="true" class="simple-step-number">03</span><div><h3>Проверить и сохранить результат</h3><p>Проверьте перевод и произношение. Скачайте видео и субтитры до завершения сеанса.</p></div></li>
+<li><span aria-hidden="true" class="simple-step-number">03</span><div><h3>Проверить и сохранить результат</h3><p>Проверьте перевод и произношение. Сохраните видео и субтитры; в Colab — до завершения сеанса.</p></div></li>
 </ol>
-<a class="text-link" href="/ru/colab.html">К пошаговому руководству <span aria-hidden="true">→</span></a>
+<a class="text-link" href="#versionen">Выбрать версию и инструкцию <span aria-hidden="true">→</span></a>
 </div>
 </section>
 <section class="simple-section" id="downloads">
@@ -186,7 +225,7 @@
 <div><p class="section-kicker">Также на вашем компьютере</p><h2>Установить локально.</h2><p>Для регулярной работы и большего контроля над файлами. Вам нужны Python и FFmpeg; руководство поможет выполнить настройку.</p><a class="text-link" href="/ru/anleitung.html#desktop">К локальной установке <span aria-hidden="true">→</span></a></div>
 <div class="simple-download-card">
 <span class="simple-version">LinguoAI 2.2.1</span>
-<h3>Полный проект</h3><p>Исходный код, приложение для компьютера и Notebook.</p>
+<h3>Полный проект</h3><p>Исходный код с приложением Desktop и Notebook. Готового установщика нет: следуйте инструкции по установке.</p>
 <a class="button button-secondary" download="" href="https://linguoai.de/downloads/LinguoAI-2.2.1-source.zip">Скачать ZIP с исходным кодом <span aria-hidden="true">↓</span></a>
 <details class="simple-more"><summary>Для опытных пользователей</summary><div><a download="" href="https://linguoai.de/downloads/linguoai-2.2.1-py3-none-any.whl">Скачать Python Wheel</a><a href="/ru/anleitung.html#cli">Командная строка и другие возможности</a><a href="https://github.com/reinigungsprofileipzig/linguoai-de">Исходный код на GitHub</a></div></details>
 </div>
@@ -201,7 +240,7 @@
 <details><summary>Нужна ли мне мощная видеокарта?<span aria-hidden="true">+</span></summary><p>Нет. Обработка возможна и на CPU, но занимает больше времени. Для начала достаточно короткого видео. GPU необязателен.</p></details>
 <details><summary>Как долго работает моя ссылка Colab?<span aria-hidden="true">+</span></summary><p>Только пока работают соответствующий сеанс Colab и интерфейс. Ссылка Gradio динамическая; делитесь ею только с людьми, которым доверяете. Вовремя скачайте результаты или сохраните их в Google Drive.</p></details>
 <details><summary>Можно ли выбрать более быстрое распознавание речи?<span aria-hidden="true">+</span></summary><p>Parakeet можно выбрать для распознавания речи на CPU: NVIDIA v3 поддерживает 25 европейских языков, primeline специализируется на немецком. Whisper остаётся универсальным вариантом по умолчанию. Скорость и качество зависят от записи и компьютера.</p><p><a href="/ru/anleitung.html#spracherkennung">Выбрать распознавание речи →</a></p></details>
-<details><summary>Можно ли загружать и скачивать прямо в браузере?<span aria-hidden="true">+</span></summary><p>Да, через запущенный веб-интерфейс Colab: загрузите видео или выберите его из Google Drive, обработайте и скачайте результаты. Следующим этапом может стать постоянно доступная обработка на собственном сервере.</p><p><a href="/ru/anleitung.html#webversion">Браузер и сервер →</a></p></details>
+<details><summary>Можно ли загружать и скачивать прямо в браузере?<span aria-hidden="true">+</span></summary><p>Да. Google Colab предоставляет интерфейс для текущего сеанса. Отдельное Video Studio работает в тестовом режиме и требует предварительно полученного доступа; возможности перевода там пока ограничены.</p><p><a href="/ru/anleitung.html#webversion">Браузер и сервер →</a></p></details>
 </div>
 </div>
 </section>
@@ -210,9 +249,9 @@
 <div class="container footer-main">
 <div class="footer-brand"><a class="brand" href="#top"><img alt="" height="38" src="/assets/logo-mark.svg" width="38"/><span>LinguoAI</span></a><p>Переводите, озвучивайте и добавляйте субтитры к видео.</p></div>
 <div class="footer-links">
-<div><strong>Старт</strong><a href="/ru/colab.html">Colab инструкции</a><a href="/ru/anleitung.html#desktop">Установить локально</a><a href="#downloads">Загрузки</a></div>
+<div><strong>Старт</strong><a href="#versionen">Найти версию</a><a href="/ru/colab.html">Colab инструкции</a><a href="/ru/anleitung.html#desktop">Установить локально</a><a href="https://stayinleipzig.de/linguoai/web.html">Video Studio</a><a href="#downloads">Загрузки</a></div>
 <div><strong>Подробнее</strong><a href="/ru/anleitung.html">Подробное руководство</a><a href="#fragen">Помощь</a><a href="https://github.com/reinigungsprofileipzig/linguoai-de">GitHub</a></div>
-<div><strong>Юридический</strong><a href="/impressum.html">Выходные данные</a><a href="/datenschutz.html">Защита данных</a></div>
+<div><strong>Юридический</strong><a href="/impressum.html">Выходные данные</a><a href="/datenschutz.html">Защита данных</a><a href="/drive-datenschutz.html">Конфиденциальность при подключении Drive</a></div>
 </div>
 </div>
 <div class="container footer-bottom"><span>© <span data-current-year="">2026</span> LinguoAI</span><span>Без трекера. Без внешних веб-шрифтов.</span></div>

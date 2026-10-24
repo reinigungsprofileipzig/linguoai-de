@@ -24,12 +24,13 @@
 <meta content="Instala LinguoAI de forma local: guía de escritorio, voces, línea de comandos y opciones avanzadas." property="og:description"/>
 <meta content="https://linguoai.de/es/anleitung.html" property="og:url"/>
 <title>LinguoAI: instalación y opciones avanzadas</title>
-<link href="/assets/simple.css?v=20261013-2" rel="stylesheet"/>
+<link href="/assets/simple.css?v=20261023-1" rel="stylesheet"/>
 <link href="/assets/guide.css?v=20261013-1" rel="stylesheet"/>
 <script>
       document.documentElement.classList.replace("no-js", "has-js");
       (() => {
         if (document.documentElement.dataset.localeDetect !== "true") return;
+        if (new URLSearchParams(window.location.search).get("lang") === "de") return;
         const supported = new Set(["de", "en", "ru", "uk", "tr", "es", "it"]);
         let selected = "";
         try {
@@ -47,8 +48,8 @@
         if (selected !== "de") window.location.replace(`/${selected}/anleitung.html${window.location.hash}`);
       })();
     </script>
-<script defer="" src="/assets/locale.js?v=20261013-1"></script>
-<script defer="" src="/assets/site.js?v=20261013-2"></script>
+<script defer="" src="/assets/locale.js?v=20261023-1"></script>
+<script defer="" src="/assets/site.js?v=20261023-1"></script>
 </head>
 <body class="guide-page">
 <a class="skip-link" href="#main">Ir directamente al contenido</a>
@@ -59,8 +60,8 @@
 <span>LinguoAI</span>
 </a>
 <nav aria-label="Navegación principal" class="main-navigation" data-menu="" id="main-navigation">
-<a href="/es/#funktionen">Características</a>
-<a href="/es/colab.html">Guía</a>
+<a href="/es/#versionen">Encontrar tu versión</a>
+<a href="/es/colab.html">Instrucciones Colab</a>
 <a href="/es/#downloads">Descargas</a>
 <a href="/es/#fragen">Ayuda</a>
 </nav>
@@ -77,7 +78,7 @@
 <a data-locale-link="it" href="/it/anleitung.html" hreflang="it" lang="it">Italiano</a>
 </div>
 </details>
-<a class="button button-small header-action" data-colab-start="" href="https://colab.research.google.com/github/reinigungsprofileipzig/linguoai-de/blob/main/notebooks/LinguoAI_Colab.ipynb">Iniciar en Google Colab</a>
+<a class="button button-small header-action" href="#desktop">Configurar la aplicación de escritorio</a>
 <button aria-controls="main-navigation" aria-expanded="false" class="menu-button" data-menu-button="" type="button">
 <span class="sr-only">Abrir navegación</span><span aria-hidden="true"></span><span aria-hidden="true"></span>
 </button>
@@ -90,9 +91,9 @@
 <h1>Instalación y opciones avanzadas</h1>
 <p>No es necesario conocer todas las configuraciones para comenzar. Si necesita más control más adelante, encontrará todo el alcance aquí, sin promesas ocultas.</p>
 <div class="guide-actions">
-<a class="button" data-colab-start="" href="https://colab.research.google.com/github/reinigungsprofileipzig/linguoai-de/blob/main/notebooks/LinguoAI_Colab.ipynb">Iniciar en Google Colab</a>
+<a class="button" href="#desktop">Configurar la aplicación de escritorio</a>
 <a class="text-link" href="/es/colab.html">Abrir el manual de Colab <span aria-hidden="true">→</span></a>
-<a class="text-link" href="/es/">A la pagina de inicio <span aria-hidden="true">→</span></a>
+<a class="text-link" href="/es/#versionen">Encontrar tu versión <span aria-hidden="true">→</span></a>
 </div>
 </div>
 <nav aria-label="En esta página" class="guide-toc">
@@ -275,16 +276,14 @@ python -m linguoai --help</code></pre>
 <section aria-labelledby="web-title" class="guide-section" id="webversion">
 <p class="section-kicker">Carga → procesamiento → descarga</p>
 <h2 id="web-title">Trabaja en el navegador.</h2>
+<h3>Video Studio</h3>
+<p>Para usuarios que han recibido credenciales de Studio. Inicia sesión y sube vídeos directamente desde el navegador.</p>
+<p>El procesamiento se realiza en el servidor. La traducción sigue siendo limitada; aún no se ha confirmado el proceso completo.</p>
+<p>No necesitas una cuenta de Google. Si no tienes credenciales de Studio, puedes elegir Google Colab o la versión de escritorio.</p>
+<div class="guide-actions"><a class="button button-secondary" href="https://stayinleipzig.de/linguoai/web.html">Abrir Video Studio <span aria-hidden="true">↗</span></a><a class="text-link" href="/es/#versionen">Encontrar tu versión <span aria-hidden="true">→</span></a></div>
+<h3>Google Colab</h3>
 <p>La interfaz web de Colab ya acepta cargas y rutas de archivos de Google Drive. Procesa los vídeos en la máquina Colab activa y permite descargar el vídeo y los subtítulos. También puedes guardar los resultados en tu Drive.</p>
-<details class="guide-detail">
-<summary>Próximo paso: tu propio servidor siempre activo</summary>
-<div>
-<p>Técnicamente posible: el sitio web recibe un archivo, una cola gestiona la tarea y un proceso independiente descarga el archivo, reconoce y traduce el habla, y guarda el resultado. Después, el sitio web ofrece una descarga protegida.</p>
-<p>Google Drive puede servir como almacenamiento temporal privado. Se requiere acceso del usuario mediante OAuth o una Workspace Shared Drive; una cuenta de servicio no tiene almacenamiento MyDrive propio. El estado y la distribución de tareas deben gestionarse en una base de datos independiente.</p>
-<p>Este servicio de servidor aún no está configurado. Hasta entonces, la interfaz web se inicia mediante una sesión activa de Colab.</p>
-<p><a href="https://developers.google.com/workspace/drive/api/guides/manage-uploads">Cargas en Drive ↗</a> · <a href="https://developers.google.com/workspace/drive/api/guides/about-shareddrives">Shared Drives ↗</a></p>
-</div>
-</details>
+<div class="guide-actions"><a class="text-link" href="/es/colab.html">Abrir el manual de Colab <span aria-hidden="true">→</span></a><a class="text-link" data-colab-start="" href="https://colab.research.google.com/github/reinigungsprofileipzig/linguoai-de/blob/main/notebooks/LinguoAI_Colab.ipynb">Abrir el Notebook directamente <span aria-hidden="true">↗</span></a></div>
 </section>
 <section aria-labelledby="details-title" class="guide-section" id="details">
 <p class="section-kicker">La caja de herramientas completa</p>

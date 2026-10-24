@@ -1,6 +1,52 @@
 (() => {
   "use strict";
 
+  // The comparison remains usable when JavaScript is unavailable.
+  const finder = document.querySelector("[data-version-finder]");
+  if (finder) {
+    const controls = finder.querySelector("[data-version-controls]");
+    const choices = [...controls.querySelectorAll('input[name="version-need"]')];
+    const cards = [...finder.querySelectorAll("[data-version]")];
+    const grid = finder.querySelector(".version-grid");
+    const result = finder.querySelector("[data-version-result]");
+    result.classList.add("sr-only");
+
+    const showVersion = (value, announce = true) => {
+      const selected = cards.find((card) => card.dataset.version === value);
+      cards.forEach((card) => {
+        card.hidden = Boolean(selected && card !== selected);
+        card.classList.toggle("is-selected", card === selected);
+      });
+      grid.classList.toggle("has-selection", Boolean(selected));
+      choices.forEach((choice) => { choice.checked = choice.value === (selected ? value : "all"); });
+      if (announce) {
+        result.textContent = selected
+          ? `${selected.querySelector("h3").textContent}. ${selected.querySelector("[data-version-description]").textContent}`
+          : choices.find((choice) => choice.value === "all").nextElementSibling.textContent;
+      }
+    };
+
+    const readHash = () => {
+      const card = cards.find((item) => `#${item.id}` === window.location.hash);
+      showVersion(card?.dataset.version || "all", false);
+    };
+    controls.addEventListener("change", (event) => {
+      if (!choices.includes(event.target)) return;
+      const value = event.target.value;
+      showVersion(value);
+      try {
+        const hash = value === "all" ? "#versionen" : `#version-${value}`;
+        window.history.replaceState(null, "", hash);
+      } catch (_error) {
+        // Selection still works when browser history access is restricted.
+      }
+    });
+    window.addEventListener("hashchange", readHash);
+    window.addEventListener("pageshow", readHash);
+    readHash();
+    controls.hidden = false;
+  }
+
   const locale = document.documentElement.lang.split("-")[0].toLowerCase();
   const uiText = {
     de: {

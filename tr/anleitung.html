@@ -24,12 +24,13 @@
 <meta content="LinguoAI'ı yerel olarak kurun: masaüstü kılavuzu, sesler, komut satırı ve gelişmiş seçenekler." property="og:description"/>
 <meta content="https://linguoai.de/tr/anleitung.html" property="og:url"/>
 <title>LinguoAI – Kurulum ve gelişmiş seçenekler</title>
-<link href="/assets/simple.css?v=20261013-2" rel="stylesheet"/>
+<link href="/assets/simple.css?v=20261023-1" rel="stylesheet"/>
 <link href="/assets/guide.css?v=20261013-1" rel="stylesheet"/>
 <script>
       document.documentElement.classList.replace("no-js", "has-js");
       (() => {
         if (document.documentElement.dataset.localeDetect !== "true") return;
+        if (new URLSearchParams(window.location.search).get("lang") === "de") return;
         const supported = new Set(["de", "en", "ru", "uk", "tr", "es", "it"]);
         let selected = "";
         try {
@@ -47,8 +48,8 @@
         if (selected !== "de") window.location.replace(`/${selected}/anleitung.html${window.location.hash}`);
       })();
     </script>
-<script defer="" src="/assets/locale.js?v=20261013-1"></script>
-<script defer="" src="/assets/site.js?v=20261013-2"></script>
+<script defer="" src="/assets/locale.js?v=20261023-1"></script>
+<script defer="" src="/assets/site.js?v=20261023-1"></script>
 </head>
 <body class="guide-page">
 <a class="skip-link" href="#main">Doğrudan içeriğe gidin</a>
@@ -59,8 +60,8 @@
 <span>LinguoAI</span>
 </a>
 <nav aria-label="Ana gezinme" class="main-navigation" data-menu="" id="main-navigation">
-<a href="/tr/#funktionen">Özellikler</a>
-<a href="/tr/colab.html">Kılavuz</a>
+<a href="/tr/#versionen">Sürüm bul</a>
+<a href="/tr/colab.html">Colab talimatları</a>
 <a href="/tr/#downloads">İndirilenler</a>
 <a href="/tr/#fragen">Yardım</a>
 </nav>
@@ -77,7 +78,7 @@
 <a data-locale-link="it" href="/it/anleitung.html" hreflang="it" lang="it">Italiano</a>
 </div>
 </details>
-<a class="button button-small header-action" data-colab-start="" href="https://colab.research.google.com/github/reinigungsprofileipzig/linguoai-de/blob/main/notebooks/LinguoAI_Colab.ipynb">Google Colab'da başlat</a>
+<a class="button button-small header-action" href="#desktop">Masaüstü sürümünü kur</a>
 <button aria-controls="main-navigation" aria-expanded="false" class="menu-button" data-menu-button="" type="button">
 <span class="sr-only">Gezinmeyi aç</span><span aria-hidden="true"></span><span aria-hidden="true"></span>
 </button>
@@ -90,9 +91,9 @@
 <h1>Kurulum ve gelişmiş seçenekler</h1>
 <p>Başlamak için her ayarı bilmenize gerek yok. Daha sonra daha fazla kontrole ihtiyaç duyarsanız, hiçbir gizli vaat olmaksızın tüm kapsamı burada bulacaksınız.</p>
 <div class="guide-actions">
-<a class="button" data-colab-start="" href="https://colab.research.google.com/github/reinigungsprofileipzig/linguoai-de/blob/main/notebooks/LinguoAI_Colab.ipynb">Google Colab'da başlat</a>
+<a class="button" href="#desktop">Masaüstü sürümünü kur</a>
 <a class="text-link" href="/tr/colab.html">Colab kılavuzunu açın <span aria-hidden="true">→</span></a>
-<a class="text-link" href="/tr/">Ana sayfaya <span aria-hidden="true">→</span></a>
+<a class="text-link" href="/tr/#versionen">Sürüm bul <span aria-hidden="true">→</span></a>
 </div>
 </div>
 <nav aria-label="Bu sayfada" class="guide-toc">
@@ -275,16 +276,14 @@ python -m linguoai --help</code></pre>
 <section aria-labelledby="web-title" class="guide-section" id="webversion">
 <p class="section-kicker">Yükleme → işleme → indirme</p>
 <h2 id="web-title">Tarayıcıda çalışın.</h2>
+<h3>Video Studio</h3>
+<p>Studio erişimi verilmiş kullanıcılar için. Giriş yapın ve videoları doğrudan tarayıcıdan yükleyin.</p>
+<p>İşleme sunucuda gerçekleşir. Çeviri henüz sınırlıdır; tüm iş akışının çalıştığı henüz doğrulanmamıştır.</p>
+<p>Google hesabı gerekmez. Studio erişiminiz yoksa Google Colab'ı veya masaüstü sürümünü seçebilirsiniz.</p>
+<div class="guide-actions"><a class="button button-secondary" href="https://stayinleipzig.de/linguoai/web.html">Video Studio'yu aç <span aria-hidden="true">↗</span></a><a class="text-link" href="/tr/#versionen">Sürüm bul <span aria-hidden="true">→</span></a></div>
+<h3>Google Colab</h3>
 <p>Colab web arayüzü zaten yüklemeleri ve Google Drive dosya yollarını kabul eder. Videoları çalışan Colab makinesinde işler; videoyu ve altyazıları indirmenizi sağlar. Sonuçları Drive'ınıza da kaydedebilirsiniz.</p>
-<details class="guide-detail">
-<summary>Sonraki adım: sürekli çalışan kendi sunucunuz</summary>
-<div>
-<p>Teknik olarak mümkün: web sitesi yüklemeyi kabul eder, kuyruk işlemi yönetir ve ayrı bir çalışan dosyayı indirir, konuşmayı tanıyıp çevirir ve sonucu kaydeder. Ardından web sitesi korumalı bir indirme sunar.</p>
-<p>Google Drive özel geçici depolama olarak kullanılabilir. OAuth üzerinden kullanıcı erişimi veya Workspace Shared Drive gerekir; hizmet hesabının kendine ait MyDrive depolaması yoktur. Durum bilgisi ve iş dağıtımı ayrı bir veritabanında tutulmalıdır.</p>
-<p>Bu sunucu hizmeti henüz kurulmadı. O zamana kadar web arayüzü aktif bir Colab oturumu üzerinden başlatılır.</p>
-<p><a href="https://developers.google.com/workspace/drive/api/guides/manage-uploads">Drive yüklemeleri ↗</a> · <a href="https://developers.google.com/workspace/drive/api/guides/about-shareddrives">Shared Drives ↗</a></p>
-</div>
-</details>
+<div class="guide-actions"><a class="text-link" href="/tr/colab.html">Colab kılavuzunu açın <span aria-hidden="true">→</span></a><a class="text-link" data-colab-start="" href="https://colab.research.google.com/github/reinigungsprofileipzig/linguoai-de/blob/main/notebooks/LinguoAI_Colab.ipynb">Notebook dosyasını doğrudan aç <span aria-hidden="true">↗</span></a></div>
 </section>
 <section aria-labelledby="details-title" class="guide-section" id="details">
 <p class="section-kicker">Eksiksiz araç kutusu</p>

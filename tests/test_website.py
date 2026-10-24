@@ -260,7 +260,7 @@ class WebsiteTests(unittest.TestCase):
     def test_homepage_is_compact_and_keeps_technical_setup_in_guide(self) -> None:
         homepage = (WEBSITE / "index.html").read_text(encoding="utf-8")
         parser = _parse(WEBSITE / "index.html")
-        self.assertLessEqual(parser.section_count, 6)
+        self.assertLessEqual(parser.section_count, 7)
         self.assertTrue({"funktionen", "ablauf", "downloads", "fragen"} <= parser.ids)
         self.assertNotIn("pip install", homepage)
         self.assertNotIn("cuDNN", homepage)

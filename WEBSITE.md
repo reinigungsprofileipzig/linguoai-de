@@ -8,13 +8,13 @@ Start ebenfalls über `https://linguoai.de/`.
 
 ## Struktur
 
-- `index.html`: kompakter Einstieg, Nutzen, Ablauf, Downloads und häufige Fragen
+- `index.html`: Einstieg mit Versionsvergleich, Nutzen, Ablauf, Downloads und häufigen Fragen
 - `colab.html`: direkter Notebook-Start und kurze Drei-Schritt-Anleitung
 - `anleitung.html`: lokale Installation, Stimmen, CLI, Hardware und optionaler Cloudflare Tunnel
 - `assets/simple.css`: gemeinsames responsives Design für Startseite und Anleitungen
 - `assets/guide.css` und `assets/colab-guide.css`: ergänzende Anleitungs-Layouts
 - `assets/styles.css`: bestehendes Layout der Rechtstexte und Fehlerseite
-- `assets/site.js`: zugängliche Mobilnavigation, Copy-Buttons und FAQ
+- `assets/site.js`: Versionsauswahl nach Bedarf, zugängliche Mobilnavigation, Copy-Buttons und FAQ
 - `web.html`: Video Studio mit Anmeldung, Upload, Auftragsstatus und Ergebnisdownloads
 - `assets/web-app.css` und `assets/web-app.js`: responsives Studio und `chunks-v1`-Uploads
 - `REMOTE_WORKER.md`: Betriebsübersicht für Upload, Remote-Verarbeitung und private Drive-Ablage
@@ -70,3 +70,16 @@ Release-Erstellung und GitHub-Pages-Veröffentlichung sind in `DEPLOYMENT.md` be
 Die drei Nutzungsseiten werden in sieben Sprachen ausgeliefert. Nach Textänderungen alle
 Kataloge in `assets/locales/` ergänzen und `python scripts/build_site_i18n.py` ausführen.
 Website-Änderungen allein verändern die bereits veröffentlichten Software-Artefakte nicht.
+
+## Versionsauswahl
+
+`#versionen` vergleicht Colab, Desktop und Video Studio mit Voraussetzungen und direkten
+Einstiegen. Ohne JavaScript bleiben alle drei Karten und Links sichtbar. Mit JavaScript
+filtern native Radiobuttons nach Bedarf; die Auswahl ist über `#version-colab`,
+`#version-desktop` und `#version-studio` direkt verlinkbar und bleibt beim Sprachwechsel
+erhalten. „Alle vergleichen“ zeigt wieder sämtliche Optionen.
+
+Das Studio setzt einen erhaltenen Zugang voraus und ist als Testbetrieb gekennzeichnet.
+Die Desktop-Anleitung führt zur lokalen Einrichtung; der Download ist ausdrücklich
+als Quellcode statt als fertiger Installer beschrieben. Eine explizite deutsche
+Sprachwahl (`?lang=de`) hat auch bei gesperrtem Browserspeicher Vorrang vor der Erkennung.

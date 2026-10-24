@@ -24,12 +24,13 @@
 <meta content="Install LinguoAI locally: desktop guide, voices, command line, and advanced options." property="og:description"/>
 <meta content="https://linguoai.de/en/anleitung.html" property="og:url"/>
 <title>LinguoAI – Installation and advanced options</title>
-<link href="/assets/simple.css?v=20261013-2" rel="stylesheet"/>
+<link href="/assets/simple.css?v=20261023-1" rel="stylesheet"/>
 <link href="/assets/guide.css?v=20261013-1" rel="stylesheet"/>
 <script>
       document.documentElement.classList.replace("no-js", "has-js");
       (() => {
         if (document.documentElement.dataset.localeDetect !== "true") return;
+        if (new URLSearchParams(window.location.search).get("lang") === "de") return;
         const supported = new Set(["de", "en", "ru", "uk", "tr", "es", "it"]);
         let selected = "";
         try {
@@ -47,8 +48,8 @@
         if (selected !== "de") window.location.replace(`/${selected}/anleitung.html${window.location.hash}`);
       })();
     </script>
-<script defer="" src="/assets/locale.js?v=20261013-1"></script>
-<script defer="" src="/assets/site.js?v=20261013-2"></script>
+<script defer="" src="/assets/locale.js?v=20261023-1"></script>
+<script defer="" src="/assets/site.js?v=20261023-1"></script>
 </head>
 <body class="guide-page">
 <a class="skip-link" href="#main">Go directly to the content</a>
@@ -59,8 +60,8 @@
 <span>LinguoAI</span>
 </a>
 <nav aria-label="Main navigation" class="main-navigation" data-menu="" id="main-navigation">
-<a href="/en/#funktionen">Features</a>
-<a href="/en/colab.html">Guide</a>
+<a href="/en/#versionen">Find your version</a>
+<a href="/en/colab.html">Colab instructions</a>
 <a href="/en/#downloads">Downloads</a>
 <a href="/en/#fragen">Help</a>
 </nav>
@@ -77,7 +78,7 @@
 <a data-locale-link="it" href="/it/anleitung.html" hreflang="it" lang="it">Italiano</a>
 </div>
 </details>
-<a class="button button-small header-action" data-colab-start="" href="https://colab.research.google.com/github/reinigungsprofileipzig/linguoai-de/blob/main/notebooks/LinguoAI_Colab.ipynb">Start in Google Colab</a>
+<a class="button button-small header-action" href="#desktop">Set up the desktop app</a>
 <button aria-controls="main-navigation" aria-expanded="false" class="menu-button" data-menu-button="" type="button">
 <span class="sr-only">Open navigation</span><span aria-hidden="true"></span><span aria-hidden="true"></span>
 </button>
@@ -90,9 +91,9 @@
 <h1>Installation and advanced options</h1>
 <p>You don't need to know every setting to get started. If you need more control later, you'll find the full scope here - without any hidden promises.</p>
 <div class="guide-actions">
-<a class="button" data-colab-start="" href="https://colab.research.google.com/github/reinigungsprofileipzig/linguoai-de/blob/main/notebooks/LinguoAI_Colab.ipynb">Start in Google Colab</a>
+<a class="button" href="#desktop">Set up the desktop app</a>
 <a class="text-link" href="/en/colab.html">Open Colab manual <span aria-hidden="true">→</span></a>
-<a class="text-link" href="/en/">To the home page <span aria-hidden="true">→</span></a>
+<a class="text-link" href="/en/#versionen">Find your version <span aria-hidden="true">→</span></a>
 </div>
 </div>
 <nav aria-label="On this page" class="guide-toc">
@@ -275,16 +276,14 @@ python -m linguoai --help</code></pre>
 <section aria-labelledby="web-title" class="guide-section" id="webversion">
 <p class="section-kicker">Upload → processing → download</p>
 <h2 id="web-title">Work in the browser.</h2>
+<h3>Video Studio</h3>
+<p>For users who have received Studio credentials. Sign in and upload videos directly in your browser.</p>
+<p>Processing runs on the server. Translation is still limited; the full workflow has not yet been confirmed.</p>
+<p>No Google account needed. If you do not have Studio credentials, you can choose Google Colab or the desktop version.</p>
+<div class="guide-actions"><a class="button button-secondary" href="https://stayinleipzig.de/linguoai/web.html">Open Video Studio <span aria-hidden="true">↗</span></a><a class="text-link" href="/en/#versionen">Find your version <span aria-hidden="true">→</span></a></div>
+<h3>Google Colab</h3>
 <p>The Colab web interface already accepts uploads and Google Drive file paths. It processes videos on the active Colab machine and offers the video and subtitles for download. You can also save the results to your Drive.</p>
-<details class="guide-detail">
-<summary>Next step: your own server running continuously</summary>
-<div>
-<p>Technically possible: the website accepts an upload, a queue manages the job, and a separate worker downloads the file, transcribes and translates the speech, and saves the result. The website then offers a protected download.</p>
-<p>Google Drive can serve as private temporary storage. Access through user OAuth or a Workspace Shared Drive is required; a service account has no MyDrive storage of its own. Status and job distribution belong in a separate database.</p>
-<p>This server service has not been set up yet. Until then, the web interface starts through an active Colab session.</p>
-<p><a href="https://developers.google.com/workspace/drive/api/guides/manage-uploads">Drive uploads ↗</a> · <a href="https://developers.google.com/workspace/drive/api/guides/about-shareddrives">Shared Drives ↗</a></p>
-</div>
-</details>
+<div class="guide-actions"><a class="text-link" href="/en/colab.html">Open Colab manual <span aria-hidden="true">→</span></a><a class="text-link" data-colab-start="" href="https://colab.research.google.com/github/reinigungsprofileipzig/linguoai-de/blob/main/notebooks/LinguoAI_Colab.ipynb">Open the Notebook directly <span aria-hidden="true">↗</span></a></div>
 </section>
 <section aria-labelledby="details-title" class="guide-section" id="details">
 <p class="section-kicker">The complete toolbox</p>

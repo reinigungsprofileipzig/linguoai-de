@@ -25,11 +25,12 @@
     <meta property="og:url" content="https://linguoai.de/" />
     <meta name="twitter:card" content="summary" />
     <title>LinguoAI – Videos übersetzen und neu vertonen</title>
-    <link rel="stylesheet" href="/assets/simple.css?v=20261013-2" />
+    <link rel="stylesheet" href="/assets/simple.css?v=20261023-1" />
     <script>
       document.documentElement.classList.replace("no-js", "has-js");
       (() => {
         if (document.documentElement.dataset.localeDetect !== "true") return;
+        if (new URLSearchParams(window.location.search).get("lang") === "de") return;
         const supported = new Set(["de", "en", "ru", "uk", "tr", "es", "it"]);
         const route = { de: "/", en: "/en/", ru: "/ru/", uk: "/uk/", tr: "/tr/", es: "/es/", it: "/it/" };
         let selected = "";
@@ -47,8 +48,8 @@
         if (selected !== "de") window.location.replace(route[selected] + window.location.hash);
       })();
     </script>
-    <script defer src="/assets/locale.js?v=20261012-1"></script>
-    <script defer src="/assets/site.js?v=20261013-2"></script>
+    <script defer src="/assets/locale.js?v=20261023-1"></script>
+    <script defer src="/assets/site.js?v=20261023-1"></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -86,8 +87,8 @@
           <img src="/assets/logo-mark.svg" width="38" height="38" alt="" /><span>LinguoAI</span>
         </a>
         <nav id="main-navigation" class="main-navigation" aria-label="Hauptnavigation" data-menu>
+          <a href="#versionen">Version finden</a>
           <a href="#funktionen">Funktionen</a>
-          <a href="/colab.html">Anleitung</a>
           <a href="#downloads">Downloads</a>
           <a href="https://stayinleipzig.de/linguoai/web.html" data-i18n-ignore>Video Studio</a>
           <a href="#fragen">Hilfe</a>
@@ -117,15 +118,14 @@
       <section class="simple-hero" id="top">
         <div class="container simple-hero-grid">
           <div class="simple-hero-copy">
-            <p class="eyebrow"><span class="status-dot"></span>Open Source · lokal oder in Google Colab</p>
+            <p class="eyebrow"><span class="status-dot"></span>Open Source · drei Wege zum eigenen Video</p>
             <h1>Dein Video.<br /><span>Eine neue Sprache.</span></h1>
             <p class="simple-intro">Übersetze Videos, erzeuge eine neue Sprachspur und speichere passende Untertitel. Schritt für Schritt – im Browser oder auf deinem Rechner.</p>
             <div class="simple-actions">
-              <a class="button" data-colab-start href="https://colab.research.google.com/github/reinigungsprofileipzig/linguoai-de/blob/main/notebooks/LinguoAI_Colab.ipynb">In Google Colab starten <span aria-hidden="true">↗</span></a>
-              <a class="text-link" href="/anleitung.html#desktop">Lokal installieren <span aria-hidden="true">→</span></a>
+              <a class="button" href="#versionen">Passende Version finden <span aria-hidden="true">↓</span></a>
+              <a class="text-link" href="#ablauf">So funktioniert's <span aria-hidden="true">→</span></a>
             </div>
-            <p class="simple-start-note">Für Colab brauchst du ein Google-Konto. Die Einrichtung dauert einige Minuten; Laufzeit und GPU sind nicht garantiert.</p>
-            <a class="simple-help-link" href="/colab.html">Erster Start? Zur kurzen Anleitung →</a>
+            <p class="simple-start-note">Google Colab, Desktop oder Video Studio: Vergleiche Voraussetzungen und finde deinen Einstieg.</p>
           </div>
           <figure class="simple-preview">
             <div class="simple-preview-heading"><span>LinguoAI</span><span>Video → Sprachfassung</span></div>
@@ -138,6 +138,46 @@
             <div class="simple-preview-outputs"><span>Video mit neuer Stimme</span><span>Original + Übersetzung als SRT</span></div>
             <figcaption>Schematisches Beispiel, keine Live-Demo.</figcaption>
           </figure>
+        </div>
+      </section>
+
+      <section class="simple-section version-section" id="versionen" aria-labelledby="versions-title" data-version-finder>
+        <div class="container">
+          <div class="simple-heading"><p class="section-kicker">Dein Einstieg</p><h2 id="versions-title">Welcher Weg passt zu dir?</h2><p class="version-intro">Wähle nach deinem Bedarf. Jede Version führt dich direkt zum passenden nächsten Schritt.</p></div>
+          <fieldset class="version-filter" data-version-controls hidden>
+            <legend>Was ist dir wichtig?</legend>
+            <div class="version-options">
+              <label><input type="radio" name="version-need" value="all" checked /><span>Alle vergleichen</span></label>
+              <label><input type="radio" name="version-need" value="colab" /><span>Ohne Installation starten</span></label>
+              <label><input type="radio" name="version-need" value="desktop" /><span>Dateien lokal verarbeiten</span></label>
+              <label><input type="radio" name="version-need" value="studio" /><span>Ich habe einen Studio-Zugang</span></label>
+            </div>
+          </fieldset>
+          <p class="version-result" role="status" aria-live="polite" aria-atomic="true" data-version-result></p>
+          <div class="version-grid">
+            <article class="version-card" id="version-colab" data-version="colab" aria-labelledby="colab-version-title">
+              <div class="version-card-top"><span class="version-icon" aria-hidden="true">01</span><span class="version-tag">Im Browser · Google-Konto</span></div>
+              <h3 id="colab-version-title">Google Colab</h3>
+              <p class="version-description" data-version-description>Für den Einstieg ohne lokale Installation. Du startest deine eigene Sitzung bei Google.</p>
+              <dl class="version-facts"><div><dt>Du brauchst</dt><dd>Google-Konto und Internet</dd></div><div><dt>Einrichtung</dt><dd>Notebook starten und einige Minuten warten</dd></div><div><dt>Gut zu wissen</dt><dd>Sitzung zeitlich begrenzt. GPU nicht garantiert; Colab kann Kosten verursachen.</dd></div></dl>
+              <div class="version-card-actions"><a class="button" href="/colab.html">Mit Colab loslegen <span aria-hidden="true">→</span></a><a class="text-link" data-colab-start href="https://colab.research.google.com/github/reinigungsprofileipzig/linguoai-de/blob/main/notebooks/LinguoAI_Colab.ipynb">Notebook direkt öffnen <span aria-hidden="true">↗</span></a></div>
+            </article>
+            <article class="version-card" id="version-desktop" data-version="desktop" aria-labelledby="desktop-version-title">
+              <div class="version-card-top"><span class="version-icon" aria-hidden="true">02</span><span class="version-tag">Windows &amp; Linux</span></div>
+              <h3 id="desktop-version-title">Desktop</h3>
+              <p class="version-description" data-version-description>Für regelmäßige Arbeit und Kontrolle über deine Dateien. Die Verarbeitung läuft auf deinem Rechner.</p>
+              <dl class="version-facts"><div><dt>Du brauchst</dt><dd>Python und FFmpeg</dd></div><div><dt>Einrichtung</dt><dd>Projekt herunterladen und lokal installieren</dd></div><div><dt>Gut zu wissen</dt><dd>GPU optional. Nur mit lokalen Modellen bleiben die Inhalte auf deinem Rechner.</dd></div></dl>
+              <div class="version-card-actions"><a class="button button-secondary" href="/anleitung.html#desktop">Desktop einrichten <span aria-hidden="true">→</span></a><a class="text-link" href="/anleitung.html#cli">Für Profis: Kommandozeile <span aria-hidden="true">→</span></a></div>
+            </article>
+            <article class="version-card" id="version-studio" data-version="studio" aria-labelledby="studio-version-title">
+              <div class="version-card-top"><span class="version-icon" aria-hidden="true">03</span><span class="version-tag version-tag-preview">Testbetrieb · Zugang nötig</span></div>
+              <h3 id="studio-version-title">Video Studio</h3>
+              <p class="version-description" data-version-description>Für Nutzer mit erhaltenem Studio-Zugang. Anmelden und Videos direkt im Browser hochladen.</p>
+              <dl class="version-facts"><div><dt>Du brauchst</dt><dd>Studio-Benutzername und Passwort</dd></div><div><dt>Einrichtung</dt><dd>Keine Installation, kein Google-Konto</dd></div><div><dt>Gut zu wissen</dt><dd>Verarbeitung auf dem Server. Übersetzung noch eingeschränkt; vollständiger Ablauf noch nicht bestätigt.</dd></div></dl>
+              <div class="version-card-actions"><a class="button button-secondary" href="https://stayinleipzig.de/linguoai/web.html">Video Studio öffnen <span aria-hidden="true">↗</span></a><a class="text-link" href="/colab.html">Kein Zugang? Colab nutzen <span aria-hidden="true">→</span></a></div>
+            </article>
+          </div>
+          <p class="version-footnote">Du kannst später wechseln. Für Desktop brauchst du den Download; Colab und Video Studio startest du über ihre Links.</p>
         </div>
       </section>
 
@@ -157,11 +197,11 @@
         <div class="container">
           <div class="simple-heading"><p class="section-kicker">So funktioniert's</p><h2>Dein erstes Video in drei Schritten.</h2></div>
           <ol class="simple-steps">
-            <li><span class="simple-step-number" aria-hidden="true">01</span><div><h3>Oberfläche starten</h3><p>Notebook in Colab öffnen und ausführen. Danach den erzeugten Gradio-Link öffnen.</p></div></li>
+            <li><span class="simple-step-number" aria-hidden="true">01</span><div><h3>Version wählen &amp; starten</h3><p>Colab mit der Anleitung starten, Desktop installieren oder mit deinem Zugang im Video Studio anmelden.</p></div></li>
             <li><span class="simple-step-number" aria-hidden="true">02</span><div><h3>Video &amp; Sprache wählen</h3><p>Ein kurzes Testvideo laden, Zielsprache und Stimme wählen. Mehrere Videos sind ebenfalls möglich.</p></div></li>
-            <li><span class="simple-step-number" aria-hidden="true">03</span><div><h3>Ergebnis prüfen &amp; speichern</h3><p>Übersetzung und Aussprache prüfen. Video und Untertitel herunterladen, bevor die Sitzung endet.</p></div></li>
+            <li><span class="simple-step-number" aria-hidden="true">03</span><div><h3>Ergebnis prüfen &amp; speichern</h3><p>Übersetzung und Aussprache prüfen. Video und Untertitel speichern; bei Colab vor dem Sitzungsende.</p></div></li>
           </ol>
-          <a class="text-link" href="/colab.html">Zur Schritt-für-Schritt-Anleitung <span aria-hidden="true">→</span></a>
+          <a class="text-link" href="#versionen">Version und Anleitung wählen <span aria-hidden="true">→</span></a>
         </div>
       </section>
 
@@ -170,7 +210,7 @@
           <div><p class="section-kicker">Auch auf deinem Rechner</p><h2>Lokal installieren.</h2><p>Für regelmäßige Arbeit und mehr Kontrolle über deine Dateien. Du brauchst Python und FFmpeg; die Anleitung führt dich durch die Einrichtung.</p><a class="text-link" href="/anleitung.html#desktop">Zur lokalen Installation <span aria-hidden="true">→</span></a></div>
           <div class="simple-download-card">
             <span class="simple-version">LinguoAI 2.2.1</span>
-            <h3>Das vollständige Projekt</h3><p>Quellcode, Desktop-App und Notebook.</p>
+            <h3>Das vollständige Projekt</h3><p>Quellcode mit Desktop-App und Notebook. Kein fertiger Installer: Bitte folge der Installationsanleitung.</p>
             <a class="button button-secondary" href="https://linguoai.de/downloads/LinguoAI-2.2.1-source.zip" download>Quellcode-ZIP herunterladen <span aria-hidden="true">↓</span></a>
             <details class="simple-more"><summary>Für Fortgeschrittene</summary><div><a href="https://linguoai.de/downloads/linguoai-2.2.1-py3-none-any.whl" download>Python-Wheel herunterladen</a><a href="/anleitung.html#cli">Kommandozeile &amp; weitere Optionen</a><a href="https://github.com/reinigungsprofileipzig/linguoai-de">Quellcode auf GitHub</a></div></details>
           </div>
@@ -186,7 +226,7 @@
             <details><summary>Brauche ich eine starke Grafikkarte?<span aria-hidden="true">+</span></summary><p>Nein. Die Verarbeitung ist auch auf der CPU möglich, dauert dort aber länger. Für den Einstieg genügt ein kurzes Video. Eine GPU ist optional.</p></details>
             <details><summary>Wie lange funktioniert mein Colab-Link?<span aria-hidden="true">+</span></summary><p>Nur solange die zugehörige Colab-Sitzung und die Oberfläche laufen. Der Gradio-Link ist dynamisch und sollte nur mit vertrauenswürdigen Personen geteilt werden. Lade Ergebnisse rechtzeitig herunter oder speichere sie in Google Drive.</p></details>
             <details><summary>Kann ich eine schnellere Spracherkennung wählen?<span aria-hidden="true">+</span></summary><p>Optional erkennt Parakeet Sprache auf der CPU: NVIDIA v3 unterstützt 25 europäische Sprachen, primeline ist auf Deutsch spezialisiert. Whisper bleibt die vielseitige Voreinstellung. Geschwindigkeit und Qualität hängen von Aufnahme und Rechner ab.</p><p><a href="/anleitung.html#spracherkennung">Spracherkennung auswählen →</a></p></details>
-            <details><summary>Geht Upload und Download direkt im Browser?<span aria-hidden="true">+</span></summary><p>Ja, über die gestartete Colab-Weboberfläche: Video hochladen oder aus Google Drive wählen, verarbeiten und die Ergebnisse herunterladen. Eine dauerhaft verfügbare Verarbeitung auf einem eigenen Server ist als nächster Ausbau möglich.</p><p><a href="/anleitung.html#webversion">Browser und Server →</a></p></details>
+            <details><summary>Geht Upload und Download direkt im Browser?<span aria-hidden="true">+</span></summary><p>Ja. Google Colab bietet eine Oberfläche für deine laufende Sitzung. Das separate Video Studio ist im Testbetrieb und benötigt einen erhaltenen Zugang; die Übersetzung ist dort noch eingeschränkt.</p><p><a href="/anleitung.html#webversion">Browser und Server →</a></p></details>
           </div>
         </div>
       </section>
@@ -197,7 +237,7 @@
       <div class="container footer-main">
         <div class="footer-brand"><a class="brand" href="#top"><img src="/assets/logo-mark.svg" width="38" height="38" alt="" /><span>LinguoAI</span></a><p>Videos übersetzen, neu vertonen und untertiteln.</p></div>
         <div class="footer-links">
-          <div><strong>Starten</strong><a href="/colab.html">Colab-Anleitung</a><a href="/anleitung.html#desktop">Lokal installieren</a><a href="#downloads">Downloads</a></div>
+          <div><strong>Starten</strong><a href="#versionen">Version finden</a><a href="/colab.html">Colab-Anleitung</a><a href="/anleitung.html#desktop">Lokal installieren</a><a href="https://stayinleipzig.de/linguoai/web.html">Video Studio</a><a href="#downloads">Downloads</a></div>
           <div><strong>Mehr erfahren</strong><a href="/anleitung.html">Ausführliche Anleitung</a><a href="#fragen">Hilfe</a><a href="https://github.com/reinigungsprofileipzig/linguoai-de">GitHub</a></div>
           <div><strong>Rechtliches</strong><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="/drive-datenschutz.html">Datenschutz der Drive-Anbindung</a></div>
         </div>
