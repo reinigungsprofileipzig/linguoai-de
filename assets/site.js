@@ -305,13 +305,23 @@
     });
   });
 
-  // Interactive Timeline Controller (Hero)
+  // Interactive Precision Timeline & Demo Player (Hero)
   const timeline = document.querySelector("[data-hero-timeline]");
   if (timeline) {
     const targetChips = timeline.querySelectorAll("[data-lang-target]");
     const targetCodeBadge = timeline.querySelector("[data-target-code]");
     const captionPreview = timeline.querySelector("[data-caption-preview]");
     const trackTranslated = timeline.querySelector(".track-translated");
+    const playBtn = timeline.querySelector("[data-preview-play]");
+    const timecodeDisplay = timeline.querySelector(".studio-timecode");
+    const modeChips = timeline.querySelectorAll("[data-preview-mode]");
+
+    let currentMode = "translated";
+    let isPlaying = false;
+    let timerId = null;
+    let playbackSeconds = 4.12;
+    const baseSeconds = 4.12;
+    const maxSeconds = 14.50;
 
     const sampleSentences = {
       de: "»...erzeugt synchronisierte Sprachfassungen in Sekunden.«",
@@ -322,22 +332,92 @@
       tr: "»...saniyeler içinde senkronize seslendirmeler oluşturur.«",
     };
 
+    const originalSentence = "»Original Voice (EN): ...and you don't need expensive subscriptions for professional video dubbing.«";
+
+    const updateCaption = () => {
+      if (!captionPreview) return;
+      if (currentMode === "original") {
+        captionPreview.textContent = originalSentence;
+      } else {
+        const activeChip = timeline.querySelector(".target-chip.is-active");
+        const lang = activeChip?.dataset.langTarget || "de";
+        captionPreview.textContent = sampleSentences[lang] || sampleSentences.de;
+      }
+    };
+
+    const setMode = (mode) => {
+      currentMode = mode;
+      timeline.setAttribute("data-active-track", mode);
+      modeChips.forEach((chip) => {
+        chip.classList.toggle("is-active", chip.dataset.previewMode === mode);
+      });
+      updateCaption();
+    };
+
+    modeChips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        setMode(chip.dataset.previewMode);
+      });
+    });
+
+    // Default mode: translated
+    setMode("translated");
+
     targetChips.forEach((chip) => {
       chip.addEventListener("click", () => {
         const lang = chip.dataset.langTarget;
         targetChips.forEach((c) => c.classList.remove("is-active"));
         chip.classList.add("is-active");
         if (targetCodeBadge) targetCodeBadge.textContent = lang.toUpperCase();
-        if (captionPreview && sampleSentences[lang]) {
-          captionPreview.textContent = sampleSentences[lang];
+        if (currentMode === "translated") {
+          updateCaption();
         }
         if (trackTranslated) {
-          trackTranslated.style.opacity = "0.5";
+          trackTranslated.style.opacity = "0.45";
           window.setTimeout(() => {
             trackTranslated.style.opacity = "1";
           }, 140);
         }
       });
     });
+
+    const formatTimecode = (secs) => {
+      const minutes = Math.floor(secs / 60);
+      const remainingSecs = Math.floor(secs % 60);
+      const centis = Math.floor((secs % 1) * 100);
+      const mm = String(minutes).padStart(2, "0");
+      const ss = String(remainingSecs).padStart(2, "0");
+      const cc = String(centis).padStart(2, "0");
+      return `00:${mm}:${ss}.${cc} / 00:15:00.00`;
+    };
+
+    if (playBtn) {
+      const playLabel = playBtn.querySelector(".play-label");
+      const togglePlayback = () => {
+        isPlaying = !isPlaying;
+        timeline.classList.toggle("is-playing", isPlaying);
+        if (playLabel) {
+          playLabel.textContent = isPlaying ? "Pause" : "Hörprobe";
+        }
+        if (isPlaying) {
+          timerId = window.setInterval(() => {
+            playbackSeconds += 0.08;
+            if (playbackSeconds > maxSeconds) {
+              playbackSeconds = baseSeconds;
+            }
+            if (timecodeDisplay) {
+              timecodeDisplay.textContent = formatTimecode(playbackSeconds);
+            }
+          }, 80);
+        } else {
+          if (timerId) {
+            window.clearInterval(timerId);
+            timerId = null;
+          }
+        }
+      };
+
+      playBtn.addEventListener("click", togglePlayback);
+    }
   }
 })();
