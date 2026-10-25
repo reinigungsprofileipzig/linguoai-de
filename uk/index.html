@@ -246,7 +246,18 @@
 <div class="outcome-composition">
 <article class="outcome-card">
 <div class="outcome-meta">
+<div class="outcome-meta-left">
+<span aria-hidden="true" class="pictogram-box is-dark">
+<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22">
+<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+<path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+<line x1="12" x2="12" y1="19" y2="22"></line>
+<line x1="8" x2="16" y1="22" y2="22"></line>
+<path d="M18 4h3a1 1 0 0 1 1 1v4" stroke="var(--signal)"></path>
+</svg>
+</span>
 <span class="bento-tag is-signal" data-i18n-ignore=""><span class="tag-dot"></span>01 / ASR + NLLB</span>
+</div>
 </div>
 <h3>Розпізнавати та перекладати усне мовлення</h3>
 <p>Точно транскрибуйте мовлення у відео та семантично перекладайте його на вибрану цільову мову.</p>
@@ -263,7 +274,16 @@
 </article>
 <article class="outcome-card">
 <div class="outcome-meta">
+<div class="outcome-meta-left">
+<span aria-hidden="true" class="pictogram-box is-dark">
+<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22">
+<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+<path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+<path d="M19.07 4.93a10 10 0 0 1 0 14.14" stroke="var(--signal)"></path>
+</svg>
+</span>
 <span class="bento-tag is-signal" data-i18n-ignore=""><span class="tag-dot"></span>02 / SYNTHESE</span>
+</div>
 </div>
 <h3>Озвучити новим голосом</h3>
 <p>Створіть природну голосову доріжку – узгоджену з темпом мовлення та таймінгом оригінального відео.</p>
@@ -277,7 +297,16 @@
 </article>
 <article class="outcome-card">
 <div class="outcome-meta">
+<div class="outcome-meta-left">
+<span aria-hidden="true" class="pictogram-box is-dark">
+<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22">
+<rect height="14" rx="2" width="18" x="3" y="5"></rect>
+<path d="M7 15h4m-4-3h10m-10-3h6" stroke="var(--signal)"></path>
+<polyline points="15 2 21 2 21 8"></polyline>
+</svg>
+</span>
 <span class="bento-tag is-signal" data-i18n-ignore=""><span class="tag-dot"></span>03 / EXPORT</span>
+</div>
 </div>
 <h3>Зберігати відповідні субтитри</h3>
 <p>Зберігайте оригінал і переклад як синхронізовані за часом файли SRT і VTT.</p>
@@ -302,25 +331,44 @@
 <fieldset class="version-filter" data-version-controls="" hidden="">
 <legend>Що для вас важливо?</legend>
 <div class="version-options">
-<label><input checked="" name="version-need" type="radio" value="all"/><span>Порівняти всі</span></label>
-<label><input name="version-need" type="radio" value="colab"/><span>Почати без установлення</span></label>
-<label><input name="version-need" type="radio" value="desktop"/><span>Обробляти файли локально</span></label>
-<label><input name="version-need" type="radio" value="studio"/><span>У мене є доступ до Studio</span></label>
+<label><input checked="" name="version-need" type="radio" value="all"/><span><svg aria-hidden="true" class="filter-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="14"><rect height="5" rx="1" width="5" x="2" y="2"></rect><rect height="5" rx="1" width="5" x="9" y="2"></rect><rect height="5" rx="1" width="5" x="2" y="9"></rect><rect height="5" rx="1" width="5" x="9" y="9"></rect></svg>Порівняти всі</span></label>
+<label><input name="version-need" type="radio" value="colab"/><span><svg aria-hidden="true" class="filter-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 10.5a3.5 3.5 0 0 1 2.5-3.4 4 4 0 0 1 7.5 1.4A3 3 0 0 1 12 14.5H4a3 3 0 0 1-1-4Z"></path><path d="M8 8v4m-1.5-1.5L8 8l1.5 1.5"></path></svg>Почати без установлення</span></label>
+<label><input name="version-need" type="radio" value="desktop"/><span><svg aria-hidden="true" class="filter-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="14"><rect height="9" rx="1.5" width="12" x="2" y="2"></rect><path d="M5 14h6m-3-3v3"></path><polyline points="5 5 7 6.5 5 8"></polyline></svg>Обробляти файли локально</span></label>
+<label><input name="version-need" type="radio" value="studio"/><span><svg aria-hidden="true" class="filter-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="14"><rect height="12" rx="2" width="12" x="2" y="2"></rect><circle cx="8" cy="8" r="2"></circle><line x1="2" x2="14" y1="6" y2="6"></line></svg>У мене є доступ до Studio</span></label>
 </div>
 </fieldset>
 <p aria-atomic="true" aria-live="polite" class="version-result" data-version-result="" role="status"></p>
 <div class="version-grid">
-<article aria-labelledby="colab-version-title" class="version-card" data-version="colab" id="version-colab">
+<article aria-labelledby="colab-version-title" class="version-card is-primary" data-version="colab" id="version-colab">
 <div class="version-card-top">
+<div class="version-badge-group">
+<span aria-hidden="true" class="pictogram-box is-accent">
+<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22">
+<path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+<circle cx="12" cy="13" fill="var(--signal)" r="2.2"></circle>
+</svg>
+</span>
 <span class="version-badge" data-i18n-ignore=""><span class="badge-dot"></span>01</span>
-<span class="version-tag">Google Colab · У браузері</span>
+</div>
+<span class="version-tag is-recommended"><span aria-hidden="true" class="tag-star" data-i18n-ignore="">✦</span> Google Colab · У браузері</span>
 </div>
 <h3 id="colab-version-title">Запустити в браузері.</h3>
 <p class="version-description" data-version-description="">Щоб почати без установлення на комп'ютер. Ви запускаєте власний сеанс у Google.</p>
+<div class="version-mini-preview" data-i18n-ignore="">
+<div class="mini-preview-bar">
+<span class="mini-dot"></span>
+<span class="mini-label">RUNTIME · T4 GPU / CPU</span>
+<span class="mini-status is-active">ONLINE READY</span>
+</div>
+<div class="mini-preview-code">
+<span class="token-fn">connect_session</span>(<span class="token-str">"google.colab"</span>)<br/>
+<span class="token-arrow">➔</span> <span class="token-method">Whisper</span> + <span class="token-method">NLLB-200</span> aktiv
+                </div>
+</div>
 <dl class="version-facts">
-<div><dt>Вам знадобиться</dt><dd>Обліковий запис Google та інтернет</dd></div>
-<div><dt>Налаштування</dt><dd>Запустити Notebook і зачекати кілька хвилин</dd></div>
-<div><dt>Варто знати</dt><dd>Час сеансу обмежений. Доступ до GPU не гарантується; використання Colab може бути платним.</dd></div>
+<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="6"></circle><circle cx="8" cy="8" r="2"></circle></svg>Вам знадобиться</dt><dd>Обліковий запис Google та інтернет</dd></div>
+<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><polyline points="9 2 4 9 9 9 7 14 12 7 7 7 9 2"></polyline></svg>Налаштування</dt><dd>Запустити Notebook і зачекати кілька хвилин</dd></div>
+<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="6"></circle><line x1="8" x2="8" y1="7" y2="11"></line><line x1="8" x2="8.01" y1="5" y2="5"></line></svg>Варто знати</dt><dd>Час сеансу обмежений. Доступ до GPU не гарантується; використання Colab може бути платним.</dd></div>
 </dl>
 <div class="version-card-actions">
 <a class="button" href="/uk/colab.html">Почати з Colab <span aria-hidden="true">→</span></a>
@@ -329,15 +377,37 @@
 </article>
 <article aria-labelledby="desktop-version-title" class="version-card" data-version="desktop" id="version-desktop">
 <div class="version-card-top">
+<div class="version-badge-group">
+<span aria-hidden="true" class="pictogram-box">
+<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22">
+<rect height="14" rx="2" width="20" x="2" y="3"></rect>
+<line x1="8" x2="16" y1="21" y2="21"></line>
+<line x1="12" x2="12" y1="17" y2="21"></line>
+<polyline points="6 8 9 10 6 12" stroke="var(--signal)"></polyline>
+<line x1="11" x2="15" y1="12" y2="12"></line>
+</svg>
+</span>
 <span class="version-badge" data-i18n-ignore=""><span class="badge-dot"></span>02</span>
+</div>
 <span class="version-tag">Desktop · Windows і Linux</span>
 </div>
 <h3 id="desktop-version-title">Працювати локально.</h3>
 <p class="version-description" data-version-description="">Для регулярної роботи й контролю над своїми файлами. Обробка виконується на вашому комп'ютері.</p>
+<div class="version-mini-preview" data-i18n-ignore="">
+<div class="mini-preview-bar">
+<span class="mini-dot"></span>
+<span class="mini-label">LOCAL SYSTEM · GPU / CPU ACCEL</span>
+<span class="mini-status is-active">OFFLINE-FIRST</span>
+</div>
+<div class="mini-preview-code">
+<span class="token-prompt">$</span> linguoai translate video.mp4 --target de<br/>
+<span class="token-arrow">➔</span> <span class="token-badge">100% PRIVATE</span> keine Cloud-Übertragung
+                </div>
+</div>
 <dl class="version-facts">
-<div><dt>Вам знадобиться</dt><dd>Python та FFmpeg</dd></div>
-<div><dt>Налаштування</dt><dd>Завантажити проєкт і встановити на комп'ютер</dd></div>
-<div><dt>Варто знати</dt><dd>GPU необов'язковий. Вміст залишається на вашому комп'ютері лише за використання локальних моделей.</dd></div>
+<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="6"></circle><circle cx="8" cy="8" r="2"></circle></svg>Вам знадобиться</dt><dd>Python та FFmpeg</dd></div>
+<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><polyline points="9 2 4 9 9 9 7 14 12 7 7 7 9 2"></polyline></svg>Налаштування</dt><dd>Завантажити проєкт і встановити на комп'ютер</dd></div>
+<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="6"></circle><line x1="8" x2="8" y1="7" y2="11"></line><line x1="8" x2="8.01" y1="5" y2="5"></line></svg>Варто знати</dt><dd>GPU необов'язковий. Вміст залишається на вашому комп'ютері лише за використання локальних моделей.</dd></div>
 </dl>
 <div class="version-card-actions">
 <a class="button button-secondary" href="/uk/anleitung.html#desktop">Налаштувати Desktop <span aria-hidden="true">→</span></a>
@@ -346,15 +416,36 @@
 </article>
 <article aria-labelledby="studio-version-title" class="version-card" data-version="studio" id="version-studio">
 <div class="version-card-top">
+<div class="version-badge-group">
+<span aria-hidden="true" class="pictogram-box">
+<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22">
+<rect height="18" rx="2" width="18" x="3" y="3"></rect>
+<path d="m3 9 4-6 4 6 4-6 4 6"></path>
+<circle cx="9" cy="15" fill="var(--signal)" r="1.5"></circle>
+<line x1="13" x2="18" y1="15" y2="15"></line>
+</svg>
+</span>
 <span class="version-badge" data-i18n-ignore=""><span class="badge-dot"></span>03</span>
+</div>
 <span class="version-tag version-tag-preview">Video Studio · Тестовий режим</span>
 </div>
 <h3 id="studio-version-title">Прямо в браузері.</h3>
 <p class="version-description" data-version-description="">Для користувачів, які вже отримали доступ до Studio. Увійдіть і завантажуйте відео безпосередньо в браузері.</p>
+<div class="version-mini-preview" data-i18n-ignore="">
+<div class="mini-preview-bar">
+<span class="mini-dot is-warning"></span>
+<span class="mini-label">WEB SERVICE · BETA INSTANCE</span>
+<span class="mini-status is-beta">INVITE ONLY</span>
+</div>
+<div class="mini-preview-code">
+<span class="token-fn">session_auth</span>(<span class="token-str">"studio.linguoai.de"</span>)<br/>
+<span class="token-arrow">➔</span> Direkte Timeline &amp; Vorschau
+                </div>
+</div>
 <dl class="version-facts">
-<div><dt>Вам знадобиться</dt><dd>Ім'я користувача й пароль Studio</dd></div>
-<div><dt>Налаштування</dt><dd>Без установлення й облікового запису Google</dd></div>
-<div><dt>Варто знати</dt><dd>Обробка на сервері. Можливості перекладу поки обмежені; повний робочий процес ще не підтверджено.</dd></div>
+<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="6"></circle><circle cx="8" cy="8" r="2"></circle></svg>Вам знадобиться</dt><dd>Ім'я користувача й пароль Studio</dd></div>
+<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><polyline points="9 2 4 9 9 9 7 14 12 7 7 7 9 2"></polyline></svg>Налаштування</dt><dd>Без установлення й облікового запису Google</dd></div>
+<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="6"></circle><line x1="8" x2="8" y1="7" y2="11"></line><line x1="8" x2="8.01" y1="5" y2="5"></line></svg>Варто знати</dt><dd>Обробка на сервері. Можливості перекладу поки обмежені; повний робочий процес ще не підтверджено.</dd></div>
 </dl>
 <div class="version-card-actions">
 <a class="button button-secondary" href="/web.html">Відкрити Video Studio <span aria-hidden="true">→</span></a>
@@ -374,7 +465,12 @@
 <ol class="simple-steps">
 <li>
 <div class="step-card-header">
+<div class="step-badge-group">
+<span aria-hidden="true" class="pictogram-box is-subtle">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="20"><rect height="7" rx="1" width="7" x="3" y="3"></rect><rect height="7" rx="1" width="7" x="14" y="3"></rect><rect height="7" rx="1" width="7" x="14" y="14"></rect><rect height="7" rx="1" width="7" x="3" y="14"></rect><circle cx="17.5" cy="6.5" fill="var(--signal)" r="1.2"></circle></svg>
+</span>
 <span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>01</span>
+</div>
 <span aria-hidden="true" class="step-watermark">01</span>
 </div>
 <div class="step-card-body">
@@ -384,7 +480,12 @@
 </li>
 <li>
 <div class="step-card-header">
+<div class="step-badge-group">
+<span aria-hidden="true" class="pictogram-box is-subtle">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="20"><path d="m22 8-6 4 6 4V8Z"></path><rect height="12" rx="2" width="14" x="2" y="6"></rect><circle cx="9" cy="12" fill="var(--signal)" r="2"></circle></svg>
+</span>
 <span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>02</span>
+</div>
 <span aria-hidden="true" class="step-watermark">02</span>
 </div>
 <div class="step-card-body">
@@ -394,7 +495,12 @@
 </li>
 <li>
 <div class="step-card-header">
+<div class="step-badge-group">
+<span aria-hidden="true" class="pictogram-box is-subtle">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="20"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line><circle cx="12" cy="15" fill="var(--signal)" r="1.5"></circle></svg>
+</span>
 <span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>03</span>
+</div>
 <span aria-hidden="true" class="step-watermark">03</span>
 </div>
 <div class="step-card-body">
@@ -415,7 +521,12 @@
 <a class="text-link" href="/uk/anleitung.html#desktop">До локального встановлення <span aria-hidden="true">→</span></a>
 </div>
 <div class="simple-download-card">
+<div class="download-badge-row">
+<span aria-hidden="true" class="pictogram-box is-subtle">
+<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="20"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" x2="12" y1="22.08" y2="12"></line></svg>
+</span>
 <span class="bento-tag is-signal" data-i18n-ignore=""><span class="tag-dot"></span>LinguoAI 2.2.1</span>
+</div>
 <h3>Повний проєкт</h3>
 <p>Вихідний код із застосунком Desktop і Notebook. Готового інсталятора немає: дотримуйтеся інструкції зі встановлення.</p>
 <a class="button button-secondary" download="" href="https://linguoai.de/downloads/LinguoAI-2.2.1-source.zip">Завантажити ZIP із вихідним кодом <span aria-hidden="true">↓</span></a>
