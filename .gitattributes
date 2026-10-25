@@ -1,4 +1,5 @@
 * text=auto eol=lf
+linguoai/web_api.py text eol=crlf
 *.zip binary
 *.whl binary
 *.png binary

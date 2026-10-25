@@ -26,7 +26,7 @@
 <meta content="summary" name="twitter:card"/>
 <title>LinguoAI – The Global Cut</title>
 <link href="/assets/simple.css?v=20261023-1" rel="stylesheet"/>
-<link href="/assets/editorial.css?v=20261025-2" rel="stylesheet"/>
+<link href="/assets/editorial.css?v=20261025-3" rel="stylesheet"/>
 <script>
       document.documentElement.classList.replace("no-js", "has-js");
       (() => {
@@ -50,7 +50,7 @@
       })();
     </script>
 <script defer="" src="/assets/locale.js?v=20261023-1"></script>
-<script defer="" src="/assets/site.js?v=20261025-2"></script>
+<script defer="" src="/assets/site.js?v=20261025-3"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -244,8 +244,7 @@
 <div class="outcome-composition">
 <article class="outcome-card">
 <div class="outcome-meta">
-<span aria-hidden="true" class="step-num">01</span>
-<span class="step-tag" data-i18n-ignore="">ASR + NLLB</span>
+<span class="bento-tag is-signal" data-i18n-ignore=""><span class="tag-dot"></span>01 / ASR + NLLB</span>
 </div>
 <h3>Recognize and translate spoken content</h3>
 <p>Precisely transcribe spoken text in the video and translate it semantically into the chosen target language.</p>
@@ -262,8 +261,7 @@
 </article>
 <article class="outcome-card">
 <div class="outcome-meta">
-<span aria-hidden="true" class="step-num">02</span>
-<span class="step-tag" data-i18n-ignore="">SYNTHESIS</span>
+<span class="bento-tag is-signal" data-i18n-ignore=""><span class="tag-dot"></span>02 / SYNTHESE</span>
 </div>
 <h3>Dub with a new voice</h3>
 <p>Generate a natural-sounding voice track – aligned with the speech tempo and timing of the original video.</p>
@@ -277,8 +275,7 @@
 </article>
 <article class="outcome-card">
 <div class="outcome-meta">
-<span aria-hidden="true" class="step-num">03</span>
-<span class="step-tag" data-i18n-ignore="">SRT + VTT</span>
+<span class="bento-tag is-signal" data-i18n-ignore=""><span class="tag-dot"></span>03 / EXPORT</span>
 </div>
 <h3>Save matching subtitles</h3>
 <p>Save both the original and translation as time-synchronized SRT and VTT files.</p>
@@ -313,7 +310,7 @@
 <div class="version-grid">
 <article aria-labelledby="colab-version-title" class="version-card" data-version="colab" id="version-colab">
 <div class="version-card-top">
-<span aria-hidden="true" class="version-icon">01</span>
+<span class="version-badge" data-i18n-ignore=""><span class="badge-dot"></span>01</span>
 <span class="version-tag">Google Colab · In the browser</span>
 </div>
 <h3 id="colab-version-title">Start in the browser.</h3>
@@ -330,7 +327,7 @@
 </article>
 <article aria-labelledby="desktop-version-title" class="version-card" data-version="desktop" id="version-desktop">
 <div class="version-card-top">
-<span aria-hidden="true" class="version-icon">02</span>
+<span class="version-badge" data-i18n-ignore=""><span class="badge-dot"></span>02</span>
 <span class="version-tag">Desktop · Windows &amp; Linux</span>
 </div>
 <h3 id="desktop-version-title">Work locally.</h3>
@@ -347,7 +344,7 @@
 </article>
 <article aria-labelledby="studio-version-title" class="version-card" data-version="studio" id="version-studio">
 <div class="version-card-top">
-<span aria-hidden="true" class="version-icon">03</span>
+<span class="version-badge" data-i18n-ignore=""><span class="badge-dot"></span>03</span>
 <span class="version-tag version-tag-preview">Video Studio · Test mode</span>
 </div>
 <h3 id="studio-version-title">Directly in the browser.</h3>
@@ -374,22 +371,31 @@
 </div>
 <ol class="simple-steps">
 <li>
-<span aria-hidden="true" class="simple-step-number">01</span>
-<div>
+<div class="step-card-header">
+<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>01</span>
+<span aria-hidden="true" class="step-watermark">01</span>
+</div>
+<div class="step-card-body">
 <h3>Choose a version &amp; start</h3>
 <p>Follow the guide to start Colab, install the desktop app, or sign in to Video Studio with your credentials.</p>
 </div>
 </li>
 <li>
-<span aria-hidden="true" class="simple-step-number">02</span>
-<div>
+<div class="step-card-header">
+<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>02</span>
+<span aria-hidden="true" class="step-watermark">02</span>
+</div>
+<div class="step-card-body">
 <h3>Choose video &amp; language</h3>
 <p>Upload a short test video, then choose the target language and voice. Multiple videos are also supported.</p>
 </div>
 </li>
 <li>
-<span aria-hidden="true" class="simple-step-number">03</span>
-<div>
+<div class="step-card-header">
+<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>03</span>
+<span aria-hidden="true" class="step-watermark">03</span>
+</div>
+<div class="step-card-body">
 <h3>Review &amp; save the result</h3>
 <p>Check the translation and pronunciation. Save your video and subtitles; in Colab, do so before the session ends.</p>
 </div>
@@ -407,7 +413,7 @@
 <a class="text-link" href="/en/anleitung.html#desktop">Go to local installation <span aria-hidden="true">→</span></a>
 </div>
 <div class="simple-download-card">
-<span class="simple-version">LinguoAI 2.2.1</span>
+<span class="bento-tag is-signal" data-i18n-ignore=""><span class="tag-dot"></span>LinguoAI 2.2.1</span>
 <h3>The complete project</h3>
 <p>Source code with the desktop app and Notebook. No ready-to-use installer: please follow the installation guide.</p>
 <a class="button button-secondary" download="" href="https://linguoai.de/downloads/LinguoAI-2.2.1-source.zip">Download the source code ZIP <span aria-hidden="true">↓</span></a>

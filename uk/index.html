@@ -26,7 +26,7 @@
 <meta content="summary" name="twitter:card"/>
 <title>LinguoAI – The Global Cut</title>
 <link href="/assets/simple.css?v=20261023-1" rel="stylesheet"/>
-<link href="/assets/editorial.css?v=20261025-2" rel="stylesheet"/>
+<link href="/assets/editorial.css?v=20261025-3" rel="stylesheet"/>
 <script>
       document.documentElement.classList.replace("no-js", "has-js");
       (() => {
@@ -50,7 +50,7 @@
       })();
     </script>
 <script defer="" src="/assets/locale.js?v=20261023-1"></script>
-<script defer="" src="/assets/site.js?v=20261025-2"></script>
+<script defer="" src="/assets/site.js?v=20261025-3"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -244,8 +244,7 @@
 <div class="outcome-composition">
 <article class="outcome-card">
 <div class="outcome-meta">
-<span aria-hidden="true" class="step-num">01</span>
-<span class="step-tag" data-i18n-ignore="">ASR + NLLB</span>
+<span class="bento-tag is-signal" data-i18n-ignore=""><span class="tag-dot"></span>01 / ASR + NLLB</span>
 </div>
 <h3>Розпізнавати та перекладати усне мовлення</h3>
 <p>Точно транскрибуйте мовлення у відео та семантично перекладайте його на вибрану цільову мову.</p>
@@ -262,8 +261,7 @@
 </article>
 <article class="outcome-card">
 <div class="outcome-meta">
-<span aria-hidden="true" class="step-num">02</span>
-<span class="step-tag" data-i18n-ignore="">SYNTHESIS</span>
+<span class="bento-tag is-signal" data-i18n-ignore=""><span class="tag-dot"></span>02 / SYNTHESE</span>
 </div>
 <h3>Озвучити новим голосом</h3>
 <p>Створіть природну голосову доріжку – узгоджену з темпом мовлення та таймінгом оригінального відео.</p>
@@ -277,8 +275,7 @@
 </article>
 <article class="outcome-card">
 <div class="outcome-meta">
-<span aria-hidden="true" class="step-num">03</span>
-<span class="step-tag" data-i18n-ignore="">SRT + VTT</span>
+<span class="bento-tag is-signal" data-i18n-ignore=""><span class="tag-dot"></span>03 / EXPORT</span>
 </div>
 <h3>Зберігати відповідні субтитри</h3>
 <p>Зберігайте оригінал і переклад як синхронізовані за часом файли SRT і VTT.</p>
@@ -313,7 +310,7 @@
 <div class="version-grid">
 <article aria-labelledby="colab-version-title" class="version-card" data-version="colab" id="version-colab">
 <div class="version-card-top">
-<span aria-hidden="true" class="version-icon">01</span>
+<span class="version-badge" data-i18n-ignore=""><span class="badge-dot"></span>01</span>
 <span class="version-tag">Google Colab · У браузері</span>
 </div>
 <h3 id="colab-version-title">Запустити в браузері.</h3>
@@ -330,7 +327,7 @@
 </article>
 <article aria-labelledby="desktop-version-title" class="version-card" data-version="desktop" id="version-desktop">
 <div class="version-card-top">
-<span aria-hidden="true" class="version-icon">02</span>
+<span class="version-badge" data-i18n-ignore=""><span class="badge-dot"></span>02</span>
 <span class="version-tag">Desktop · Windows і Linux</span>
 </div>
 <h3 id="desktop-version-title">Працювати локально.</h3>
@@ -347,7 +344,7 @@
 </article>
 <article aria-labelledby="studio-version-title" class="version-card" data-version="studio" id="version-studio">
 <div class="version-card-top">
-<span aria-hidden="true" class="version-icon">03</span>
+<span class="version-badge" data-i18n-ignore=""><span class="badge-dot"></span>03</span>
 <span class="version-tag version-tag-preview">Video Studio · Тестовий режим</span>
 </div>
 <h3 id="studio-version-title">Прямо в браузері.</h3>
@@ -374,22 +371,31 @@
 </div>
 <ol class="simple-steps">
 <li>
-<span aria-hidden="true" class="simple-step-number">01</span>
-<div>
+<div class="step-card-header">
+<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>01</span>
+<span aria-hidden="true" class="step-watermark">01</span>
+</div>
+<div class="step-card-body">
 <h3>Вибрати версію й почати</h3>
 <p>Запустіть Colab за інструкцією, установіть Desktop або ввійдіть у Video Studio зі своїми даними доступу.</p>
 </div>
 </li>
 <li>
-<span aria-hidden="true" class="simple-step-number">02</span>
-<div>
+<div class="step-card-header">
+<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>02</span>
+<span aria-hidden="true" class="step-watermark">02</span>
+</div>
+<div class="step-card-body">
 <h3>Обрати відео й мову</h3>
 <p>Завантажте коротке тестове відео, оберіть мову перекладу та голос. Також можна обробити кілька відео.</p>
 </div>
 </li>
 <li>
-<span aria-hidden="true" class="simple-step-number">03</span>
-<div>
+<div class="step-card-header">
+<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>03</span>
+<span aria-hidden="true" class="step-watermark">03</span>
+</div>
+<div class="step-card-body">
 <h3>Перевірити й зберегти результат</h3>
 <p>Перевірте переклад і вимову. Збережіть відео й субтитри; у Colab — до завершення сеансу.</p>
 </div>
@@ -407,7 +413,7 @@
 <a class="text-link" href="/uk/anleitung.html#desktop">До локального встановлення <span aria-hidden="true">→</span></a>
 </div>
 <div class="simple-download-card">
-<span class="simple-version">LinguoAI 2.2.1</span>
+<span class="bento-tag is-signal" data-i18n-ignore=""><span class="tag-dot"></span>LinguoAI 2.2.1</span>
 <h3>Повний проєкт</h3>
 <p>Вихідний код із застосунком Desktop і Notebook. Готового інсталятора немає: дотримуйтеся інструкції зі встановлення.</p>
 <a class="button button-secondary" download="" href="https://linguoai.de/downloads/LinguoAI-2.2.1-source.zip">Завантажити ZIP із вихідним кодом <span aria-hidden="true">↓</span></a>
