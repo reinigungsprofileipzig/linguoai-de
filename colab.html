@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="de" class="no-js" data-locale-page="de" data-locale-detect="true">
+<html lang="de" class="no-js" data-locale-page="de" data-locale-detect="true" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#F3F0E7" />
+    <meta name="theme-color" content="#121210" />
     <meta
       name="description"
       content="LinguoAI direkt in Google Colab öffnen: Notebook starten, Video übersetzen und Ergebnisse sichern. Die kurze Anleitung mit Voraussetzungen und Alternativen."
@@ -22,10 +22,18 @@
     <title>LinguoAI in Google Colab starten</title>
     <link rel="stylesheet" href="/assets/simple.css?v=20261023-1" />
     <link rel="stylesheet" href="/assets/colab-guide.css?v=20261013-1" />
-    <link rel="stylesheet" href="/assets/editorial.css?v=20261025-1" />
+    <link rel="stylesheet" href="/assets/editorial.css?v=20261025-4" />
     <link rel="stylesheet" href="/assets/editorial-guides.css?v=20261025-1" />
     <script>
       document.documentElement.classList.replace("no-js", "has-js");
+      try {
+        const preferredTheme = window.localStorage.getItem("linguoai-theme");
+        if (preferredTheme === "light") {
+          document.documentElement.setAttribute("data-theme", "light");
+        } else {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      } catch (_themeError) {}
       (() => {
         if (document.documentElement.dataset.localeDetect !== "true") return;
         if (new URLSearchParams(window.location.search).get("lang") === "de") return;
@@ -79,6 +87,18 @@
           <a href="/#fragen">Hilfe</a>
         </nav>
         <div class="header-tools">
+          <button type="button" class="theme-toggle" data-theme-toggle data-i18n-ignore aria-label="Farbschema wechseln" title="Farbschema wechseln">
+            <span class="theme-toggle-track" aria-hidden="true">
+              <span class="theme-toggle-icon icon-moon">
+                <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 9.5a5.5 5.5 0 1 1-7-7 6.5 6.5 0 0 0 7 7Z"/></svg>
+              </span>
+              <span class="theme-toggle-thumb"></span>
+              <span class="theme-toggle-icon icon-sun">
+                <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.5m0 10v1.5m-6.5-6.5H3m10 0h1.5m-8.9-3.9 1 1m7.8 7.8 1 1m-9.8 0 1-1m7.8-7.8 1-1"/></svg>
+              </span>
+            </span>
+            <span class="sr-only">Farbschema wechseln</span>
+          </button>
           <details class="language-switcher" data-language-switcher>
             <summary aria-label="Sprache auswählen">
               <span data-locale-code>DE</span><span aria-hidden="true">⌄</span>

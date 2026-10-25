@@ -1,9 +1,9 @@
 <!doctype html>
-<html class="no-js" data-locale-detect="false" data-locale-page="tr" lang="tr">
+<html class="no-js" data-locale-detect="false" data-locale-page="tr" data-theme="dark" lang="tr">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="#F3F0E7" name="theme-color"/>
+<meta content="#121210" name="theme-color"/>
 <meta content="LinguoAI'ı doğrudan Google Colab'da açın: Notebook dosyasını başlatın, videoyu çevirin ve sonuçları kaydedin. Gereksinimler ve alternatiflerle kısa kılavuz." name="description"/>
 <meta content="index,follow" name="robots"/>
 <link href="https://linguoai.de/tr/colab.html" rel="canonical"/>
@@ -19,10 +19,18 @@
 <title>LinguoAI'yi Google Colab'de başlatın</title>
 <link href="/assets/simple.css?v=20261023-1" rel="stylesheet"/>
 <link href="/assets/colab-guide.css?v=20261013-1" rel="stylesheet"/>
-<link href="/assets/editorial.css?v=20261025-1" rel="stylesheet"/>
+<link href="/assets/editorial.css?v=20261025-4" rel="stylesheet"/>
 <link href="/assets/editorial-guides.css?v=20261025-1" rel="stylesheet"/>
 <script>
       document.documentElement.classList.replace("no-js", "has-js");
+      try {
+        const preferredTheme = window.localStorage.getItem("linguoai-theme");
+        if (preferredTheme === "light") {
+          document.documentElement.setAttribute("data-theme", "light");
+        } else {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      } catch (_themeError) {}
       (() => {
         if (document.documentElement.dataset.localeDetect !== "true") return;
         if (new URLSearchParams(window.location.search).get("lang") === "de") return;
@@ -75,6 +83,18 @@
 <a href="/tr/#fragen">Yardım</a>
 </nav>
 <div class="header-tools">
+<button aria-label="Farbschema wechseln" class="theme-toggle" data-i18n-ignore="" data-theme-toggle="" title="Farbschema wechseln" type="button">
+<span aria-hidden="true" class="theme-toggle-track">
+<span class="theme-toggle-icon icon-moon">
+<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><path d="M13.5 9.5a5.5 5.5 0 1 1-7-7 6.5 6.5 0 0 0 7 7Z"></path></svg>
+</span>
+<span class="theme-toggle-thumb"></span>
+<span class="theme-toggle-icon icon-sun">
+<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="3"></circle><path d="M8 1.5v1.5m0 10v1.5m-6.5-6.5H3m10 0h1.5m-8.9-3.9 1 1m7.8 7.8 1 1m-9.8 0 1-1m7.8-7.8 1-1"></path></svg>
+</span>
+</span>
+<span class="sr-only">Farbschema wechseln</span>
+</button>
 <details class="language-switcher" data-language-switcher="">
 <summary aria-label="Dil seçin">
 <span data-locale-code="">TR</span><span aria-hidden="true">⌄</span>

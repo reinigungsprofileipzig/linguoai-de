@@ -1,14 +1,24 @@
 <!doctype html>
-<html lang="de">
+<html lang="de" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
-    <meta name="theme-color" content="#f4f1ea" />
+    <meta name="theme-color" content="#121210" />
     <title>Seite nicht gefunden – LinguoAI</title>
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/assets/editorial.css?v=20261025-3" />
+    <link rel="stylesheet" href="/assets/editorial.css?v=20261025-4" />
     <link rel="stylesheet" href="/assets/styles.css" />
+    <script>
+      try {
+        const preferredTheme = window.localStorage.getItem("linguoai-theme");
+        if (preferredTheme === "light") {
+          document.documentElement.setAttribute("data-theme", "light");
+        } else {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      } catch (_themeError) {}
+    </script>
   </head>
   <body class="legal-page editorial">
     <main id="main" class="legal-main">

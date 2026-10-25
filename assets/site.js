@@ -1,6 +1,40 @@
 (() => {
   "use strict";
 
+  // Theme Controller (Dark Mode by default, Light Mode toggle)
+  const themeToggles = [...document.querySelectorAll("[data-theme-toggle]")];
+  const applyTheme = (theme) => {
+    document.documentElement.setAttribute("data-theme", theme);
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (metaThemeColor) {
+      metaThemeColor.setAttribute("content", theme === "light" ? "#F3F0E7" : "#121210");
+    }
+    try {
+      localStorage.setItem("linguoai-theme", theme);
+    } catch (_error) {}
+    themeToggles.forEach((button) => {
+      button.setAttribute("aria-checked", theme === "light" ? "true" : "false");
+    });
+  };
+
+  if (themeToggles.length) {
+    let currentTheme = document.documentElement.getAttribute("data-theme") || "dark";
+    try {
+      const stored = localStorage.getItem("linguoai-theme");
+      if (stored === "light" || stored === "dark") {
+        currentTheme = stored;
+      }
+    } catch (_error) {}
+    applyTheme(currentTheme);
+
+    themeToggles.forEach((button) => {
+      button.addEventListener("click", () => {
+        const next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
+        applyTheme(next);
+      });
+    });
+  }
+
   // The comparison remains usable when JavaScript is unavailable.
   const finder = document.querySelector("[data-version-finder]");
   if (finder) {
