@@ -55,16 +55,25 @@
       })();
     </script>
 <script defer="" src="/assets/locale.js?v=20261023-1"></script>
+<script defer="" src="/assets/site.js?v=20261025-3"></script>
 </head>
 <body class="colab-start-page editorial">
 <a class="skip-link" href="#main">Doğrudan talimatlara gidin</a>
-<header class="legal-header">
+<header class="site-header" data-header="">
 <div class="container header-inner">
-<a aria-label="LinguoAI Ana sayfa" class="brand" href="https://linguoai.de/tr/">
-<img alt="" height="38" src="/assets/logo-mark.svg" width="38"/>
-<span>LinguoAI</span>
+<a aria-label="LinguoAI Ana sayfa" class="brand" href="/tr/">
+<img alt="" height="34" src="/assets/logo-mark.svg" width="34"/><span>LinguoAI</span>
+<span class="brand-badge" data-i18n-ignore="">v2.2.1</span>
 </a>
-<span></span>
+<nav aria-label="Ana gezinme" class="main-navigation" data-menu="" id="main-navigation">
+<a href="/tr/#funktionen">Özellikler</a>
+<a href="/tr/#versionen">Sürüm bul</a>
+<a aria-current="page" href="/tr/colab.html">Colab talimatları</a>
+<a href="/tr/anleitung.html">Ayrıntılı kılavuz</a>
+<a data-i18n-ignore="" href="/web.html">Video Studio</a>
+<a href="/tr/#downloads">İndirilenler</a>
+<a href="/tr/#fragen">Yardım</a>
+</nav>
 <div class="header-tools">
 <details class="language-switcher" data-language-switcher="">
 <summary aria-label="Dil seçin">
@@ -80,7 +89,10 @@
 <a data-locale-link="it" href="/it/colab.html" hreflang="it" lang="it">Italiano</a>
 </div>
 </details>
-<a class="text-link" href="/tr/#versionen">Sürüm bul <span aria-hidden="true">→</span></a>
+<a class="button button-small" href="/tr/#versionen">Sürüm bul <span aria-hidden="true">→</span></a>
+<button aria-controls="main-navigation" aria-expanded="false" class="menu-button" data-menu-button="" type="button">
+<span class="sr-only">Gezinmeyi aç</span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+</button>
 </div>
 </div>
 </header>
@@ -126,21 +138,30 @@
 </div>
 <ol class="colab-start-steps">
 <li>
-<span>01</span>
+<div class="step-card-header">
+<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>01</span>
+<span aria-hidden="true" class="step-watermark">01</span>
+</div>
 <div>
 <strong>Notebook dosyasını açıp başlatın</strong>
 <p>Yukarıda “Google Colab'da başlat” düğmesine tıklayın ve Google hesabınızla oturum açın. Notebook dosyasında “Çalışma zamanı → Tümünü çalıştır” seçeneğini seçin. Başlangıç hücresi LinguoAI'ı kurar; bağlantı ve giriş bilgileri görünene kadar bekleyin.</p>
 </div>
 </li>
 <li>
-<span>02</span>
+<div class="step-card-header">
+<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>02</span>
+<span aria-hidden="true" class="step-watermark">02</span>
+</div>
 <div>
 <strong>Video ve dili seçin</strong>
 <p>Oluşturulan Gradio bağlantısını açın ve gösterilen giriş bilgileriyle oturum açın. Kısa bir video yükleyin, hedef dili seçin ve işlemi başlatın. İlk deneme için diğer ayarları olduğu gibi bırakabilirsiniz.</p>
 </div>
 </li>
 <li>
-<span>03</span>
+<div class="step-card-header">
+<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>03</span>
+<span aria-hidden="true" class="step-watermark">03</span>
+</div>
 <div>
 <strong>Sonuçları kaydedin</strong>
 <p>Yeni seslendirilmiş videoyu ve her iki altyazı dosyasını indirin veya Google Drive'a kaydedin. İşlem sırasında Notebook hücresini çalışır durumda tutun; oturum bittiğinde bağlantı ve geçici dosyalar artık kullanılamaz.</p>
@@ -150,12 +171,12 @@
 </section>
 <section class="container colab-start-details">
 <article>
-<span class="service-badge">SONUCUNUZ</span>
+<span class="service-badge"><span aria-hidden="true" class="badge-dot"></span>SONUCUNUZ</span>
 <h2>Video ve altyazılar.</h2>
 <p>Yeni ses kanalı, müzik ve arka plan gürültüsü dahil mevcut sesi tamamen değiştirir. Dudak senkronizasyonu veya birden fazla konuşmacının otomatik eşleştirilmesi dahil değildir.</p>
 </article>
 <article>
-<span class="service-badge">VERİLERİNİZ</span>
+<span class="service-badge"><span aria-hidden="true" class="badge-dot"></span>VERİLERİNİZ</span>
 <h2>Bilinçli seçim yapın.</h2>
 <p>Colab dosyaları geçici bir Google ortamında işler. Çevrimiçi çevirmenler ve ses hizmetleri, işlemleri için gereken metinleri alır. Yalnızca gerekli haklara sahip olduğunuz videoları ve sesleri kullanın.</p>
 </article>
@@ -184,10 +205,49 @@
 </section>
 </main>
 <footer class="site-footer">
-<div class="container footer-bottom">
-<span>© 2026 LinguoAI</span>
+<div class="container footer-main">
+<div class="footer-brand">
+<a class="brand" href="/tr/">
+<img alt="" height="34" src="/assets/logo-mark.svg" width="34"/><span>LinguoAI</span>
+</a>
+<p>Videoları çevirin, yeniden seslendirin ve altyazı ekleyin.</p>
+</div>
+<div class="footer-links">
+<div>
+<strong>Başlat</strong>
+<a href="/tr/">Ana sayfaya</a>
+<a href="/tr/#versionen">Sürüm bul</a>
+<a href="/tr/colab.html">Colab talimatları</a>
+<a href="/tr/anleitung.html#desktop">Yerel olarak yükle</a>
+<a href="/web.html">Video Studio</a>
+<a href="/tr/#downloads">İndirilenler</a>
+</div>
+<div>
+<strong>Daha fazla bilgi</strong>
+<a href="/tr/anleitung.html">Ayrıntılı kılavuz</a>
+<a href="/tr/#fragen">Yardım</a>
+<a href="https://github.com/reinigungsprofileipzig/linguoai-de">GitHub</a>
+</div>
+<div>
+<strong>Yasal</strong>
 <a href="/impressum.html">Baskı</a>
 <a href="/datenschutz.html">Veri koruma</a>
+<a href="/drive-datenschutz.html">Drive bağlantısında gizlilik</a>
+</div>
+</div>
+</div>
+<div class="container footer-bottom">
+<span>© <span data-current-year="">2026</span> LinguoAI</span>
+<span>Takipçi olmadan. Harici web yazı tipleri olmadan.</span>
+<div class="footer-locales" data-i18n-ignore="">
+<a href="/tr/" hreflang="de" lang="de">DE</a> ·
+          <a href="/en/" hreflang="en" lang="en">EN</a> ·
+          <a href="/ru/" hreflang="ru" lang="ru">RU</a> ·
+          <a href="/uk/" hreflang="uk" lang="uk">UK</a> ·
+          <a href="/tr/" hreflang="tr" lang="tr">TR</a> ·
+          <a href="/es/" hreflang="es" lang="es">ES</a> ·
+          <a href="/it/" hreflang="it" lang="it">IT</a>
+</div>
 </div>
 </footer>
 </body>

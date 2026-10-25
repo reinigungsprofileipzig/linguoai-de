@@ -55,16 +55,25 @@
       })();
     </script>
 <script defer="" src="/assets/locale.js?v=20261023-1"></script>
+<script defer="" src="/assets/site.js?v=20261025-3"></script>
 </head>
 <body class="colab-start-page editorial">
 <a class="skip-link" href="#main">Go straight to the instructions</a>
-<header class="legal-header">
+<header class="site-header" data-header="">
 <div class="container header-inner">
-<a aria-label="LinguoAI Home page" class="brand" href="https://linguoai.de/en/">
-<img alt="" height="38" src="/assets/logo-mark.svg" width="38"/>
-<span>LinguoAI</span>
+<a aria-label="LinguoAI Home page" class="brand" href="/en/">
+<img alt="" height="34" src="/assets/logo-mark.svg" width="34"/><span>LinguoAI</span>
+<span class="brand-badge" data-i18n-ignore="">v2.2.1</span>
 </a>
-<span></span>
+<nav aria-label="Main navigation" class="main-navigation" data-menu="" id="main-navigation">
+<a href="/en/#funktionen">Features</a>
+<a href="/en/#versionen">Find your version</a>
+<a aria-current="page" href="/en/colab.html">Colab instructions</a>
+<a href="/en/anleitung.html">Detailed guide</a>
+<a data-i18n-ignore="" href="/web.html">Video Studio</a>
+<a href="/en/#downloads">Downloads</a>
+<a href="/en/#fragen">Help</a>
+</nav>
 <div class="header-tools">
 <details class="language-switcher" data-language-switcher="">
 <summary aria-label="Select language">
@@ -80,7 +89,10 @@
 <a data-locale-link="it" href="/it/colab.html" hreflang="it" lang="it">Italiano</a>
 </div>
 </details>
-<a class="text-link" href="/en/#versionen">Find your version <span aria-hidden="true">→</span></a>
+<a class="button button-small" href="/en/#versionen">Find your version <span aria-hidden="true">→</span></a>
+<button aria-controls="main-navigation" aria-expanded="false" class="menu-button" data-menu-button="" type="button">
+<span class="sr-only">Open navigation</span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+</button>
 </div>
 </div>
 </header>
@@ -126,21 +138,30 @@
 </div>
 <ol class="colab-start-steps">
 <li>
-<span>01</span>
+<div class="step-card-header">
+<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>01</span>
+<span aria-hidden="true" class="step-watermark">01</span>
+</div>
 <div>
 <strong>Open and start the Notebook</strong>
 <p>Click “Start in Google Colab” above and sign in to Google. In the Notebook, choose “Runtime → Run all”. The startup cell installs LinguoAI; wait for the link and credentials to appear.</p>
 </div>
 </li>
 <li>
-<span>02</span>
+<div class="step-card-header">
+<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>02</span>
+<span aria-hidden="true" class="step-watermark">02</span>
+</div>
 <div>
 <strong>Choose video and language</strong>
 <p>Open the generated Gradio link and sign in with the credentials shown. Upload a short video, choose the target language, and start the job. For your first test, you can leave the other settings as they are.</p>
 </div>
 </li>
 <li>
-<span>03</span>
+<div class="step-card-header">
+<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>03</span>
+<span aria-hidden="true" class="step-watermark">03</span>
+</div>
 <div>
 <strong>Save your results</strong>
 <p>Download the newly dubbed video and both subtitle files, or save them to Google Drive. Keep the Notebook cell running during processing; the link and temporary files are no longer available after the session ends.</p>
@@ -150,12 +171,12 @@
 </section>
 <section class="container colab-start-details">
 <article>
-<span class="service-badge">YOUR RESULT</span>
+<span class="service-badge"><span aria-hidden="true" class="badge-dot"></span>YOUR RESULT</span>
 <h2>Video and subtitles.</h2>
 <p>The new audio track completely replaces the existing sound, including music and background noise. Lip sync and automatic matching of multiple speakers are not included.</p>
 </article>
 <article>
-<span class="service-badge">YOUR DATA</span>
+<span class="service-badge"><span aria-hidden="true" class="badge-dot"></span>YOUR DATA</span>
 <h2>Choose carefully.</h2>
 <p>Colab processes files in a temporary Google environment. Online translators and online voices receive the texts needed for their tasks. Only use videos and voices for which you have the necessary rights.</p>
 </article>
@@ -184,10 +205,49 @@
 </section>
 </main>
 <footer class="site-footer">
-<div class="container footer-bottom">
-<span>© 2026 LinguoAI</span>
+<div class="container footer-main">
+<div class="footer-brand">
+<a class="brand" href="/en/">
+<img alt="" height="34" src="/assets/logo-mark.svg" width="34"/><span>LinguoAI</span>
+</a>
+<p>Translate, dub, and subtitle videos.</p>
+</div>
+<div class="footer-links">
+<div>
+<strong>Start</strong>
+<a href="/en/">To the home page</a>
+<a href="/en/#versionen">Find your version</a>
+<a href="/en/colab.html">Colab instructions</a>
+<a href="/en/anleitung.html#desktop">Install locally</a>
+<a href="/web.html">Video Studio</a>
+<a href="/en/#downloads">Downloads</a>
+</div>
+<div>
+<strong>Learn more</strong>
+<a href="/en/anleitung.html">Detailed guide</a>
+<a href="/en/#fragen">Help</a>
+<a href="https://github.com/reinigungsprofileipzig/linguoai-de">GitHub</a>
+</div>
+<div>
+<strong>Legal</strong>
 <a href="/impressum.html">Imprint</a>
 <a href="/datenschutz.html">Data protection</a>
+<a href="/drive-datenschutz.html">Drive connection privacy</a>
+</div>
+</div>
+</div>
+<div class="container footer-bottom">
+<span>© <span data-current-year="">2026</span> LinguoAI</span>
+<span>Without tracker. Without external web fonts.</span>
+<div class="footer-locales" data-i18n-ignore="">
+<a href="/en/" hreflang="de" lang="de">DE</a> ·
+          <a href="/en/" hreflang="en" lang="en">EN</a> ·
+          <a href="/ru/" hreflang="ru" lang="ru">RU</a> ·
+          <a href="/uk/" hreflang="uk" lang="uk">UK</a> ·
+          <a href="/tr/" hreflang="tr" lang="tr">TR</a> ·
+          <a href="/es/" hreflang="es" lang="es">ES</a> ·
+          <a href="/it/" hreflang="it" lang="it">IT</a>
+</div>
 </div>
 </footer>
 </body>

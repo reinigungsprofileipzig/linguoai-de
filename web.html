@@ -7,23 +7,36 @@
     <meta name="robots" content="noindex,nofollow" />
     <meta name="description" content="Lade ein Video hoch, wähle die Sprache und lade deine neue Sprachfassung und Untertitel herunter." />
     <title>Video Studio – LinguoAI</title>
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="assets/simple.css?v=20261023-1" />
-    <link rel="stylesheet" href="assets/web-app.css?v=20261013-2" />
-    <script defer src="assets/web-app.js?v=20261013-2"></script>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/assets/simple.css?v=20261023-1" />
+    <link rel="stylesheet" href="/assets/editorial.css?v=20261025-3" />
+    <link rel="stylesheet" href="/assets/web-app.css?v=20261025-3" />
+    <script defer src="/assets/web-app.js?v=20261013-2"></script>
+    <script defer src="/assets/site.js?v=20261025-3"></script>
   </head>
-  <body class="simple-site web-site">
+  <body class="simple-site web-site editorial">
     <a class="skip-link" href="#main">Direkt zum Inhalt</a>
-    <header class="site-header">
+    <header class="site-header" data-header>
       <div class="container header-inner">
-        <a class="brand" href="https://linguoai.de/" aria-label="LinguoAI Startseite">
-          <img src="assets/logo-mark.svg" width="34" height="34" alt="" /><span>LinguoAI</span><span class="web-brand-context">Video Studio</span>
+        <a class="brand" href="/" aria-label="LinguoAI Startseite">
+          <img src="/assets/logo-mark.svg" width="34" height="34" alt="" /><span>LinguoAI</span><span class="web-brand-context">Video Studio</span>
         </a>
-        <nav class="web-nav" aria-label="Hauptnavigation">
-          <a href="https://linguoai.de/anleitung.html#webversion">Hilfe</a>
-          <a href="https://linguoai.de/#versionen">Version finden</a>
+        <nav id="main-navigation" class="main-navigation web-nav" aria-label="Hauptnavigation" data-menu>
+          <a href="/#funktionen">Funktionen</a>
+          <a href="/#versionen">Version finden</a>
+          <a href="/colab.html">Colab-Anleitung</a>
+          <a href="/anleitung.html">Ausführliche Anleitung</a>
+          <a href="/web.html" aria-current="page">Video Studio</a>
+          <a href="/#downloads">Downloads</a>
+          <a href="/anleitung.html#webversion">Hilfe</a>
           <button id="logout" class="web-text-button" type="button" hidden>Abmelden</button>
         </nav>
+        <div class="header-tools">
+          <a class="button button-small" href="/#versionen">Version finden <span aria-hidden="true">→</span></a>
+          <button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-controls="main-navigation" aria-label="Menü öffnen">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -189,9 +202,51 @@
         </section>
       </div>
     </main>
-    <footer class="web-footer container">
-      <p>Video mit neuer Sprachspur · Originale und übersetzte Untertitel</p>
-      <div><a href="https://linguoai.de/">Über LinguoAI</a><a href="https://linguoai.de/colab.html">Mit Google Colab starten</a></div>
+    <footer class="site-footer">
+      <div class="container footer-main">
+        <div class="footer-brand">
+          <a class="brand" href="/">
+            <img src="/assets/logo-mark.svg" width="34" height="34" alt="" /><span>LinguoAI</span>
+          </a>
+          <p>Videos übersetzen, neu vertonen und untertiteln.</p>
+        </div>
+        <div class="footer-links">
+          <div>
+            <strong>Starten</strong>
+            <a href="/">Zur Startseite</a>
+            <a href="/#versionen">Version finden</a>
+            <a href="/colab.html">Colab-Anleitung</a>
+            <a href="/anleitung.html#desktop">Lokal installieren</a>
+            <a href="/web.html">Video Studio</a>
+            <a href="/#downloads">Downloads</a>
+          </div>
+          <div>
+            <strong>Mehr erfahren</strong>
+            <a href="/anleitung.html">Ausführliche Anleitung</a>
+            <a href="/anleitung.html#webversion">Hilfe</a>
+            <a href="https://github.com/reinigungsprofileipzig/linguoai-de">GitHub</a>
+          </div>
+          <div>
+            <strong>Rechtliches</strong>
+            <a href="/impressum.html">Impressum</a>
+            <a href="/datenschutz.html">Datenschutz</a>
+            <a href="/drive-datenschutz.html">Datenschutz der Drive-Anbindung</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>© <span data-current-year>2026</span> LinguoAI</span>
+        <span>Ohne Tracker. Ohne externe Webfonts.</span>
+        <div class="footer-locales" data-i18n-ignore>
+          <a href="/" lang="de" hreflang="de">DE</a> ·
+          <a href="/en/" lang="en" hreflang="en">EN</a> ·
+          <a href="/ru/" lang="ru" hreflang="ru">RU</a> ·
+          <a href="/uk/" lang="uk" hreflang="uk">UK</a> ·
+          <a href="/tr/" lang="tr" hreflang="tr">TR</a> ·
+          <a href="/es/" lang="es" hreflang="es">ES</a> ·
+          <a href="/it/" lang="it" hreflang="it">IT</a>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

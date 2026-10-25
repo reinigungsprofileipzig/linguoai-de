@@ -1,7 +1,7 @@
 # Webdienst und Remote-Worker
 
 Stand: 14. Oktober 2026. Der Upload-Dienst ist implementiert und unter
-[Webversion öffnen](https://stayinleipzig.de/linguoai/web.html) eingerichtet.
+[Webversion öffnen](https://linguoai.de/web.html) eingerichtet.
 Nutzer melden sich an, laden ein Video hoch und erhalten das übersetzte Video
 sowie Original- und übersetzte SRT-Untertitel als geschützte Downloads.
 

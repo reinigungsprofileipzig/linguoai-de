@@ -35,7 +35,7 @@ Sitzungscookie für Login und eigene Aufträge.
 ## Video Studio
 
 Die aktuelle Dienstadresse ist
-[Webversion öffnen](https://stayinleipzig.de/linguoai/web.html).
+[Webversion öffnen](https://linguoai.de/web.html).
 Die Oberfläche lädt Videos in maximal 8 MiB großen Blöcken mit SHA-256 und
 bestätigten Offsets hoch. Vorübergehende Verbindungsfehler werden begrenzt
 wiederholt; der Upload kann in der geöffneten Seite am bestätigten Stand fortsetzen.

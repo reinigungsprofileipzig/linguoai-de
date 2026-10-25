@@ -55,16 +55,25 @@
       })();
     </script>
 <script defer="" src="/assets/locale.js?v=20261023-1"></script>
+<script defer="" src="/assets/site.js?v=20261025-3"></script>
 </head>
 <body class="colab-start-page editorial">
 <a class="skip-link" href="#main">Сразу переходим к инструкции</a>
-<header class="legal-header">
+<header class="site-header" data-header="">
 <div class="container header-inner">
-<a aria-label="LinguoAI Домашняя страница" class="brand" href="https://linguoai.de/ru/">
-<img alt="" height="38" src="/assets/logo-mark.svg" width="38"/>
-<span>LinguoAI</span>
+<a aria-label="LinguoAI Домашняя страница" class="brand" href="/ru/">
+<img alt="" height="34" src="/assets/logo-mark.svg" width="34"/><span>LinguoAI</span>
+<span class="brand-badge" data-i18n-ignore="">v2.2.1</span>
 </a>
-<span></span>
+<nav aria-label="Основная навигация" class="main-navigation" data-menu="" id="main-navigation">
+<a href="/ru/#funktionen">Особенности</a>
+<a href="/ru/#versionen">Найти версию</a>
+<a aria-current="page" href="/ru/colab.html">Colab инструкции</a>
+<a href="/ru/anleitung.html">Подробное руководство</a>
+<a data-i18n-ignore="" href="/web.html">Video Studio</a>
+<a href="/ru/#downloads">Загрузки</a>
+<a href="/ru/#fragen">Помощь</a>
+</nav>
 <div class="header-tools">
 <details class="language-switcher" data-language-switcher="">
 <summary aria-label="Выберите язык">
@@ -80,7 +89,10 @@
 <a data-locale-link="it" href="/it/colab.html" hreflang="it" lang="it">Italiano</a>
 </div>
 </details>
-<a class="text-link" href="/ru/#versionen">Найти версию <span aria-hidden="true">→</span></a>
+<a class="button button-small" href="/ru/#versionen">Найти версию <span aria-hidden="true">→</span></a>
+<button aria-controls="main-navigation" aria-expanded="false" class="menu-button" data-menu-button="" type="button">
+<span class="sr-only">Открыть навигацию</span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+</button>
 </div>
 </div>
 </header>
@@ -126,21 +138,30 @@
 </div>
 <ol class="colab-start-steps">
 <li>
-<span>01</span>
+<div class="step-card-header">
+<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>01</span>
+<span aria-hidden="true" class="step-watermark">01</span>
+</div>
 <div>
 <strong>Открыть и запустить Notebook</strong>
 <p>Нажмите «Запустить в Google Colab» выше и войдите в Google. В Notebook выберите «Среда выполнения → Выполнить всё». Стартовая ячейка установит LinguoAI; дождитесь ссылки и учётных данных.</p>
 </div>
 </li>
 <li>
-<span>02</span>
+<div class="step-card-header">
+<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>02</span>
+<span aria-hidden="true" class="step-watermark">02</span>
+</div>
 <div>
 <strong>Выбрать видео и язык</strong>
 <p>Откройте полученную ссылку Gradio и войдите с показанными учётными данными. Загрузите короткое видео, выберите язык перевода и запустите задание. Для первого теста остальные настройки можно оставить без изменений.</p>
 </div>
 </li>
 <li>
-<span>03</span>
+<div class="step-card-header">
+<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>03</span>
+<span aria-hidden="true" class="step-watermark">03</span>
+</div>
 <div>
 <strong>Сохранить результаты</strong>
 <p>Скачайте видео с новой озвучкой и оба файла субтитров или сохраните их в Google Drive. Во время обработки ячейка Notebook должна оставаться активной; после завершения сеанса ссылка и временные файлы становятся недоступны.</p>
@@ -150,12 +171,12 @@
 </section>
 <section class="container colab-start-details">
 <article>
-<span class="service-badge">ВАШ РЕЗУЛЬТАТ</span>
+<span class="service-badge"><span aria-hidden="true" class="badge-dot"></span>ВАШ РЕЗУЛЬТАТ</span>
 <h2>Видео и субтитры.</h2>
 <p>Новая звуковая дорожка полностью заменяет прежний звук, включая музыку и фоновые шумы. Синхронизация движений губ и автоматическое сопоставление нескольких говорящих не предусмотрены.</p>
 </article>
 <article>
-<span class="service-badge">ВАШИ ДАННЫЕ</span>
+<span class="service-badge"><span aria-hidden="true" class="badge-dot"></span>ВАШИ ДАННЫЕ</span>
 <h2>Выбирайте осознанно.</h2>
 <p>Colab обрабатывает файлы во временной среде Google. Онлайн-переводчики и онлайн-голоса получают тексты, необходимые для их работы. Используйте только видео и голоса, на которые у вас есть необходимые права.</p>
 </article>
@@ -184,10 +205,49 @@
 </section>
 </main>
 <footer class="site-footer">
-<div class="container footer-bottom">
-<span>© 2026 LinguoAI</span>
+<div class="container footer-main">
+<div class="footer-brand">
+<a class="brand" href="/ru/">
+<img alt="" height="34" src="/assets/logo-mark.svg" width="34"/><span>LinguoAI</span>
+</a>
+<p>Переводите, озвучивайте и добавляйте субтитры к видео.</p>
+</div>
+<div class="footer-links">
+<div>
+<strong>Старт</strong>
+<a href="/ru/">На главную страницу</a>
+<a href="/ru/#versionen">Найти версию</a>
+<a href="/ru/colab.html">Colab инструкции</a>
+<a href="/ru/anleitung.html#desktop">Установить локально</a>
+<a href="/web.html">Video Studio</a>
+<a href="/ru/#downloads">Загрузки</a>
+</div>
+<div>
+<strong>Подробнее</strong>
+<a href="/ru/anleitung.html">Подробное руководство</a>
+<a href="/ru/#fragen">Помощь</a>
+<a href="https://github.com/reinigungsprofileipzig/linguoai-de">GitHub</a>
+</div>
+<div>
+<strong>Юридический</strong>
 <a href="/impressum.html">Выходные данные</a>
 <a href="/datenschutz.html">Защита данных</a>
+<a href="/drive-datenschutz.html">Конфиденциальность при подключении Drive</a>
+</div>
+</div>
+</div>
+<div class="container footer-bottom">
+<span>© <span data-current-year="">2026</span> LinguoAI</span>
+<span>Без трекера. Без внешних веб-шрифтов.</span>
+<div class="footer-locales" data-i18n-ignore="">
+<a href="/ru/" hreflang="de" lang="de">DE</a> ·
+          <a href="/en/" hreflang="en" lang="en">EN</a> ·
+          <a href="/ru/" hreflang="ru" lang="ru">RU</a> ·
+          <a href="/uk/" hreflang="uk" lang="uk">UK</a> ·
+          <a href="/tr/" hreflang="tr" lang="tr">TR</a> ·
+          <a href="/es/" hreflang="es" lang="es">ES</a> ·
+          <a href="/it/" hreflang="it" lang="it">IT</a>
+</div>
 </div>
 </footer>
 </body>

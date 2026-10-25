@@ -75,7 +75,7 @@ laufen anschließend durch die gewählten Dienste.
 
 ## Webversion und Google Drive
 
-Die [Webversion öffnen](https://stayinleipzig.de/linguoai/web.html) ist als eigener
+Die [Webversion öffnen](https://linguoai.de/web.html) ist als eigener
 Dienst eingerichtet: anmelden, Video hochladen, Zielsprache wählen und das fertige
 Video mit Original- und übersetzten Untertiteln herunterladen. Eine persistente
 SQLite-Warteschlange verwaltet Besitzer, Fortschritt, Abbruch und Worker-Leases.

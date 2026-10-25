@@ -1,7 +1,7 @@
 # Betrieb und Remote-Worker
 
 Stand: 15. Oktober 2026. Der Dienst ist auf Debian 13 unter
-[Webversion öffnen](https://stayinleipzig.de/linguoai/web.html) eingerichtet.
+[Webversion öffnen](https://linguoai.de/web.html) eingerichtet.
 Die API lauscht auf `127.0.0.1:8765`; Nginx veröffentlicht den HTTPS-Unterpfad
 `/linguoai/`. `linguoai-web.service` und `linguoai-worker.service` sind aktiviert.
 Die Dateien in diesem Verzeichnis dienen außerdem als Vorlagen für weitere Hosts.
