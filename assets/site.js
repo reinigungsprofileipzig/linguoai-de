@@ -270,4 +270,40 @@
       });
     });
   });
+
+  // Interactive Timeline Controller (Hero)
+  const timeline = document.querySelector("[data-hero-timeline]");
+  if (timeline) {
+    const targetChips = timeline.querySelectorAll("[data-lang-target]");
+    const targetCodeBadge = timeline.querySelector("[data-target-code]");
+    const captionPreview = timeline.querySelector("[data-caption-preview]");
+    const trackTranslated = timeline.querySelector(".track-translated");
+
+    const sampleSentences = {
+      de: "»...erzeugt synchronisierte Sprachfassungen in Sekunden.«",
+      en: "»...creating seamless voice dubbing in seconds.«",
+      uk: "»...створює синхронізоване озвучення за секунди.«",
+      es: "»...crea doblajes de voz sincronizados en segundos.«",
+      it: "»...crea doppiaggi vocali sincronizzati in pochi secondi.«",
+      tr: "»...saniyeler içinde senkronize seslendirmeler oluşturur.«",
+    };
+
+    targetChips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        const lang = chip.dataset.langTarget;
+        targetChips.forEach((c) => c.classList.remove("is-active"));
+        chip.classList.add("is-active");
+        if (targetCodeBadge) targetCodeBadge.textContent = lang.toUpperCase();
+        if (captionPreview && sampleSentences[lang]) {
+          captionPreview.textContent = sampleSentences[lang];
+        }
+        if (trackTranslated) {
+          trackTranslated.style.opacity = "0.5";
+          window.setTimeout(() => {
+            trackTranslated.style.opacity = "1";
+          }, 140);
+        }
+      });
+    });
+  }
 })();

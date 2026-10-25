@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="#f4f3ed" name="theme-color"/>
-<meta content="Translate videos and create a new audio track with subtitles. LinguoAI runs on your computer or in Google Colab. A clear start, step by step." name="description"/>
+<meta content="#F3F0E7" name="theme-color"/>
+<meta content="Translate spoken content, generate new voice versions, and save matching subtitles – in the browser or locally on your machine." name="description"/>
 <meta content="index,follow,max-image-preview:large" name="robots"/>
 <link href="https://linguoai.de/en/" rel="canonical"/>
 <link href="https://linguoai.de/" hreflang="de" rel="alternate"/>
@@ -20,13 +20,13 @@
 <meta content="website" property="og:type"/>
 <meta content="en_US" property="og:locale"/>
 <meta content="LinguoAI" property="og:site_name"/>
-<meta content="LinguoAI – Translate and dub videos" property="og:title"/>
-<meta content="From video to a new language version: translate, dub, and save subtitles. On your computer or in Google Colab." property="og:description"/>
+<meta content="LinguoAI – The Global Cut" property="og:title"/>
+<meta content="Translate spoken content, generate new voice versions, and save matching subtitles – in the browser or locally on your machine." property="og:description"/>
 <meta content="https://linguoai.de/en/" property="og:url"/>
 <meta content="summary" name="twitter:card"/>
-<title>LinguoAI – Translate and dub videos</title>
+<title>LinguoAI – The Global Cut</title>
 <link href="/assets/simple.css?v=20261023-1" rel="stylesheet"/>
-<link href="/assets/editorial.css?v=20261025-1" rel="stylesheet"/>
+<link href="/assets/editorial.css?v=20261025-2" rel="stylesheet"/>
 <script>
       document.documentElement.classList.replace("no-js", "has-js");
       (() => {
@@ -50,7 +50,7 @@
       })();
     </script>
 <script defer="" src="/assets/locale.js?v=20261023-1"></script>
-<script defer="" src="/assets/site.js?v=20261023-1"></script>
+<script defer="" src="/assets/site.js?v=20261025-2"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -105,11 +105,12 @@
 <header class="site-header" data-header="">
 <div class="container header-inner">
 <a aria-label="LinguoAI Home page" class="brand" href="#top">
-<img alt="" height="38" src="/assets/logo-mark.svg" width="38"/><span>LinguoAI</span>
+<img alt="" height="34" src="/assets/logo-mark.svg" width="34"/><span>LinguoAI</span>
+<span class="brand-badge" data-i18n-ignore="">v2.2.1</span>
 </a>
 <nav aria-label="Main navigation" class="main-navigation" data-menu="" id="main-navigation">
-<a href="#versionen">Find your version</a>
 <a href="#funktionen">Features</a>
+<a href="#versionen">Find your version</a>
 <a href="#downloads">Downloads</a>
 <a data-i18n-ignore="" href="https://stayinleipzig.de/linguoai/web.html">Video Studio</a>
 <a href="#fragen">Help</a>
@@ -127,7 +128,7 @@
 <a data-locale-link="it" href="/it/" hreflang="it" lang="it">Italiano</a>
 </div>
 </details>
-<a class="button button-small header-action" href="#versionen">Find your version <span aria-hidden="true">↗</span></a>
+<a class="button button-small header-action" href="#versionen">Find the right version <span aria-hidden="true">↓</span></a>
 <button aria-controls="main-navigation" aria-expanded="false" class="menu-button" data-menu-button="" type="button">
 <span class="sr-only">Open navigation</span><span aria-hidden="true"></span><span aria-hidden="true"></span>
 </button>
@@ -138,38 +139,167 @@
 <section class="simple-hero" id="top">
 <div class="container simple-hero-grid">
 <div class="simple-hero-copy">
-<p class="eyebrow">Open source · three ways to create your video</p>
-<h1>Your video.<br/><span>A new language.</span></h1>
-<p class="simple-intro">Translate videos, create a new audio track, and save matching subtitles. Step by step – in your browser or on your computer.</p>
+<p class="eyebrow">LinguoAI — The Global Cut · Open Source</p>
+<h1>One video.<br/><span>New languages.</span></h1>
+<p class="simple-intro">Translate spoken content, generate new voice versions, and save matching subtitles – in the browser or locally on your machine.</p>
 <div class="simple-actions">
 <a class="button" href="#versionen">Find the right version <span aria-hidden="true">↓</span></a>
 <a class="text-link" href="#ablauf">Here's how it works <span aria-hidden="true">→</span></a>
 </div>
 <p class="simple-start-note">Google Colab, desktop app or Video Studio: compare requirements and find your starting point.</p>
 </div>
-<figure class="simple-preview studio-visual">
+<figure class="simple-preview studio-visual" data-hero-timeline="">
 <div class="studio-panel">
-<div class="simple-preview-heading"><span>LinguoAI</span><span>Video → new language version</span></div>
-<div class="simple-preview-route">
-<div><span>Original video</span><strong>English</strong></div>
-<span aria-hidden="true" class="simple-route-arrow">↗</span>
-<div><span>New language version</span><strong>German</strong></div>
+<div class="studio-topbar" data-i18n-ignore="">
+<div class="studio-dots"><span></span><span></span><span></span></div>
+<span class="studio-engine-id">LINGUOAI TIMELINE v2.2.1</span>
+<span class="studio-timecode">00:04:12.08 / 00:15:00.00</span>
+<span class="studio-status-pill"><span class="status-live-dot"></span>IN SYNC · 48 kHz</span>
 </div>
-<div aria-hidden="true" class="studio-timeline">
-<div class="studio-ruler" data-i18n-ignore=""><span>00:00</span><span>00:10</span><span>00:20</span></div>
-<div class="studio-track studio-track-original"><span class="studio-track-code" data-i18n-ignore="">EN</span><svg class="studio-wave" preserveaspectratio="none" viewbox="0 0 360 64"><path d="M4 28v8m8-14v20m8-25v30m8-18v6m8-28v50m8-39v28m8-17v6m8-14v22m8-36v50m8-32v14m8-22v30m8-19v8m8-14v20m8-32v44m8-25v6m8-9v12m8-22v32m8-41v50m8-35v20m8-13v6m8-19v32m8-41v50m8-38v26m8-18v10m8-15v20m8-29v38m8-44v50m8-36v22m8-14v6m8-8v10m8-18v26m8-33v40m8-29v18m8-12v6m8-14v22m8-31v40m8-43v46m8-30v14m8-10v6m8-21v36m8-41v46m8-30v14m8-12v10m8-8v6"></path></svg></div>
-<div class="studio-track studio-track-translated"><span class="studio-track-code" data-i18n-ignore="">DE</span><svg class="studio-wave" preserveaspectratio="none" viewbox="0 0 360 64"><path d="M4 29v6m8-10v14m8-25v36m8-41v46m8-31v16m8-21v26m8-18v10m8-8v6m8-16v26m8-38v50m8-40v30m8-20v10m8-19v28m8-35v42m8-34v26m8-17v8m8-14v20m8-25v30m8-39v48m8-32v16m8-11v6m8-19v32m8-38v44m8-31v18m8-22v26m8-31v36m8-30v24m8-17v10m8-12v14m8-24v34m8-41v48m8-34v20m8-15v10m8-20v30m8-38v46m8-30v14m8-10v6m8-17v28m8-34v40m8-27v14m8-21v28m8-34v40m8-28v16m8-11v6"></path></svg></div>
-<div class="studio-cues" data-i18n-ignore=""><span>SRT</span><i></i><i></i><i></i><i></i><i></i></div>
+<div class="studio-screen">
+<span aria-hidden="true" class="screen-crop-tl"></span>
+<span aria-hidden="true" class="screen-crop-tr"></span>
+<span aria-hidden="true" class="screen-crop-bl"></span>
+<span aria-hidden="true" class="screen-crop-br"></span>
+<div aria-hidden="true" class="screen-sound-bars">
+<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
 </div>
-<div class="simple-preview-outputs"><span>Video with a new voice</span><span>Original + translation as SRT</span></div>
+<div class="studio-screen-caption" data-caption-preview="" data-i18n-ignore="">»...erzeugt synchronisierte Sprachfassungen in Sekunden.«</div>
 </div>
-<figcaption>Illustrative example, not a live demo.</figcaption>
+<div class="studio-process-bar">
+<div class="studio-chips-group">
+<span class="studio-chip-source" data-i18n-ignore="">EN <small>ORIGINAL</small></span>
+<span aria-hidden="true" class="studio-flow-arrow">→</span>
+<div aria-label="Target languages" class="target-chips" role="group">
+<button class="target-chip is-active" data-i18n-ignore="" data-lang-target="de" type="button">DE</button>
+<button class="target-chip" data-i18n-ignore="" data-lang-target="uk" type="button">UK</button>
+<button class="target-chip" data-i18n-ignore="" data-lang-target="es" type="button">ES</button>
+<button class="target-chip" data-i18n-ignore="" data-lang-target="it" type="button">IT</button>
+<button class="target-chip" data-i18n-ignore="" data-lang-target="tr" type="button">TR</button>
+</div>
+</div>
+<span class="studio-process-label" data-i18n-ignore="">ORIGINALVIDEO → ÜBERSETZUNG → NEUE SPRACHFASSUNG + UNTERTITEL</span>
+</div>
+<div aria-hidden="true" class="studio-timeline-area">
+<div class="studio-playhead-line"></div>
+<div class="studio-ruler-track" data-i18n-ignore="">
+<span>00:00</span><span>00:05</span><span>00:10</span><span>00:15</span><span>00:20</span>
+</div>
+<div class="studio-track-row track-original">
+<div class="track-identity">
+<span class="badge" data-i18n-ignore="">EN</span>
+<span class="type-label" data-i18n-ignore="">ORIGINAL</span>
+</div>
+<div class="track-content">
+<svg class="wave-svg" preserveaspectratio="none" viewbox="0 0 400 48"><path d="M4 24v8m8-12v18m8-24v30m8-18v6m8-28v48m8-36v26m8-16v6m8-14v22m8-34v46m8-30v14m8-22v30m8-19v8m8-14v20m8-30v42m8-25v6m8-9v12m8-22v32m8-40v48m8-35v20m8-13v6m8-19v32m8-40v48m8-38v26m8-18v10m8-15v20m8-28v36m8-42v48m8-36v22m8-14v6m8-8v10m8-18v26m8-32v38m8-29v18m8-12v6m8-14v22m8-30v38m8-42v44m8-30v14m8-10v6m8-20v34m8-40v44m8-30v14m8-12v10m8-8v6"></path></svg>
+</div>
+</div>
+<div class="studio-track-row track-translated">
+<div class="track-identity">
+<span class="badge is-signal" data-i18n-ignore="" data-target-code="">DE</span>
+<span class="type-label" data-i18n-ignore="">NEURAL</span>
+</div>
+<div class="track-content">
+<svg class="wave-svg" preserveaspectratio="none" viewbox="0 0 400 48"><path d="M4 25v6m8-10v14m8-25v34m8-38v44m8-30v16m8-21v26m8-18v10m8-8v6m8-16v26m8-36v46m8-38v28m8-20v10m8-19v28m8-34v40m8-34v26m8-17v8m8-14v20m8-25v30m8-38v46m8-32v16m8-11v6m8-19v32m8-36v42m8-31v18m8-22v26m8-31v36m8-30v24m8-17v10m8-12v14m8-24v34m8-40v46m8-34v20m8-15v10m8-20v30m8-36v44m8-30v14m8-10v6m8-17v28m8-34v40m8-27v14m8-21v28m8-34v40m8-28v16m8-11v6"></path></svg>
+</div>
+</div>
+<div class="studio-track-row track-subtitles">
+<div class="track-identity">
+<span class="badge" data-i18n-ignore="">.SRT</span>
+<span class="type-label" data-i18n-ignore="">CUES</span>
+</div>
+<div class="track-content">
+<div class="subtitles-cue-track" data-i18n-ignore="">
+<span></span>
+<div class="cue-block">00:01 – 00:04 · Faster-Whisper</div>
+<span></span>
+<div class="cue-block">00:06 – 00:11 · NLLB-200 / Neural</div>
+<span></span>
+<div class="cue-block">00:13 – 00:18 · Export ready</div>
+</div>
+</div>
+</div>
+</div>
+<div class="studio-footer-bar">
+<div class="studio-footer-outputs">
+<span>Video with a new voice</span>
+<span>Original + translation as SRT</span>
+</div>
+</div>
+</div>
+<figcaption class="studio-preview-caption">
+<span class="demo-badge" data-i18n-ignore="">DEMO</span>
+<span>Schematic preview</span>
+</figcaption>
 </figure>
+</div>
+</section>
+<section class="simple-section simple-benefits" id="funktionen">
+<div class="container">
+<div class="simple-heading">
+<p class="section-kicker">The result matters</p>
+<h2>From a recording to a new language version.</h2>
+<p>Three precisely coordinated steps transform your original clip into a fully localized video.</p>
+</div>
+<div class="outcome-composition">
+<article class="outcome-card">
+<div class="outcome-meta">
+<span aria-hidden="true" class="step-num">01</span>
+<span class="step-tag" data-i18n-ignore="">ASR + NLLB</span>
+</div>
+<h3>Recognize and translate spoken content</h3>
+<p>Precisely transcribe spoken text in the video and translate it semantically into the chosen target language.</p>
+<div aria-hidden="true" class="outcome-graphic" data-i18n-ignore="">
+<div class="outcome-token-row">
+<span class="outcome-token-badge">EN</span>
+<span>"The global cut of video content..."</span>
+</div>
+<div class="outcome-token-row">
+<span class="outcome-token-badge target">DE</span>
+<span>"Die neue Sprachfassung des Videos..."</span>
+</div>
+</div>
+</article>
+<article class="outcome-card">
+<div class="outcome-meta">
+<span aria-hidden="true" class="step-num">02</span>
+<span class="step-tag" data-i18n-ignore="">SYNTHESIS</span>
+</div>
+<h3>Dub with a new voice</h3>
+<p>Generate a natural-sounding voice track – aligned with the speech tempo and timing of the original video.</p>
+<div aria-hidden="true" class="outcome-graphic" data-i18n-ignore="">
+<div class="outcome-voice-bars">
+<span style="height:35%"></span><span style="height:65%"></span><span style="height:90%"></span>
+<span style="height:55%"></span><span style="height:75%"></span><span style="height:45%"></span>
+<span style="height:85%"></span><span style="height:60%"></span><span style="height:40%"></span>
+</div>
+</div>
+</article>
+<article class="outcome-card">
+<div class="outcome-meta">
+<span aria-hidden="true" class="step-num">03</span>
+<span class="step-tag" data-i18n-ignore="">SRT + VTT</span>
+</div>
+<h3>Save matching subtitles</h3>
+<p>Save both the original and translation as time-synchronized SRT and VTT files.</p>
+<div aria-hidden="true" class="outcome-graphic" data-i18n-ignore="">
+<div class="outcome-cue-row">
+<span>00:00:01,240 ➔ 00:00:04,890</span>
+<span class="outcome-token-badge target">SYNC</span>
+</div>
+</div>
+</article>
+</div>
+<p class="simple-honest-note">Important: the new audio track replaces the original sound, including music and noise. The picture stays the same; lip movements are not adjusted.</p>
 </div>
 </section>
 <section aria-labelledby="versions-title" class="simple-section version-section" data-version-finder="" id="versionen">
 <div class="container">
-<div class="simple-heading"><p class="section-kicker">Your starting point</p><h2 id="versions-title">Which option suits you?</h2><p class="version-intro">Choose what fits your needs. Each version takes you straight to the right next step.</p></div>
+<div class="simple-heading">
+<p class="section-kicker">Your starting point</p>
+<h2 id="versions-title">Which option suits you?</h2>
+<p class="version-intro">Choose what fits your needs. Each version takes you straight to the right next step.</p>
+</div>
 <fieldset class="version-filter" data-version-controls="" hidden="">
 <legend>What matters to you?</legend>
 <div class="version-options">
@@ -182,87 +312,200 @@
 <p aria-atomic="true" aria-live="polite" class="version-result" data-version-result="" role="status"></p>
 <div class="version-grid">
 <article aria-labelledby="colab-version-title" class="version-card" data-version="colab" id="version-colab">
-<div class="version-card-top"><span aria-hidden="true" class="version-icon">01</span><span class="version-tag">In your browser · Google account</span></div>
-<h3 id="colab-version-title">Google Colab</h3>
+<div class="version-card-top">
+<span aria-hidden="true" class="version-icon">01</span>
+<span class="version-tag">Google Colab · In the browser</span>
+</div>
+<h3 id="colab-version-title">Start in the browser.</h3>
 <p class="version-description" data-version-description="">Get started without installing anything locally. Run your own session on Google.</p>
-<dl class="version-facts"><div><dt>You need</dt><dd>Google account and internet connection</dd></div><div><dt>Setup</dt><dd>Start the Notebook and wait a few minutes</dd></div><div><dt>Good to know</dt><dd>Sessions are time-limited. GPU availability is not guaranteed; Colab may involve costs.</dd></div></dl>
-<div class="version-card-actions"><a class="button" href="/en/colab.html">Get started with Colab <span aria-hidden="true">→</span></a><a class="text-link" data-colab-start="" href="https://colab.research.google.com/github/reinigungsprofileipzig/linguoai-de/blob/main/notebooks/LinguoAI_Colab.ipynb">Open the Notebook directly <span aria-hidden="true">↗</span></a></div>
+<dl class="version-facts">
+<div><dt>You need</dt><dd>Google account and internet connection</dd></div>
+<div><dt>Setup</dt><dd>Start the Notebook and wait a few minutes</dd></div>
+<div><dt>Good to know</dt><dd>Sessions are time-limited. GPU availability is not guaranteed; Colab may involve costs.</dd></div>
+</dl>
+<div class="version-card-actions">
+<a class="button" href="/en/colab.html">Get started with Colab <span aria-hidden="true">→</span></a>
+<a class="text-link" data-colab-start="" href="https://colab.research.google.com/github/reinigungsprofileipzig/linguoai-de/blob/main/notebooks/LinguoAI_Colab.ipynb">Open the Notebook directly <span aria-hidden="true">↗</span></a>
+</div>
 </article>
 <article aria-labelledby="desktop-version-title" class="version-card" data-version="desktop" id="version-desktop">
-<div class="version-card-top"><span aria-hidden="true" class="version-icon">02</span><span class="version-tag">Windows &amp; Linux</span></div>
-<h3 id="desktop-version-title">Desktop</h3>
+<div class="version-card-top">
+<span aria-hidden="true" class="version-icon">02</span>
+<span class="version-tag">Desktop · Windows &amp; Linux</span>
+</div>
+<h3 id="desktop-version-title">Work locally.</h3>
 <p class="version-description" data-version-description="">For regular use and control over your files. Processing runs on your computer.</p>
-<dl class="version-facts"><div><dt>You need</dt><dd>Python and FFmpeg</dd></div><div><dt>Setup</dt><dd>Download the project and install it locally</dd></div><div><dt>Good to know</dt><dd>GPU optional. Your content stays on your computer only when using local models.</dd></div></dl>
-<div class="version-card-actions"><a class="button button-secondary" href="/en/anleitung.html#desktop">Set up the desktop app <span aria-hidden="true">→</span></a><a class="text-link" href="/en/anleitung.html#cli">For advanced users: command line <span aria-hidden="true">→</span></a></div>
+<dl class="version-facts">
+<div><dt>You need</dt><dd>Python and FFmpeg</dd></div>
+<div><dt>Setup</dt><dd>Download the project and install it locally</dd></div>
+<div><dt>Good to know</dt><dd>GPU optional. Your content stays on your computer only when using local models.</dd></div>
+</dl>
+<div class="version-card-actions">
+<a class="button button-secondary" href="/en/anleitung.html#desktop">Set up the desktop app <span aria-hidden="true">→</span></a>
+<a class="text-link" href="/en/anleitung.html#cli">For advanced users: command line <span aria-hidden="true">→</span></a>
+</div>
 </article>
 <article aria-labelledby="studio-version-title" class="version-card" data-version="studio" id="version-studio">
-<div class="version-card-top"><span aria-hidden="true" class="version-icon">03</span><span class="version-tag version-tag-preview">In testing · credentials required</span></div>
-<h3 id="studio-version-title">Video Studio</h3>
+<div class="version-card-top">
+<span aria-hidden="true" class="version-icon">03</span>
+<span class="version-tag version-tag-preview">Video Studio · Test mode</span>
+</div>
+<h3 id="studio-version-title">Directly in the browser.</h3>
 <p class="version-description" data-version-description="">For users who have received Studio credentials. Sign in and upload videos directly in your browser.</p>
-<dl class="version-facts"><div><dt>You need</dt><dd>Studio username and password</dd></div><div><dt>Setup</dt><dd>No installation or Google account needed</dd></div><div><dt>Good to know</dt><dd>Processing runs on the server. Translation is still limited; the full workflow has not yet been confirmed.</dd></div></dl>
-<div class="version-card-actions"><a class="button button-secondary" href="https://stayinleipzig.de/linguoai/web.html">Open Video Studio <span aria-hidden="true">↗</span></a><a class="text-link" href="/en/colab.html">No credentials? Use Colab <span aria-hidden="true">→</span></a></div>
+<dl class="version-facts">
+<div><dt>You need</dt><dd>Studio username and password</dd></div>
+<div><dt>Setup</dt><dd>No installation or Google account needed</dd></div>
+<div><dt>Good to know</dt><dd>Processing runs on the server. Translation is still limited; the full workflow has not yet been confirmed.</dd></div>
+</dl>
+<div class="version-card-actions">
+<a class="button button-secondary" href="https://stayinleipzig.de/linguoai/web.html">Open Video Studio <span aria-hidden="true">↗</span></a>
+<a class="text-link" href="/en/colab.html">No credentials? Use Colab <span aria-hidden="true">→</span></a>
+</div>
 </article>
 </div>
 <p class="version-footnote">You can switch later. Download the project for the desktop app; open Colab and Video Studio using their links.</p>
 </div>
 </section>
-<section class="simple-section simple-benefits" id="funktionen">
-<div class="container">
-<div class="simple-heading"><p class="section-kicker">The result matters</p><h2>From a recording to a new language version.</h2></div>
-<div class="simple-three-grid">
-<article class="simple-benefit"><span aria-hidden="true" class="simple-icon">01 /</span><h3>Translate &amp; subtitle</h3><p>Recognize spoken text, translate it into the target language, and save both versions as SRT.</p></article>
-<article class="simple-benefit"><span aria-hidden="true" class="simple-icon">02 /</span><h3>Dub with a new voice</h3><p>Choose a ready-made voice or optionally use your own authorized reference voice.</p></article>
-<article class="simple-benefit"><span aria-hidden="true" class="simple-icon">03 /</span><h3>Choose where to work</h3><p>Start in your browser with Google Colab, or use the desktop app with local models.</p></article>
-</div>
-<p class="simple-honest-note">Important: the new audio track replaces the original sound, including music and noise. The picture stays the same; lip movements are not adjusted.</p>
-</div>
-</section>
 <section class="simple-section simple-workflow" id="ablauf">
 <div class="container">
-<div class="simple-heading"><p class="section-kicker">Here's how it works</p><h2>Your first video in three steps.</h2></div>
+<div class="simple-heading">
+<p class="section-kicker">Here's how it works</p>
+<h2>Your first video in three steps.</h2>
+</div>
 <ol class="simple-steps">
-<li><span aria-hidden="true" class="simple-step-number">01</span><div><h3>Choose a version &amp; start</h3><p>Follow the guide to start Colab, install the desktop app, or sign in to Video Studio with your credentials.</p></div></li>
-<li><span aria-hidden="true" class="simple-step-number">02</span><div><h3>Choose video &amp; language</h3><p>Upload a short test video, then choose the target language and voice. Multiple videos are also supported.</p></div></li>
-<li><span aria-hidden="true" class="simple-step-number">03</span><div><h3>Review &amp; save the result</h3><p>Check the translation and pronunciation. Save your video and subtitles; in Colab, do so before the session ends.</p></div></li>
+<li>
+<span aria-hidden="true" class="simple-step-number">01</span>
+<div>
+<h3>Choose a version &amp; start</h3>
+<p>Follow the guide to start Colab, install the desktop app, or sign in to Video Studio with your credentials.</p>
+</div>
+</li>
+<li>
+<span aria-hidden="true" class="simple-step-number">02</span>
+<div>
+<h3>Choose video &amp; language</h3>
+<p>Upload a short test video, then choose the target language and voice. Multiple videos are also supported.</p>
+</div>
+</li>
+<li>
+<span aria-hidden="true" class="simple-step-number">03</span>
+<div>
+<h3>Review &amp; save the result</h3>
+<p>Check the translation and pronunciation. Save your video and subtitles; in Colab, do so before the session ends.</p>
+</div>
+</li>
 </ol>
 <a class="text-link" href="#versionen">Choose a version and guide <span aria-hidden="true">→</span></a>
 </div>
 </section>
 <section class="simple-section" id="downloads">
 <div class="container simple-download-grid">
-<div><p class="section-kicker">Also on your computer</p><h2>Install locally.</h2><p>For regular work and more control over your files. You need Python and FFmpeg; the guide walks you through setup.</p><a class="text-link" href="/en/anleitung.html#desktop">Go to local installation <span aria-hidden="true">→</span></a></div>
+<div>
+<p class="section-kicker">Also on your computer</p>
+<h2>Install locally.</h2>
+<p>For regular work and more control over your files. You need Python and FFmpeg; the guide walks you through setup.</p>
+<a class="text-link" href="/en/anleitung.html#desktop">Go to local installation <span aria-hidden="true">→</span></a>
+</div>
 <div class="simple-download-card">
 <span class="simple-version">LinguoAI 2.2.1</span>
-<h3>The complete project</h3><p>Source code with the desktop app and Notebook. No ready-to-use installer: please follow the installation guide.</p>
+<h3>The complete project</h3>
+<p>Source code with the desktop app and Notebook. No ready-to-use installer: please follow the installation guide.</p>
 <a class="button button-secondary" download="" href="https://linguoai.de/downloads/LinguoAI-2.2.1-source.zip">Download the source code ZIP <span aria-hidden="true">↓</span></a>
-<details class="simple-more"><summary>For advanced users</summary><div><a download="" href="https://linguoai.de/downloads/linguoai-2.2.1-py3-none-any.whl">Download Python Wheel</a><a href="/en/anleitung.html#cli">Command line &amp; more options</a><a href="https://github.com/reinigungsprofileipzig/linguoai-de">Source code on GitHub</a></div></details>
+<details class="simple-more">
+<summary>For advanced users</summary>
+<div>
+<a download="" href="https://linguoai.de/downloads/linguoai-2.2.1-py3-none-any.whl">Download Python Wheel</a>
+<a href="/en/anleitung.html#cli">Command line &amp; more options</a>
+<a href="https://github.com/reinigungsprofileipzig/linguoai-de">Source code on GitHub</a>
+</div>
+</details>
 </div>
 </div>
 </section>
 <section class="simple-section simple-faq" id="fragen">
 <div class="container simple-faq-grid">
-<div><p class="section-kicker">Good to know</p><h2>The key questions.</h2><p>You can find technical details, voices, and advanced settings in the <a href="/en/anleitung.html">detailed guide</a>.</p></div>
+<div>
+<p class="section-kicker">Good to know</p>
+<h2>The key questions.</h2>
+<p>You can find technical details, voices, and advanced settings in the <a href="/en/anleitung.html">detailed guide</a>.</p>
+</div>
 <div class="faq-list">
-<details><summary>Is LinguoAI free?<span aria-hidden="true">+</span></summary><p>The LinguoAI source code is freely available. External services and Colab plans may incur costs.</p><p>Google restricts the predominant use of external web interfaces in free Colab runtimes without a positive Compute unit balance. Check the Colab terms before starting.</p><p><a href="https://research.google.com/colaboratory/faq.html">Google Colab FAQ</a></p></details>
-<details><summary>What happens to my files?<span aria-hidden="true">+</span></summary><p>On the desktop, you can use local models. In Colab, files are processed on a temporary Google VM; online translators and online voices send data to their provider. Only use content and voices for which you have the necessary rights.</p></details>
-<details><summary>Do I need a powerful graphics card?<span aria-hidden="true">+</span></summary><p>No. Processing is also possible on the CPU, but takes longer. A short video is enough to get started. A GPU is optional.</p></details>
-<details><summary>How long does my Colab link work?<span aria-hidden="true">+</span></summary><p>Only while the corresponding Colab session and interface are running. The Gradio link is dynamic and should only be shared with people you trust. Download your results in time or save them to Google Drive.</p></details>
-<details><summary>Can I choose faster speech recognition?<span aria-hidden="true">+</span></summary><p>Parakeet is an optional CPU speech recognition engine: NVIDIA v3 supports 25 European languages, while primeline specializes in German. Whisper remains the versatile default. Speed and quality depend on the recording and your computer.</p><p><a href="/en/anleitung.html#spracherkennung">Choose speech recognition →</a></p></details>
-<details><summary>Can I upload and download directly in the browser?<span aria-hidden="true">+</span></summary><p>Yes. Google Colab provides an interface for your active session. The separate Video Studio is in testing and requires credentials you have received; translation there is still limited.</p><p><a href="/en/anleitung.html#webversion">Browser and server →</a></p></details>
+<details>
+<summary>Is LinguoAI free?<span aria-hidden="true">+</span></summary>
+<p>The LinguoAI source code is freely available. External services and Colab plans may incur costs.</p>
+<p>Google restricts the predominant use of external web interfaces in free Colab runtimes without a positive Compute unit balance. Check the Colab terms before starting.</p>
+<p><a href="https://research.google.com/colaboratory/faq.html">Google Colab FAQ</a></p>
+</details>
+<details>
+<summary>What happens to my files?<span aria-hidden="true">+</span></summary>
+<p>On the desktop, you can use local models. In Colab, files are processed on a temporary Google VM; online translators and online voices send data to their provider. Only use content and voices for which you have the necessary rights.</p>
+</details>
+<details>
+<summary>Do I need a powerful graphics card?<span aria-hidden="true">+</span></summary>
+<p>No. Processing is also possible on the CPU, but takes longer. A short video is enough to get started. A GPU is optional.</p>
+</details>
+<details>
+<summary>How long does my Colab link work?<span aria-hidden="true">+</span></summary>
+<p>Only while the corresponding Colab session and interface are running. The Gradio link is dynamic and should only be shared with people you trust. Download your results in time or save them to Google Drive.</p>
+</details>
+<details>
+<summary>Can I choose faster speech recognition?<span aria-hidden="true">+</span></summary>
+<p>Parakeet is an optional CPU speech recognition engine: NVIDIA v3 supports 25 European languages, while primeline specializes in German. Whisper remains the versatile default. Speed and quality depend on the recording and your computer.</p>
+<p><a href="/en/anleitung.html#spracherkennung">Choose speech recognition →</a></p>
+</details>
+<details>
+<summary>Can I upload and download directly in the browser?<span aria-hidden="true">+</span></summary>
+<p>Yes. Google Colab provides an interface for your active session. The separate Video Studio is in testing and requires credentials you have received; translation there is still limited.</p>
+<p><a href="/en/anleitung.html#webversion">Browser and server →</a></p>
+</details>
 </div>
 </div>
 </section>
 </main>
 <footer class="site-footer">
 <div class="container footer-main">
-<div class="footer-brand"><a class="brand" href="#top"><img alt="" height="38" src="/assets/logo-mark.svg" width="38"/><span>LinguoAI</span></a><p>Translate, dub, and subtitle videos.</p></div>
+<div class="footer-brand">
+<a class="brand" href="#top">
+<img alt="" height="34" src="/assets/logo-mark.svg" width="34"/><span>LinguoAI</span>
+</a>
+<p>Translate, dub, and subtitle videos.</p>
+</div>
 <div class="footer-links">
-<div><strong>Start</strong><a href="#versionen">Find your version</a><a href="/en/colab.html">Colab instructions</a><a href="/en/anleitung.html#desktop">Install locally</a><a href="https://stayinleipzig.de/linguoai/web.html">Video Studio</a><a href="#downloads">Downloads</a></div>
-<div><strong>Learn more</strong><a href="/en/anleitung.html">Detailed guide</a><a href="#fragen">Help</a><a href="https://github.com/reinigungsprofileipzig/linguoai-de">GitHub</a></div>
-<div><strong>Legal</strong><a href="/impressum.html">Imprint</a><a href="/datenschutz.html">Data protection</a><a href="/drive-datenschutz.html">Drive connection privacy</a></div>
+<div>
+<strong>Start</strong>
+<a href="#versionen">Find your version</a>
+<a href="/en/colab.html">Colab instructions</a>
+<a href="/en/anleitung.html#desktop">Install locally</a>
+<a href="https://stayinleipzig.de/linguoai/web.html">Video Studio</a>
+<a href="#downloads">Downloads</a>
+</div>
+<div>
+<strong>Learn more</strong>
+<a href="/en/anleitung.html">Detailed guide</a>
+<a href="#fragen">Help</a>
+<a href="https://github.com/reinigungsprofileipzig/linguoai-de">GitHub</a>
+</div>
+<div>
+<strong>Legal</strong>
+<a href="/impressum.html">Imprint</a>
+<a href="/datenschutz.html">Data protection</a>
+<a href="/drive-datenschutz.html">Drive connection privacy</a>
 </div>
 </div>
-<div class="container footer-bottom"><span>© <span data-current-year="">2026</span> LinguoAI</span><span>Without tracker. Without external web fonts.</span></div>
+</div>
+<div class="container footer-bottom">
+<span>© <span data-current-year="">2026</span> LinguoAI</span>
+<span>Without tracker. Without external web fonts.</span>
+<div class="footer-locales" data-i18n-ignore="">
+<a aria-current="page" href="/en/" hreflang="de" lang="de">DE</a> ·
+          <a href="/en/" hreflang="en" lang="en">EN</a> ·
+          <a href="/ru/" hreflang="ru" lang="ru">RU</a> ·
+          <a href="/uk/" hreflang="uk" lang="uk">UK</a> ·
+          <a href="/tr/" hreflang="tr" lang="tr">TR</a> ·
+          <a href="/es/" hreflang="es" lang="es">ES</a> ·
+          <a href="/it/" hreflang="it" lang="it">IT</a>
+</div>
+</div>
 </footer>
 </body>
 </html>
