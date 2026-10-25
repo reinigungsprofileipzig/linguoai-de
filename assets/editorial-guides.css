@@ -1,0 +1,347 @@
+/* Reading layouts for the editorial marketing pages. Load after editorial.css. */
+.guide-page .guide-main {
+  max-width: 1080px;
+  padding-block: clamp(2.5rem, 6vw, 5rem) 5rem;
+}
+
+.guide-page .guide-intro {
+  max-width: 930px;
+  padding-bottom: 1rem;
+}
+
+.guide-page .guide-intro h1,
+.colab-start-page .colab-start-hero h1 {
+  margin-block: 1.25rem 1.5rem;
+  font-size: clamp(2.3rem, 5.8vw, 4.75rem);
+  font-weight: 650;
+  line-height: 1.04;
+  letter-spacing: -.055em;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.guide-page .guide-intro > p:last-of-type,
+.colab-start-page .colab-start-intro {
+  max-width: 66ch;
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+.guide-page .guide-actions {
+  margin-top: 1.75rem;
+  gap: 1rem 1.75rem;
+}
+
+.guide-page .guide-toc {
+  margin-top: 2rem;
+  padding-block: .75rem;
+  gap: 0 1.75rem;
+  border-block: 1px solid var(--line, #d5d9cf);
+  font-size: .84rem;
+}
+
+.guide-page .guide-toc a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--ink, #17251f);
+  text-decoration: none;
+}
+
+.guide-page .guide-toc a:hover {
+  color: var(--brand, #176a4b);
+  text-decoration: underline;
+}
+
+.guide-page .guide-section {
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+  scroll-margin-top: 110px;
+}
+
+.guide-page .guide-section h2 {
+  margin-block: .85rem 1.5rem;
+  max-width: 27ch;
+  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+  line-height: 1.12;
+  letter-spacing: -.045em;
+  text-wrap: balance;
+}
+
+.guide-page .guide-section > h3 {
+  margin-top: 1.75rem;
+}
+
+.guide-page .guide-section > p,
+.guide-page .guide-detail p,
+.guide-page .guide-note p {
+  max-width: 76ch;
+  line-height: 1.8;
+}
+
+.guide-page .guide-section .code-card {
+  margin-block: 1.75rem;
+  border: 1px solid #283b32;
+  border-radius: 6px;
+  background: #17251f;
+  box-shadow: none;
+}
+
+.guide-page .code-card-head {
+  flex-wrap: wrap;
+  gap: .75rem;
+  padding: .9rem 1.25rem;
+  color: #e8ede6;
+  border-bottom: 1px solid #405348;
+  background: #203229;
+}
+
+.guide-page .copy-button {
+  min-height: 44px;
+  padding-inline: .9rem;
+  border-color: #8fa99a;
+  border-radius: 4px;
+  color: #f4f3ed;
+}
+
+.guide-page .code-card pre,
+.guide-page .guide-detail pre {
+  max-width: 100%;
+  padding: 1.25rem;
+  font-size: .81rem;
+  line-height: 1.9;
+  color: #f4f3ed;
+  background: #17251f;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.guide-page .code-comment { color: #b0c2b6; }
+.guide-page .code-string { color: #c7e8d4; }
+
+.guide-page .code-note {
+  padding: 1.1rem 1.25rem;
+  color: #35473b;
+  background: #e8ece3;
+  font-size: .85rem;
+  line-height: 1.75;
+}
+
+.guide-page .guide-detail {
+  margin-block: 0;
+  border: 0;
+  border-top: 1px solid var(--line, #d5d9cf);
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+.guide-page .guide-detail:last-child {
+  border-bottom: 1px solid var(--line, #d5d9cf);
+}
+
+.guide-page .guide-detail summary {
+  padding: 1.2rem 0;
+  line-height: 1.55;
+}
+
+.guide-page .guide-detail[open] summary {
+  border-bottom: 0;
+}
+
+.guide-page .guide-detail > div {
+  min-width: 0;
+  padding: 0 0 1.25rem;
+}
+
+.guide-page .guide-detail pre { border-radius: 4px; }
+
+.guide-page .guide-engine-grid {
+  gap: 0 2.5rem;
+  margin-block: 1.75rem;
+  border-top: 1px solid var(--line, #d5d9cf);
+}
+
+.guide-page .guide-engine-grid article {
+  min-width: 0;
+  padding: 1.75rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--line, #d5d9cf);
+  border-radius: 0;
+  background: transparent;
+}
+
+.guide-page .guide-engine-grid h3 { font-size: 1.35rem; }
+.guide-page .guide-engine-grid p { line-height: 1.75; }
+
+.guide-page .guide-note {
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid #176a4b;
+  border-radius: 0;
+  background: #e8ece3;
+}
+
+.guide-page .guide-footer-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.colab-start-page .colab-start-hero {
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 6rem);
+  padding-block: clamp(2.5rem, 6vw, 5rem);
+}
+
+.colab-start-page .colab-start-hero > * { min-width: 0; }
+.colab-start-page .colab-start-hero h1 { max-width: 16ch; }
+.colab-start-page .colab-start-actions { margin-top: 1.75rem; }
+
+.colab-start-page .colab-start-note {
+  max-width: 62ch;
+  margin-top: 1rem;
+  color: var(--muted, #5b645e);
+  font-size: .85rem;
+  line-height: 1.75;
+}
+
+.colab-start-page .colab-start-summary {
+  padding: 1.75rem 0 1.75rem 2rem;
+  border: 0;
+  border-left: 1px solid var(--line, #d5d9cf);
+  border-radius: 0;
+  background: transparent;
+}
+
+.colab-start-page .colab-start-summary ul {
+  padding-left: 1.1rem;
+  margin-block: 1.25rem;
+}
+
+.colab-start-page .colab-start-summary li { padding-block: .35rem; }
+.colab-start-page .colab-start-summary p { line-height: 1.75; }
+
+.colab-start-page .colab-policy {
+  padding: 1.5rem 1.75rem;
+  border: 0;
+  border-left: 3px solid #176a4b;
+  border-radius: 0;
+  background: #e8ece3;
+}
+
+.colab-start-page .colab-policy h2 {
+  font-size: 1.15rem;
+  letter-spacing: -.02em;
+}
+
+.colab-start-page .colab-policy p {
+  max-width: 92ch;
+  font-size: .9rem;
+  line-height: 1.8;
+}
+
+.colab-start-page .colab-policy-links { font-size: .85rem; }
+.colab-start-page .colab-policy-links a { min-height: 44px; }
+
+.colab-start-page .colab-start-guide {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  padding-block: clamp(3rem, 7vw, 6rem);
+}
+
+.colab-start-page .colab-start-heading h2 {
+  max-width: 14ch;
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  line-height: 1.12;
+  letter-spacing: -.045em;
+}
+
+.colab-start-page .colab-start-steps { min-width: 0; }
+
+.colab-start-page .colab-start-steps li {
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 1rem;
+  padding-block: 1.75rem;
+  border-top: 1px solid var(--line, #d5d9cf);
+  border-bottom: 0;
+}
+
+.colab-start-page .colab-start-steps li:first-child { padding-top: 1.25rem; }
+.colab-start-page .colab-start-steps li > span { font-family: var(--font-mono); font-size: .85rem; }
+.colab-start-page .colab-start-steps strong { font-size: 1.15rem; letter-spacing: -.02em; }
+.colab-start-page .colab-start-steps p { margin-top: .75rem; line-height: 1.8; }
+
+.colab-start-page .colab-start-details {
+  gap: clamp(2rem, 6vw, 6rem);
+  padding-block: 0 3rem;
+}
+
+.colab-start-page .colab-start-details article {
+  min-width: 0;
+  padding: 1.75rem 0;
+  border: 0;
+  border-top: 1px solid var(--line, #d5d9cf);
+  border-radius: 0;
+  background: transparent;
+}
+
+.colab-start-page .colab-start-details h2 {
+  margin-block: 1rem;
+  font-size: 1.65rem;
+}
+
+.colab-start-page .colab-start-details p { max-width: 64ch; line-height: 1.8; }
+.colab-start-page .colab-help { padding-bottom: 5rem; }
+.colab-start-page .colab-help > h2 { margin-bottom: 1.75rem; }
+.colab-start-page .colab-help details { padding-block: 1.25rem; border-color: var(--line, #d5d9cf); }
+.colab-start-page .colab-help details p { color: var(--muted, #5b645e); line-height: 1.8; }
+.colab-start-page .colab-help summary { min-height: 28px; }
+
+@media (max-width: 760px) {
+  .guide-page .guide-toc { gap: 0 1.25rem; }
+  .guide-page .guide-section { scroll-margin-top: 88px; }
+  .guide-page .guide-engine-grid { grid-template-columns: 1fr; }
+  .colab-start-page .colab-start-hero,
+  .colab-start-page .colab-start-guide { grid-template-columns: 1fr; gap: 2rem; }
+  .colab-start-page .colab-start-summary {
+    padding: 1.5rem 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--line, #d5d9cf);
+  }
+  .colab-start-page .colab-start-summary ul { margin-block: .75rem; }
+  .colab-start-page .colab-start-heading { margin-bottom: 0; }
+  .colab-start-page .colab-start-heading h2 { max-width: 20ch; }
+  .colab-start-page .colab-start-details { grid-template-columns: 1fr; gap: 0; }
+  .colab-start-page .colab-policy { padding: 1.25rem; }
+}
+
+@media (max-width: 420px) {
+  .colab-start-page .legal-header { position: relative; }
+  .colab-start-page .header-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: .1rem 1rem;
+    padding-block: .65rem .3rem;
+  }
+  .colab-start-page .header-inner > span:empty { display: none; }
+  .colab-start-page .header-tools { display: contents; }
+  .colab-start-page .language-switcher { justify-self: end; }
+  .colab-start-page .header-tools > .text-link {
+    grid-column: 1 / -1;
+    justify-self: start;
+    font-size: .8rem;
+  }
+  .guide-page .guide-intro h1,
+  .colab-start-page .colab-start-hero h1 { font-size: 2.3rem; letter-spacing: -.045em; }
+  .guide-page .guide-actions { align-items: stretch; flex-direction: column; }
+  .guide-page .guide-actions .button,
+  .colab-start-page .colab-start-actions .button { width: 100%; text-align: center; }
+  .guide-page .guide-toc { gap: 0 .9rem; font-size: .79rem; }
+  .guide-page .code-card-head,
+  .guide-page .code-card pre,
+  .guide-page .guide-detail pre,
+  .guide-page .code-note { padding-inline: 1rem; }
+  .guide-page .guide-note { padding: 1rem; }
+  .colab-start-page .colab-start-steps li { grid-template-columns: 28px minmax(0, 1fr); gap: .75rem; }
+}

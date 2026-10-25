@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="#f4f1ea" name="theme-color"/>
+<meta content="#f4f3ed" name="theme-color"/>
 <meta content="Traduci video e crea una nuova traccia audio con sottotitoli. LinguoAI funziona sul tuo computer o in Google Colab. Un inizio chiaro, passo dopo passo." name="description"/>
 <meta content="index,follow,max-image-preview:large" name="robots"/>
 <link href="https://linguoai.de/it/" rel="canonical"/>
@@ -26,6 +26,7 @@
 <meta content="summary" name="twitter:card"/>
 <title>LinguoAI – Traduci e doppia i video</title>
 <link href="/assets/simple.css?v=20261023-1" rel="stylesheet"/>
+<link href="/assets/editorial.css?v=20261025-1" rel="stylesheet"/>
 <script>
       document.documentElement.classList.replace("no-js", "has-js");
       (() => {
@@ -99,7 +100,7 @@
 }
 </script>
 </head>
-<body class="simple-site simple-home">
+<body class="simple-site simple-home editorial">
 <a class="skip-link" href="#main">Vai direttamente al contenuto</a>
 <header class="site-header" data-header="">
 <div class="container header-inner">
@@ -126,7 +127,7 @@
 <a aria-current="page" data-locale-link="it" href="/it/" hreflang="it" lang="it">Italiano</a>
 </div>
 </details>
-<a class="text-link header-action" href="#ablauf">Ecco come funziona <span aria-hidden="true">↓</span></a>
+<a class="button button-small header-action" href="#versionen">Trova una versione <span aria-hidden="true">↗</span></a>
 <button aria-controls="main-navigation" aria-expanded="false" class="menu-button" data-menu-button="" type="button">
 <span class="sr-only">Apri la navigazione</span><span aria-hidden="true"></span><span aria-hidden="true"></span>
 </button>
@@ -137,7 +138,7 @@
 <section class="simple-hero" id="top">
 <div class="container simple-hero-grid">
 <div class="simple-hero-copy">
-<p class="eyebrow"><span class="status-dot"></span>Open source · tre modi per creare il tuo video</p>
+<p class="eyebrow">Open source · tre modi per creare il tuo video</p>
 <h1>Il tuo video.<br/><span>Una nuova lingua.</span></h1>
 <p class="simple-intro">Traduci video, crea una nuova traccia audio e salva i sottotitoli corrispondenti. Passo dopo passo, nel browser o sul tuo computer.</p>
 <div class="simple-actions">
@@ -146,15 +147,22 @@
 </div>
 <p class="simple-start-note">Google Colab, desktop o Video Studio: confronta i requisiti e trova il modo giusto per iniziare.</p>
 </div>
-<figure class="simple-preview">
+<figure class="simple-preview studio-visual">
+<div class="studio-panel">
 <div class="simple-preview-heading"><span>LinguoAI</span><span>Video → versione linguistica</span></div>
 <div class="simple-preview-route">
 <div><span>Video originale</span><strong>Inglese</strong></div>
-<span aria-hidden="true" class="simple-route-arrow">→</span>
+<span aria-hidden="true" class="simple-route-arrow">↗</span>
 <div><span>Nuova versione linguistica</span><strong>tedesco</strong></div>
 </div>
-<div aria-hidden="true" class="simple-preview-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div aria-hidden="true" class="studio-timeline">
+<div class="studio-ruler" data-i18n-ignore=""><span>00:00</span><span>00:10</span><span>00:20</span></div>
+<div class="studio-track studio-track-original"><span class="studio-track-code" data-i18n-ignore="">EN</span><svg class="studio-wave" preserveaspectratio="none" viewbox="0 0 360 64"><path d="M4 28v8m8-14v20m8-25v30m8-18v6m8-28v50m8-39v28m8-17v6m8-14v22m8-36v50m8-32v14m8-22v30m8-19v8m8-14v20m8-32v44m8-25v6m8-9v12m8-22v32m8-41v50m8-35v20m8-13v6m8-19v32m8-41v50m8-38v26m8-18v10m8-15v20m8-29v38m8-44v50m8-36v22m8-14v6m8-8v10m8-18v26m8-33v40m8-29v18m8-12v6m8-14v22m8-31v40m8-43v46m8-30v14m8-10v6m8-21v36m8-41v46m8-30v14m8-12v10m8-8v6"></path></svg></div>
+<div class="studio-track studio-track-translated"><span class="studio-track-code" data-i18n-ignore="">DE</span><svg class="studio-wave" preserveaspectratio="none" viewbox="0 0 360 64"><path d="M4 29v6m8-10v14m8-25v36m8-41v46m8-31v16m8-21v26m8-18v10m8-8v6m8-16v26m8-38v50m8-40v30m8-20v10m8-19v28m8-35v42m8-34v26m8-17v8m8-14v20m8-25v30m8-39v48m8-32v16m8-11v6m8-19v32m8-38v44m8-31v18m8-22v26m8-31v36m8-30v24m8-17v10m8-12v14m8-24v34m8-41v48m8-34v20m8-15v10m8-20v30m8-38v46m8-30v14m8-10v6m8-17v28m8-34v40m8-27v14m8-21v28m8-34v40m8-28v16m8-11v6"></path></svg></div>
+<div class="studio-cues" data-i18n-ignore=""><span>SRT</span><i></i><i></i><i></i><i></i><i></i></div>
+</div>
 <div class="simple-preview-outputs"><span>Video con una nuova voce</span><span>Originale + traduzione in SRT</span></div>
+</div>
 <figcaption>Esempio schematico, non una demo dal vivo.</figcaption>
 </figure>
 </div>
@@ -202,9 +210,9 @@
 <div class="container">
 <div class="simple-heading"><p class="section-kicker">Conta il risultato</p><h2>Da una registrazione a una nuova versione linguistica.</h2></div>
 <div class="simple-three-grid">
-<article class="simple-benefit"><span aria-hidden="true" class="simple-icon">Aa</span><h3>Traduci e sottotitola</h3><p>Riconosci il testo parlato, traducilo nella lingua di destinazione e salva entrambe le versioni come SRT.</p></article>
-<article class="simple-benefit"><span aria-hidden="true" class="simple-icon">≋</span><h3>Doppia con una nuova voce</h3><p>Scegli una voce pronta o, se preferisci, usa una tua voce di riferimento autorizzata.</p></article>
-<article class="simple-benefit"><span aria-hidden="true" class="simple-icon">↗</span><h3>Scegli dove lavorare</h3><p>Inizia nel browser con Google Colab oppure usa l'app desktop con modelli locali.</p></article>
+<article class="simple-benefit"><span aria-hidden="true" class="simple-icon">01 /</span><h3>Traduci e sottotitola</h3><p>Riconosci il testo parlato, traducilo nella lingua di destinazione e salva entrambe le versioni come SRT.</p></article>
+<article class="simple-benefit"><span aria-hidden="true" class="simple-icon">02 /</span><h3>Doppia con una nuova voce</h3><p>Scegli una voce pronta o, se preferisci, usa una tua voce di riferimento autorizzata.</p></article>
+<article class="simple-benefit"><span aria-hidden="true" class="simple-icon">03 /</span><h3>Scegli dove lavorare</h3><p>Inizia nel browser con Google Colab oppure usa l'app desktop con modelli locali.</p></article>
 </div>
 <p class="simple-honest-note">Importante: la nuova traccia audio sostituisce il suono originale, compresi musica e rumori. Le immagini restano invariate; i movimenti delle labbra non vengono adattati.</p>
 </div>

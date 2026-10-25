@@ -12,6 +12,9 @@ Start ebenfalls über `https://linguoai.de/`.
 - `colab.html`: direkter Notebook-Start und kurze Drei-Schritt-Anleitung
 - `anleitung.html`: lokale Installation, Stimmen, CLI, Hardware und optionaler Cloudflare Tunnel
 - `assets/simple.css`: gemeinsames responsives Design für Startseite und Anleitungen
+- `assets/editorial.css`: Typografie, Audio-Schema, Versionsvergleich und Layout der Produktseiten
+- `assets/editorial-guides.css`: Leselayouts und mobile Navigation für beide Anleitungen
+- `assets/fonts/`: lokal gehostete variable Manrope-Schrift mit SIL-OFL-Lizenz
 - `assets/guide.css` und `assets/colab-guide.css`: ergänzende Anleitungs-Layouts
 - `assets/styles.css`: bestehendes Layout der Rechtstexte und Fehlerseite
 - `assets/site.js`: Versionsauswahl nach Bedarf, zugängliche Mobilnavigation, Copy-Buttons und FAQ
@@ -74,7 +77,7 @@ Website-Änderungen allein verändern die bereits veröffentlichten Software-Art
 ## Versionsauswahl
 
 `#versionen` vergleicht Colab, Desktop und Video Studio mit Voraussetzungen und direkten
-Einstiegen. Ohne JavaScript bleiben alle drei Karten und Links sichtbar. Mit JavaScript
+Einstiegen. Ohne JavaScript bleiben alle drei Vergleichszeilen und Links sichtbar. Mit JavaScript
 filtern native Radiobuttons nach Bedarf; die Auswahl ist über `#version-colab`,
 `#version-desktop` und `#version-studio` direkt verlinkbar und bleibt beim Sprachwechsel
 erhalten. „Alle vergleichen“ zeigt wieder sämtliche Optionen.

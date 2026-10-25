@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f4f1ea" />
+    <meta name="theme-color" content="#f4f3ed" />
     <meta name="description" content="Übersetze Videos und erstelle eine neue Sprachspur mit Untertiteln. LinguoAI läuft auf deinem Rechner oder in Google Colab. Ein klarer Einstieg, Schritt für Schritt." />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <link rel="canonical" href="https://linguoai.de/" />
@@ -26,6 +26,7 @@
     <meta name="twitter:card" content="summary" />
     <title>LinguoAI – Videos übersetzen und neu vertonen</title>
     <link rel="stylesheet" href="/assets/simple.css?v=20261023-1" />
+    <link rel="stylesheet" href="/assets/editorial.css?v=20261025-1" />
     <script>
       document.documentElement.classList.replace("no-js", "has-js");
       (() => {
@@ -79,7 +80,7 @@
       }
     </script>
   </head>
-  <body class="simple-site simple-home">
+  <body class="simple-site simple-home editorial">
     <a class="skip-link" href="#main">Direkt zum Inhalt</a>
     <header class="site-header" data-header>
       <div class="container header-inner">
@@ -106,7 +107,7 @@
               <a href="/it/" lang="it" hreflang="it" data-locale-link="it">Italiano</a>
             </div>
           </details>
-          <a class="text-link header-action" href="#ablauf">So funktioniert's <span aria-hidden="true">↓</span></a>
+          <a class="button button-small header-action" href="#versionen">Version finden <span aria-hidden="true">↗</span></a>
           <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-navigation" data-menu-button>
             <span class="sr-only">Navigation öffnen</span><span aria-hidden="true"></span><span aria-hidden="true"></span>
           </button>
@@ -118,7 +119,7 @@
       <section class="simple-hero" id="top">
         <div class="container simple-hero-grid">
           <div class="simple-hero-copy">
-            <p class="eyebrow"><span class="status-dot"></span>Open Source · drei Wege zum eigenen Video</p>
+            <p class="eyebrow">Open Source · drei Wege zum eigenen Video</p>
             <h1>Dein Video.<br /><span>Eine neue Sprache.</span></h1>
             <p class="simple-intro">Übersetze Videos, erzeuge eine neue Sprachspur und speichere passende Untertitel. Schritt für Schritt – im Browser oder auf deinem Rechner.</p>
             <div class="simple-actions">
@@ -127,15 +128,22 @@
             </div>
             <p class="simple-start-note">Google Colab, Desktop oder Video Studio: Vergleiche Voraussetzungen und finde deinen Einstieg.</p>
           </div>
-          <figure class="simple-preview">
-            <div class="simple-preview-heading"><span>LinguoAI</span><span>Video → Sprachfassung</span></div>
-            <div class="simple-preview-route">
-              <div><span>Originalvideo</span><strong>Englisch</strong></div>
-              <span class="simple-route-arrow" aria-hidden="true">→</span>
-              <div><span>Neue Sprachfassung</span><strong>Deutsch</strong></div>
+          <figure class="simple-preview studio-visual">
+            <div class="studio-panel">
+              <div class="simple-preview-heading"><span>LinguoAI</span><span>Video → Sprachfassung</span></div>
+              <div class="simple-preview-route">
+                <div><span>Originalvideo</span><strong>Englisch</strong></div>
+                <span class="simple-route-arrow" aria-hidden="true">↗</span>
+                <div><span>Neue Sprachfassung</span><strong>Deutsch</strong></div>
+              </div>
+              <div class="studio-timeline" aria-hidden="true">
+                <div class="studio-ruler" data-i18n-ignore><span>00:00</span><span>00:10</span><span>00:20</span></div>
+                <div class="studio-track studio-track-original"><span class="studio-track-code" data-i18n-ignore>EN</span><svg class="studio-wave" viewBox="0 0 360 64" preserveAspectRatio="none"><path d="M4 28v8m8-14v20m8-25v30m8-18v6m8-28v50m8-39v28m8-17v6m8-14v22m8-36v50m8-32v14m8-22v30m8-19v8m8-14v20m8-32v44m8-25v6m8-9v12m8-22v32m8-41v50m8-35v20m8-13v6m8-19v32m8-41v50m8-38v26m8-18v10m8-15v20m8-29v38m8-44v50m8-36v22m8-14v6m8-8v10m8-18v26m8-33v40m8-29v18m8-12v6m8-14v22m8-31v40m8-43v46m8-30v14m8-10v6m8-21v36m8-41v46m8-30v14m8-12v10m8-8v6" /></svg></div>
+                <div class="studio-track studio-track-translated"><span class="studio-track-code" data-i18n-ignore>DE</span><svg class="studio-wave" viewBox="0 0 360 64" preserveAspectRatio="none"><path d="M4 29v6m8-10v14m8-25v36m8-41v46m8-31v16m8-21v26m8-18v10m8-8v6m8-16v26m8-38v50m8-40v30m8-20v10m8-19v28m8-35v42m8-34v26m8-17v8m8-14v20m8-25v30m8-39v48m8-32v16m8-11v6m8-19v32m8-38v44m8-31v18m8-22v26m8-31v36m8-30v24m8-17v10m8-12v14m8-24v34m8-41v48m8-34v20m8-15v10m8-20v30m8-38v46m8-30v14m8-10v6m8-17v28m8-34v40m8-27v14m8-21v28m8-34v40m8-28v16m8-11v6" /></svg></div>
+                <div class="studio-cues" data-i18n-ignore><span>SRT</span><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+              <div class="simple-preview-outputs"><span>Video mit neuer Stimme</span><span>Original + Übersetzung als SRT</span></div>
             </div>
-            <div class="simple-preview-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            <div class="simple-preview-outputs"><span>Video mit neuer Stimme</span><span>Original + Übersetzung als SRT</span></div>
             <figcaption>Schematisches Beispiel, keine Live-Demo.</figcaption>
           </figure>
         </div>
@@ -185,9 +193,9 @@
         <div class="container">
           <div class="simple-heading"><p class="section-kicker">Das Ergebnis zählt</p><h2>Von einer Aufnahme zur neuen Sprachfassung.</h2></div>
           <div class="simple-three-grid">
-            <article class="simple-benefit"><span class="simple-icon" aria-hidden="true">Aa</span><h3>Übersetzen &amp; untertiteln</h3><p>Gesprochenen Text erkennen, in die Zielsprache übersetzen und beide Fassungen als SRT speichern.</p></article>
-            <article class="simple-benefit"><span class="simple-icon" aria-hidden="true">≋</span><h3>Mit neuer Stimme vertonen</h3><p>Eine fertige Stimme wählen oder optional eine eigene, autorisierte Referenzstimme verwenden.</p></article>
-            <article class="simple-benefit"><span class="simple-icon" aria-hidden="true">↗</span><h3>Den Arbeitsort wählen</h3><p>Im Browser über Google Colab starten oder mit der Desktop-App und lokalen Modellen arbeiten.</p></article>
+            <article class="simple-benefit"><span class="simple-icon" aria-hidden="true">01 /</span><h3>Übersetzen &amp; untertiteln</h3><p>Gesprochenen Text erkennen, in die Zielsprache übersetzen und beide Fassungen als SRT speichern.</p></article>
+            <article class="simple-benefit"><span class="simple-icon" aria-hidden="true">02 /</span><h3>Mit neuer Stimme vertonen</h3><p>Eine fertige Stimme wählen oder optional eine eigene, autorisierte Referenzstimme verwenden.</p></article>
+            <article class="simple-benefit"><span class="simple-icon" aria-hidden="true">03 /</span><h3>Den Arbeitsort wählen</h3><p>Im Browser über Google Colab starten oder mit der Desktop-App und lokalen Modellen arbeiten.</p></article>
           </div>
           <p class="simple-honest-note">Wichtig: Die neue Sprachspur ersetzt den Originalton, auch Musik und Geräusche. Das Bild bleibt unverändert; Lippenbewegungen werden nicht angepasst.</p>
         </div>
