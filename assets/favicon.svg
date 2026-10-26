@@ -1,6 +1,32 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="15" fill="#142d28"/>
-  <path d="M14 18v28h10M50 18v28H40" fill="none" stroke="#9fdbc4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M29 22v20l15-10-15-10Z" fill="#fffdf8"/>
-  <path d="M24 51h16" stroke="#dc7546" stroke-width="4" stroke-linecap="round"/>
+  <defs>
+    <linearGradient id="favBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#24241F"/>
+      <stop offset="100%" stop-color="#0E0E0C"/>
+    </linearGradient>
+    <linearGradient id="favTrack" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF8F2"/>
+      <stop offset="100%" stop-color="#E2D5BE"/>
+    </linearGradient>
+    <linearGradient id="favWave1" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#CBB794"/>
+      <stop offset="100%" stop-color="#FAF8F2"/>
+    </linearGradient>
+    <linearGradient id="favWave2" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#D4C5A9"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#favBg)" stroke="rgba(255, 255, 255, 0.14)" stroke-width="1.5"/>
+
+  <!-- The "L" Timeline & Playhead Stream -->
+  <path d="M18 18C18 16.34 19.34 15 21 15C22.66 15 24 16.34 24 18V39C24 41.76 26.24 44 29 44H45C46.66 44 48 45.34 48 47C48 48.66 46.66 50 45 50H29C22.92 50 18 45.08 18 39V18Z" fill="url(#favTrack)"/>
+
+  <!-- Harmonic Voice Waves -->
+  <rect x="28.5" y="25" width="6.5" height="13.5" rx="3.25" fill="url(#favWave1)"/>
+  <rect x="39" y="18" width="6.5" height="20.5" rx="3.25" fill="url(#favWave2)"/>
+
+  <!-- Precision Cut Indicator Spark -->
+  <circle cx="49" cy="18" r="2.5" fill="#D4C5A9"/>
 </svg>

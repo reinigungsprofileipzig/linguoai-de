@@ -316,12 +316,13 @@
     const timecodeDisplay = timeline.querySelector(".studio-timecode");
     const modeChips = timeline.querySelectorAll("[data-preview-mode]");
 
+    const cueBlocks = timeline.querySelectorAll(".cue-block");
     let currentMode = "translated";
     let isPlaying = false;
     let timerId = null;
-    let playbackSeconds = 4.12;
-    const baseSeconds = 4.12;
-    const maxSeconds = 14.50;
+    const baseSeconds = 1.20;
+    let playbackSeconds = 6.12;
+    const maxSeconds = 14.80;
 
     const sampleSentences = {
       de: "»...erzeugt synchronisierte Sprachfassungen in Sekunden.«",
@@ -334,14 +335,52 @@
 
     const originalSentence = "»Original Voice (EN): ...and you don't need expensive subscriptions for professional video dubbing.«";
 
-    const updateCaption = () => {
-      if (!captionPreview) return;
-      if (currentMode === "original") {
-        captionPreview.textContent = originalSentence;
+    const changeCaption = (text) => {
+      if (!captionPreview || captionPreview.textContent === text) return;
+      captionPreview.classList.add("is-updating");
+      window.setTimeout(() => {
+        captionPreview.textContent = text;
+        captionPreview.classList.remove("is-updating");
+      }, 120);
+    };
+
+    const setActiveCue = (cueNum) => {
+      cueBlocks.forEach((b) => {
+        b.classList.toggle("is-active-cue", b.dataset.cue === String(cueNum));
+      });
+    };
+
+    const updatePlaybackState = () => {
+      const activeChip = timeline.querySelector(".target-chip.is-active");
+      const lang = activeChip?.dataset.langTarget || "de";
+
+      if (!isPlaying) {
+        setActiveCue(2);
+        if (currentMode === "original") {
+          changeCaption(originalSentence);
+        } else {
+          changeCaption(sampleSentences[lang] || sampleSentences.de);
+        }
+        return;
+      }
+
+      if (playbackSeconds < 5.0) {
+        setActiveCue(1);
+        if (currentMode === "original") {
+          changeCaption("»Faster-Whisper: Audio-Segment analysiert (EN, 16kHz)...«");
+        } else {
+          changeCaption("»Faster-Whisper: Sprache präzise im Takt erkennen...«");
+        }
+      } else if (playbackSeconds < 11.5) {
+        setActiveCue(2);
+        if (currentMode === "original") {
+          changeCaption(originalSentence);
+        } else {
+          changeCaption(sampleSentences[lang] || sampleSentences.de);
+        }
       } else {
-        const activeChip = timeline.querySelector(".target-chip.is-active");
-        const lang = activeChip?.dataset.langTarget || "de";
-        captionPreview.textContent = sampleSentences[lang] || sampleSentences.de;
+        setActiveCue(3);
+        changeCaption("»Export bereit: Neue Sprachspur + Untertitel (.SRT) gesichert.«");
       }
     };
 
@@ -351,7 +390,7 @@
       modeChips.forEach((chip) => {
         chip.classList.toggle("is-active", chip.dataset.previewMode === mode);
       });
-      updateCaption();
+      updatePlaybackState();
     };
 
     modeChips.forEach((chip) => {
@@ -360,9 +399,6 @@
       });
     });
 
-    // Default mode: translated
-    setMode("translated");
-
     targetChips.forEach((chip) => {
       chip.addEventListener("click", () => {
         const lang = chip.dataset.langTarget;
@@ -370,13 +406,15 @@
         chip.classList.add("is-active");
         if (targetCodeBadge) targetCodeBadge.textContent = lang.toUpperCase();
         if (currentMode === "translated") {
-          updateCaption();
+          updatePlaybackState();
         }
         if (trackTranslated) {
-          trackTranslated.style.opacity = "0.45";
+          trackTranslated.classList.remove("is-morphing");
+          void trackTranslated.offsetWidth;
+          trackTranslated.classList.add("is-morphing");
           window.setTimeout(() => {
-            trackTranslated.style.opacity = "1";
-          }, 140);
+            trackTranslated.classList.remove("is-morphing");
+          }, 360);
         }
       });
     });
@@ -400,6 +438,11 @@
           playLabel.textContent = isPlaying ? "Pause" : "Hörprobe";
         }
         if (isPlaying) {
+          playbackSeconds = baseSeconds;
+          if (timecodeDisplay) {
+            timecodeDisplay.textContent = formatTimecode(playbackSeconds);
+          }
+          updatePlaybackState();
           timerId = window.setInterval(() => {
             playbackSeconds += 0.08;
             if (playbackSeconds > maxSeconds) {
@@ -408,16 +451,25 @@
             if (timecodeDisplay) {
               timecodeDisplay.textContent = formatTimecode(playbackSeconds);
             }
+            updatePlaybackState();
           }, 80);
         } else {
           if (timerId) {
             window.clearInterval(timerId);
             timerId = null;
           }
+          playbackSeconds = 6.12;
+          if (timecodeDisplay) {
+            timecodeDisplay.textContent = "00:06:12.08 / 00:15:00.00";
+          }
+          updatePlaybackState();
         }
       };
 
       playBtn.addEventListener("click", togglePlayback);
     }
+
+    // Initial setup
+    setMode("translated");
   }
 })();

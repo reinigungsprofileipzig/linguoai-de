@@ -1,7 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="title">
-  <title id="title">LinguoAI Zeichen</title>
-  <rect width="48" height="48" rx="12" fill="#142d28"/>
-  <path d="M10.5 14.5v19h7M37.5 14.5v19h-7" fill="none" stroke="#9fdbc4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M22 17.5v13l10-6.5-10-6.5Z" fill="#fffdf8"/>
-  <path d="M18.5 37.5h11" stroke="#dc7546" stroke-width="3" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="LinguoAI Logo">
+  <defs>
+    <linearGradient id="lgoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22221D"/>
+      <stop offset="100%" stop-color="#10100E"/>
+    </linearGradient>
+    <linearGradient id="lgoTrack" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF8F2"/>
+      <stop offset="100%" stop-color="#E2D5BE"/>
+    </linearGradient>
+    <linearGradient id="lgoWaveMid" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#CBB794"/>
+      <stop offset="100%" stop-color="#FAF8F2"/>
+    </linearGradient>
+    <linearGradient id="lgoWaveHigh" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#D4C5A9"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Precision Hardware Squircle -->
+  <rect x="1" y="1" width="46" height="46" rx="13" fill="url(#lgoBg)" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
+
+  <!-- The "L" Timeline & Playhead Stream -->
+  <!-- Fluid continuous path: Left Playhead Stem curving seamlessly into Timeline Track Base -->
+  <path d="M13.5 14C13.5 12.62 14.62 11.5 16 11.5C17.38 11.5 18.5 12.62 18.5 14V29.5C18.5 31.43 20.07 33 22 33H34C35.38 33 36.5 34.12 36.5 35.5C36.5 36.88 35.38 38 34 38H22C17.3 38 13.5 34.2 13.5 29.5V14Z" fill="url(#lgoTrack)"/>
+
+  <!-- Harmonic Voice Waveform 1 (Center Resonance) -->
+  <rect x="21.5" y="19" width="5" height="10" rx="2.5" fill="url(#lgoWaveMid)"/>
+
+  <!-- Harmonic Voice Waveform 2 (Translated Peak & Global Cut Angle) -->
+  <rect x="29.5" y="14" width="5" height="15" rx="2.5" fill="url(#lgoWaveHigh)"/>
+
+  <!-- Subtle Precision Cut Indicator (Golden Ratio Accent Dot) -->
+  <circle cx="37" cy="13.5" r="1.75" fill="#D4C5A9"/>
 </svg>
