@@ -79,7 +79,7 @@
   right: 0;
   width: 240px;
   height: 240px;
-  background: radial-gradient(circle, rgba(216, 255, 74, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -95,9 +95,9 @@
   font-weight: 750;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  background: rgba(216, 255, 74, 0.14);
-  border: 1px solid rgba(216, 255, 74, 0.35);
-  color: var(--signal, #D8FF4A);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #FAF8F2;
   margin-bottom: 1.75rem;
 }
 
@@ -125,8 +125,8 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: rgba(216, 255, 74, 0.16);
-  color: var(--signal, #D8FF4A);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--accent, #D4C5A9);
   font-size: 0.75rem;
   font-weight: 800;
   flex-shrink: 0;
@@ -510,8 +510,8 @@
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: var(--signal, #D8FF4A);
-  box-shadow: 0 0 6px var(--signal-glow);
+  background: var(--accent, #D4C5A9);
+  box-shadow: 0 0 4px var(--accent-glow, rgba(212, 197, 169, 0.2));
   margin-right: 0.5rem;
 }
 
@@ -530,9 +530,9 @@
 }
 
 .guide-page .copy-button:hover {
-  background: var(--signal, #D8FF4A);
-  color: var(--ink, #171714);
-  border-color: var(--signal, #D8FF4A);
+  background: #FAF8F2;
+  color: #121210;
+  border-color: #FAF8F2;
 }
 
 .guide-page .code-card pre {
@@ -552,7 +552,7 @@
 }
 
 .guide-page .code-string {
-  color: var(--signal, #D8FF4A);
+  color: #E2D5BE;
 }
 
 .guide-page .code-note {
@@ -624,7 +624,7 @@
 .guide-page .guide-detail[open] summary::after {
   content: "−";
   background: var(--ink, #171714);
-  color: var(--signal, #D8FF4A);
+  color: #FAF8F2;
   border-color: var(--ink, #171714);
 }
 
@@ -654,7 +654,7 @@
   padding: clamp(2rem, 3.5vw, 2.75rem);
   background: linear-gradient(180deg, #FFFFFF 0%, #FAF8F2 100%);
   border: 1px solid var(--line, #D1CEC3);
-  border-left: 5px solid var(--signal, #D8FF4A);
+  border-left: 5px solid var(--accent, #D4C5A9);
   border-radius: var(--radius-card, 20px);
   box-shadow: var(--shadow-subtle);
 }

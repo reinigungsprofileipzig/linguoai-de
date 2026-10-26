@@ -7,7 +7,7 @@
     document.documentElement.setAttribute("data-theme", theme);
     const metaThemeColor = document.querySelector('meta[name="theme-color"]');
     if (metaThemeColor) {
-      metaThemeColor.setAttribute("content", theme === "light" ? "#F3F0E7" : "#121210");
+      metaThemeColor.setAttribute("content", theme === "light" ? "#F4F1E8" : "#10100E");
     }
     try {
       localStorage.setItem("linguoai-theme", theme);

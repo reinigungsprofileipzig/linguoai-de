@@ -15,9 +15,10 @@
   --brand: #171714;
   --brand-dark: #000000;
   --brand-soft: #EAE6DB;
-  --signal: #D8FF4A;
-  --signal-hover: #C6EE3B;
-  --signal-glow: rgba(216, 255, 74, 0.28);
+  --signal: #171714;
+  --signal-hover: #2E2E28;
+  --signal-glow: rgba(23, 23, 20, 0.12);
+  --accent: #8C7B5D;
   --dark-panel: #171714;
   --dark-surface: #1F1F1B;
   --dark-surface-elevated: #282823;
@@ -70,15 +71,7 @@
 }
 
 .web-intro h1 span::after {
-  content: "";
-  position: absolute;
-  bottom: 0.08em;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: var(--signal);
-  z-index: -1;
-  border-radius: 2px;
+  display: none;
 }
 
 .web-intro > p:last-child {
@@ -365,10 +358,10 @@
 }
 
 .web-file-area.is-dragging {
-  border-color: var(--signal);
+  border-color: var(--ink);
   border-style: solid;
-  background: rgba(216, 255, 74, 0.15);
-  box-shadow: 0 0 24px var(--signal-glow);
+  background: var(--surface-alt);
+  box-shadow: 0 0 24px rgba(23, 23, 20, 0.15);
 }
 
 .web-file-area.has-file {
