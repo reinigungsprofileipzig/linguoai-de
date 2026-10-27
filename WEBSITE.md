@@ -12,12 +12,12 @@ Start ebenfalls über `https://linguoai.de/`.
 - `colab.html`: direkter Notebook-Start und kurze Drei-Schritt-Anleitung
 - `anleitung.html`: lokale Installation, Stimmen, CLI, Hardware und optionaler Cloudflare Tunnel
 - `assets/simple.css`: gemeinsames responsives Design für Startseite und Anleitungen
-- `assets/editorial.css`: Typografie, Audio-Schema, Versionsvergleich und Layout der Produktseiten
-- `assets/editorial-guides.css`: Leselayouts und mobile Navigation für beide Anleitungen
+- `assets/editorial.css`: gemeinsame Farb- und Typografietokens, Sprachbeispiel, Versionsvergleich und öffentliche Layouts
+- `assets/editorial-guides.css`: Leselayouts, Einrichtungsschritte und Codebeispiele für beide Anleitungen
 - `assets/fonts/`: lokal gehostete variable Manrope-Schrift mit SIL-OFL-Lizenz
 - `assets/guide.css` und `assets/colab-guide.css`: ergänzende Anleitungs-Layouts
 - `assets/styles.css`: bestehendes Layout der Rechtstexte und Fehlerseite
-- `assets/site.js`: Versionsauswahl nach Bedarf, zugängliche Mobilnavigation, Copy-Buttons und FAQ
+- `assets/site.js`: Versionsauswahl, Textbeispiel, gespeichertes Farbschema, Mobilnavigation, Copy-Buttons und FAQ
 - `web.html`: Video Studio mit Anmeldung, Upload, Auftragsstatus und Ergebnisdownloads
 - `assets/web-app.css` und `assets/web-app.js`: responsives Studio und `chunks-v1`-Uploads
 - `REMOTE_WORKER.md`: Betriebsübersicht für Upload, Remote-Verarbeitung und private Drive-Ablage
@@ -77,7 +77,7 @@ Website-Änderungen allein verändern die bereits veröffentlichten Software-Art
 ## Versionsauswahl
 
 `#versionen` vergleicht Colab, Desktop und Video Studio mit Voraussetzungen und direkten
-Einstiegen. Ohne JavaScript bleiben alle drei Vergleichszeilen und Links sichtbar. Mit JavaScript
+Einstiegen. Ohne JavaScript bleiben alle drei Versionskarten und Links sichtbar. Mit JavaScript
 filtern native Radiobuttons nach Bedarf; die Auswahl ist über `#version-colab`,
 `#version-desktop` und `#version-studio` direkt verlinkbar und bleibt beim Sprachwechsel
 erhalten. „Alle vergleichen“ zeigt wieder sämtliche Optionen.
@@ -86,3 +86,19 @@ Das Studio setzt einen erhaltenen Zugang voraus und ist als Testbetrieb gekennze
 Die Desktop-Anleitung führt zur lokalen Einrichtung; der Download ist ausdrücklich
 als Quellcode statt als fertiger Installer beschrieben. Eine explizite deutsche
 Sprachwahl (`?lang=de`) hat auch bei gesperrtem Browserspeicher Vorrang vor der Erkennung.
+
+## Design und Sprachbeispiel
+
+Das helle Standardschema kombiniert Manrope, blaue Akzente und einheitliche SVG-Piktogramme.
+Ein dunkles Schema kann gewählt werden; die Präferenz bleibt lokal gespeichert.
+Alle sieben Sprachfassungen nutzen dieselben deutschen Vorlagen und vollständige Textkataloge.
+Das Sprachbeispiel auf der Startseite wechselt zwischen drei vorformulierten Übersetzungen.
+Es ist ausdrücklich als Textbeispiel gekennzeichnet, ruft keinen Dienst auf und spielt kein Audio ab.
+Ohne JavaScript bleibt das englische Beispiel sichtbar; nicht funktionierende Auswahlknöpfe bleiben verborgen.
+
+Geprüft am 27. Oktober 2026: 19 Website-Tests, 12 bestehende Upload-Tests,
+alle 21 Produktseiten und die fünf Studio-/Neben-/Rechtseiten bei 320 px,
+Startseiten zusätzlich bei 760, 1060 und deutscher Desktopansicht, Versionsfilter per
+Tastatur, Sprachwechsel mit Versionsauswahl, Mobilmenü und Hell-/Dunkelschema.
+Die lokale Studio-Vorschau zeigt ohne API den erwarteten Verbindungsfehler;
+eine echte Videoübersetzung war nicht Bestandteil der Designprüfung.

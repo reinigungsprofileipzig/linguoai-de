@@ -1,10 +1,10 @@
 <!doctype html>
-<html class="no-js" data-locale-detect="false" data-locale-page="uk" data-theme="dark" lang="uk">
+<html class="no-js" data-locale-detect="false" data-locale-page="uk" data-theme="light" lang="uk">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="#121210" name="theme-color"/>
-<meta content="Перекладайте усне мовлення, створюйте нові голосові версії та зберігайте відповідні субтитри – у браузері або локально на комп'ютері." name="description"/>
+<meta content="#f6f7f9" name="theme-color"/>
+<meta content="Перекладіть відео новою мовою — з новою озвучкою та субтитрами. Виберіть зручний спосіб роботи: у браузері чи на своєму комп’ютері." name="description"/>
 <meta content="index,follow,max-image-preview:large" name="robots"/>
 <link href="https://linguoai.de/uk/" rel="canonical"/>
 <link href="https://linguoai.de/" hreflang="de" rel="alternate"/>
@@ -20,21 +20,21 @@
 <meta content="website" property="og:type"/>
 <meta content="uk_UA" property="og:locale"/>
 <meta content="LinguoAI" property="og:site_name"/>
-<meta content="LinguoAI – The Global Cut" property="og:title"/>
-<meta content="Перекладайте усне мовлення, створюйте нові голосові версії та зберігайте відповідні субтитри – у браузері або локально на комп'ютері." property="og:description"/>
+<meta content="LinguoAI — ваше відео новою мовою" property="og:title"/>
+<meta content="Перекладіть відео новою мовою — з новою озвучкою та субтитрами. Виберіть зручний спосіб роботи: у браузері чи на своєму комп’ютері." property="og:description"/>
 <meta content="https://linguoai.de/uk/" property="og:url"/>
 <meta content="summary" name="twitter:card"/>
-<title>LinguoAI – The Global Cut</title>
+<title>LinguoAI — ваше відео новою мовою</title>
 <link href="/assets/simple.css?v=20261023-1" rel="stylesheet"/>
-<link href="/assets/editorial.css?v=20261025-4" rel="stylesheet"/>
+<link href="/assets/editorial.css?v=20261027-2" rel="stylesheet"/>
 <script>
       document.documentElement.classList.replace("no-js", "has-js");
       try {
         const preferredTheme = window.localStorage.getItem("linguoai-theme");
-        if (preferredTheme === "light") {
-          document.documentElement.setAttribute("data-theme", "light");
-        } else {
+        if (preferredTheme === "dark") {
           document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
         }
       } catch (_themeError) {}
       (() => {
@@ -58,7 +58,7 @@
       })();
     </script>
 <script defer="" src="/assets/locale.js?v=20261023-1"></script>
-<script defer="" src="/assets/site.js?v=20261025-3"></script>
+<script defer="" src="/assets/site.js?v=20261027-2"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -114,19 +114,10 @@
 <div class="container header-inner">
 <a aria-label="Домашня сторінка LinguoAI" class="brand" href="#top">
 <img alt="" height="34" src="/assets/logo-mark.svg" width="34"/><span>LinguoAI</span>
-<span class="brand-badge" data-i18n-ignore="">v2.2.1</span>
 </a>
-<nav aria-label="Основна навігація" class="main-navigation" data-menu="" id="main-navigation">
-<a href="#funktionen">особливості</a>
-<a href="#versionen">Знайти версію</a>
-<a href="/uk/colab.html">Інструкції Colab</a>
-<a href="/uk/anleitung.html">Докладний посібник</a>
-<a data-i18n-ignore="" href="/web.html">Video Studio</a>
-<a href="#downloads">Завантаження</a>
-<a href="#fragen">Допомога</a>
-</nav>
+<nav aria-label="Основна навігація" class="main-navigation" data-menu="" id="main-navigation"><a href="/uk/#ablauf">Ось як це працює</a><a href="/uk/#versionen">Знайти версію</a><a href="/uk/anleitung.html">Інструкція</a><a href="/web.html">Video Studio</a></nav>
 <div class="header-tools">
-<button aria-label="Farbschema wechseln" class="theme-toggle" data-i18n-ignore="" data-theme-toggle="" title="Farbschema wechseln" type="button">
+<button aria-label="Темна тема" aria-pressed="false" class="theme-toggle" data-theme-toggle="" title="Темна тема" type="button">
 <span aria-hidden="true" class="theme-toggle-track">
 <span class="theme-toggle-icon icon-moon">
 <svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><path d="M13.5 9.5a5.5 5.5 0 1 1-7-7 6.5 6.5 0 0 0 7 7Z"></path></svg>
@@ -136,7 +127,7 @@
 <svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="3"></circle><path d="M8 1.5v1.5m0 10v1.5m-6.5-6.5H3m10 0h1.5m-8.9-3.9 1 1m7.8 7.8 1 1m-9.8 0 1-1m7.8-7.8 1-1"></path></svg>
 </span>
 </span>
-<span class="sr-only">Farbschema wechseln</span>
+<span class="sr-only">Темна тема</span>
 </button>
 <details class="language-switcher" data-language-switcher="">
 <summary aria-label="Виберіть мову"><span data-locale-code="">UK</span><span aria-hidden="true">⌄</span></summary>
@@ -158,326 +149,52 @@
 </div>
 </header>
 <main id="main">
-<section class="simple-hero" id="top">
-<div class="container simple-hero-grid">
-<div class="simple-hero-copy">
-<p class="eyebrow">LinguoAI — The Global Cut · Open Source</p>
-<h1>Одне відео.<br/><span>Нові мови.</span></h1>
-<p class="simple-intro">Перекладайте усне мовлення, створюйте нові голосові версії та зберігайте відповідні субтитри – у браузері або локально на комп'ютері.</p>
-<div class="simple-actions">
-<a class="button" href="#versionen">Знайти відповідну версію <span aria-hidden="true">↓</span></a>
-<a class="text-link" href="#ablauf">Ось як це працює <span aria-hidden="true">→</span></a>
-</div>
-<div class="hero-value-props" data-i18n-ignore="">
-<div class="value-prop-item">
-<span aria-hidden="true" class="value-prop-icon">
-<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 16 16" width="13"><polyline points="3 8.5 6.5 12 13 4.5"></polyline></svg>
-</span>
-<div>
-<strong>Einmal sprechen, weltweit verstanden</strong>
-<span>Erzeuge aus einem einzigen Video flüssige Sprachfassungen (EN, DE, UK, ES, IT, TR) ohne Mehrfachaufnahmen.</span>
-</div>
-</div>
-<div class="value-prop-item">
-<span aria-hidden="true" class="value-prop-icon">
-<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 16 16" width="13"><rect height="10" rx="2" width="10" x="3" y="3"></rect><circle cx="8" cy="8" r="2"></circle></svg>
-</span>
-<div>
-<strong>100% Datenschutz für dein Rohmaterial</strong>
-<span>Kein Cloud-Zwang: Mit der Desktop-Version verarbeitet dein eigener Rechner sensible Videos komplett offline.</span>
-</div>
-</div>
-<div class="value-prop-item">
-<span aria-hidden="true" class="value-prop-icon">
-<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="6"></circle><path d="M8 5v6M5.5 8h5"></path></svg>
-</span>
-<div>
-<strong>Open Source ohne Abofalle</strong>
-<span>Keine 50 €/Monat, keine künstlichen 20-Minuten-Limits. Volle Kontrolle über deine Daten und Modelle.</span>
-</div>
-</div>
-</div>
-<p class="simple-start-note">Google Colab, Desktop або Video Studio: порівняйте вимоги й виберіть, з чого почати.</p>
-</div>
-<figure class="simple-preview studio-visual" data-hero-timeline="">
-<div class="studio-panel">
-<div class="studio-topbar" data-i18n-ignore="">
-<div class="studio-dots"><span></span><span></span><span></span></div>
-<span class="studio-engine-id">LINGUOAI TIMELINE v2.2.1</span>
-<span class="studio-timecode">00:04:12.08 / 00:15:00.00</span>
-<span class="studio-status-pill"><span class="status-live-dot"></span>IN SYNC · 48 kHz</span>
-</div>
-<div class="studio-screen">
-<div class="preview-screen-header" data-i18n-ignore="">
-<button aria-label="Demo-Vorschau abspielen" class="preview-play-btn" data-preview-play="" title="Demo-Vorschau abspielen" type="button">
-<svg class="icon-play" fill="currentColor" height="11" viewbox="0 0 16 16" width="11"><polygon points="4,2 14,8 4,14"></polygon></svg>
-<svg class="icon-pause" fill="currentColor" height="11" viewbox="0 0 16 16" width="11"><rect height="12" rx="1" width="3.5" x="3" y="2"></rect><rect height="12" rx="1" width="3.5" x="9.5" y="2"></rect></svg>
-<span class="play-label">Hörprobe</span>
-</button>
-<div aria-label="Audio-Vergleich" class="preview-mode-switch" role="group">
-<button class="mode-chip is-active" data-preview-mode="translated" type="button">
-<span class="mode-dot"></span>Synchronisiert (DE)
-                    </button>
-<button class="mode-chip" data-preview-mode="original" type="button">
-                      Originalton (EN)
-                    </button>
-</div>
-</div>
-<span aria-hidden="true" class="screen-crop-tl"></span>
-<span aria-hidden="true" class="screen-crop-tr"></span>
-<span aria-hidden="true" class="screen-crop-bl"></span>
-<span aria-hidden="true" class="screen-crop-br"></span>
-<div aria-hidden="true" class="screen-sound-bars">
-<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-</div>
-<div class="studio-screen-caption" data-caption-preview="" data-i18n-ignore="">»...erzeugt synchronisierte Sprachfassungen in Sekunden.«</div>
-</div>
-<div class="studio-process-bar">
-<div class="studio-chips-group">
-<span class="studio-chip-source" data-i18n-ignore="">EN <small>ORIGINAL</small></span>
-<span aria-hidden="true" class="studio-flow-arrow">→</span>
-<div aria-label="Цільові мови" class="target-chips" role="group">
-<button class="target-chip is-active" data-i18n-ignore="" data-lang-target="de" type="button">DE</button>
-<button class="target-chip" data-i18n-ignore="" data-lang-target="uk" type="button">UK</button>
-<button class="target-chip" data-i18n-ignore="" data-lang-target="es" type="button">ES</button>
-<button class="target-chip" data-i18n-ignore="" data-lang-target="it" type="button">IT</button>
-<button class="target-chip" data-i18n-ignore="" data-lang-target="tr" type="button">TR</button>
-</div>
-</div>
-<span class="studio-process-label" data-i18n-ignore="">ORIGINALVIDEO → ÜBERSETZUNG → NEUE SPRACHFASSUNG + UNTERTITEL</span>
-</div>
-<div aria-hidden="true" class="studio-timeline-area">
-<div class="studio-playhead-line"></div>
-<div class="studio-ruler-track" data-i18n-ignore="">
-<span>00:00</span><span>00:05</span><span>00:10</span><span>00:15</span><span>00:20</span>
-</div>
-<div class="studio-track-row track-original">
-<div class="track-identity">
-<span class="badge" data-i18n-ignore="">EN</span>
-<span class="type-label" data-i18n-ignore="">ORIGINAL</span>
-</div>
-<div class="track-content">
-<svg class="wave-svg" preserveaspectratio="none" viewbox="0 0 400 48"><path d="M4 24v8m8-12v18m8-24v30m8-18v6m8-28v48m8-36v26m8-16v6m8-14v22m8-34v46m8-30v14m8-22v30m8-19v8m8-14v20m8-30v42m8-25v6m8-9v12m8-22v32m8-40v48m8-35v20m8-13v6m8-19v32m8-40v48m8-38v26m8-18v10m8-15v20m8-28v36m8-42v48m8-36v22m8-14v6m8-8v10m8-18v26m8-32v38m8-29v18m8-12v6m8-14v22m8-30v38m8-42v44m8-30v14m8-10v6m8-20v34m8-40v44m8-30v14m8-12v10m8-8v6"></path></svg>
-</div>
-</div>
-<div class="studio-track-row track-translated">
-<div class="track-identity">
-<span class="badge is-signal" data-i18n-ignore="" data-target-code="">DE</span>
-<span class="type-label" data-i18n-ignore="">NEURAL</span>
-</div>
-<div class="track-content">
-<svg class="wave-svg" preserveaspectratio="none" viewbox="0 0 400 48"><path d="M4 25v6m8-10v14m8-25v34m8-38v44m8-30v16m8-21v26m8-18v10m8-8v6m8-16v26m8-36v46m8-38v28m8-20v10m8-19v28m8-34v40m8-34v26m8-17v8m8-14v20m8-25v30m8-38v46m8-32v16m8-11v6m8-19v32m8-36v42m8-31v18m8-22v26m8-31v36m8-30v24m8-17v10m8-12v14m8-24v34m8-40v46m8-34v20m8-15v10m8-20v30m8-36v44m8-30v14m8-10v6m8-17v28m8-34v40m8-27v14m8-21v28m8-34v40m8-28v16m8-11v6"></path></svg>
-</div>
-</div>
-<div class="studio-track-row track-subtitles">
-<div class="track-identity">
-<span class="badge" data-i18n-ignore="">.SRT</span>
-<span class="type-label" data-i18n-ignore="">CUES</span>
-</div>
-<div class="track-content">
-<div class="subtitles-cue-track" data-i18n-ignore="">
-<span></span>
-<div class="cue-block" data-cue="1">00:01 – 00:04 · Faster-Whisper</div>
-<span></span>
-<div class="cue-block" data-cue="2">00:06 – 00:11 · NLLB-200 / Neural</div>
-<span></span>
-<div class="cue-block" data-cue="3">00:13 – 00:18 · Export ready</div>
-</div>
-</div>
-</div>
-</div>
-<div class="studio-footer-bar">
-<div class="studio-footer-outputs">
-<span>Відео з новим голосом</span>
-<span>Оригінал + переклад у SRT</span>
-</div>
-</div>
-</div>
-<figcaption class="studio-preview-caption">
-<span class="demo-badge" data-i18n-ignore="">DEMO</span>
-<span>Схематичний перегляд</span>
-</figcaption>
-</figure>
-</div>
-</section>
-<section class="simple-section simple-benefits" id="funktionen">
-<div class="container">
-<div class="simple-heading">
-<p class="section-kicker">Головне — результат</p>
-<h2>Від запису до нової мовної версії.</h2>
-<p>Три точно скоординовані кроки перетворюють ваш оригінальний кліп на повністю локалізоване відео.</p>
-</div>
-<div class="outcome-composition">
-<article class="outcome-card">
-<div class="outcome-meta">
-<div class="outcome-meta-left">
-<span aria-hidden="true" class="pictogram-box is-dark">
-<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22">
-<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
-<path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-<line x1="12" x2="12" y1="19" y2="22"></line>
-<line x1="8" x2="16" y1="22" y2="22"></line>
-<path d="M18 4h3a1 1 0 0 1 1 1v4" stroke="var(--accent)"></path>
-</svg>
-</span>
-<span class="bento-tag is-signal" data-i18n-ignore=""><span class="tag-dot"></span>01 / ASR + NLLB</span>
-</div>
-</div>
-<h3>Розпізнавати та перекладати усне мовлення</h3>
-<p>Точно транскрибуйте мовлення у відео та семантично перекладайте його на вибрану цільову мову.</p>
-<div aria-hidden="true" class="outcome-graphic" data-i18n-ignore="">
-<div class="outcome-token-row">
-<span class="outcome-token-badge">EN</span>
-<span>"The global cut of video content..."</span>
-</div>
-<div class="outcome-token-row">
-<span class="outcome-token-badge target">DE</span>
-<span>"Die neue Sprachfassung des Videos..."</span>
-</div>
-</div>
-</article>
-<article class="outcome-card">
-<div class="outcome-meta">
-<div class="outcome-meta-left">
-<span aria-hidden="true" class="pictogram-box is-dark">
-<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22">
-<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-<path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-<path d="M19.07 4.93a10 10 0 0 1 0 14.14" stroke="var(--accent)"></path>
-</svg>
-</span>
-<span class="bento-tag is-signal" data-i18n-ignore=""><span class="tag-dot"></span>02 / SYNTHESE</span>
-</div>
-</div>
-<h3>Озвучити новим голосом</h3>
-<p>Створіть природну голосову доріжку – узгоджену з темпом мовлення та таймінгом оригінального відео.</p>
-<div aria-hidden="true" class="outcome-graphic" data-i18n-ignore="">
-<div class="outcome-voice-bars">
-<span style="height:35%"></span><span style="height:65%"></span><span style="height:90%"></span>
-<span style="height:55%"></span><span style="height:75%"></span><span style="height:45%"></span>
-<span style="height:85%"></span><span style="height:60%"></span><span style="height:40%"></span>
-</div>
-</div>
-</article>
-<article class="outcome-card">
-<div class="outcome-meta">
-<div class="outcome-meta-left">
-<span aria-hidden="true" class="pictogram-box is-dark">
-<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22">
-<rect height="14" rx="2" width="18" x="3" y="5"></rect>
-<path d="M7 15h4m-4-3h10m-10-3h6" stroke="var(--accent)"></path>
-<polyline points="15 2 21 2 21 8"></polyline>
-</svg>
-</span>
-<span class="bento-tag is-signal" data-i18n-ignore=""><span class="tag-dot"></span>03 / EXPORT</span>
-</div>
-</div>
-<h3>Зберігати відповідні субтитри</h3>
-<p>Зберігайте оригінал і переклад як синхронізовані за часом файли SRT і VTT.</p>
-<div aria-hidden="true" class="outcome-graphic" data-i18n-ignore="">
-<div class="outcome-cue-row">
-<span>00:00:01,240 ➔ 00:00:04,890</span>
-<span class="outcome-token-badge target">SYNC</span>
-</div>
-</div>
-</article>
-</div>
-<div class="advantage-comparison-box" data-i18n-ignore="">
-<div class="advantage-header">
-<div class="advantage-header-left">
-<span class="bento-tag is-signal"><span class="tag-dot"></span>VERGLEICH</span>
-<h3>Warum LinguoAI? Der Unterschied zu typischen Video-SaaS.</h3>
-</div>
-<p class="advantage-header-sub">Keine versteckten Gebühren, keine unberechenbaren Server in Übersee, volle Datenhoheit.</p>
-</div>
-<div class="advantage-grid">
-<div class="advantage-col is-negative">
-<div class="col-badge">Typische Web-Tools</div>
-<ul class="advantage-list">
-<li>
-<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 16 16" width="14"><line x1="4" x2="12" y1="4" y2="12"></line><line x1="12" x2="4" y1="4" y2="12"></line></svg>
-<span><strong>Teure Monatsabos:</strong> 30–70 €/Monat für nur 15–30 Minuten verarbeitetes Video.</span>
-</li>
-<li>
-<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 16 16" width="14"><line x1="4" x2="12" y1="4" y2="12"></line><line x1="12" x2="4" y1="4" y2="12"></line></svg>
-<span><strong>Datenschutzrisiko:</strong> Unveröffentlichte Rohvideos müssen zwingend auf fremde Cloud-Server geladen werden.</span>
-</li>
-<li>
-<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 16 16" width="14"><line x1="4" x2="12" y1="4" y2="12"></line><line x1="12" x2="4" y1="4" y2="12"></line></svg>
-<span><strong>Blackbox-Algorithmen:</strong> Keine Kontrolle über verwendete Stimmen, Modelle oder Dateiausgabe.</span>
-</li>
-</ul>
-</div>
-<div class="advantage-col is-positive">
-<div class="col-badge">LinguoAI (Open Source)</div>
-<ul class="advantage-list">
-<li>
-<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 16 16" width="14"><polyline points="3 8.5 6.5 12 13 4.5"></polyline></svg>
-<span><strong>Kostenlos &amp; unbegrenzt:</strong> Keine Minutenlimits oder Paywalls. Verarbeite so viele Clips wie du willst.</span>
-</li>
-<li>
-<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 16 16" width="14"><polyline points="3 8.5 6.5 12 13 4.5"></polyline></svg>
-<span><strong>100% Privatsphäre &amp; Kontrolle:</strong> Mit der Desktop-Version verlässt kein Byte deinen Rechner.</span>
-</li>
-<li>
-<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 16 16" width="14"><polyline points="3 8.5 6.5 12 13 4.5"></polyline></svg>
-<span><strong>Offenes Ökosystem:</strong> Modernste Modelle (Faster-Whisper, NLLB-200, Edge-TTS, Kokoro, Chatterbox).</span>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<p class="simple-honest-note">Важливо: нова звукова доріжка замінює оригінальний звук, зокрема музику й шуми. Зображення не змінюється; рухи губ не коригуються.</p>
-</div>
-</section>
+<section class="simple-hero" id="top"><div class="container simple-hero-grid">
+<div class="simple-hero-copy"><p class="eyebrow">Перекладайте відео. Розширюйте аудиторію.</p>
+<h1>Ваше відео.<br/><span>Новою мовою.</span></h1>
+<p class="simple-intro">Допоможіть більшій кількості людей зрозуміти ваше відео. LinguoAI перекладає мовлення та створює нову озвучку із субтитрами.</p>
+<div class="simple-actions"><a class="button" href="#versionen">Знайти відповідну версію <svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></a><a class="text-link" href="#ablauf">Ось як це працює <span aria-hidden="true">↓</span></a></div>
+<p class="hero-note">У браузері чи на вашому комп’ютері. Вибір за вами.</p>
+<div class="hero-outputs"><span><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><rect height="13" rx="3" width="6" x="9" y="2"></rect><path d="M5 10v2a7 7 0 0 0 14 0v-2m-7 9v3m-4 0h8"></path></svg> Нова озвучка</span><span><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><rect height="16" rx="3" width="20" x="2" y="4"></rect><path d="M6 12h5m2 0h5m-12 4h8m2 0h2"></path></svg> Субтитри до відео</span></div></div>
+<figure aria-labelledby="preview-title" class="translation-preview" data-translation-preview="">
+<div class="preview-topline"><span><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><rect height="16" rx="3" width="18" x="3" y="4"></rect><path d="m10 9 5 3-5 3Z"></path></svg> <span id="preview-title">Одне відео, нові можливості</span></span><span class="preview-example">Приклад</span></div>
+<div class="preview-film"><div aria-hidden="true" class="film-word" data-i18n-ignore="">Hallo<span>世界</span></div><div aria-hidden="true" class="film-border"></div><div class="film-bottom" data-i18n-ignore=""><span>DE → <span data-sample-code="">EN</span></span><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><rect height="16" rx="3" width="20" x="2" y="4"></rect><path d="M6 12h5m2 0h5m-12 4h8m2 0h2"></path></svg></div></div>
+<div class="preview-translation"><div><span class="preview-label">Оригінал · німецька</span><p data-i18n-ignore="" lang="de">Schön, dass du da bist.</p></div><span aria-hidden="true" class="translation-arrow">↓</span><div class="translated-line"><span class="preview-label" data-sample-label="">Нова мовна версія · English</span><p data-i18n-ignore="" data-sample-text="" lang="en">It's good to have you here.</p></div></div>
+<fieldset class="sample-languages" hidden=""><legend>Спробуйте вибрати мову</legend><div><label><input checked="" name="sample-language" type="radio" value="en"/><span data-i18n-ignore="" lang="en">English</span></label><label><input name="sample-language" type="radio" value="es"/><span data-i18n-ignore="" lang="es">Español</span></label><label><input name="sample-language" type="radio" value="fr"/><span data-i18n-ignore="" lang="fr">Français</span></label></div></fieldset>
+<p aria-atomic="true" aria-live="polite" class="sr-only" data-sample-result="" role="status"></p>
+<figcaption>Наочний приклад перекладу тексту. Без відтворення аудіо чи відео.</figcaption>
+</figure></div></section>
+<section class="simple-section simple-benefits" id="funktionen"><div class="container">
+<div class="simple-heading split-heading"><div><p class="section-kicker">Зміст залишається. Мова змінюється.</p><h2>Один запис.<br/>Для ширшої аудиторії.</h2></div><p>Урок, інтерв’ю чи відеопояснення — записувати його заново не потрібно.</p></div>
+<div class="outcome-composition"><article class="outcome-card"><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><path d="M3 5h12M9 3v2m-4 3c2 5 5 7 9 8m-1-11c-1 7-4 10-10 12m12 4 4-10 4 10m-6-3h4"></path></svg><h3>Перекласти</h3><p>Мовлення у відео розпізнається та перекладається вибраною вами мовою.</p></article><article class="outcome-card"><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><rect height="13" rx="3" width="6" x="9" y="2"></rect><path d="M5 10v2a7 7 0 0 0 14 0v-2m-7 9v3m-4 0h8"></path></svg><h3>Створити нову озвучку</h3><p>Створюється нова озвучка, узгоджена в часі з вашим відео.</p></article><article class="outcome-card"><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><rect height="16" rx="3" width="20" x="2" y="4"></rect><path d="M6 12h5m2 0h5m-12 4h8m2 0h2"></path></svg><h3>Зберегти субтитри</h3><p>Ви також отримаєте субтитри мовою оригіналу та в перекладі у форматі SRT.</p></article></div><p class="simple-honest-note"><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6m0-10h.01"></path></svg><span>Зображення зберігається. Нова озвучка повністю замінює оригінальний звук, зокрема музику й фонові шуми. Рухи губ не змінюються.</span></p></div></section>
 <section aria-labelledby="versions-title" class="simple-section version-section" data-version-finder="" id="versionen">
 <div class="container">
 <div class="simple-heading">
 <p class="section-kicker">З чого почати</p>
 <h2 id="versions-title">Який варіант вам підходить?</h2>
-<p class="version-intro">Виберіть варіант відповідно до своїх потреб. Кожна версія одразу скерує вас до потрібного наступного кроку.</p>
+<p class="version-intro">Три шляхи до одного результату. Виберіть зручний спосіб почати.</p>
 </div>
 <fieldset class="version-filter" data-version-controls="" hidden="">
 <legend>Що для вас важливо?</legend>
 <div class="version-options">
-<label><input checked="" name="version-need" type="radio" value="all"/><span><svg aria-hidden="true" class="filter-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="14"><rect height="5" rx="1" width="5" x="2" y="2"></rect><rect height="5" rx="1" width="5" x="9" y="2"></rect><rect height="5" rx="1" width="5" x="2" y="9"></rect><rect height="5" rx="1" width="5" x="9" y="9"></rect></svg>Порівняти всі</span></label>
-<label><input name="version-need" type="radio" value="colab"/><span><svg aria-hidden="true" class="filter-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 10.5a3.5 3.5 0 0 1 2.5-3.4 4 4 0 0 1 7.5 1.4A3 3 0 0 1 12 14.5H4a3 3 0 0 1-1-4Z"></path><path d="M8 8v4m-1.5-1.5L8 8l1.5 1.5"></path></svg>Почати без установлення</span></label>
-<label><input name="version-need" type="radio" value="desktop"/><span><svg aria-hidden="true" class="filter-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="14"><rect height="9" rx="1.5" width="12" x="2" y="2"></rect><path d="M5 14h6m-3-3v3"></path><polyline points="5 5 7 6.5 5 8"></polyline></svg>Обробляти файли локально</span></label>
-<label><input name="version-need" type="radio" value="studio"/><span><svg aria-hidden="true" class="filter-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="14"><rect height="12" rx="2" width="12" x="2" y="2"></rect><circle cx="8" cy="8" r="2"></circle><line x1="2" x2="14" y1="6" y2="6"></line></svg>У мене є доступ до Studio</span></label>
+<label><input checked="" name="version-need" type="radio" value="all"/><span>Порівняти всі</span></label>
+<label><input name="version-need" type="radio" value="colab"/><span>Почати без установлення</span></label>
+<label><input name="version-need" type="radio" value="desktop"/><span>Обробляти файли локально</span></label>
+<label><input name="version-need" type="radio" value="studio"/><span>У мене є доступ до Studio</span></label>
 </div>
 </fieldset>
 <p aria-atomic="true" aria-live="polite" class="version-result" data-version-result="" role="status"></p>
 <div class="version-grid">
 <article aria-labelledby="colab-version-title" class="version-card is-primary" data-version="colab" id="version-colab">
-<div class="version-card-top">
-<div class="version-badge-group">
-<span aria-hidden="true" class="pictogram-box is-accent">
-<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22">
-<path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
-<circle cx="12" cy="13" fill="var(--accent)" r="2.2"></circle>
-</svg>
-</span>
-<span class="version-badge" data-i18n-ignore=""><span class="badge-dot"></span>01</span>
+<div class="version-card-top"><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><path d="M6 18a4 4 0 0 1-1-7.87A7 7 0 0 1 18.5 8a5 5 0 0 1-.5 10M9 15l3-3 3 3m-3-3v9"></path></svg>
+<span class="version-tag is-recommended">Без встановлення на комп’ютер</span>
 </div>
-<span class="version-tag is-recommended"><span aria-hidden="true" class="tag-star" data-i18n-ignore="">✦</span> Google Colab · У браузері</span>
-</div>
-<h3 id="colab-version-title">Запустити в браузері.</h3>
+<h3 id="colab-version-title">Google Colab</h3>
 <p class="version-description" data-version-description="">Щоб почати без установлення на комп'ютер. Ви запускаєте власний сеанс у Google.</p>
-<div class="version-mini-preview" data-i18n-ignore="">
-<div class="mini-preview-bar">
-<span class="mini-dot"></span>
-<span class="mini-label">RUNTIME · T4 GPU / CPU</span>
-<span class="mini-status is-active">ONLINE READY</span>
-</div>
-<div class="mini-preview-code">
-<span class="token-fn">connect_session</span>(<span class="token-str">"google.colab"</span>)<br/>
-<span class="token-arrow">➔</span> <span class="token-method">Whisper</span> + <span class="token-method">NLLB-200</span> aktiv
-                </div>
-</div>
 <dl class="version-facts">
-<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="6"></circle><circle cx="8" cy="8" r="2"></circle></svg>Вам знадобиться</dt><dd>Обліковий запис Google та інтернет</dd></div>
-<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><polyline points="9 2 4 9 9 9 7 14 12 7 7 7 9 2"></polyline></svg>Налаштування</dt><dd>Запустити Notebook і зачекати кілька хвилин</dd></div>
-<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="6"></circle><line x1="8" x2="8" y1="7" y2="11"></line><line x1="8" x2="8.01" y1="5" y2="5"></line></svg>Варто знати</dt><dd>Час сеансу обмежений. Доступ до GPU не гарантується; використання Colab може бути платним.</dd></div>
+<div><dt>Вам знадобиться</dt><dd>Обліковий запис Google та інтернет</dd></div>
+<div><dt>Налаштування</dt><dd>Запустити Notebook і зачекати кілька хвилин</dd></div>
+<div><dt>Варто знати</dt><dd>Час сеансу обмежений. Доступ до GPU не гарантується; використання Colab може бути платним.</dd></div>
 </dl>
 <div class="version-card-actions">
 <a class="button" href="/uk/colab.html">Почати з Colab <span aria-hidden="true">→</span></a>
@@ -485,38 +202,15 @@
 </div>
 </article>
 <article aria-labelledby="desktop-version-title" class="version-card" data-version="desktop" id="version-desktop">
-<div class="version-card-top">
-<div class="version-badge-group">
-<span aria-hidden="true" class="pictogram-box">
-<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22">
-<rect height="14" rx="2" width="20" x="2" y="3"></rect>
-<line x1="8" x2="16" y1="21" y2="21"></line>
-<line x1="12" x2="12" y1="17" y2="21"></line>
-<polyline points="6 8 9 10 6 12" stroke="var(--accent)"></polyline>
-<line x1="11" x2="15" y1="12" y2="12"></line>
-</svg>
-</span>
-<span class="version-badge" data-i18n-ignore=""><span class="badge-dot"></span>02</span>
+<div class="version-card-top"><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><rect height="14" rx="2" width="20" x="2" y="3"></rect><path d="M8 21h8m-4-4v4M6 7h8"></path></svg>
+<span class="version-tag">На вашому комп’ютері</span>
 </div>
-<span class="version-tag">Desktop · Windows і Linux</span>
-</div>
-<h3 id="desktop-version-title">Працювати локально.</h3>
+<h3 id="desktop-version-title">Desktop</h3>
 <p class="version-description" data-version-description="">Для регулярної роботи й контролю над своїми файлами. Обробка виконується на вашому комп'ютері.</p>
-<div class="version-mini-preview" data-i18n-ignore="">
-<div class="mini-preview-bar">
-<span class="mini-dot"></span>
-<span class="mini-label">LOCAL SYSTEM · GPU / CPU ACCEL</span>
-<span class="mini-status is-active">OFFLINE-FIRST</span>
-</div>
-<div class="mini-preview-code">
-<span class="token-prompt">$</span> linguoai translate video.mp4 --target de<br/>
-<span class="token-arrow">➔</span> <span class="token-badge">100% PRIVATE</span> keine Cloud-Übertragung
-                </div>
-</div>
 <dl class="version-facts">
-<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="6"></circle><circle cx="8" cy="8" r="2"></circle></svg>Вам знадобиться</dt><dd>Python та FFmpeg</dd></div>
-<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><polyline points="9 2 4 9 9 9 7 14 12 7 7 7 9 2"></polyline></svg>Налаштування</dt><dd>Завантажити проєкт і встановити на комп'ютер</dd></div>
-<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="6"></circle><line x1="8" x2="8" y1="7" y2="11"></line><line x1="8" x2="8.01" y1="5" y2="5"></line></svg>Варто знати</dt><dd>GPU необов'язковий. Вміст залишається на вашому комп'ютері лише за використання локальних моделей.</dd></div>
+<div><dt>Вам знадобиться</dt><dd>Python та FFmpeg</dd></div>
+<div><dt>Налаштування</dt><dd>Завантажити проєкт і встановити на комп'ютер</dd></div>
+<div><dt>Варто знати</dt><dd>GPU необов'язковий. Вміст залишається на вашому комп'ютері лише за використання локальних моделей.</dd></div>
 </dl>
 <div class="version-card-actions">
 <a class="button button-secondary" href="/uk/anleitung.html#desktop">Налаштувати Desktop <span aria-hidden="true">→</span></a>
@@ -524,37 +218,15 @@
 </div>
 </article>
 <article aria-labelledby="studio-version-title" class="version-card" data-version="studio" id="version-studio">
-<div class="version-card-top">
-<div class="version-badge-group">
-<span aria-hidden="true" class="pictogram-box">
-<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22">
-<rect height="18" rx="2" width="18" x="3" y="3"></rect>
-<path d="m3 9 4-6 4 6 4-6 4 6"></path>
-<circle cx="9" cy="15" fill="var(--accent)" r="1.5"></circle>
-<line x1="13" x2="18" y1="15" y2="15"></line>
-</svg>
-</span>
-<span class="version-badge" data-i18n-ignore=""><span class="badge-dot"></span>03</span>
+<div class="version-card-top"><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><rect height="18" rx="3" width="20" x="2" y="3"></rect><path d="M2 8h20m-16-2h.01M9 6h.01m1 6 5 3-5 3Z"></path></svg>
+<span class="version-tag version-tag-preview">Тестовий режим · потрібен доступ</span>
 </div>
-<span class="version-tag version-tag-preview">Video Studio · Тестовий режим</span>
-</div>
-<h3 id="studio-version-title">Прямо в браузері.</h3>
+<h3 id="studio-version-title">Video Studio</h3>
 <p class="version-description" data-version-description="">Для користувачів, які вже отримали доступ до Studio. Увійдіть і завантажуйте відео безпосередньо в браузері.</p>
-<div class="version-mini-preview" data-i18n-ignore="">
-<div class="mini-preview-bar">
-<span class="mini-dot is-warning"></span>
-<span class="mini-label">WEB SERVICE · BETA INSTANCE</span>
-<span class="mini-status is-beta">INVITE ONLY</span>
-</div>
-<div class="mini-preview-code">
-<span class="token-fn">session_auth</span>(<span class="token-str">"studio.linguoai.de"</span>)<br/>
-<span class="token-arrow">➔</span> Direkte Timeline &amp; Vorschau
-                </div>
-</div>
 <dl class="version-facts">
-<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="6"></circle><circle cx="8" cy="8" r="2"></circle></svg>Вам знадобиться</dt><dd>Ім'я користувача й пароль Studio</dd></div>
-<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><polyline points="9 2 4 9 9 9 7 14 12 7 7 7 9 2"></polyline></svg>Налаштування</dt><dd>Без установлення й облікового запису Google</dd></div>
-<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="6"></circle><line x1="8" x2="8" y1="7" y2="11"></line><line x1="8" x2="8.01" y1="5" y2="5"></line></svg>Варто знати</dt><dd>Обробка на сервері. Можливості перекладу поки обмежені; повний робочий процес ще не підтверджено.</dd></div>
+<div><dt>Вам знадобиться</dt><dd>Ім'я користувача й пароль Studio</dd></div>
+<div><dt>Налаштування</dt><dd>Без установлення й облікового запису Google</dd></div>
+<div><dt>Варто знати</dt><dd>Обробка на сервері. Можливості перекладу поки обмежені; повний робочий процес ще не підтверджено.</dd></div>
 </dl>
 <div class="version-card-actions">
 <a class="button button-secondary" href="/web.html">Відкрити Video Studio <span aria-hidden="true">→</span></a>
@@ -565,62 +237,7 @@
 <p class="version-footnote">Пізніше можна вибрати інший варіант. Для Desktop потрібно завантажити проєкт; Colab і Video Studio відкриваються за відповідними посиланнями.</p>
 </div>
 </section>
-<section class="simple-section simple-workflow" id="ablauf">
-<div class="container">
-<div class="simple-heading">
-<p class="section-kicker">Ось як це працює</p>
-<h2>Ваше перше відео за три кроки.</h2>
-</div>
-<ol class="simple-steps">
-<li>
-<div class="step-card-header">
-<div class="step-badge-group">
-<span aria-hidden="true" class="pictogram-box is-subtle">
-<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="20"><rect height="7" rx="1" width="7" x="3" y="3"></rect><rect height="7" rx="1" width="7" x="14" y="3"></rect><rect height="7" rx="1" width="7" x="14" y="14"></rect><rect height="7" rx="1" width="7" x="3" y="14"></rect><circle cx="17.5" cy="6.5" fill="var(--accent)" r="1.2"></circle></svg>
-</span>
-<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>01</span>
-</div>
-<span aria-hidden="true" class="step-watermark">01</span>
-</div>
-<div class="step-card-body">
-<h3>Вибрати версію й почати</h3>
-<p>Запустіть Colab за інструкцією, установіть Desktop або ввійдіть у Video Studio зі своїми даними доступу.</p>
-</div>
-</li>
-<li>
-<div class="step-card-header">
-<div class="step-badge-group">
-<span aria-hidden="true" class="pictogram-box is-subtle">
-<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="20"><path d="m22 8-6 4 6 4V8Z"></path><rect height="12" rx="2" width="14" x="2" y="6"></rect><circle cx="9" cy="12" fill="var(--accent)" r="2"></circle></svg>
-</span>
-<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>02</span>
-</div>
-<span aria-hidden="true" class="step-watermark">02</span>
-</div>
-<div class="step-card-body">
-<h3>Обрати відео й мову</h3>
-<p>Завантажте коротке тестове відео, оберіть мову перекладу та голос. Також можна обробити кілька відео.</p>
-</div>
-</li>
-<li>
-<div class="step-card-header">
-<div class="step-badge-group">
-<span aria-hidden="true" class="pictogram-box is-subtle">
-<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="20"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line><circle cx="12" cy="15" fill="var(--accent)" r="1.5"></circle></svg>
-</span>
-<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>03</span>
-</div>
-<span aria-hidden="true" class="step-watermark">03</span>
-</div>
-<div class="step-card-body">
-<h3>Перевірити й зберегти результат</h3>
-<p>Перевірте переклад і вимову. Збережіть відео й субтитри; у Colab — до завершення сеансу.</p>
-</div>
-</li>
-</ol>
-<a class="text-link" href="#versionen">Вибрати версію та інструкцію <span aria-hidden="true">→</span></a>
-</div>
-</section>
+<section class="simple-section simple-workflow" id="ablauf"><div class="container"><div class="simple-heading"><p class="section-kicker">Від вашого відео до нової версії</p><h2>Зрозумілий процес. Три кроки.</h2></div><ol class="simple-steps"><li><div class="step-card-header"><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><rect height="16" rx="3" width="18" x="3" y="4"></rect><path d="m10 9 5 3-5 3Z"></path></svg><span aria-hidden="true">01</span></div><h3>Вибрати відео</h3><p>Завантажте відео у вибрану версію LinguoAI. Для першої спроби достатньо короткого уривка.</p></li><li><div class="step-card-header"><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><path d="M3 5h12M9 3v2m-4 3c2 5 5 7 9 8m-1-11c-1 7-4 10-10 12m12 4 4-10 4 10m-6-3h4"></path></svg><span aria-hidden="true">02</span></div><h3>Вибрати мову</h3><p>Виберіть мову перекладу й відповідний голос. Запустіть переклад.</p></li><li><div class="step-card-header"><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><path d="M12 3v12m-4-4 4 4 4-4M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"></path></svg><span aria-hidden="true">03</span></div><h3>Перевірити та завантажити</h3><p>Прослухайте нову версію та перевірте субтитри. Збережіть відео й SRT-файли.</p></li></ol><a class="text-link" href="#versionen">Вибрати версію та інструкцію <span aria-hidden="true">→</span></a></div></section>
 <section class="simple-section" id="downloads">
 <div class="container simple-download-grid">
 <div>
@@ -630,12 +247,7 @@
 <a class="text-link" href="/uk/anleitung.html#desktop">До локального встановлення <span aria-hidden="true">→</span></a>
 </div>
 <div class="simple-download-card">
-<div class="download-badge-row">
-<span aria-hidden="true" class="pictogram-box is-subtle">
-<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="20"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" x2="12" y1="22.08" y2="12"></line></svg>
-</span>
-<span class="bento-tag is-signal" data-i18n-ignore=""><span class="tag-dot"></span>LinguoAI 2.2.1</span>
-</div>
+<div class="download-badge-row"><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><path d="M12 3v12m-4-4 4 4 4-4M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"></path></svg><span data-i18n-ignore="">LinguoAI 2.2.1</span></div>
 <h3>Повний проєкт</h3>
 <p>Вихідний код із застосунком Desktop і Notebook. Готового інсталятора немає: дотримуйтеся інструкції зі встановлення.</p>
 <a class="button button-secondary" download="" href="https://linguoai.de/downloads/LinguoAI-2.2.1-source.zip">Завантажити ZIP із вихідним кодом <span aria-hidden="true">↓</span></a>

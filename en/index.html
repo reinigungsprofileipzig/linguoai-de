@@ -1,10 +1,10 @@
 <!doctype html>
-<html class="no-js" data-locale-detect="false" data-locale-page="en" data-theme="dark" lang="en">
+<html class="no-js" data-locale-detect="false" data-locale-page="en" data-theme="light" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="#121210" name="theme-color"/>
-<meta content="Translate spoken content, generate new voice versions, and save matching subtitles – in the browser or locally on your machine." name="description"/>
+<meta content="#f6f7f9" name="theme-color"/>
+<meta content="Translate your video into a new language with a new voice track and matching subtitles. Get started in your browser or on your computer." name="description"/>
 <meta content="index,follow,max-image-preview:large" name="robots"/>
 <link href="https://linguoai.de/en/" rel="canonical"/>
 <link href="https://linguoai.de/" hreflang="de" rel="alternate"/>
@@ -20,21 +20,21 @@
 <meta content="website" property="og:type"/>
 <meta content="en_US" property="og:locale"/>
 <meta content="LinguoAI" property="og:site_name"/>
-<meta content="LinguoAI – The Global Cut" property="og:title"/>
-<meta content="Translate spoken content, generate new voice versions, and save matching subtitles – in the browser or locally on your machine." property="og:description"/>
+<meta content="LinguoAI – Your video in a new language" property="og:title"/>
+<meta content="Translate your video into a new language with a new voice track and matching subtitles. Get started in your browser or on your computer." property="og:description"/>
 <meta content="https://linguoai.de/en/" property="og:url"/>
 <meta content="summary" name="twitter:card"/>
-<title>LinguoAI – The Global Cut</title>
+<title>LinguoAI – Your video in a new language</title>
 <link href="/assets/simple.css?v=20261023-1" rel="stylesheet"/>
-<link href="/assets/editorial.css?v=20261025-4" rel="stylesheet"/>
+<link href="/assets/editorial.css?v=20261027-2" rel="stylesheet"/>
 <script>
       document.documentElement.classList.replace("no-js", "has-js");
       try {
         const preferredTheme = window.localStorage.getItem("linguoai-theme");
-        if (preferredTheme === "light") {
-          document.documentElement.setAttribute("data-theme", "light");
-        } else {
+        if (preferredTheme === "dark") {
           document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
         }
       } catch (_themeError) {}
       (() => {
@@ -58,7 +58,7 @@
       })();
     </script>
 <script defer="" src="/assets/locale.js?v=20261023-1"></script>
-<script defer="" src="/assets/site.js?v=20261025-3"></script>
+<script defer="" src="/assets/site.js?v=20261027-2"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -114,19 +114,10 @@
 <div class="container header-inner">
 <a aria-label="LinguoAI Home page" class="brand" href="#top">
 <img alt="" height="34" src="/assets/logo-mark.svg" width="34"/><span>LinguoAI</span>
-<span class="brand-badge" data-i18n-ignore="">v2.2.1</span>
 </a>
-<nav aria-label="Main navigation" class="main-navigation" data-menu="" id="main-navigation">
-<a href="#funktionen">Features</a>
-<a href="#versionen">Find your version</a>
-<a href="/en/colab.html">Colab instructions</a>
-<a href="/en/anleitung.html">Detailed guide</a>
-<a data-i18n-ignore="" href="/web.html">Video Studio</a>
-<a href="#downloads">Downloads</a>
-<a href="#fragen">Help</a>
-</nav>
+<nav aria-label="Main navigation" class="main-navigation" data-menu="" id="main-navigation"><a href="/en/#ablauf">Here's how it works</a><a href="/en/#versionen">Find your version</a><a href="/en/anleitung.html">Guide</a><a href="/web.html">Video Studio</a></nav>
 <div class="header-tools">
-<button aria-label="Farbschema wechseln" class="theme-toggle" data-i18n-ignore="" data-theme-toggle="" title="Farbschema wechseln" type="button">
+<button aria-label="Dark theme" aria-pressed="false" class="theme-toggle" data-theme-toggle="" title="Dark theme" type="button">
 <span aria-hidden="true" class="theme-toggle-track">
 <span class="theme-toggle-icon icon-moon">
 <svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><path d="M13.5 9.5a5.5 5.5 0 1 1-7-7 6.5 6.5 0 0 0 7 7Z"></path></svg>
@@ -136,7 +127,7 @@
 <svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="3"></circle><path d="M8 1.5v1.5m0 10v1.5m-6.5-6.5H3m10 0h1.5m-8.9-3.9 1 1m7.8 7.8 1 1m-9.8 0 1-1m7.8-7.8 1-1"></path></svg>
 </span>
 </span>
-<span class="sr-only">Farbschema wechseln</span>
+<span class="sr-only">Dark theme</span>
 </button>
 <details class="language-switcher" data-language-switcher="">
 <summary aria-label="Select language"><span data-locale-code="">EN</span><span aria-hidden="true">⌄</span></summary>
@@ -158,326 +149,52 @@
 </div>
 </header>
 <main id="main">
-<section class="simple-hero" id="top">
-<div class="container simple-hero-grid">
-<div class="simple-hero-copy">
-<p class="eyebrow">LinguoAI — The Global Cut · Open Source</p>
-<h1>One video.<br/><span>New languages.</span></h1>
-<p class="simple-intro">Translate spoken content, generate new voice versions, and save matching subtitles – in the browser or locally on your machine.</p>
-<div class="simple-actions">
-<a class="button" href="#versionen">Find the right version <span aria-hidden="true">↓</span></a>
-<a class="text-link" href="#ablauf">Here's how it works <span aria-hidden="true">→</span></a>
-</div>
-<div class="hero-value-props" data-i18n-ignore="">
-<div class="value-prop-item">
-<span aria-hidden="true" class="value-prop-icon">
-<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 16 16" width="13"><polyline points="3 8.5 6.5 12 13 4.5"></polyline></svg>
-</span>
-<div>
-<strong>Einmal sprechen, weltweit verstanden</strong>
-<span>Erzeuge aus einem einzigen Video flüssige Sprachfassungen (EN, DE, UK, ES, IT, TR) ohne Mehrfachaufnahmen.</span>
-</div>
-</div>
-<div class="value-prop-item">
-<span aria-hidden="true" class="value-prop-icon">
-<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 16 16" width="13"><rect height="10" rx="2" width="10" x="3" y="3"></rect><circle cx="8" cy="8" r="2"></circle></svg>
-</span>
-<div>
-<strong>100% Datenschutz für dein Rohmaterial</strong>
-<span>Kein Cloud-Zwang: Mit der Desktop-Version verarbeitet dein eigener Rechner sensible Videos komplett offline.</span>
-</div>
-</div>
-<div class="value-prop-item">
-<span aria-hidden="true" class="value-prop-icon">
-<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="6"></circle><path d="M8 5v6M5.5 8h5"></path></svg>
-</span>
-<div>
-<strong>Open Source ohne Abofalle</strong>
-<span>Keine 50 €/Monat, keine künstlichen 20-Minuten-Limits. Volle Kontrolle über deine Daten und Modelle.</span>
-</div>
-</div>
-</div>
-<p class="simple-start-note">Google Colab, desktop app or Video Studio: compare requirements and find your starting point.</p>
-</div>
-<figure class="simple-preview studio-visual" data-hero-timeline="">
-<div class="studio-panel">
-<div class="studio-topbar" data-i18n-ignore="">
-<div class="studio-dots"><span></span><span></span><span></span></div>
-<span class="studio-engine-id">LINGUOAI TIMELINE v2.2.1</span>
-<span class="studio-timecode">00:04:12.08 / 00:15:00.00</span>
-<span class="studio-status-pill"><span class="status-live-dot"></span>IN SYNC · 48 kHz</span>
-</div>
-<div class="studio-screen">
-<div class="preview-screen-header" data-i18n-ignore="">
-<button aria-label="Demo-Vorschau abspielen" class="preview-play-btn" data-preview-play="" title="Demo-Vorschau abspielen" type="button">
-<svg class="icon-play" fill="currentColor" height="11" viewbox="0 0 16 16" width="11"><polygon points="4,2 14,8 4,14"></polygon></svg>
-<svg class="icon-pause" fill="currentColor" height="11" viewbox="0 0 16 16" width="11"><rect height="12" rx="1" width="3.5" x="3" y="2"></rect><rect height="12" rx="1" width="3.5" x="9.5" y="2"></rect></svg>
-<span class="play-label">Hörprobe</span>
-</button>
-<div aria-label="Audio-Vergleich" class="preview-mode-switch" role="group">
-<button class="mode-chip is-active" data-preview-mode="translated" type="button">
-<span class="mode-dot"></span>Synchronisiert (DE)
-                    </button>
-<button class="mode-chip" data-preview-mode="original" type="button">
-                      Originalton (EN)
-                    </button>
-</div>
-</div>
-<span aria-hidden="true" class="screen-crop-tl"></span>
-<span aria-hidden="true" class="screen-crop-tr"></span>
-<span aria-hidden="true" class="screen-crop-bl"></span>
-<span aria-hidden="true" class="screen-crop-br"></span>
-<div aria-hidden="true" class="screen-sound-bars">
-<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-</div>
-<div class="studio-screen-caption" data-caption-preview="" data-i18n-ignore="">»...erzeugt synchronisierte Sprachfassungen in Sekunden.«</div>
-</div>
-<div class="studio-process-bar">
-<div class="studio-chips-group">
-<span class="studio-chip-source" data-i18n-ignore="">EN <small>ORIGINAL</small></span>
-<span aria-hidden="true" class="studio-flow-arrow">→</span>
-<div aria-label="Target languages" class="target-chips" role="group">
-<button class="target-chip is-active" data-i18n-ignore="" data-lang-target="de" type="button">DE</button>
-<button class="target-chip" data-i18n-ignore="" data-lang-target="uk" type="button">UK</button>
-<button class="target-chip" data-i18n-ignore="" data-lang-target="es" type="button">ES</button>
-<button class="target-chip" data-i18n-ignore="" data-lang-target="it" type="button">IT</button>
-<button class="target-chip" data-i18n-ignore="" data-lang-target="tr" type="button">TR</button>
-</div>
-</div>
-<span class="studio-process-label" data-i18n-ignore="">ORIGINALVIDEO → ÜBERSETZUNG → NEUE SPRACHFASSUNG + UNTERTITEL</span>
-</div>
-<div aria-hidden="true" class="studio-timeline-area">
-<div class="studio-playhead-line"></div>
-<div class="studio-ruler-track" data-i18n-ignore="">
-<span>00:00</span><span>00:05</span><span>00:10</span><span>00:15</span><span>00:20</span>
-</div>
-<div class="studio-track-row track-original">
-<div class="track-identity">
-<span class="badge" data-i18n-ignore="">EN</span>
-<span class="type-label" data-i18n-ignore="">ORIGINAL</span>
-</div>
-<div class="track-content">
-<svg class="wave-svg" preserveaspectratio="none" viewbox="0 0 400 48"><path d="M4 24v8m8-12v18m8-24v30m8-18v6m8-28v48m8-36v26m8-16v6m8-14v22m8-34v46m8-30v14m8-22v30m8-19v8m8-14v20m8-30v42m8-25v6m8-9v12m8-22v32m8-40v48m8-35v20m8-13v6m8-19v32m8-40v48m8-38v26m8-18v10m8-15v20m8-28v36m8-42v48m8-36v22m8-14v6m8-8v10m8-18v26m8-32v38m8-29v18m8-12v6m8-14v22m8-30v38m8-42v44m8-30v14m8-10v6m8-20v34m8-40v44m8-30v14m8-12v10m8-8v6"></path></svg>
-</div>
-</div>
-<div class="studio-track-row track-translated">
-<div class="track-identity">
-<span class="badge is-signal" data-i18n-ignore="" data-target-code="">DE</span>
-<span class="type-label" data-i18n-ignore="">NEURAL</span>
-</div>
-<div class="track-content">
-<svg class="wave-svg" preserveaspectratio="none" viewbox="0 0 400 48"><path d="M4 25v6m8-10v14m8-25v34m8-38v44m8-30v16m8-21v26m8-18v10m8-8v6m8-16v26m8-36v46m8-38v28m8-20v10m8-19v28m8-34v40m8-34v26m8-17v8m8-14v20m8-25v30m8-38v46m8-32v16m8-11v6m8-19v32m8-36v42m8-31v18m8-22v26m8-31v36m8-30v24m8-17v10m8-12v14m8-24v34m8-40v46m8-34v20m8-15v10m8-20v30m8-36v44m8-30v14m8-10v6m8-17v28m8-34v40m8-27v14m8-21v28m8-34v40m8-28v16m8-11v6"></path></svg>
-</div>
-</div>
-<div class="studio-track-row track-subtitles">
-<div class="track-identity">
-<span class="badge" data-i18n-ignore="">.SRT</span>
-<span class="type-label" data-i18n-ignore="">CUES</span>
-</div>
-<div class="track-content">
-<div class="subtitles-cue-track" data-i18n-ignore="">
-<span></span>
-<div class="cue-block" data-cue="1">00:01 – 00:04 · Faster-Whisper</div>
-<span></span>
-<div class="cue-block" data-cue="2">00:06 – 00:11 · NLLB-200 / Neural</div>
-<span></span>
-<div class="cue-block" data-cue="3">00:13 – 00:18 · Export ready</div>
-</div>
-</div>
-</div>
-</div>
-<div class="studio-footer-bar">
-<div class="studio-footer-outputs">
-<span>Video with a new voice</span>
-<span>Original + translation as SRT</span>
-</div>
-</div>
-</div>
-<figcaption class="studio-preview-caption">
-<span class="demo-badge" data-i18n-ignore="">DEMO</span>
-<span>Schematic preview</span>
-</figcaption>
-</figure>
-</div>
-</section>
-<section class="simple-section simple-benefits" id="funktionen">
-<div class="container">
-<div class="simple-heading">
-<p class="section-kicker">The result matters</p>
-<h2>From a recording to a new language version.</h2>
-<p>Three precisely coordinated steps transform your original clip into a fully localized video.</p>
-</div>
-<div class="outcome-composition">
-<article class="outcome-card">
-<div class="outcome-meta">
-<div class="outcome-meta-left">
-<span aria-hidden="true" class="pictogram-box is-dark">
-<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22">
-<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
-<path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-<line x1="12" x2="12" y1="19" y2="22"></line>
-<line x1="8" x2="16" y1="22" y2="22"></line>
-<path d="M18 4h3a1 1 0 0 1 1 1v4" stroke="var(--accent)"></path>
-</svg>
-</span>
-<span class="bento-tag is-signal" data-i18n-ignore=""><span class="tag-dot"></span>01 / ASR + NLLB</span>
-</div>
-</div>
-<h3>Recognize and translate spoken content</h3>
-<p>Precisely transcribe spoken text in the video and translate it semantically into the chosen target language.</p>
-<div aria-hidden="true" class="outcome-graphic" data-i18n-ignore="">
-<div class="outcome-token-row">
-<span class="outcome-token-badge">EN</span>
-<span>"The global cut of video content..."</span>
-</div>
-<div class="outcome-token-row">
-<span class="outcome-token-badge target">DE</span>
-<span>"Die neue Sprachfassung des Videos..."</span>
-</div>
-</div>
-</article>
-<article class="outcome-card">
-<div class="outcome-meta">
-<div class="outcome-meta-left">
-<span aria-hidden="true" class="pictogram-box is-dark">
-<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22">
-<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-<path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-<path d="M19.07 4.93a10 10 0 0 1 0 14.14" stroke="var(--accent)"></path>
-</svg>
-</span>
-<span class="bento-tag is-signal" data-i18n-ignore=""><span class="tag-dot"></span>02 / SYNTHESE</span>
-</div>
-</div>
-<h3>Dub with a new voice</h3>
-<p>Generate a natural-sounding voice track – aligned with the speech tempo and timing of the original video.</p>
-<div aria-hidden="true" class="outcome-graphic" data-i18n-ignore="">
-<div class="outcome-voice-bars">
-<span style="height:35%"></span><span style="height:65%"></span><span style="height:90%"></span>
-<span style="height:55%"></span><span style="height:75%"></span><span style="height:45%"></span>
-<span style="height:85%"></span><span style="height:60%"></span><span style="height:40%"></span>
-</div>
-</div>
-</article>
-<article class="outcome-card">
-<div class="outcome-meta">
-<div class="outcome-meta-left">
-<span aria-hidden="true" class="pictogram-box is-dark">
-<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22">
-<rect height="14" rx="2" width="18" x="3" y="5"></rect>
-<path d="M7 15h4m-4-3h10m-10-3h6" stroke="var(--accent)"></path>
-<polyline points="15 2 21 2 21 8"></polyline>
-</svg>
-</span>
-<span class="bento-tag is-signal" data-i18n-ignore=""><span class="tag-dot"></span>03 / EXPORT</span>
-</div>
-</div>
-<h3>Save matching subtitles</h3>
-<p>Save both the original and translation as time-synchronized SRT and VTT files.</p>
-<div aria-hidden="true" class="outcome-graphic" data-i18n-ignore="">
-<div class="outcome-cue-row">
-<span>00:00:01,240 ➔ 00:00:04,890</span>
-<span class="outcome-token-badge target">SYNC</span>
-</div>
-</div>
-</article>
-</div>
-<div class="advantage-comparison-box" data-i18n-ignore="">
-<div class="advantage-header">
-<div class="advantage-header-left">
-<span class="bento-tag is-signal"><span class="tag-dot"></span>VERGLEICH</span>
-<h3>Warum LinguoAI? Der Unterschied zu typischen Video-SaaS.</h3>
-</div>
-<p class="advantage-header-sub">Keine versteckten Gebühren, keine unberechenbaren Server in Übersee, volle Datenhoheit.</p>
-</div>
-<div class="advantage-grid">
-<div class="advantage-col is-negative">
-<div class="col-badge">Typische Web-Tools</div>
-<ul class="advantage-list">
-<li>
-<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 16 16" width="14"><line x1="4" x2="12" y1="4" y2="12"></line><line x1="12" x2="4" y1="4" y2="12"></line></svg>
-<span><strong>Teure Monatsabos:</strong> 30–70 €/Monat für nur 15–30 Minuten verarbeitetes Video.</span>
-</li>
-<li>
-<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 16 16" width="14"><line x1="4" x2="12" y1="4" y2="12"></line><line x1="12" x2="4" y1="4" y2="12"></line></svg>
-<span><strong>Datenschutzrisiko:</strong> Unveröffentlichte Rohvideos müssen zwingend auf fremde Cloud-Server geladen werden.</span>
-</li>
-<li>
-<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 16 16" width="14"><line x1="4" x2="12" y1="4" y2="12"></line><line x1="12" x2="4" y1="4" y2="12"></line></svg>
-<span><strong>Blackbox-Algorithmen:</strong> Keine Kontrolle über verwendete Stimmen, Modelle oder Dateiausgabe.</span>
-</li>
-</ul>
-</div>
-<div class="advantage-col is-positive">
-<div class="col-badge">LinguoAI (Open Source)</div>
-<ul class="advantage-list">
-<li>
-<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 16 16" width="14"><polyline points="3 8.5 6.5 12 13 4.5"></polyline></svg>
-<span><strong>Kostenlos &amp; unbegrenzt:</strong> Keine Minutenlimits oder Paywalls. Verarbeite so viele Clips wie du willst.</span>
-</li>
-<li>
-<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 16 16" width="14"><polyline points="3 8.5 6.5 12 13 4.5"></polyline></svg>
-<span><strong>100% Privatsphäre &amp; Kontrolle:</strong> Mit der Desktop-Version verlässt kein Byte deinen Rechner.</span>
-</li>
-<li>
-<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 16 16" width="14"><polyline points="3 8.5 6.5 12 13 4.5"></polyline></svg>
-<span><strong>Offenes Ökosystem:</strong> Modernste Modelle (Faster-Whisper, NLLB-200, Edge-TTS, Kokoro, Chatterbox).</span>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<p class="simple-honest-note">Important: the new audio track replaces the original sound, including music and noise. The picture stays the same; lip movements are not adjusted.</p>
-</div>
-</section>
+<section class="simple-hero" id="top"><div class="container simple-hero-grid">
+<div class="simple-hero-copy"><p class="eyebrow">Translate videos. Reach people.</p>
+<h1>Your video.<br/><span>In a new language.</span></h1>
+<p class="simple-intro">Help more people understand your video. LinguoAI translates the speech and creates a new voice track with matching subtitles.</p>
+<div class="simple-actions"><a class="button" href="#versionen">Find the right version <svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></a><a class="text-link" href="#ablauf">Here's how it works <span aria-hidden="true">↓</span></a></div>
+<p class="hero-note">In your browser or on your computer. Your choice.</p>
+<div class="hero-outputs"><span><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><rect height="13" rx="3" width="6" x="9" y="2"></rect><path d="M5 10v2a7 7 0 0 0 14 0v-2m-7 9v3m-4 0h8"></path></svg> New voice track</span><span><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><rect height="16" rx="3" width="20" x="2" y="4"></rect><path d="M6 12h5m2 0h5m-12 4h8m2 0h2"></path></svg> Matching subtitles</span></div></div>
+<figure aria-labelledby="preview-title" class="translation-preview" data-translation-preview="">
+<div class="preview-topline"><span><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><rect height="16" rx="3" width="18" x="3" y="4"></rect><path d="m10 9 5 3-5 3Z"></path></svg> <span id="preview-title">One video, new possibilities</span></span><span class="preview-example">Example</span></div>
+<div class="preview-film"><div aria-hidden="true" class="film-word" data-i18n-ignore="">Hallo<span>世界</span></div><div aria-hidden="true" class="film-border"></div><div class="film-bottom" data-i18n-ignore=""><span>DE → <span data-sample-code="">EN</span></span><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><rect height="16" rx="3" width="20" x="2" y="4"></rect><path d="M6 12h5m2 0h5m-12 4h8m2 0h2"></path></svg></div></div>
+<div class="preview-translation"><div><span class="preview-label">Original · German</span><p data-i18n-ignore="" lang="de">Schön, dass du da bist.</p></div><span aria-hidden="true" class="translation-arrow">↓</span><div class="translated-line"><span class="preview-label" data-sample-label="">Translated version · English</span><p data-i18n-ignore="" data-sample-text="" lang="en">It's good to have you here.</p></div></div>
+<fieldset class="sample-languages" hidden=""><legend>Try a language</legend><div><label><input checked="" name="sample-language" type="radio" value="en"/><span data-i18n-ignore="" lang="en">English</span></label><label><input name="sample-language" type="radio" value="es"/><span data-i18n-ignore="" lang="es">Español</span></label><label><input name="sample-language" type="radio" value="fr"/><span data-i18n-ignore="" lang="fr">Français</span></label></div></fieldset>
+<p aria-atomic="true" aria-live="polite" class="sr-only" data-sample-result="" role="status"></p>
+<figcaption>Text example for illustration. No audio or video preview.</figcaption>
+</figure></div></section>
+<section class="simple-section simple-benefits" id="funktionen"><div class="container">
+<div class="simple-heading split-heading"><div><p class="section-kicker">Your content stays. The language changes.</p><h2>One recording.<br/>Reach more people.</h2></div><p>A tutorial, an interview, or your next explainer video: no need to record it again.</p></div>
+<div class="outcome-composition"><article class="outcome-card"><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><path d="M3 5h12M9 3v2m-4 3c2 5 5 7 9 8m-1-11c-1 7-4 10-10 12m12 4 4-10 4 10m-6-3h4"></path></svg><h3>Translate</h3><p>The speech is transcribed and translated into your chosen language.</p></article><article class="outcome-card"><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><rect height="13" rx="3" width="6" x="9" y="2"></rect><path d="M5 10v2a7 7 0 0 0 14 0v-2m-7 9v3m-4 0h8"></path></svg><h3>Create a new voice track</h3><p>A new voice track is created and timed to match your video.</p></article><article class="outcome-card"><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><rect height="16" rx="3" width="20" x="2" y="4"></rect><path d="M6 12h5m2 0h5m-12 4h8m2 0h2"></path></svg><h3>Get the subtitles too</h3><p>You also get the original and translated subtitles as SRT files.</p></article></div><p class="simple-honest-note"><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6m0-10h.01"></path></svg><span>The visuals stay the same. The new voice track replaces all original audio, including music and background sounds. Lip movements are not adjusted.</span></p></div></section>
 <section aria-labelledby="versions-title" class="simple-section version-section" data-version-finder="" id="versionen">
 <div class="container">
 <div class="simple-heading">
 <p class="section-kicker">Your starting point</p>
 <h2 id="versions-title">Which option suits you?</h2>
-<p class="version-intro">Choose what fits your needs. Each version takes you straight to the right next step.</p>
+<p class="version-intro">Three ways to get there. Choose the one that works for you.</p>
 </div>
 <fieldset class="version-filter" data-version-controls="" hidden="">
 <legend>What matters to you?</legend>
 <div class="version-options">
-<label><input checked="" name="version-need" type="radio" value="all"/><span><svg aria-hidden="true" class="filter-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="14"><rect height="5" rx="1" width="5" x="2" y="2"></rect><rect height="5" rx="1" width="5" x="9" y="2"></rect><rect height="5" rx="1" width="5" x="2" y="9"></rect><rect height="5" rx="1" width="5" x="9" y="9"></rect></svg>Compare all options</span></label>
-<label><input name="version-need" type="radio" value="colab"/><span><svg aria-hidden="true" class="filter-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="14"><path d="M3 10.5a3.5 3.5 0 0 1 2.5-3.4 4 4 0 0 1 7.5 1.4A3 3 0 0 1 12 14.5H4a3 3 0 0 1-1-4Z"></path><path d="M8 8v4m-1.5-1.5L8 8l1.5 1.5"></path></svg>Start without installing</span></label>
-<label><input name="version-need" type="radio" value="desktop"/><span><svg aria-hidden="true" class="filter-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="14"><rect height="9" rx="1.5" width="12" x="2" y="2"></rect><path d="M5 14h6m-3-3v3"></path><polyline points="5 5 7 6.5 5 8"></polyline></svg>Process files locally</span></label>
-<label><input name="version-need" type="radio" value="studio"/><span><svg aria-hidden="true" class="filter-icon" fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="14"><rect height="12" rx="2" width="12" x="2" y="2"></rect><circle cx="8" cy="8" r="2"></circle><line x1="2" x2="14" y1="6" y2="6"></line></svg>I have Studio credentials</span></label>
+<label><input checked="" name="version-need" type="radio" value="all"/><span>Compare all options</span></label>
+<label><input name="version-need" type="radio" value="colab"/><span>Start without installing</span></label>
+<label><input name="version-need" type="radio" value="desktop"/><span>Process files locally</span></label>
+<label><input name="version-need" type="radio" value="studio"/><span>I have Studio credentials</span></label>
 </div>
 </fieldset>
 <p aria-atomic="true" aria-live="polite" class="version-result" data-version-result="" role="status"></p>
 <div class="version-grid">
 <article aria-labelledby="colab-version-title" class="version-card is-primary" data-version="colab" id="version-colab">
-<div class="version-card-top">
-<div class="version-badge-group">
-<span aria-hidden="true" class="pictogram-box is-accent">
-<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22">
-<path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
-<circle cx="12" cy="13" fill="var(--accent)" r="2.2"></circle>
-</svg>
-</span>
-<span class="version-badge" data-i18n-ignore=""><span class="badge-dot"></span>01</span>
+<div class="version-card-top"><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><path d="M6 18a4 4 0 0 1-1-7.87A7 7 0 0 1 18.5 8a5 5 0 0 1-.5 10M9 15l3-3 3 3m-3-3v9"></path></svg>
+<span class="version-tag is-recommended">No local installation</span>
 </div>
-<span class="version-tag is-recommended"><span aria-hidden="true" class="tag-star" data-i18n-ignore="">✦</span> Google Colab · In the browser</span>
-</div>
-<h3 id="colab-version-title">Start in the browser.</h3>
+<h3 id="colab-version-title">Google Colab</h3>
 <p class="version-description" data-version-description="">Get started without installing anything locally. Run your own session on Google.</p>
-<div class="version-mini-preview" data-i18n-ignore="">
-<div class="mini-preview-bar">
-<span class="mini-dot"></span>
-<span class="mini-label">RUNTIME · T4 GPU / CPU</span>
-<span class="mini-status is-active">ONLINE READY</span>
-</div>
-<div class="mini-preview-code">
-<span class="token-fn">connect_session</span>(<span class="token-str">"google.colab"</span>)<br/>
-<span class="token-arrow">➔</span> <span class="token-method">Whisper</span> + <span class="token-method">NLLB-200</span> aktiv
-                </div>
-</div>
 <dl class="version-facts">
-<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="6"></circle><circle cx="8" cy="8" r="2"></circle></svg>You need</dt><dd>Google account and internet connection</dd></div>
-<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><polyline points="9 2 4 9 9 9 7 14 12 7 7 7 9 2"></polyline></svg>Setup</dt><dd>Start the Notebook and wait a few minutes</dd></div>
-<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="6"></circle><line x1="8" x2="8" y1="7" y2="11"></line><line x1="8" x2="8.01" y1="5" y2="5"></line></svg>Good to know</dt><dd>Sessions are time-limited. GPU availability is not guaranteed; Colab may involve costs.</dd></div>
+<div><dt>You need</dt><dd>Google account and internet connection</dd></div>
+<div><dt>Setup</dt><dd>Start the Notebook and wait a few minutes</dd></div>
+<div><dt>Good to know</dt><dd>Sessions are time-limited. GPU availability is not guaranteed; Colab may involve costs.</dd></div>
 </dl>
 <div class="version-card-actions">
 <a class="button" href="/en/colab.html">Get started with Colab <span aria-hidden="true">→</span></a>
@@ -485,38 +202,15 @@
 </div>
 </article>
 <article aria-labelledby="desktop-version-title" class="version-card" data-version="desktop" id="version-desktop">
-<div class="version-card-top">
-<div class="version-badge-group">
-<span aria-hidden="true" class="pictogram-box">
-<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22">
-<rect height="14" rx="2" width="20" x="2" y="3"></rect>
-<line x1="8" x2="16" y1="21" y2="21"></line>
-<line x1="12" x2="12" y1="17" y2="21"></line>
-<polyline points="6 8 9 10 6 12" stroke="var(--accent)"></polyline>
-<line x1="11" x2="15" y1="12" y2="12"></line>
-</svg>
-</span>
-<span class="version-badge" data-i18n-ignore=""><span class="badge-dot"></span>02</span>
+<div class="version-card-top"><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><rect height="14" rx="2" width="20" x="2" y="3"></rect><path d="M8 21h8m-4-4v4M6 7h8"></path></svg>
+<span class="version-tag">On your computer</span>
 </div>
-<span class="version-tag">Desktop · Windows &amp; Linux</span>
-</div>
-<h3 id="desktop-version-title">Work locally.</h3>
+<h3 id="desktop-version-title">Desktop</h3>
 <p class="version-description" data-version-description="">For regular use and control over your files. Processing runs on your computer.</p>
-<div class="version-mini-preview" data-i18n-ignore="">
-<div class="mini-preview-bar">
-<span class="mini-dot"></span>
-<span class="mini-label">LOCAL SYSTEM · GPU / CPU ACCEL</span>
-<span class="mini-status is-active">OFFLINE-FIRST</span>
-</div>
-<div class="mini-preview-code">
-<span class="token-prompt">$</span> linguoai translate video.mp4 --target de<br/>
-<span class="token-arrow">➔</span> <span class="token-badge">100% PRIVATE</span> keine Cloud-Übertragung
-                </div>
-</div>
 <dl class="version-facts">
-<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="6"></circle><circle cx="8" cy="8" r="2"></circle></svg>You need</dt><dd>Python and FFmpeg</dd></div>
-<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><polyline points="9 2 4 9 9 9 7 14 12 7 7 7 9 2"></polyline></svg>Setup</dt><dd>Download the project and install it locally</dd></div>
-<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="6"></circle><line x1="8" x2="8" y1="7" y2="11"></line><line x1="8" x2="8.01" y1="5" y2="5"></line></svg>Good to know</dt><dd>GPU optional. Your content stays on your computer only when using local models.</dd></div>
+<div><dt>You need</dt><dd>Python and FFmpeg</dd></div>
+<div><dt>Setup</dt><dd>Download the project and install it locally</dd></div>
+<div><dt>Good to know</dt><dd>GPU optional. Your content stays on your computer only when using local models.</dd></div>
 </dl>
 <div class="version-card-actions">
 <a class="button button-secondary" href="/en/anleitung.html#desktop">Set up the desktop app <span aria-hidden="true">→</span></a>
@@ -524,37 +218,15 @@
 </div>
 </article>
 <article aria-labelledby="studio-version-title" class="version-card" data-version="studio" id="version-studio">
-<div class="version-card-top">
-<div class="version-badge-group">
-<span aria-hidden="true" class="pictogram-box">
-<svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="22">
-<rect height="18" rx="2" width="18" x="3" y="3"></rect>
-<path d="m3 9 4-6 4 6 4-6 4 6"></path>
-<circle cx="9" cy="15" fill="var(--accent)" r="1.5"></circle>
-<line x1="13" x2="18" y1="15" y2="15"></line>
-</svg>
-</span>
-<span class="version-badge" data-i18n-ignore=""><span class="badge-dot"></span>03</span>
+<div class="version-card-top"><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><rect height="18" rx="3" width="20" x="2" y="3"></rect><path d="M2 8h20m-16-2h.01M9 6h.01m1 6 5 3-5 3Z"></path></svg>
+<span class="version-tag version-tag-preview">Trial service · Access required</span>
 </div>
-<span class="version-tag version-tag-preview">Video Studio · Test mode</span>
-</div>
-<h3 id="studio-version-title">Directly in the browser.</h3>
+<h3 id="studio-version-title">Video Studio</h3>
 <p class="version-description" data-version-description="">For users who have received Studio credentials. Sign in and upload videos directly in your browser.</p>
-<div class="version-mini-preview" data-i18n-ignore="">
-<div class="mini-preview-bar">
-<span class="mini-dot is-warning"></span>
-<span class="mini-label">WEB SERVICE · BETA INSTANCE</span>
-<span class="mini-status is-beta">INVITE ONLY</span>
-</div>
-<div class="mini-preview-code">
-<span class="token-fn">session_auth</span>(<span class="token-str">"studio.linguoai.de"</span>)<br/>
-<span class="token-arrow">➔</span> Direkte Timeline &amp; Vorschau
-                </div>
-</div>
 <dl class="version-facts">
-<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="6"></circle><circle cx="8" cy="8" r="2"></circle></svg>You need</dt><dd>Studio username and password</dd></div>
-<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><polyline points="9 2 4 9 9 9 7 14 12 7 7 7 9 2"></polyline></svg>Setup</dt><dd>No installation or Google account needed</dd></div>
-<div><dt><svg aria-hidden="true" class="fact-icon" fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="6"></circle><line x1="8" x2="8" y1="7" y2="11"></line><line x1="8" x2="8.01" y1="5" y2="5"></line></svg>Good to know</dt><dd>Processing runs on the server. Translation is still limited; the full workflow has not yet been confirmed.</dd></div>
+<div><dt>You need</dt><dd>Studio username and password</dd></div>
+<div><dt>Setup</dt><dd>No installation or Google account needed</dd></div>
+<div><dt>Good to know</dt><dd>Processing runs on the server. Translation is still limited; the full workflow has not yet been confirmed.</dd></div>
 </dl>
 <div class="version-card-actions">
 <a class="button button-secondary" href="/web.html">Open Video Studio <span aria-hidden="true">→</span></a>
@@ -565,62 +237,7 @@
 <p class="version-footnote">You can switch later. Download the project for the desktop app; open Colab and Video Studio using their links.</p>
 </div>
 </section>
-<section class="simple-section simple-workflow" id="ablauf">
-<div class="container">
-<div class="simple-heading">
-<p class="section-kicker">Here's how it works</p>
-<h2>Your first video in three steps.</h2>
-</div>
-<ol class="simple-steps">
-<li>
-<div class="step-card-header">
-<div class="step-badge-group">
-<span aria-hidden="true" class="pictogram-box is-subtle">
-<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="20"><rect height="7" rx="1" width="7" x="3" y="3"></rect><rect height="7" rx="1" width="7" x="14" y="3"></rect><rect height="7" rx="1" width="7" x="14" y="14"></rect><rect height="7" rx="1" width="7" x="3" y="14"></rect><circle cx="17.5" cy="6.5" fill="var(--accent)" r="1.2"></circle></svg>
-</span>
-<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>01</span>
-</div>
-<span aria-hidden="true" class="step-watermark">01</span>
-</div>
-<div class="step-card-body">
-<h3>Choose a version &amp; start</h3>
-<p>Follow the guide to start Colab, install the desktop app, or sign in to Video Studio with your credentials.</p>
-</div>
-</li>
-<li>
-<div class="step-card-header">
-<div class="step-badge-group">
-<span aria-hidden="true" class="pictogram-box is-subtle">
-<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="20"><path d="m22 8-6 4 6 4V8Z"></path><rect height="12" rx="2" width="14" x="2" y="6"></rect><circle cx="9" cy="12" fill="var(--accent)" r="2"></circle></svg>
-</span>
-<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>02</span>
-</div>
-<span aria-hidden="true" class="step-watermark">02</span>
-</div>
-<div class="step-card-body">
-<h3>Choose video &amp; language</h3>
-<p>Upload a short test video, then choose the target language and voice. Multiple videos are also supported.</p>
-</div>
-</li>
-<li>
-<div class="step-card-header">
-<div class="step-badge-group">
-<span aria-hidden="true" class="pictogram-box is-subtle">
-<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="20"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line><circle cx="12" cy="15" fill="var(--accent)" r="1.5"></circle></svg>
-</span>
-<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>03</span>
-</div>
-<span aria-hidden="true" class="step-watermark">03</span>
-</div>
-<div class="step-card-body">
-<h3>Review &amp; save the result</h3>
-<p>Check the translation and pronunciation. Save your video and subtitles; in Colab, do so before the session ends.</p>
-</div>
-</li>
-</ol>
-<a class="text-link" href="#versionen">Choose a version and guide <span aria-hidden="true">→</span></a>
-</div>
-</section>
+<section class="simple-section simple-workflow" id="ablauf"><div class="container"><div class="simple-heading"><p class="section-kicker">From your video to a new version</p><h2>Three clear steps.</h2></div><ol class="simple-steps"><li><div class="step-card-header"><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><rect height="16" rx="3" width="18" x="3" y="4"></rect><path d="m10 9 5 3-5 3Z"></path></svg><span aria-hidden="true">01</span></div><h3>Choose a video</h3><p>Load your video in the version you chose. A short clip is enough for your first try.</p></li><li><div class="step-card-header"><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><path d="M3 5h12M9 3v2m-4 3c2 5 5 7 9 8m-1-11c-1 7-4 10-10 12m12 4 4-10 4 10m-6-3h4"></path></svg><span aria-hidden="true">02</span></div><h3>Choose a language</h3><p>Choose the target language and a suitable voice. Start the translation.</p></li><li><div class="step-card-header"><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><path d="M12 3v12m-4-4 4 4 4-4M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"></path></svg><span aria-hidden="true">03</span></div><h3>Review and download</h3><p>Listen to the new version and check the subtitles. Save your video and the SRT files.</p></li></ol><a class="text-link" href="#versionen">Choose a version and guide <span aria-hidden="true">→</span></a></div></section>
 <section class="simple-section" id="downloads">
 <div class="container simple-download-grid">
 <div>
@@ -630,12 +247,7 @@
 <a class="text-link" href="/en/anleitung.html#desktop">Go to local installation <span aria-hidden="true">→</span></a>
 </div>
 <div class="simple-download-card">
-<div class="download-badge-row">
-<span aria-hidden="true" class="pictogram-box is-subtle">
-<svg fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="20"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" x2="12" y1="22.08" y2="12"></line></svg>
-</span>
-<span class="bento-tag is-signal" data-i18n-ignore=""><span class="tag-dot"></span>LinguoAI 2.2.1</span>
-</div>
+<div class="download-badge-row"><svg aria-hidden="true" class="pictogram" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="24"><path d="M12 3v12m-4-4 4 4 4-4M4 16v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4"></path></svg><span data-i18n-ignore="">LinguoAI 2.2.1</span></div>
 <h3>The complete project</h3>
 <p>Source code with the desktop app and Notebook. No ready-to-use installer: please follow the installation guide.</p>
 <a class="button button-secondary" download="" href="https://linguoai.de/downloads/LinguoAI-2.2.1-source.zip">Download the source code ZIP <span aria-hidden="true">↓</span></a>

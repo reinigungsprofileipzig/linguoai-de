@@ -1,42 +1,77 @@
-<!doctype html>
-<html lang="de" data-theme="dark">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="noindex" />
-    <meta name="theme-color" content="#121210" />
-    <title>Seite nicht gefunden – LinguoAI</title>
-    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/assets/editorial.css?v=20261025-4" />
-    <link rel="stylesheet" href="/assets/styles.css" />
-    <script>
+<!DOCTYPE html>
+
+<html class="no-js" data-theme="light" lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="noindex" name="robots"/>
+<meta content="#f6f7f9" name="theme-color"/>
+<title>Seite nicht gefunden – LinguoAI</title>
+<link href="/assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/assets/styles.css" rel="stylesheet"/>
+<link href="/assets/editorial.css?v=20261027-2" rel="stylesheet"/>
+<script>
       try {
         const preferredTheme = window.localStorage.getItem("linguoai-theme");
-        if (preferredTheme === "light") {
-          document.documentElement.setAttribute("data-theme", "light");
-        } else {
-          document.documentElement.setAttribute("data-theme", "dark");
+        if (preferredTheme === "light" || preferredTheme === "dark") {
+          document.documentElement.setAttribute("data-theme", preferredTheme);
         }
       } catch (_themeError) {}
     </script>
-  </head>
-  <body class="legal-page editorial">
-    <main id="main" class="legal-main">
-      <div class="container legal-shell">
-        <aside><p class="section-kicker">Fehler 404</p></aside>
-        <article>
-          <a class="brand" href="/">
-            <img src="/assets/logo-mark.svg" width="38" height="38" alt="" />
-            <span>LinguoAI</span>
-          </a>
-          <h1>Hier ist gerade keine Sprachspur.</h1>
-          <p>
-            Die gesuchte Seite wurde nicht gefunden. Über die Startseite kommst du direkt zurück
-            zu Funktionen, Stimmen und Anleitung.
+<script defer="" src="/assets/site.js?v=20261027-2"></script>
+</head>
+<body class="legal-page editorial">
+<a class="skip-link" href="#main">Direkt zum Inhalt</a>
+<header class="site-header legal-header" data-header="">
+<div class="container header-inner">
+<a aria-label="LinguoAI Startseite" class="brand" href="/">
+<img alt="" height="34" src="/assets/logo-mark.svg" width="34"/>
+<span>LinguoAI</span>
+</a>
+<nav aria-label="Hauptnavigation" class="main-navigation" data-menu="" id="main-navigation">
+<a href="/?lang=de#versionen">Version finden</a>
+<a href="/anleitung.html?lang=de">Anleitung</a>
+<a href="/web.html">Video Studio</a>
+</nav>
+<div class="header-tools">
+<button aria-label="Dunkles Farbschema" aria-pressed="false" class="theme-toggle" data-theme-toggle="" title="Dunkles Farbschema" type="button">
+<span aria-hidden="true" class="theme-toggle-track">
+<span class="theme-toggle-icon icon-moon">
+<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><path d="M13.5 9.5a5.5 5.5 0 1 1-7-7 6.5 6.5 0 0 0 7 7Z"></path></svg>
+</span>
+<span class="theme-toggle-thumb"></span>
+<span class="theme-toggle-icon icon-sun">
+<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="3"></circle><path d="M8 1.5v1.5m0 10v1.5m-6.5-6.5H3m10 0h1.5m-8.9-3.9 1 1m7.8 7.8 1 1m-9.8 0 1-1m7.8-7.8 1-1"></path></svg>
+</span>
+</span>
+<span class="sr-only">Dunkles Farbschema</span>
+</button>
+<button aria-controls="main-navigation" aria-expanded="false" class="menu-button" data-menu-button="" type="button">
+<span class="sr-only">Navigation öffnen</span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+</button>
+</div>
+</div>
+</header>
+<main class="legal-main" id="main">
+<div class="container legal-shell">
+<aside><p class="section-kicker">Fehler 404</p></aside>
+<article>
+<h1>Diese Seite gibt es nicht.</h1>
+<p>
+            Vielleicht wurde sie verschoben oder der Link ist nicht mehr aktuell.
+            Auf der Startseite findest du den passenden Einstieg für dein Video.
           </p>
-          <a class="button" href="/">Zur Startseite <span aria-hidden="true">→</span></a>
-        </article>
-      </div>
-    </main>
-  </body>
+<a class="button" href="/?lang=de">Zur Startseite <span aria-hidden="true">→</span></a>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container footer-bottom">
+<span>© <span data-current-year="">2026</span> LinguoAI</span>
+<a href="/impressum.html">Impressum</a>
+<a href="/datenschutz.html">Datenschutz</a>
+<a href="/drive-datenschutz.html">Drive-Datenschutz</a>
+</div>
+</footer>
+</body>
 </html>

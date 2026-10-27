@@ -1,118 +1,119 @@
-<!doctype html>
-<html lang="de" data-theme="dark">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#121210" />
-    <meta name="description" content="Technische Information zur Google-Datennutzung der OAuth-App LinguoAI Drive-Speicher: Kontozugriff, private Dateiablage, Aufbewahrung und Widerruf." />
-    <title>Google-Datennutzung – LinguoAI Drive-Speicher</title>
-    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/assets/editorial.css?v=20261025-4" />
-    <link rel="stylesheet" href="/assets/styles.css" />
-    <script>
+<!DOCTYPE html>
+
+<html class="no-js" data-theme="light" lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#f6f7f9" name="theme-color"/>
+<meta content="Technische Information zur Google-Datennutzung der OAuth-App LinguoAI Drive-Speicher: Kontozugriff, private Dateiablage, Aufbewahrung und Widerruf." name="description"/>
+<title>Google-Datennutzung – LinguoAI Drive-Speicher</title>
+<link href="/assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/assets/styles.css" rel="stylesheet"/>
+<link href="/assets/editorial.css?v=20261027-2" rel="stylesheet"/>
+<script>
       try {
         const preferredTheme = window.localStorage.getItem("linguoai-theme");
-        if (preferredTheme === "light") {
-          document.documentElement.setAttribute("data-theme", "light");
-        } else {
-          document.documentElement.setAttribute("data-theme", "dark");
+        if (preferredTheme === "light" || preferredTheme === "dark") {
+          document.documentElement.setAttribute("data-theme", preferredTheme);
         }
       } catch (_themeError) {}
     </script>
-    <script defer src="/assets/site.js?v=20261025-3"></script>
-  </head>
-  <body class="legal-page editorial">
-    <a class="skip-link" href="#main">Direkt zum Inhalt</a>
-    <header class="legal-header">
-      <div class="container header-inner">
-        <a class="brand" href="/" aria-label="LinguoAI Startseite">
-          <img src="/assets/logo-mark.svg" width="34" height="34" alt="" />
-          <span>LinguoAI</span>
-        </a>
-        <div class="header-tools">
-          <button type="button" class="theme-toggle" data-theme-toggle data-i18n-ignore aria-label="Farbschema wechseln" title="Farbschema wechseln">
-            <span class="theme-toggle-track" aria-hidden="true">
-              <span class="theme-toggle-icon icon-moon">
-                <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 9.5a5.5 5.5 0 1 1-7-7 6.5 6.5 0 0 0 7 7Z"/></svg>
-              </span>
-              <span class="theme-toggle-thumb"></span>
-              <span class="theme-toggle-icon icon-sun">
-                <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.5m0 10v1.5m-6.5-6.5H3m10 0h1.5m-8.9-3.9 1 1m7.8 7.8 1 1m-9.8 0 1-1m7.8-7.8 1-1"/></svg>
-              </span>
-            </span>
-            <span class="sr-only">Farbschema wechseln</span>
-          </button>
-          <a class="text-link" href="/">Zur Startseite <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </header>
-
-    <main id="main" class="legal-main">
-      <div class="container legal-shell">
-        <aside>
-          <p class="section-kicker">Google-Datennutzung</p>
-          <p>OAuth-App: LinguoAI Drive-Speicher<br />Stand: 15. Oktober 2026</p>
-        </aside>
-        <article>
-          <h1>LinguoAI Drive-Speicher</h1>
-          <div class="draft-notice" role="note">
-            <strong>Technische Information zur Speicheranbindung</strong>
-            <p>
+<script defer="" src="/assets/site.js?v=20261027-2"></script>
+</head>
+<body class="legal-page editorial">
+<a class="skip-link" href="#main">Direkt zum Inhalt</a>
+<header class="site-header legal-header" data-header="">
+<div class="container header-inner">
+<a aria-label="LinguoAI Startseite" class="brand" href="/">
+<img alt="" height="34" src="/assets/logo-mark.svg" width="34"/>
+<span>LinguoAI</span>
+</a>
+<nav aria-label="Hauptnavigation" class="main-navigation" data-menu="" id="main-navigation">
+<a href="/?lang=de#versionen">Version finden</a>
+<a href="/anleitung.html?lang=de">Anleitung</a>
+<a href="/web.html">Video Studio</a>
+</nav>
+<div class="header-tools">
+<button aria-label="Dunkles Farbschema" aria-pressed="false" class="theme-toggle" data-theme-toggle="" title="Dunkles Farbschema" type="button">
+<span aria-hidden="true" class="theme-toggle-track">
+<span class="theme-toggle-icon icon-moon">
+<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><path d="M13.5 9.5a5.5 5.5 0 1 1-7-7 6.5 6.5 0 0 0 7 7Z"></path></svg>
+</span>
+<span class="theme-toggle-thumb"></span>
+<span class="theme-toggle-icon icon-sun">
+<svg fill="none" height="13" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 16 16" width="13"><circle cx="8" cy="8" r="3"></circle><path d="M8 1.5v1.5m0 10v1.5m-6.5-6.5H3m10 0h1.5m-8.9-3.9 1 1m7.8 7.8 1 1m-9.8 0 1-1m7.8-7.8 1-1"></path></svg>
+</span>
+</span>
+<span class="sr-only">Dunkles Farbschema</span>
+</button>
+<button aria-controls="main-navigation" aria-expanded="false" class="menu-button" data-menu-button="" type="button">
+<span class="sr-only">Navigation öffnen</span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+</button>
+</div>
+</div>
+</header>
+<main class="legal-main" id="main">
+<div class="container legal-shell">
+<aside>
+<p class="section-kicker">Google-Datennutzung</p>
+<p>OAuth-App: LinguoAI Drive-Speicher<br/>Stand: 15. Oktober 2026</p>
+</aside>
+<article>
+<h1>LinguoAI Drive-Speicher</h1>
+<div class="draft-notice" role="note">
+<strong>Technische Information zur Speicheranbindung</strong>
+<p>
               Diese Hinweise beschreiben die Nutzung von Google-Daten durch die OAuth-App
               „LinguoAI Drive-Speicher“ und den damit verbundenen Dateiablauf.
               Für externe Übersetzungs- und Sprachdienste gelten zusätzlich die
               Datenschutzhinweise des jeweils gewählten Anbieters.
             </p>
-          </div>
-
-          <h2>1. Zweck und Google-Kontozugriff</h2>
-          <p>
+</div>
+<h2>1. Zweck und Google-Kontozugriff</h2>
+<p>
             Die App verwendet Google Drive als privaten Zwischenspeicher für LinguoAI-Aufträge.
             Nur der Betreiber meldet sich dafür mit seinem Google-Konto an und erteilt die
             OAuth-Freigabe. Endnutzer benötigen für diese Speicheranbindung kein Google-Konto.
           </p>
-          <p>
+<p>
             Angefordert wird ausschließlich die Berechtigung <code>drive.file</code>
-            (<code>https://www.googleapis.com/<wbr />auth/drive.file</code>). Sie erlaubt den Zugriff
+            (<code>https://www.googleapis.com/<wbr/>auth/drive.file</code>). Sie erlaubt den Zugriff
             auf Dateien, die diese App erstellt oder die gezielt für diese App freigegeben
             wurden. Sie gewährt keinen pauschalen Zugriff auf den gesamten Drive-Inhalt.
           </p>
-
-          <h2>2. Dateien im privaten Betreiberordner</h2>
-          <p>
+<h2>2. Dateien im privaten Betreiberordner</h2>
+<p>
             Im privaten Ordner „linguoai uploads“ speichert die App hochgeladene Eingabedateien,
             Ergebnisvideos sowie originale und übersetzte Untertitel im SRT-Format.
             Die App lädt diese Dateien für Verarbeitung und Downloads wieder herunter und
             entfernt sie im Rahmen der automatischen Bereinigung. Sie richtet keine
             öffentliche Freigabe des Ordners oder seiner Dateien ein.
           </p>
-
-          <h2>3. Zugriff und lokale Ablage</h2>
-          <p>
+<h2>3. Zugriff und lokale Ablage</h2>
+<p>
             Endnutzer erhalten Ergebnisse über die angemeldete LinguoAI-App. Der Server prüft
             die Anmeldung und die Zuordnung zum jeweiligen Benutzer vor dem Download.
             Google-Drive-Dateilinks werden dafür nicht öffentlich bereitgestellt.
           </p>
-          <p>
+<p>
             Die OAuth-Zugangsdaten einschließlich des Refresh-Tokens werden als private
             JSON-Datei in der Betreiberablage und auf dem Server gespeichert. Diese
             Zugangsdaten werden nicht an die Browser der Endnutzer weitergegeben.
           </p>
-          <p>
+<p>
             Auftragskennungen, zugeordnete App-Benutzer, Dateinamen, Verarbeitungsoptionen,
             Status, Zeitangaben und Dateireferenzen verwaltet der Server in einer lokalen
             SQLite-Datenbank. Für Uploads, Downloads und Verarbeitung werden zusätzlich
             begrenzte lokale Arbeits- und Zwischenspeicher verwendet.
           </p>
-
-          <h2>4. Verarbeitung und Weitergabe</h2>
-          <p>
+<h2>4. Verarbeitung und Weitergabe</h2>
+<p>
             Die Dateien dienen der angeforderten Transkription, Übersetzung, Sprachausgabe
             und Bereitstellung der Ergebnisse. Die Server-API kann eine Eingabedatei an
             einen eingerichteten, authentifizierten LinguoAI-Worker zur Verarbeitung
             übertragen. Der Worker gibt die Ergebnisse an die API zurück.
           </p>
-          <p>
+<p>
             Je nach Auswahl und eingerichteter Konfiguration erhalten Online-Übersetzer
             wie Google Translate, DeepL oder Gemini die zu übersetzenden Textabschnitte.
             Online-Sprachdienste wie Microsoft Edge TTS oder Google TTS erhalten den
@@ -120,50 +121,47 @@
             auf dem eingerichteten Verarbeitungsrechner. Die Google-OAuth-Zugangsdaten
             werden für diese Verarbeitung nicht an Worker oder Sprachdienste weitergegeben.
           </p>
-
-          <h2>5. Aufbewahrung und Bereinigung</h2>
-          <p>
+<h2>5. Aufbewahrung und Bereinigung</h2>
+<p>
             Während wartender und laufender Aufträge bleiben die benötigten Dateien
             gespeichert. Nach Abschluss eines Auftrags sind seine Ergebnisse im derzeitigen
             Betrieb 24 Stunden über die App verfügbar. Die Frist beginnt mit dem Abschluss,
             nicht mit dem Upload.
           </p>
-          <p>
+<p>
             Nach Ablauf der Frist sperrt die App Ergebnisdownloads. Die automatische
             Bereinigung entfernt anschließend die zugehörigen Eingabe- und Ergebnisdateien
             aus Drive. Bei vorübergehenden Löschfehlern versucht sie es später erneut.
             Die Dateiaufbewahrungsfrist bedeutet keine vollständige Löschung aller
             Auftragsmetadaten aus der lokalen Datenbank.
           </p>
-
-          <h2>6. Google-Freigabe widerrufen</h2>
-          <p>
+<h2>6. Google-Freigabe widerrufen</h2>
+<p>
             Der Betreiber kann die Verbindung im
             <a href="https://myaccount.google.com/connections" rel="noopener noreferrer">Google-Konto unter den Verbindungen zu Drittanbieter-Apps</a>
             widerrufen. Danach kann die App mit dieser Freigabe nicht weiter auf Drive
             zugreifen. Der Widerruf selbst löscht den Drive-Ordner und bereits gespeicherte
             Dateien nicht; diese lassen sich im eigenen Drive entfernen.
           </p>
-          <p>
+<p>
             Informationen zur Datenverarbeitung durch Google stehen in der
             <a href="https://policies.google.com/privacy?hl=de" rel="noopener noreferrer">Datenschutzerklärung von Google</a>.
           </p>
-          <p>
+<p>
             Die Nutzersupport-Adresse des Betreibers wird im Google-Zustimmungsbildschirm
             der App angezeigt. Sie ist der Kontakt für Fragen zu dieser Speicheranbindung.
           </p>
-        </article>
-      </div>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-bottom">
-        <span>© <span data-current-year>2026</span> LinguoAI</span>
-        <a href="/">Zur Startseite</a>
-        <a href="/impressum.html">Impressum</a>
-        <a href="/datenschutz.html">Datenschutz</a>
-        <a href="https://policies.google.com/privacy?hl=de" rel="noopener noreferrer">Google-Datenschutz</a>
-      </div>
-    </footer>
-  </body>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+<div class="container footer-bottom">
+<span>© <span data-current-year="">2026</span> LinguoAI</span>
+<a href="/">Zur Startseite</a>
+<a href="/impressum.html">Impressum</a>
+<a href="/datenschutz.html">Datenschutz</a>
+<a href="https://policies.google.com/privacy?hl=de" rel="noopener noreferrer">Google-Datenschutz</a>
+</div>
+</footer>
+</body>
 </html>

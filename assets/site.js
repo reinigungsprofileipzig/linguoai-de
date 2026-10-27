@@ -1,24 +1,25 @@
 (() => {
   "use strict";
+  document.documentElement.classList.replace("no-js", "has-js");
 
-  // Theme Controller (Dark Mode by default, Light Mode toggle)
+  // Theme preference, shared by every public page.
   const themeToggles = [...document.querySelectorAll("[data-theme-toggle]")];
   const applyTheme = (theme) => {
     document.documentElement.setAttribute("data-theme", theme);
     const metaThemeColor = document.querySelector('meta[name="theme-color"]');
     if (metaThemeColor) {
-      metaThemeColor.setAttribute("content", theme === "light" ? "#F4F1E8" : "#10100E");
+      metaThemeColor.setAttribute("content", theme === "light" ? "#f6f7f9" : "#111a23");
     }
     try {
       localStorage.setItem("linguoai-theme", theme);
     } catch (_error) {}
     themeToggles.forEach((button) => {
-      button.setAttribute("aria-checked", theme === "light" ? "true" : "false");
+      button.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
     });
   };
 
   if (themeToggles.length) {
-    let currentTheme = document.documentElement.getAttribute("data-theme") || "dark";
+    let currentTheme = document.documentElement.getAttribute("data-theme") || "light";
     try {
       const stored = localStorage.getItem("linguoai-theme");
       if (stored === "light" || stored === "dark") {
@@ -60,9 +61,15 @@
       }
     };
 
-    const readHash = () => {
+    const readHash = (event) => {
       const card = cards.find((item) => `#${item.id}` === window.location.hash);
       showVersion(card?.dataset.version || "all", false);
+      // Filtering and font loading change positions before native fragment scrolling.
+      if (card && !event?.persisted) {
+        const alignFinder = () => finder.scrollIntoView({ block: "start", behavior: "instant" });
+        if (document.fonts?.ready) document.fonts.ready.then(alignFinder);
+        else window.requestAnimationFrame(alignFinder);
+      }
     };
     controls.addEventListener("change", (event) => {
       if (!choices.includes(event.target)) return;
@@ -305,171 +312,33 @@
     });
   });
 
-  // Interactive Precision Timeline & Demo Player (Hero)
-  const timeline = document.querySelector("[data-hero-timeline]");
-  if (timeline) {
-    const targetChips = timeline.querySelectorAll("[data-lang-target]");
-    const targetCodeBadge = timeline.querySelector("[data-target-code]");
-    const captionPreview = timeline.querySelector("[data-caption-preview]");
-    const trackTranslated = timeline.querySelector(".track-translated");
-    const playBtn = timeline.querySelector("[data-preview-play]");
-    const timecodeDisplay = timeline.querySelector(".studio-timecode");
-    const modeChips = timeline.querySelectorAll("[data-preview-mode]");
-
-    const cueBlocks = timeline.querySelectorAll(".cue-block");
-    let currentMode = "translated";
-    let isPlaying = false;
-    let timerId = null;
-    const baseSeconds = 1.20;
-    let playbackSeconds = 6.12;
-    const maxSeconds = 14.80;
-
-    const sampleSentences = {
-      de: "»...erzeugt synchronisierte Sprachfassungen in Sekunden.«",
-      en: "»...creating seamless voice dubbing in seconds.«",
-      uk: "»...створює синхронізоване озвучення за секунди.«",
-      es: "»...crea doblajes de voz sincronizados en segundos.«",
-      it: "»...crea doppiaggi vocali sincronizzati in pochi secondi.«",
-      tr: "»...saniyeler içinde senkronize seslendirmeler oluşturur.«",
+  // An illustrative text example; it makes no audio or translation API request.
+  const sample = document.querySelector('[data-translation-preview]');
+  if (sample) {
+    const samples = {
+      en: {name: 'English', text: "It's good to have you here."},
+      es: {name: 'Español', text: 'Qué bien que estés aquí.'},
+      fr: {name: 'Français', text: 'Ça fait plaisir de te voir.'},
     };
-
-    const originalSentence = "»Original Voice (EN): ...and you don't need expensive subscriptions for professional video dubbing.«";
-
-    const changeCaption = (text) => {
-      if (!captionPreview || captionPreview.textContent === text) return;
-      captionPreview.classList.add("is-updating");
-      window.setTimeout(() => {
-        captionPreview.textContent = text;
-        captionPreview.classList.remove("is-updating");
-      }, 120);
+    const label = sample.querySelector('[data-sample-label]');
+    const prefix = label.textContent.split(' · ')[0];
+    const text = sample.querySelector('[data-sample-text]');
+    const code = sample.querySelector('[data-sample-code]');
+    const result = sample.querySelector('[data-sample-result]');
+    const controls = sample.querySelector('.sample-languages');
+    const updateSample = (lang, announce = true) => {
+      const selected = samples[lang];
+      if (!selected) return;
+      label.textContent = prefix + ' · ' + selected.name;
+      text.textContent = selected.text;
+      text.lang = lang;
+      code.textContent = lang.toUpperCase();
+      if (announce) { result.lang = lang; result.textContent = selected.text; }
     };
-
-    const setActiveCue = (cueNum) => {
-      cueBlocks.forEach((b) => {
-        b.classList.toggle("is-active-cue", b.dataset.cue === String(cueNum));
-      });
-    };
-
-    const updatePlaybackState = () => {
-      const activeChip = timeline.querySelector(".target-chip.is-active");
-      const lang = activeChip?.dataset.langTarget || "de";
-
-      if (!isPlaying) {
-        setActiveCue(2);
-        if (currentMode === "original") {
-          changeCaption(originalSentence);
-        } else {
-          changeCaption(sampleSentences[lang] || sampleSentences.de);
-        }
-        return;
-      }
-
-      if (playbackSeconds < 5.0) {
-        setActiveCue(1);
-        if (currentMode === "original") {
-          changeCaption("»Faster-Whisper: Audio-Segment analysiert (EN, 16kHz)...«");
-        } else {
-          changeCaption("»Faster-Whisper: Sprache präzise im Takt erkennen...«");
-        }
-      } else if (playbackSeconds < 11.5) {
-        setActiveCue(2);
-        if (currentMode === "original") {
-          changeCaption(originalSentence);
-        } else {
-          changeCaption(sampleSentences[lang] || sampleSentences.de);
-        }
-      } else {
-        setActiveCue(3);
-        changeCaption("»Export bereit: Neue Sprachspur + Untertitel (.SRT) gesichert.«");
-      }
-    };
-
-    const setMode = (mode) => {
-      currentMode = mode;
-      timeline.setAttribute("data-active-track", mode);
-      modeChips.forEach((chip) => {
-        chip.classList.toggle("is-active", chip.dataset.previewMode === mode);
-      });
-      updatePlaybackState();
-    };
-
-    modeChips.forEach((chip) => {
-      chip.addEventListener("click", () => {
-        setMode(chip.dataset.previewMode);
-      });
+    controls.addEventListener('change', (event) => {
+      if (event.target.matches('input[name="sample-language"]')) updateSample(event.target.value);
     });
-
-    targetChips.forEach((chip) => {
-      chip.addEventListener("click", () => {
-        const lang = chip.dataset.langTarget;
-        targetChips.forEach((c) => c.classList.remove("is-active"));
-        chip.classList.add("is-active");
-        if (targetCodeBadge) targetCodeBadge.textContent = lang.toUpperCase();
-        if (currentMode === "translated") {
-          updatePlaybackState();
-        }
-        if (trackTranslated) {
-          trackTranslated.classList.remove("is-morphing");
-          void trackTranslated.offsetWidth;
-          trackTranslated.classList.add("is-morphing");
-          window.setTimeout(() => {
-            trackTranslated.classList.remove("is-morphing");
-          }, 360);
-        }
-      });
-    });
-
-    const formatTimecode = (secs) => {
-      const minutes = Math.floor(secs / 60);
-      const remainingSecs = Math.floor(secs % 60);
-      const centis = Math.floor((secs % 1) * 100);
-      const mm = String(minutes).padStart(2, "0");
-      const ss = String(remainingSecs).padStart(2, "0");
-      const cc = String(centis).padStart(2, "0");
-      return `00:${mm}:${ss}.${cc} / 00:15:00.00`;
-    };
-
-    if (playBtn) {
-      const playLabel = playBtn.querySelector(".play-label");
-      const togglePlayback = () => {
-        isPlaying = !isPlaying;
-        timeline.classList.toggle("is-playing", isPlaying);
-        if (playLabel) {
-          playLabel.textContent = isPlaying ? "Pause" : "Hörprobe";
-        }
-        if (isPlaying) {
-          playbackSeconds = baseSeconds;
-          if (timecodeDisplay) {
-            timecodeDisplay.textContent = formatTimecode(playbackSeconds);
-          }
-          updatePlaybackState();
-          timerId = window.setInterval(() => {
-            playbackSeconds += 0.08;
-            if (playbackSeconds > maxSeconds) {
-              playbackSeconds = baseSeconds;
-            }
-            if (timecodeDisplay) {
-              timecodeDisplay.textContent = formatTimecode(playbackSeconds);
-            }
-            updatePlaybackState();
-          }, 80);
-        } else {
-          if (timerId) {
-            window.clearInterval(timerId);
-            timerId = null;
-          }
-          playbackSeconds = 6.12;
-          if (timecodeDisplay) {
-            timecodeDisplay.textContent = "00:06:12.08 / 00:15:00.00";
-          }
-          updatePlaybackState();
-        }
-      };
-
-      playBtn.addEventListener("click", togglePlayback);
-    }
-
-    // Initial setup
-    setMode("translated");
+    window.addEventListener('pageshow', () => updateSample(controls.querySelector('input:checked').value, false));
+    controls.hidden = false;
   }
 })();
