@@ -20,7 +20,7 @@
 <link href="/assets/simple.css?v=20261023-1" rel="stylesheet"/>
 <link href="/assets/colab-guide.css?v=20261013-1" rel="stylesheet"/>
 <link href="/assets/editorial.css?v=20261027-2" rel="stylesheet"/>
-<link href="/assets/editorial-guides.css?v=20261027-2" rel="stylesheet"/>
+<link href="/assets/editorial-guides.css?v=20261028-1" rel="stylesheet"/>
 <script>
       document.documentElement.classList.replace("no-js", "has-js");
       try {
@@ -63,7 +63,7 @@
       })();
     </script>
 <script defer="" src="/assets/locale.js?v=20261023-1"></script>
-<script defer="" src="/assets/site.js?v=20261027-2"></script>
+<script defer="" src="/assets/site.js?v=20261028-1"></script>
 </head>
 <body class="colab-start-page editorial">
 <a class="skip-link" href="#main">Переходьте відразу до інструкцій</a>
@@ -110,33 +110,27 @@
 <main class="colab-start-main" id="main">
 <section class="container colab-start-hero">
 <div>
-<p class="section-kicker">Короткий посібник для браузера</p>
-<h1>Запустіть LinguoAI у Google Colab.</h1>
-<p class="colab-start-intro">
-            Відкрийте підготовлений Notebook безпосередньо. Стартова комірка налаштує LinguoAI та покаже посилання на ваш захищений вебінтерфейс.
-          </p>
+<p class="section-kicker">Без встановлення на комп’ютер</p>
+<h1>Ваше перше відео з Google Colab.</h1>
+<p class="colab-start-intro">Відкрийте підготовлену стартову сторінку, запустіть LinguoAI і завантажте відео. Google називає таку сторінку «Notebook». Писати код не потрібно.</p>
 <div class="colab-start-actions">
-<a class="button" data-colab-start="" href="https://colab.research.google.com/github/reinigungsprofileipzig/linguoai-de/blob/main/notebooks/LinguoAI_Colab.ipynb" rel="noopener noreferrer" target="_blank">
-              Запустити в Google Colab <span aria-hidden="true">↗</span>
-</a>
+<a class="button" data-colab-start="" href="https://colab.research.google.com/github/reinigungsprofileipzig/linguoai-de/blob/main/notebooks/LinguoAI_Colab.ipynb" rel="noopener noreferrer" target="_blank">Запустити в Google Colab <span aria-hidden="true">↗</span></a>
 </div>
-<p class="colab-start-note">
-            Потрібен обліковий запис Google. Налаштування виконується в Colab, а не на вашому комп’ютері. Під час першого запуску передбачте час на встановлення та завантаження моделей.
-          </p>
+<p class="colab-start-note">Залиште цю інструкцію відкритою поруч. Налаштування й перший переклад можуть тривати кілька хвилин.</p>
 </div>
 <aside aria-label="Швидкий огляд" class="colab-start-summary">
-<span class="panel-label">Це те, що вам потрібно</span>
+<span class="panel-label">Підготуйте ці три речі</span>
 <ul>
-<li>обліковий запис Google</li>
-<li>коротке тестове відео</li>
-<li>активне підключення до Інтернету</li>
+<li>ваш обліковий запис Google</li>
+<li>коротке відео з мовленням, приблизно на 10–30 секунд</li>
+<li>підключення до інтернету</li>
 </ul>
-<p>Стандартні налаштування вже підготовлено. GPU та Google Drive необов’язкові.</p>
+<p>Для такого початку роботи не потрібні Google Drive і спеціальна відеокарта.</p>
 </aside>
 </section>
 <aside aria-labelledby="policy-title" class="container colab-policy">
-<h2 id="policy-title">Доступність і вартість</h2>
-<p>Google обмежує переважне використання зовнішніх вебінтерфейсів у безкоштовних сеансах Colab без позитивного балансу Compute. Перед запуском перевірте умови Colab.</p>
+<h2 id="policy-title">Перед початком: Colab може бути платним</h2>
+<p>Для роботи через вебінтерфейс LinguoAI Google вимагає платного тарифу з додатним залишком обчислювальних одиниць (Compute). Час сеансу та продуктивність однаково обмежені.</p>
 <div class="colab-policy-links">
 <a class="text-link" href="https://research.google.com/colaboratory/faq.html" rel="noopener noreferrer" target="_blank">Прочитати умови Colab <span aria-hidden="true">↗</span></a>
 <a class="text-link" href="/uk/anleitung.html#desktop">Або встановити локально <span aria-hidden="true">→</span></a>
@@ -145,38 +139,38 @@
 <section aria-labelledby="guide-title" class="container colab-start-guide">
 <div class="colab-start-heading">
 <p class="section-kicker">Крок за кроком</p>
-<h2 id="guide-title">Три кроки. Ваш результат.</h2>
+<h2 id="guide-title">П’ять кроків до готового відео.</h2>
 </div>
-<ol class="colab-start-steps">
+<ol class="colab-start-steps beginner-steps">
 <li>
-<div class="step-card-header">
-<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>01</span>
-<span aria-hidden="true" class="step-watermark">01</span>
-</div>
-<div>
-<strong>Відкрити й запустити Notebook</strong>
-<p>Натисніть «Запустити в Google Colab» вище та увійдіть у Google. У Notebook оберіть «Середовище виконання → Виконати все». Стартова комірка встановить LinguoAI; дочекайтеся посилання й облікових даних.</p>
-</div>
+<div class="step-card-header"><span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>01</span><span aria-hidden="true" class="step-watermark">01</span></div>
+<div><h3>Відкрийте стартову сторінку</h3>
+<p>Натисніть «Запустити в Google Colab» вище та увійдіть в обліковий запис Google.</p>
+<p class="step-result"><strong>Ви побачите:</strong> сторінку із заголовком «LinguoAI» і кнопкою запуску ▶ поруч із підготовленою програмою.</p></div>
 </li>
 <li>
-<div class="step-card-header">
-<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>02</span>
-<span aria-hidden="true" class="step-watermark">02</span>
-</div>
-<div>
-<strong>Обрати відео та мову</strong>
-<p>Відкрийте отримане посилання Gradio та увійдіть за показаними обліковими даними. Завантажте коротке відео, оберіть мову перекладу й запустіть завдання. Для першого тесту решту налаштувань можна залишити без змін.</p>
-</div>
+<div class="step-card-header"><span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>02</span><span aria-hidden="true" class="step-watermark">02</span></div>
+<div><h3>Натисніть ▶ один раз і зачекайте</h3>
+<p>Натисніть кнопку запуску ліворуч від програми. Залиште всі налаштування без змін. Якщо Colab запитає, підтвердьте запуск цього Notebook LinguoAI.</p>
+<p class="step-result"><strong>Ви побачите:</strong> спочатку повідомлення про встановлення, потім <span data-i18n-ignore="">„LinguoAI-Anmeldung“</span> з ім’ям користувача й паролем, а потім <span data-i18n-ignore="">„Dynamischer Gradio-Link“</span>. Комірка продовжує працювати — так і має бути.</p></div>
 </li>
 <li>
-<div class="step-card-header">
-<span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>03</span>
-<span aria-hidden="true" class="step-watermark">03</span>
-</div>
-<div>
-<strong>Зберегти результати</strong>
-<p>Завантажте відео з новим озвученням і обидва файли субтитрів або збережіть їх у Google Drive. Під час обробки комірка Notebook має залишатися активною; після завершення сеансу посилання й тимчасові файли стануть недоступними.</p>
-</div>
+<div class="step-card-header"><span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>03</span><span aria-hidden="true" class="step-watermark">03</span></div>
+<div><h3>Відкрийте LinguoAI та увійдіть</h3>
+<p>Відкрийте адресу після <span data-i18n-ignore="">„Dynamischer Gradio-Link“</span>. Введіть ім’я користувача <code>linguoai</code> і скопіюйте пароль зі стартової сторінки. Ваш пароль Google тут не потрібен.</p>
+<p class="step-result"><strong>Ви побачите:</strong> сторінку LinguoAI з полем для завантаження відео. Вкладку Colab теж залиште відкритою.</p></div>
+</li>
+<li>
+<div class="step-card-header"><span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>04</span><span aria-hidden="true" class="step-watermark">04</span></div>
+<div><h3>Виберіть і перекладіть відео</h3>
+<p>Завантажте тестове відео в полі <span data-i18n-ignore="">„Videos direkt hochladen“</span> . Виберіть потрібну мову в полі <span data-i18n-ignore="">„Zielsprache“</span> а в полі <span data-i18n-ignore="">„Übersetzung“</span> виберіть <span data-i18n-ignore="">„Google Translate“</span>. Решту залиште без змін і натисніть <span data-i18n-ignore="">„Batch verarbeiten“</span>. Ця кнопка запускає обробку й одного відео.</p>
+<p class="step-result"><strong>Ви побачите:</strong> перебіг обробки в полі <span data-i18n-ignore="">„Status“</span>. Для першого відео також завантажаться мовні моделі. Дочекайтеся файлів із результатами.</p></div>
+</li>
+<li>
+<div class="step-card-header"><span class="step-pill" data-i18n-ignore=""><span class="step-dot"></span>05</span><span aria-hidden="true" class="step-watermark">05</span></div>
+<div><h3>Збережіть готове відео</h3>
+<p>Відкрийте розділ <span data-i18n-ignore="">„Ergebnisse herunterladen“</span> і збережіть нове відео та обидва файли субтитрів на комп’ютер. Відкрийте відео й послухайте невеликий уривок.</p>
+<p class="step-result"><strong>Готово:</strong> Файли тепер на вашому комп’ютері. Тепер можна завершити сеанс Colab. Незбережені файли після цього можуть бути втрачені.</p></div>
 </li>
 </ol>
 </section>
@@ -184,24 +178,38 @@
 <article>
 <span class="service-badge"><span aria-hidden="true" class="badge-dot"></span>ВАШ РЕЗУЛЬТАТ</span>
 <h2>Відео й субтитри.</h2>
-<p>Нова звукова доріжка повністю замінює попередній звук, зокрема музику й фонові шуми. Синхронізації рухів губ і автоматичного зіставлення кількох мовців не передбачено.</p>
+<p>Нова мовна доріжка повністю замінює початковий звук, зокрема музику й фонові шуми. Рухи губ у відео не змінюються. Різним людям не призначаються різні голоси автоматично.</p>
 </article>
 <article>
 <span class="service-badge"><span aria-hidden="true" class="badge-dot"></span>ВАШІ ДАНІ</span>
-<h2>Обирайте свідомо.</h2>
-<p>Colab обробляє файли в тимчасовому середовищі Google. Онлайн-перекладачі та онлайн-голоси отримують тексти, потрібні для їхньої роботи. Використовуйте лише відео й голоси, на які ви маєте необхідні права.</p>
+<h2>Що обробляється онлайн.</h2>
+<p>Ваше відео обробляється в Google Colab. За описаних налаштувань Google Translate та онлайн-сервіс озвучення отримують потрібні їм тексти. Використовуйте лише ті відео й голоси, на які у вас є необхідні права.</p>
 </article>
 </section>
 <section aria-labelledby="help-title" class="container colab-help">
-<h2 id="help-title">Коли потрібно більше.</h2>
+<h2 id="help-title">Допомога, якщо щось не виходить.</h2>
+<details>
+<summary>Посилання поки не з’явилося</summary>
+<p>Прокрутіть сторінку до самого кінця під програмою. Поки з’являються нові повідомлення про встановлення, Colab продовжує працювати. Не натискайте кнопку запуску ще раз: під час роботи вона стає кнопкою зупинки.</p>
+<p>Якщо наприкінці з’явиться помилка, прочитайте її останні рядки. Якщо Colab повідомляє, що бракує обчислювальних одиниць або досягнуто ліміту використання, перевірте свій тариф. Перезапуск не знімає цих обмежень.</p>
+</details>
+<details>
+<summary>Пароль не підходить</summary>
+<p>Використовуйте ім’я користувача <code>linguoai</code> і пароль після <code>Passwort=</code> на поточній стартовій сторінці, без зайвих пробілів. Після кожного перезапуску створюється новий пароль.</p>
+</details>
+<details>
+<summary>Посилання перестало працювати або сеанс завершився</summary>
+<p>Посилання працює, лише поки триває сеанс Colab. Запустіть програму знову та скористайтеся новим посиланням і новим паролем. За потреби завантажте відео ще раз. Результати, які ви не зберегли, можуть бути втрачені.</p>
+</details>
 <details>
 <summary>Пряме посилання на Notebook не працює</summary>
-<p>Ви також можете завантажити Notebook і відкрити його в Google Colab через «Файл → Відкрити Notebook → Завантажити».</p>
+<p>Завантажте файл Notebook нижче. Відкрийте Google Colab і виберіть «Файл → Відкрити Notebook → Завантажити». Виберіть завантажений файл і продовжте з кроку 2.</p>
 <a class="text-link" download="" href="https://linguoai.de/downloads/LinguoAI_Colab.ipynb">Завантажити Notebook <span aria-hidden="true">↓</span></a>
 </details>
 <details>
 <summary>Використати кілька відео або Google Drive</summary>
-<p>Кілька відео обробляються по черзі. Їх можна завантажити разом або вказати відносні шляхи до файлів MyDrive, по одному в рядку. Для використання Drive спочатку увімкніть відповідне налаштування в Notebook.</p>
+<p>Можна завантажити відразу кілька відео. LinguoAI обробить їх по черзі.</p>
+<p>Щоб використовувати Google Drive, перед запуском увімкніть у Notebook параметр <code>MOUNT_GOOGLE_DRIVE</code> і підтвердьте дозвіл на доступ у Google. Після цього в полі <span data-i18n-ignore="">„Alternativ: MyDrive-Pfade, ein Video pro Zeile“</span> можна вводити шляхи до файлів відносно MyDrive. За допомогою <span data-i18n-ignore="">„Ergebnisse in MyDrive kopieren“</span> можна також зберегти результати в Drive.</p>
 <p>За замовчуванням Gradio дозволяє до 5 ГБ на файл. Для великих відео можна використовувати Google Drive; доступний час роботи й обсяг сховища залишаються обмеженими.</p>
 </details>
 <details>

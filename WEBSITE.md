@@ -9,8 +9,8 @@ Start ebenfalls über `https://linguoai.de/`.
 ## Struktur
 
 - `index.html`: Einstieg mit Versionsvergleich, Nutzen, Ablauf, Downloads und häufigen Fragen
-- `colab.html`: direkter Notebook-Start und kurze Drei-Schritt-Anleitung
-- `anleitung.html`: lokale Installation, Stimmen, CLI, Hardware und optionaler Cloudflare Tunnel
+- `colab.html`: direkter Notebook-Start und fünf Schritte bis zum gespeicherten Video
+- `anleitung.html`: Windows-Einrichtung in fünf Schritten, erstes Video, Hilfe und aufklappbare Zusatzoptionen
 - `assets/simple.css`: gemeinsames responsives Design für Startseite und Anleitungen
 - `assets/editorial.css`: gemeinsame Farb- und Typografietokens, Sprachbeispiel, Versionsvergleich und öffentliche Layouts
 - `assets/editorial-guides.css`: Leselayouts, Einrichtungsschritte und Codebeispiele für beide Anleitungen
@@ -102,3 +102,20 @@ Startseiten zusätzlich bei 760, 1060 und deutscher Desktopansicht, Versionsfilt
 Tastatur, Sprachwechsel mit Versionsauswahl, Mobilmenü und Hell-/Dunkelschema.
 Die lokale Studio-Vorschau zeigt ohne API den erwarteten Verbindungsfehler;
 eine echte Videoübersetzung war nicht Bestandteil der Designprüfung.
+
+## Einfache Anleitungen
+
+Überarbeitet am 29. Oktober 2026: Beide Anleitungen nennen pro Schritt die konkrete
+Aktion und das erkennbare Ergebnis. Die Windows-Anleitung richtet Python 3.11 und
+FFmpeg ein, bietet einen Kopierknopf pro Befehl und startet die virtuelle Umgebung
+direkt ohne PowerShell-Aktivierung. Der erste Videoauftrag nennt die tatsächlichen
+Feldnamen und den Weg zur CPU-Einstellung. Colab erklärt Anmeldung, Wartezeit,
+Videoauswahl und das rechtzeitige Herunterladen der Ergebnisse.
+
+Zusatzoptionen bleiben aufklappbar; bestehende Direktlinks öffnen den passenden
+Abschnitt automatisch. Alle sieben Sprachfassungen wurden aktualisiert.
+Geprüft: 19 Website-Tests, 14 Anleitungsseiten bei 320 px ohne Seitenüberlauf,
+Desktopdarstellung, Kopierbestätigung mit ausgelesener Zwischenablage, Direktlinks,
+aufklappbare Hilfe und dunkles Farbschema. Die Anleitung wurde mit dem Code und
+dem Download-ZIP abgeglichen; eine neue Softwareinstallation oder vollständige
+Colab-Übersetzung war nicht Teil dieser Dokumentationsprüfung.

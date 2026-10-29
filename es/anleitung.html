@@ -27,7 +27,7 @@
 <link href="/assets/simple.css?v=20261023-1" rel="stylesheet"/>
 <link href="/assets/guide.css?v=20261013-1" rel="stylesheet"/>
 <link href="/assets/editorial.css?v=20261027-2" rel="stylesheet"/>
-<link href="/assets/editorial-guides.css?v=20261027-2" rel="stylesheet"/>
+<link href="/assets/editorial-guides.css?v=20261028-1" rel="stylesheet"/>
 <script>
       document.documentElement.classList.replace("no-js", "has-js");
       try {
@@ -59,7 +59,7 @@
       })();
     </script>
 <script defer="" src="/assets/locale.js?v=20261023-1"></script>
-<script defer="" src="/assets/site.js?v=20261027-2"></script>
+<script defer="" src="/assets/site.js?v=20261028-1"></script>
 </head>
 <body class="guide-page editorial">
 <a class="skip-link" href="#main">Ir directamente al contenido</a>
@@ -104,52 +104,76 @@
 </header>
 <main class="container guide-main" id="main">
 <div class="guide-intro">
-<p class="section-kicker">Para usuarios avanzados</p>
-<h1>Instalación y opciones avanzadas</h1>
-<p>No es necesario conocer todas las configuraciones para comenzar. Si necesita más control más adelante, encontrará todo el alcance aquí, sin promesas ocultas.</p>
+<p class="section-kicker">paso a paso</p>
+<h1>Prepara LinguoAI en tu PC.</h1>
+<p>Aquí verás dónde hacer clic, qué escribir y cómo saber que has terminado. Empieza por el paso 1. Encontrarás más opciones al final de la página.</p>
 <div class="guide-actions">
-<a class="button" href="#desktop">Configurar la aplicación de escritorio</a>
+<a class="button" href="#desktop">Empezar por el paso 1</a>
 <a class="text-link" href="/es/colab.html">Abrir el manual de Colab <span aria-hidden="true">→</span></a>
 <a class="text-link" href="/es/#versionen">Encontrar tu versión <span aria-hidden="true">→</span></a>
 </div>
 </div>
-<nav aria-label="En esta página" class="guide-toc">
-<a href="#desktop">Instalar localmente</a>
-<a href="#stimmen">Voces</a>
-<a href="#spracherkennung">Reconocimiento de voz</a>
-<a href="#cli">línea de comando</a>
-<a href="#hardware">CPU / GPU</a>
-<a href="#details">Todas las funciones en detalle</a>
-<a href="#cloudflare">Cloudflare opcional</a>
-<a href="#webversion">Navegador y servidor</a>
-</nav>
+<nav aria-label="En esta página" class="guide-toc"><a href="#desktop">Instalación</a><a href="#erstes-video">Primer vídeo</a><a href="#installationshilfe">Ayuda</a><a href="#mehr-optionen">Más opciones</a></nav>
 <section aria-labelledby="desktop-title" class="guide-section" id="desktop">
-<p class="section-kicker">Windows y Linux</p>
-<h2 id="desktop-title">Instalar localmente</h2>
-<p>Necesita Python 3.10 o posterior, así como FFmpeg y ffprobe. Se recomienda Python 3.11 para Chatterbox. Luego abra un nuevo PowerShell.</p>
-<p><a class="text-link" download="" href="/downloads/LinguoAI-2.2.1-source.zip">Cargar versión 2.2.1 ↓</a></p>
-<p>Descargue, descomprima completamente y luego siga las instrucciones locales.</p>
-<div class="code-card">
-<div class="code-card-head">
-<span>PowerShell · Configuración básica</span>
-<button class="copy-button" data-copy="desktop-code" type="button"><span aria-hidden="true" class="copy-icon">⧉</span><span data-copy-label="">Copiar</span></button>
-</div>
-<pre id="desktop-code"><code><span class="code-comment"># FFmpeg einmalig installieren</span>
-winget install --id Gyan.FFmpeg --exact
-
-<span class="code-comment"># Im entpackten Projektordner ausführen; Pfad anpassen</span>
-cd <span class="code-string">"C:\Pfad\zu\LinguoAI-2.2.1"</span>
-py -3.11 -m venv .venv
-.\.venv\Scripts\Activate.ps1
-
-python -m pip install --upgrade pip
-python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
-python -m pip install -e <span class="code-string">".[desktop]"</span>
-ffmpeg -version
-ffprobe -version
-python -m linguoai</code></pre>
-<p class="code-note">El ejemplo configura deliberadamente la versión CPU. Para NVIDIA, primero seleccione el comando apropiado en <a href="https://pytorch.org/get-started/locally/" rel="noopener noreferrer" target="_blank">Asistente de instalación PyTorch</a>. Edge TTS y gTTS ya están incluidos. Para Piper usted instala <code>.[desktop,piper]</code>, para Chatterbox en su propio entorno <code>.[desktop,voice-clone]</code>.</p>
-</div>
+<p class="section-kicker">Preparar una sola vez</p>
+<h2 id="desktop-title">Instalar en tu PC con Windows</h2>
+<p>Necesitas un PC con Windows, conexión a Internet y varios gigabytes de espacio libre. Aún no hay un instalador listo para usar. Los pasos siguientes preparan el programa. No necesitas saber programar.</p>
+<ol class="beginner-steps install-steps">
+<li><div class="step-card-header"><span class="step-pill">01</span></div><div>
+<h3>Instalar dos programas auxiliares</h3>
+<p>Abre el menú Inicio de Windows y escribe <kbd>PowerShell</kbd> y abre el programa. Copia las siguientes líneas por separado y pulsa Intro después de cada una. Espera a que termine la instalación antes de pasar a la siguiente.</p>
+<div class="code-card"><div class="code-card-head"><span>PowerShell</span></div><div class="command-row"><pre id="requirements-code"><code>winget install --id Python.Python.3.11 --exact --source winget</code></pre><button class="copy-button" data-copy="requirements-code" type="button"><span data-copy-label="">Copiar</span></button></div><div class="command-row"><pre id="requirements-code-1"><code>winget install --id Gyan.FFmpeg --exact --source winget</code></pre><button class="copy-button" data-copy="requirements-code-1" type="button"><span data-copy-label="">Copiar</span></button></div></div>
+<p>Python ejecuta LinguoAI. FFmpeg lee y crea vídeos. Si Windows pide confirmación, comprueba que corresponde a esta instalación.</p>
+<p class="step-result">¿Listo? Las dos instalaciones indican que han terminado correctamente o que el programa ya está instalado. Ahora cierra PowerShell.</p>
+</div></li>
+<li><div class="step-card-header"><span class="step-pill">02</span></div><div>
+<h3>Descargar y descomprimir LinguoAI</h3>
+<p>Descarga el archivo ZIP. En la carpeta de descargas, haz clic sobre él con el botón derecho y elige «Extraer todo». Después abre la carpeta descomprimida.</p>
+<p><a class="button button-secondary" download="" href="/downloads/LinguoAI-2.2.1-source.zip">Descargar LinguoAI 2.2.1 ↓</a></p>
+<p class="step-result">Estás en el lugar correcto si ves el archivo <code>pyproject.toml</code> y la carpeta <code>linguoai</code> en esa carpeta.</p>
+</div></li>
+<li><div class="step-card-header"><span class="step-pill">03</span></div><div>
+<h3>Empezar en la carpeta correcta</h3>
+<p>En la carpeta abierta, haz clic arriba en la barra de direcciones. Escribe <kbd>powershell</kbd> y pulsa Intro. Se abrirá una ventana nueva. Copia estas tres líneas de comprobación una por una:</p>
+<div class="code-card"><div class="code-card-head"><span>PowerShell</span></div><div class="command-row"><pre id="check-code"><code>py -3.11 --version</code></pre><button class="copy-button" data-copy="check-code" type="button"><span data-copy-label="">Copiar</span></button></div><div class="command-row"><pre id="check-code-1"><code>ffmpeg -version</code></pre><button class="copy-button" data-copy="check-code-1" type="button"><span data-copy-label="">Copiar</span></button></div><div class="command-row"><pre id="check-code-2"><code>ffprobe -version</code></pre><button class="copy-button" data-copy="check-code-2" type="button"><span data-copy-label="">Copiar</span></button></div></div>
+<p class="step-result">Verás Python 3.11 y otros dos números de versión. Si aparece «no se encuentra», consulta la ayuda de abajo antes de continuar.</p>
+</div></li>
+<li><div class="step-card-header"><span class="step-pill">04</span></div><div>
+<h3>Preparar LinguoAI</h3>
+<p>Sigue en esta ventana. Copia cada línea por separado y pulsa Intro. Espera cada vez hasta que puedas volver a escribir. La primera vez se descargarán archivos grandes.</p>
+<div class="code-card"><div class="code-card-head"><span>PowerShell</span></div><div class="command-row"><pre id="desktop-code"><code>py -3.11 -m venv .venv</code></pre><button class="copy-button" data-copy="desktop-code" type="button"><span data-copy-label="">Copiar</span></button></div><div class="command-row"><pre id="desktop-code-1"><code>.\.venv\Scripts\python.exe -m pip install --upgrade pip</code></pre><button class="copy-button" data-copy="desktop-code-1" type="button"><span data-copy-label="">Copiar</span></button></div><div class="command-row"><pre id="desktop-code-2"><code>.\.venv\Scripts\python.exe -m pip install torch --index-url https://download.pytorch.org/whl/cpu</code></pre><button class="copy-button" data-copy="desktop-code-2" type="button"><span data-copy-label="">Copiar</span></button></div><div class="command-row"><pre id="desktop-code-3"><code>.\.venv\Scripts\python.exe -m pip install -e ".[desktop]"</code></pre><button class="copy-button" data-copy="desktop-code-3" type="button"><span data-copy-label="">Copiar</span></button></div></div>
+<p class="step-result">¿Ha terminado sin errores? La preparación está lista. Solo tienes que hacerla una vez.</p>
+</div></li>
+<li><div class="step-card-header"><span class="step-pill">05</span></div><div>
+<h3>Abrir el programa</h3>
+<p>Copia esta línea en la misma ventana:</p>
+<div class="code-card"><div class="code-card-head"><span>PowerShell</span></div><div class="command-row"><pre id="launch-code"><code>.\.venv\Scripts\python.exe -m linguoai</code></pre><button class="copy-button" data-copy="launch-code" type="button"><span data-copy-label="">Copiar</span></button></div></div>
+<p class="step-result">Se abre la ventana de LinguoAI. Deja PowerShell abierto mientras uses LinguoAI.</p>
+</div></li>
+</ol>
+</section>
+<section aria-labelledby="first-video-title" class="guide-section" id="erstes-video">
+<p class="section-kicker">Probar ahora</p><h2 id="first-video-title">Tu primer vídeo traducido</h2>
+<p>Empieza con un vídeo corto en el que se hable con claridad, por ejemplo de 30 segundos.</p>
+<ol class="plain-steps">
+<li>En <span data-i18n-ignore="">„Start“</span> haz clic en <span data-i18n-ignore="">„Datei …“</span> y selecciona tu vídeo.</li>
+<li>Elige el idioma que quieras en <span data-i18n-ignore="">„Zielsprache“</span> . El idioma original se puede detectar automáticamente.</li>
+<li>Para esta primera prueba, elige «Google Translate · online» y «Edge TTS · online».</li>
+<li>Abre «Erweitert» → «Leistung». En «Hardware für Spracherkennung», elige «Nur CPU». Después vuelve a «Start». Puedes dejar los demás ajustes como están.</li>
+<li>Haz clic en <span data-i18n-ignore="">„Verarbeitung starten“</span> . La primera vez, LinguoAI también descarga el modelo de reconocimiento de voz. Puede tardar un poco.</li>
+<li>Cuando veas <span data-i18n-ignore="">„FERTIG“</span> haz clic en <span data-i18n-ignore="">„Video öffnen“</span> . Desde <span data-i18n-ignore="">„Ordner öffnen“</span> encontrarás el vídeo y los dos archivos de subtítulos.</li>
+</ol>
+<aside class="guide-note"><strong>Conviene saberlo</strong><p>En esta prueba sencilla, Google y Microsoft reciben texto para traducirlo y generar la voz. La voz nueva sustituye todo el sonido anterior, incluida la música. Tu archivo original se conserva.</p></aside>
+</section>
+<section aria-labelledby="setup-help-title" class="guide-section" id="installationshilfe">
+<h2 id="setup-help-title">Si no puedes continuar</h2>
+<details class="guide-detail"><summary>¿Cómo abro LinguoAI la próxima vez?</summary><div><p>Vuelve a abrir la carpeta descomprimida de LinguoAI. Escribe en la barra de direcciones de arriba <kbd>powershell</kbd>. Ejecuta solo el comando del paso 5. No tienes que repetir la instalación.</p></div></details>
+<details class="guide-detail"><summary>No se encuentra «winget»</summary><div><p>Instala o actualiza «Instalador de aplicación» de Microsoft desde Microsoft Store. Después, vuelve a abrir PowerShell y repite el paso 1.</p><a class="text-link" href="https://learn.microsoft.com/de-de/windows/package-manager/winget/" rel="noopener noreferrer" target="_blank">Abrir la guía de Microsoft ↗</a></div></details>
+<details class="guide-detail"><summary>No se encuentra Python o FFmpeg</summary><div><p>Cierra PowerShell y vuelve a abrirlo como en el paso 3. Si no basta, reinicia el PC y vuelve a comprobar las tres líneas. Para seguir esta guía debes tener Python 3.11 instalado.</p></div></details>
+<details class="guide-detail"><summary>Un comando muestra un error</summary><div><p>No ejecutes todavía la siguiente línea. Comprueba primero que estás en la carpeta descomprimida que contiene <code>pyproject.toml</code> y de que has copiado la línea completa. Guarda el texto exacto del error por si necesitas ayuda.</p></div></details>
+<details class="guide-detail"><summary>Tarda mucho o el vídeo no termina</summary><div><p>La primera vez se descargan los modelos. Deja la ventana abierta y comprueba si el proceso avanza. Si LinguoAI muestra un error, lee el mensaje en el registro. Después, prueba con un vídeo más corto.</p></div></details>
+</section>
+<details class="guide-detail guide-advanced" id="mehr-optionen"><summary>Más opciones: Linux, voces locales y más</summary><div>
 <details class="guide-detail">
 <summary>Linux</summary>
 <div>
@@ -166,19 +190,6 @@ ffprobe -version
 python -m linguoai</code></pre>
 </div>
 </details>
-<details class="guide-detail">
-<summary>Tu primera tarea en la interfaz</summary>
-<div>
-<ol>
-<li><strong>Seleccionar vídeo</strong><p>Haga clic en "Archivo..." en "Inicio". Se sugiere la ruta de destino.</p></li>
-<li><strong>Establecer idiomas</strong><p>elegir el idioma de destino; el idioma de origen puede reconocerse automáticamente.</p></li>
-<li><strong>Elige traductor</strong><p>Para locales: NLLB. Para una prueba rápida: Google. DeepL/Gemini necesitan su clave; la optimización separada Gemini también.</p></li>
-<li><strong>determinar la voz</strong><p>Pruebe Edge o gTTS inmediatamente; Configure Piper o Chatterbox en "Avanzado".</p></li>
-<li><strong>Iniciar procesamiento</strong><p>monitorear el progreso; al final del video y ambos archivos SRT se abren directamente.</p></li>
-</ol>
-</div>
-</details>
-</section>
 <section aria-labelledby="voices-title" class="guide-section" id="stimmen">
 <p class="section-kicker">Cuatro formas de obtener una pista de voz</p>
 <h2 id="voices-title">Comparar voces</h2>
@@ -193,9 +204,9 @@ python -m linguoai</code></pre>
 <summary>Agregue Piper localmente</summary>
 <div>
 <p>Instale en el mismo entorno virtual y luego cargue una voz adecuada:</p>
-<pre><code>python -m pip install -e ".[desktop,piper]"
+<pre><code>.\.venv\Scripts\python.exe -m pip install -e ".[desktop,piper]"
 New-Item -ItemType Directory -Force ".\Stimmen"
-python -m piper.download_voices --download-dir ".\Stimmen" de_DE-thorsten-medium</code></pre>
+.\.venv\Scripts\python.exe -m piper.download_voices --download-dir ".\Stimmen" de_DE-thorsten-medium</code></pre>
 <p>Piper: ONNX más JSON coincidente, ID de altavoz opcional y velocidad de conversación ajustable.</p>
 </div>
 </details>
@@ -204,10 +215,9 @@ python -m piper.download_voices --download-dir ".\Stimmen" de_DE-thorsten-medium
 <div>
 <p>Debido a las dependencias de audio/antorcha, se recomienda un entorno Python-3.11 dedicado:</p>
 <pre><code>py -3.11 -m venv .venv-chatterbox
-.\.venv-chatterbox\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-python -m pip install -e ".[desktop,voice-clone]"
-python -m linguoai</code></pre>
+.\.venv-chatterbox\Scripts\python.exe -m pip install --upgrade pip
+.\.venv-chatterbox\Scripts\python.exe -m pip install -e ".[desktop,voice-clone]"
+.\.venv-chatterbox\Scripts\python.exe -m linguoai</code></pre>
 <ul>
 <li>6-10 segundos, una persona, poca reverberación, sin música ni ruido de fondo.</li>
 <li>Descarga del modelo de aproximadamente 3,7 GB; CPU es posible, pero muy lento para vídeos más largos.</li>
@@ -231,7 +241,7 @@ python -m linguoai</code></pre>
 <span>PowerShell · Piper localmente</span>
 <button class="copy-button" data-copy="cli-code" type="button"><span aria-hidden="true" class="copy-icon">⧉</span><span data-copy-label="">Copiar</span></button>
 </div>
-<pre id="cli-code"><code>python -m linguoai `
+<pre id="cli-code"><code>.\.venv\Scripts\python.exe -m linguoai `
   --input "C:\Videos\quelle.mp4" `
   --output "C:\Videos\quelle.de.mp4" `
   --language de `
@@ -242,7 +252,7 @@ python -m linguoai</code></pre>
   --tts-device cpu `
   --piper-model "C:\Stimmen\de_DE-thorsten-medium.onnx" `
   --piper-config "C:\Stimmen\de_DE-thorsten-medium.onnx.json"</code></pre>
-<p class="code-note">Ver todas las opciones: <code>python -m linguoai --help</code></p>
+<p class="code-note">Ver todas las opciones: <code>.\.venv\Scripts\python.exe -m linguoai --help</code></p>
 </div>
 <details class="guide-detail">
 <summary>Python-Wheel</summary>
@@ -282,8 +292,8 @@ python -m linguoai</code></pre>
 <summary>Configurar Parakeet</summary>
 <div>
 <p>Instala el paquete opcional y prepara una carpeta con un modelo compatible. Los modelos no se descargan automáticamente.</p>
-<pre><code>python -m pip install -e ".[parakeet]"
-python -m linguoai --help</code></pre>
+<pre><code>.\.venv\Scripts\python.exe -m pip install -e ".[parakeet]"
+.\.venv\Scripts\python.exe -m linguoai --help</code></pre>
 <p>Usa la carpeta completa del modelo sherpa-onnx con encoder, decoder, joiner y archivo de tokens. Para la exportación alemana, conserva también el archivo externo del encoder si forma parte del modelo.</p>
 <p>En la aplicación de escritorio y en Colab, elige el motor de reconocimiento de voz, el perfil y la carpeta del modelo. Indica explícitamente el idioma de origen para que la traducción reciba el código de idioma correcto. Parakeet transcribe; después se aplican la traducción y la voz elegidas.</p>
 <p><a href="https://k2-fsa.github.io/sherpa/onnx/pretrained_models/offline-transducer/nemo-transducer-models.html">Modelos y configuración de sherpa-onnx ↗</a> · <a href="https://huggingface.co/primeline/parakeet-primeline">Ficha del modelo primeline ↗</a></p>
@@ -390,6 +400,7 @@ python -m linguoai --help</code></pre>
 </details>
 <p><a class="text-link" href="/es/colab.html">Abrir el manual de Colab <span aria-hidden="true">→</span></a></p>
 </section>
+</div></details>
 </main>
 <footer class="site-footer">
 <div class="container footer-main">

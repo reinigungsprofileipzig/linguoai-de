@@ -27,7 +27,7 @@
 <link href="/assets/simple.css?v=20261023-1" rel="stylesheet"/>
 <link href="/assets/guide.css?v=20261013-1" rel="stylesheet"/>
 <link href="/assets/editorial.css?v=20261027-2" rel="stylesheet"/>
-<link href="/assets/editorial-guides.css?v=20261027-2" rel="stylesheet"/>
+<link href="/assets/editorial-guides.css?v=20261028-1" rel="stylesheet"/>
 <script>
       document.documentElement.classList.replace("no-js", "has-js");
       try {
@@ -59,7 +59,7 @@
       })();
     </script>
 <script defer="" src="/assets/locale.js?v=20261023-1"></script>
-<script defer="" src="/assets/site.js?v=20261027-2"></script>
+<script defer="" src="/assets/site.js?v=20261028-1"></script>
 </head>
 <body class="guide-page editorial">
 <a class="skip-link" href="#main">Перейти безпосередньо до вмісту</a>
@@ -104,52 +104,76 @@
 </header>
 <main class="container guide-main" id="main">
 <div class="guide-intro">
-<p class="section-kicker">Для досвідчених користувачів</p>
-<h1>Встановлення та додаткові можливості</h1>
-<p>Вам не потрібно знати всі параметри, щоб почати. Якщо пізніше вам знадобиться більше контролю, ви знайдете тут повний спектр без будь-яких прихованих обіцянок.</p>
+<p class="section-kicker">Крок за кроком</p>
+<h1>Налаштуйте LinguoAI на своєму комп’ютері.</h1>
+<p>Тут показано, куди натиснути, що ввести і як зрозуміти, що все готово. Почніть із кроку 1. Додаткові можливості розташовані внизу сторінки.</p>
 <div class="guide-actions">
-<a class="button" href="#desktop">Налаштувати Desktop</a>
+<a class="button" href="#desktop">Почати з кроку 1</a>
 <a class="text-link" href="/uk/colab.html">Відкрийте посібник Colab <span aria-hidden="true">→</span></a>
 <a class="text-link" href="/uk/#versionen">Знайти версію <span aria-hidden="true">→</span></a>
 </div>
 </div>
-<nav aria-label="На цій сторінці" class="guide-toc">
-<a href="#desktop">Встановити локально</a>
-<a href="#stimmen">Голоси</a>
-<a href="#spracherkennung">Розпізнавання мовлення</a>
-<a href="#cli">Командний рядок</a>
-<a href="#hardware">CPU / GPU</a>
-<a href="#details">Усі функції докладно</a>
-<a href="#cloudflare">Cloudflare за бажанням</a>
-<a href="#webversion">Браузер і сервер</a>
-</nav>
+<nav aria-label="На цій сторінці" class="guide-toc"><a href="#desktop">Встановлення</a><a href="#erstes-video">Перше відео</a><a href="#installationshilfe">Допомога</a><a href="#mehr-optionen">Інші можливості</a></nav>
 <section aria-labelledby="desktop-title" class="guide-section" id="desktop">
-<p class="section-kicker">Windows і Linux</p>
-<h2 id="desktop-title">Встановити локально</h2>
-<p>Вам потрібні Python 3.10 або новіша версія, а також FFmpeg і ffprobe. Python 3.11 рекомендовано для Chatterbox. Потім відкрийте новий PowerShell.</p>
-<p><a class="text-link" download="" href="/downloads/LinguoAI-2.2.1-source.zip">Завантажити версію 2.2.1 ↓</a></p>
-<p>Завантажте, повністю розпакуйте та дотримуйтеся локальних інструкцій.</p>
-<div class="code-card">
-<div class="code-card-head">
-<span>PowerShell · Базове налаштування</span>
-<button class="copy-button" data-copy="desktop-code" type="button"><span aria-hidden="true" class="copy-icon">⧉</span><span data-copy-label="">Копіювати</span></button>
-</div>
-<pre id="desktop-code"><code><span class="code-comment"># FFmpeg einmalig installieren</span>
-winget install --id Gyan.FFmpeg --exact
-
-<span class="code-comment"># Im entpackten Projektordner ausführen; Pfad anpassen</span>
-cd <span class="code-string">"C:\Pfad\zu\LinguoAI-2.2.1"</span>
-py -3.11 -m venv .venv
-.\.venv\Scripts\Activate.ps1
-
-python -m pip install --upgrade pip
-python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
-python -m pip install -e <span class="code-string">".[desktop]"</span>
-ffmpeg -version
-ffprobe -version
-python -m linguoai</code></pre>
-<p class="code-note">У прикладі навмисно встановлюється версія CPU. Для NVIDIA спочатку виберіть відповідну команду <a href="https://pytorch.org/get-started/locally/" rel="noopener noreferrer" target="_blank">Майстер встановлення PyTorch</a>. Edge TTS і gTTS вже включені. Для Piper ви встановлюєте <code>.[desktop,piper]</code>, для Chatterbox у власному середовищі <code>.[desktop,voice-clone]</code>.</p>
-</div>
+<p class="section-kicker">Одноразове налаштування</p>
+<h2 id="desktop-title">Встановлення на комп’ютер із Windows</h2>
+<p>Вам потрібен комп’ютер із Windows, інтернетом і кількома гігабайтами вільного місця. Готового інсталятора поки немає. Наступні кроки допоможуть встановити програму. Вміти програмувати не потрібно.</p>
+<ol class="beginner-steps install-steps">
+<li><div class="step-card-header"><span class="step-pill">01</span></div><div>
+<h3>Встановіть дві допоміжні програми</h3>
+<p>Відкрийте меню «Пуск» Windows, введіть <kbd>PowerShell</kbd> і відкрийте програму. Копіюйте наступні рядки по одному й після кожного натискайте Enter. Чекайте завершення встановлення, перш ніж вводити наступний рядок.</p>
+<div class="code-card"><div class="code-card-head"><span>PowerShell</span></div><div class="command-row"><pre id="requirements-code"><code>winget install --id Python.Python.3.11 --exact --source winget</code></pre><button class="copy-button" data-copy="requirements-code" type="button"><span data-copy-label="">Копіювати</span></button></div><div class="command-row"><pre id="requirements-code-1"><code>winget install --id Gyan.FFmpeg --exact --source winget</code></pre><button class="copy-button" data-copy="requirements-code-1" type="button"><span data-copy-label="">Копіювати</span></button></div></div>
+<p>Python запускає LinguoAI. FFmpeg читає й записує відео. Якщо Windows запитає підтвердження, переконайтеся, що запит стосується цього встановлення.</p>
+<p class="step-result">Готово? Обидва встановлення повідомляють про успіх або про те, що програму вже встановлено. Тепер закрийте PowerShell.</p>
+</div></li>
+<li><div class="step-card-header"><span class="step-pill">02</span></div><div>
+<h3>Завантажте й розпакуйте LinguoAI</h3>
+<p>Завантажте ZIP-файл. У папці завантажень натисніть на нього правою кнопкою миші й виберіть «Видобути все». Потім відкрийте розпаковану папку.</p>
+<p><a class="button button-secondary" download="" href="/downloads/LinguoAI-2.2.1-source.zip">Завантажити LinguoAI 2.2.1 ↓</a></p>
+<p class="step-result">Ви в потрібній папці, якщо бачите файл <code>pyproject.toml</code> і папку <code>linguoai</code> .</p>
+</div></li>
+<li><div class="step-card-header"><span class="step-pill">03</span></div><div>
+<h3>Відкрийте потрібну папку</h3>
+<p>У відкритій папці натисніть адресний рядок угорі. Введіть <kbd>powershell</kbd> і натисніть Enter. Відкриється нове вікно. Скопіюйте в нього ці три команди перевірки по одній:</p>
+<div class="code-card"><div class="code-card-head"><span>PowerShell</span></div><div class="command-row"><pre id="check-code"><code>py -3.11 --version</code></pre><button class="copy-button" data-copy="check-code" type="button"><span data-copy-label="">Копіювати</span></button></div><div class="command-row"><pre id="check-code-1"><code>ffmpeg -version</code></pre><button class="copy-button" data-copy="check-code-1" type="button"><span data-copy-label="">Копіювати</span></button></div><div class="command-row"><pre id="check-code-2"><code>ffprobe -version</code></pre><button class="copy-button" data-copy="check-code-2" type="button"><span data-copy-label="">Копіювати</span></button></div></div>
+<p class="step-result">Ви побачите Python 3.11 і ще два повідомлення з номерами версій. Якщо з’явиться «не знайдено», перш ніж продовжити, скористайтеся допомогою нижче.</p>
+</div></li>
+<li><div class="step-card-header"><span class="step-pill">04</span></div><div>
+<h3>Налаштуйте LinguoAI</h3>
+<p>Залишайтеся в цьому вікні. Копіюйте рядки по одному й натискайте Enter. Після кожного рядка чекайте, поки знову можна буде вводити текст. Першого разу завантажаться великі файли.</p>
+<div class="code-card"><div class="code-card-head"><span>PowerShell</span></div><div class="command-row"><pre id="desktop-code"><code>py -3.11 -m venv .venv</code></pre><button class="copy-button" data-copy="desktop-code" type="button"><span data-copy-label="">Копіювати</span></button></div><div class="command-row"><pre id="desktop-code-1"><code>.\.venv\Scripts\python.exe -m pip install --upgrade pip</code></pre><button class="copy-button" data-copy="desktop-code-1" type="button"><span data-copy-label="">Копіювати</span></button></div><div class="command-row"><pre id="desktop-code-2"><code>.\.venv\Scripts\python.exe -m pip install torch --index-url https://download.pytorch.org/whl/cpu</code></pre><button class="copy-button" data-copy="desktop-code-2" type="button"><span data-copy-label="">Копіювати</span></button></div><div class="command-row"><pre id="desktop-code-3"><code>.\.venv\Scripts\python.exe -m pip install -e ".[desktop]"</code></pre><button class="copy-button" data-copy="desktop-code-3" type="button"><span data-copy-label="">Копіювати</span></button></div></div>
+<p class="step-result">Усе завершилося без помилок? Налаштування готове. Воно потрібне лише один раз.</p>
+</div></li>
+<li><div class="step-card-header"><span class="step-pill">05</span></div><div>
+<h3>Відкрийте програму</h3>
+<p>Скопіюйте цей рядок у те саме вікно:</p>
+<div class="code-card"><div class="code-card-head"><span>PowerShell</span></div><div class="command-row"><pre id="launch-code"><code>.\.venv\Scripts\python.exe -m linguoai</code></pre><button class="copy-button" data-copy="launch-code" type="button"><span data-copy-label="">Копіювати</span></button></div></div>
+<p class="step-result">Відкриється вікно LinguoAI. Не закривайте PowerShell, поки користуєтеся LinguoAI.</p>
+</div></li>
+</ol>
+</section>
+<section aria-labelledby="first-video-title" class="guide-section" id="erstes-video">
+<p class="section-kicker">Спробуйте зараз</p><h2 id="first-video-title">Ваше перше перекладене відео</h2>
+<p>Для початку візьміть коротке відео з чітким мовленням, наприклад на 30 секунд.</p>
+<ol class="plain-steps">
+<li>На вкладці <span data-i18n-ignore="">„Start“</span> натисніть <span data-i18n-ignore="">„Datei …“</span> і виберіть відео.</li>
+<li>Виберіть потрібну мову в полі <span data-i18n-ignore="">„Zielsprache“</span> . Початкову мову можна визначити автоматично.</li>
+<li>Для першої спроби виберіть «Google Translate · online» і «Edge TTS · online».</li>
+<li>Відкрийте «Erweitert» → «Leistung». У полі «Hardware für Spracherkennung» виберіть «Nur CPU». Потім поверніться до «Start». Решту налаштувань можна залишити без змін.</li>
+<li>Натисніть <span data-i18n-ignore="">„Verarbeitung starten“</span> . Під час першого запуску LinguoAI також завантажить модель розпізнавання мовлення. Це може тривати певний час.</li>
+<li>Коли з’явиться <span data-i18n-ignore="">„FERTIG“</span> натисніть <span data-i18n-ignore="">„Video öffnen“</span> . Натисніть <span data-i18n-ignore="">„Ordner öffnen“</span> — відкриється папка з відео й обома файлами субтитрів.</li>
+</ol>
+<aside class="guide-note"><strong>Варто знати</strong><p>У цьому простому тесті Google і Microsoft отримують текст для перекладу й озвучення. Новий голос замінить увесь початковий звук, зокрема музику. Початковий файл залишиться без змін.</p></aside>
+</section>
+<section aria-labelledby="setup-help-title" class="guide-section" id="installationshilfe">
+<h2 id="setup-help-title">Якщо щось не виходить</h2>
+<details class="guide-detail"><summary>Як відкрити LinguoAI наступного разу?</summary><div><p>Знову відкрийте розпаковану папку LinguoAI. В адресному рядку вгорі введіть <kbd>powershell</kbd>. Виконайте лише команду з кроку 5. Повторювати встановлення не потрібно.</p></div></details>
+<details class="guide-detail"><summary>«winget» не знайдено</summary><div><p>Встановіть або оновіть «Інсталятор програм» від Microsoft у Microsoft Store. Потім знову відкрийте PowerShell і повторіть крок 1.</p><a class="text-link" href="https://learn.microsoft.com/de-de/windows/package-manager/winget/" rel="noopener noreferrer" target="_blank">Відкрити інструкцію Microsoft ↗</a></div></details>
+<details class="guide-detail"><summary>Python або FFmpeg не знайдено</summary><div><p>Закрийте PowerShell і відкрийте знову, як у кроці 3. Якщо це не допомогло, перезавантажте комп’ютер і перевірте три рядки ще раз. Для цієї інструкції потрібен встановлений Python 3.11.</p></div></details>
+<details class="guide-detail"><summary>Команда повідомляє про помилку</summary><div><p>Поки не виконуйте наступний рядок. Спочатку перевірте, що ви перебуваєте в розпакованій папці з файлом <code>pyproject.toml</code> і що ви скопіювали весь рядок. Збережіть точний текст помилки на випадок, якщо знадобиться допомога.</p></div></details>
+<details class="guide-detail"><summary>Обробка триває довго або не завершується</summary><div><p>Під час першого запуску завантажуються моделі. Залиште вікно відкритим і перевірте, чи триває обробка. Якщо LinguoAI повідомляє про помилку, прочитайте повідомлення в журналі. Потім спробуйте коротше відео.</p></div></details>
+</section>
+<details class="guide-detail guide-advanced" id="mehr-optionen"><summary>Інші можливості: Linux, локальні голоси й не лише</summary><div>
 <details class="guide-detail">
 <summary>Linux</summary>
 <div>
@@ -166,19 +190,6 @@ ffprobe -version
 python -m linguoai</code></pre>
 </div>
 </details>
-<details class="guide-detail">
-<summary>Ваше перше завдання в інтерфейсі</summary>
-<div>
-<ol>
-<li><strong>Виберіть відео</strong><p>Натисніть «Файл…» під «Пуск». Пропонується цільовий шлях.</p></li>
-<li><strong>Встановити мови</strong><p>вибрати мову перекладу; вихідна мова може бути розпізнана автоматично.</p></li>
-<li><strong>Виберіть перекладач</strong><p>Для місцевих: NLLB. Для швидкого тесту: Google. DeepL/Gemini потребують свого ключа; окрема оптимізація Gemini.</p></li>
-<li><strong>Визначити голос</strong><p>Негайно протестуйте Edge або gTTS; Ви встановлюєте Piper або Chatterbox у розділі «Додатково».</p></li>
-<li><strong>Почніть обробку</strong><p>стежити за прогресом; у кінці відео та обидва файли SRT відкриваються безпосередньо.</p></li>
-</ol>
-</div>
-</details>
-</section>
 <section aria-labelledby="voices-title" class="guide-section" id="stimmen">
 <p class="section-kicker">Чотири способи отримати голосову доріжку</p>
 <h2 id="voices-title">Порівняти голоси</h2>
@@ -193,9 +204,9 @@ python -m linguoai</code></pre>
 <summary>Додайте Piper локально</summary>
 <div>
 <p>Встановіть у тому ж віртуальному середовищі, а потім завантажте відповідний голос:</p>
-<pre><code>python -m pip install -e ".[desktop,piper]"
+<pre><code>.\.venv\Scripts\python.exe -m pip install -e ".[desktop,piper]"
 New-Item -ItemType Directory -Force ".\Stimmen"
-python -m piper.download_voices --download-dir ".\Stimmen" de_DE-thorsten-medium</code></pre>
+.\.venv\Scripts\python.exe -m piper.download_voices --download-dir ".\Stimmen" de_DE-thorsten-medium</code></pre>
 <p>Piper: ONNX плюс відповідний JSON, додатковий ідентифікатор динаміка та регульована швидкість розмови.</p>
 </div>
 </details>
@@ -204,10 +215,9 @@ python -m piper.download_voices --download-dir ".\Stimmen" de_DE-thorsten-medium
 <div>
 <p>Через залежності аудіо/факела рекомендується спеціальне середовище Python-3.11:</p>
 <pre><code>py -3.11 -m venv .venv-chatterbox
-.\.venv-chatterbox\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-python -m pip install -e ".[desktop,voice-clone]"
-python -m linguoai</code></pre>
+.\.venv-chatterbox\Scripts\python.exe -m pip install --upgrade pip
+.\.venv-chatterbox\Scripts\python.exe -m pip install -e ".[desktop,voice-clone]"
+.\.venv-chatterbox\Scripts\python.exe -m linguoai</code></pre>
 <ul>
 <li>6-10 секунд, одна людина, невелика реверберація, без музики чи фонового шуму.</li>
 <li>Завантаження моделі приблизно 3,7 ГБ; CPU можливий, але дуже повільний для довших відео.</li>
@@ -231,7 +241,7 @@ python -m linguoai</code></pre>
 <span>PowerShell · Piper локально</span>
 <button class="copy-button" data-copy="cli-code" type="button"><span aria-hidden="true" class="copy-icon">⧉</span><span data-copy-label="">Копіювати</span></button>
 </div>
-<pre id="cli-code"><code>python -m linguoai `
+<pre id="cli-code"><code>.\.venv\Scripts\python.exe -m linguoai `
   --input "C:\Videos\quelle.mp4" `
   --output "C:\Videos\quelle.de.mp4" `
   --language de `
@@ -242,7 +252,7 @@ python -m linguoai</code></pre>
   --tts-device cpu `
   --piper-model "C:\Stimmen\de_DE-thorsten-medium.onnx" `
   --piper-config "C:\Stimmen\de_DE-thorsten-medium.onnx.json"</code></pre>
-<p class="code-note">Переглянути всі варіанти: <code>python -m linguoai --help</code></p>
+<p class="code-note">Переглянути всі варіанти: <code>.\.venv\Scripts\python.exe -m linguoai --help</code></p>
 </div>
 <details class="guide-detail">
 <summary>Python-Wheel</summary>
@@ -282,8 +292,8 @@ python -m linguoai</code></pre>
 <summary>Налаштувати Parakeet</summary>
 <div>
 <p>Встановіть додатковий пакет і підготуйте папку із сумісною моделлю. Моделі не завантажуються автоматично.</p>
-<pre><code>python -m pip install -e ".[parakeet]"
-python -m linguoai --help</code></pre>
+<pre><code>.\.venv\Scripts\python.exe -m pip install -e ".[parakeet]"
+.\.venv\Scripts\python.exe -m linguoai --help</code></pre>
 <p>Використовуйте повну папку моделі sherpa-onnx з encoder, decoder, joiner і файлом токенів. Для німецького експорту також збережіть зовнішній файл encoder, якщо він є частиною моделі.</p>
 <p>У застосунку для комп’ютера та Colab оберіть рушій розпізнавання мовлення, профіль і папку моделі. Явно вкажіть вихідну мову, щоб переклад отримав правильний код мови. Parakeet розпізнає мовлення; потім виконується переклад і використовується обраний голос.</p>
 <p><a href="https://k2-fsa.github.io/sherpa/onnx/pretrained_models/offline-transducer/nemo-transducer-models.html">Моделі й налаштування sherpa-onnx ↗</a> · <a href="https://huggingface.co/primeline/parakeet-primeline">Картка моделі primeline ↗</a></p>
@@ -390,6 +400,7 @@ python -m linguoai --help</code></pre>
 </details>
 <p><a class="text-link" href="/uk/colab.html">Відкрийте посібник Colab <span aria-hidden="true">→</span></a></p>
 </section>
+</div></details>
 </main>
 <footer class="site-footer">
 <div class="container footer-main">

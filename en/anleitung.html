@@ -27,7 +27,7 @@
 <link href="/assets/simple.css?v=20261023-1" rel="stylesheet"/>
 <link href="/assets/guide.css?v=20261013-1" rel="stylesheet"/>
 <link href="/assets/editorial.css?v=20261027-2" rel="stylesheet"/>
-<link href="/assets/editorial-guides.css?v=20261027-2" rel="stylesheet"/>
+<link href="/assets/editorial-guides.css?v=20261028-1" rel="stylesheet"/>
 <script>
       document.documentElement.classList.replace("no-js", "has-js");
       try {
@@ -59,7 +59,7 @@
       })();
     </script>
 <script defer="" src="/assets/locale.js?v=20261023-1"></script>
-<script defer="" src="/assets/site.js?v=20261027-2"></script>
+<script defer="" src="/assets/site.js?v=20261028-1"></script>
 </head>
 <body class="guide-page editorial">
 <a class="skip-link" href="#main">Go directly to the content</a>
@@ -104,52 +104,76 @@
 </header>
 <main class="container guide-main" id="main">
 <div class="guide-intro">
-<p class="section-kicker">For advanced users</p>
-<h1>Installation and advanced options</h1>
-<p>You don't need to know every setting to get started. If you need more control later, you'll find the full scope here - without any hidden promises.</p>
+<p class="section-kicker">Step by step</p>
+<h1>Set up LinguoAI on your PC.</h1>
+<p>Here you can see what to click, what to type and how to know when you are done. Start with step 1. More options are at the bottom.</p>
 <div class="guide-actions">
-<a class="button" href="#desktop">Set up the desktop app</a>
+<a class="button" href="#desktop">Start with step 1</a>
 <a class="text-link" href="/en/colab.html">Open Colab manual <span aria-hidden="true">→</span></a>
 <a class="text-link" href="/en/#versionen">Find your version <span aria-hidden="true">→</span></a>
 </div>
 </div>
-<nav aria-label="On this page" class="guide-toc">
-<a href="#desktop">Install locally</a>
-<a href="#stimmen">Voices</a>
-<a href="#spracherkennung">Speech recognition</a>
-<a href="#cli">Command line</a>
-<a href="#hardware">CPU / GPU</a>
-<a href="#details">All features in detail</a>
-<a href="#cloudflare">Optional Cloudflare</a>
-<a href="#webversion">Browser and server</a>
-</nav>
+<nav aria-label="On this page" class="guide-toc"><a href="#desktop">Setup</a><a href="#erstes-video">First video</a><a href="#installationshilfe">Help</a><a href="#mehr-optionen">More options</a></nav>
 <section aria-labelledby="desktop-title" class="guide-section" id="desktop">
-<p class="section-kicker">Windows &amp; Linux</p>
-<h2 id="desktop-title">Install locally</h2>
-<p>You need Python 3.10 or newer as well as FFmpeg and ffprobe. Python 3.11 is recommended for Chatterbox. Then open a new PowerShell.</p>
-<p><a class="text-link" download="" href="/downloads/LinguoAI-2.2.1-source.zip">Load version 2.2.1 ↓</a></p>
-<p>Download, unpack completely and then follow the local instructions.</p>
-<div class="code-card">
-<div class="code-card-head">
-<span>PowerShell · Basic setup</span>
-<button class="copy-button" data-copy="desktop-code" type="button"><span aria-hidden="true" class="copy-icon">⧉</span><span data-copy-label="">Copy</span></button>
-</div>
-<pre id="desktop-code"><code><span class="code-comment"># FFmpeg einmalig installieren</span>
-winget install --id Gyan.FFmpeg --exact
-
-<span class="code-comment"># Im entpackten Projektordner ausführen; Pfad anpassen</span>
-cd <span class="code-string">"C:\Pfad\zu\LinguoAI-2.2.1"</span>
-py -3.11 -m venv .venv
-.\.venv\Scripts\Activate.ps1
-
-python -m pip install --upgrade pip
-python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
-python -m pip install -e <span class="code-string">".[desktop]"</span>
-ffmpeg -version
-ffprobe -version
-python -m linguoai</code></pre>
-<p class="code-note">The example deliberately sets up the CPU version. For NVIDIA you first select the appropriate command in <a href="https://pytorch.org/get-started/locally/" rel="noopener noreferrer" target="_blank">PyTorch installation wizard</a>. Edge TTS and gTTS are already included. For Piper you install <code>.[desktop,piper]</code>, for Chatterbox in its own environment <code>.[desktop,voice-clone]</code>.</p>
-</div>
+<p class="section-kicker">Set up once</p>
+<h2 id="desktop-title">Install on your Windows PC</h2>
+<p>You need a Windows PC with internet access and several gigabytes of free space. There is no ready-made installer yet. The steps below set up the program. You do not need to know how to code.</p>
+<ol class="beginner-steps install-steps">
+<li><div class="step-card-header"><span class="step-pill">01</span></div><div>
+<h3>Install two helper programs</h3>
+<p>Open the Windows Start menu, type <kbd>PowerShell</kbd> and open the program. Copy the following lines into it one at a time, pressing Enter after each. Wait for each installation to finish before entering the next line.</p>
+<div class="code-card"><div class="code-card-head"><span>PowerShell</span></div><div class="command-row"><pre id="requirements-code"><code>winget install --id Python.Python.3.11 --exact --source winget</code></pre><button class="copy-button" data-copy="requirements-code" type="button"><span data-copy-label="">Copy</span></button></div><div class="command-row"><pre id="requirements-code-1"><code>winget install --id Gyan.FFmpeg --exact --source winget</code></pre><button class="copy-button" data-copy="requirements-code-1" type="button"><span data-copy-label="">Copy</span></button></div></div>
+<p>Python runs LinguoAI. FFmpeg reads and writes videos. If Windows asks for confirmation, check that the prompt is for this installation.</p>
+<p class="step-result">Done? Both installations report success or “already installed”. Now close PowerShell.</p>
+</div></li>
+<li><div class="step-card-header"><span class="step-pill">02</span></div><div>
+<h3>Download and unzip LinguoAI</h3>
+<p>Download the ZIP file. Right-click it in your Downloads folder and choose “Extract All”. Then open the extracted folder.</p>
+<p><a class="button button-secondary" download="" href="/downloads/LinguoAI-2.2.1-source.zip">Download LinguoAI 2.2.1 ↓</a></p>
+<p class="step-result">You are in the right place if you can see the file <code>pyproject.toml</code> and the folder <code>linguoai</code> .</p>
+</div></li>
+<li><div class="step-card-header"><span class="step-pill">03</span></div><div>
+<h3>Start in the right folder</h3>
+<p>In the open folder, click the address bar at the top. Type <kbd>powershell</kbd> and press Enter. A new window opens. Copy these three check commands into it one at a time:</p>
+<div class="code-card"><div class="code-card-head"><span>PowerShell</span></div><div class="command-row"><pre id="check-code"><code>py -3.11 --version</code></pre><button class="copy-button" data-copy="check-code" type="button"><span data-copy-label="">Copy</span></button></div><div class="command-row"><pre id="check-code-1"><code>ffmpeg -version</code></pre><button class="copy-button" data-copy="check-code-1" type="button"><span data-copy-label="">Copy</span></button></div><div class="command-row"><pre id="check-code-2"><code>ffprobe -version</code></pre><button class="copy-button" data-copy="check-code-2" type="button"><span data-copy-label="">Copy</span></button></div></div>
+<p class="step-result">You see Python 3.11 and two version reports. If you see “not found”, use the help below before continuing.</p>
+</div></li>
+<li><div class="step-card-header"><span class="step-pill">04</span></div><div>
+<h3>Set up LinguoAI</h3>
+<p>Stay in this window. Copy each line separately and press Enter. After each line, wait until you can type again. Larger files download the first time.</p>
+<div class="code-card"><div class="code-card-head"><span>PowerShell</span></div><div class="command-row"><pre id="desktop-code"><code>py -3.11 -m venv .venv</code></pre><button class="copy-button" data-copy="desktop-code" type="button"><span data-copy-label="">Copy</span></button></div><div class="command-row"><pre id="desktop-code-1"><code>.\.venv\Scripts\python.exe -m pip install --upgrade pip</code></pre><button class="copy-button" data-copy="desktop-code-1" type="button"><span data-copy-label="">Copy</span></button></div><div class="command-row"><pre id="desktop-code-2"><code>.\.venv\Scripts\python.exe -m pip install torch --index-url https://download.pytorch.org/whl/cpu</code></pre><button class="copy-button" data-copy="desktop-code-2" type="button"><span data-copy-label="">Copy</span></button></div><div class="command-row"><pre id="desktop-code-3"><code>.\.venv\Scripts\python.exe -m pip install -e ".[desktop]"</code></pre><button class="copy-button" data-copy="desktop-code-3" type="button"><span data-copy-label="">Copy</span></button></div></div>
+<p class="step-result">Finished without an error? Setup is complete. You only need to do it once.</p>
+</div></li>
+<li><div class="step-card-header"><span class="step-pill">05</span></div><div>
+<h3>Open the program</h3>
+<p>Copy this line into the same window:</p>
+<div class="code-card"><div class="code-card-head"><span>PowerShell</span></div><div class="command-row"><pre id="launch-code"><code>.\.venv\Scripts\python.exe -m linguoai</code></pre><button class="copy-button" data-copy="launch-code" type="button"><span data-copy-label="">Copy</span></button></div></div>
+<p class="step-result">The LinguoAI window opens. Keep PowerShell open while you use LinguoAI.</p>
+</div></li>
+</ol>
+</section>
+<section aria-labelledby="first-video-title" class="guide-section" id="erstes-video">
+<p class="section-kicker">Try it now</p><h2 id="first-video-title">Your first translated video</h2>
+<p>Start with a short video with clear speech, for example 30 seconds long.</p>
+<ol class="plain-steps">
+<li>Under <span data-i18n-ignore="">„Start“</span> click <span data-i18n-ignore="">„Datei …“</span> and select your video.</li>
+<li>Select your preferred <span data-i18n-ignore="">„Zielsprache“</span> . The source language can be detected automatically.</li>
+<li>For this first test, select “Google Translate · online” and “Edge TTS · online”.</li>
+<li>Open “Erweitert” → “Leistung”. Under “Hardware für Spracherkennung”, select “Nur CPU”. Then return to “Start”. Leave the other settings as they are.</li>
+<li>Click <span data-i18n-ignore="">„Verarbeitung starten“</span> . The first time, LinguoAI also downloads the speech recognition model. This can take a while.</li>
+<li>When you see <span data-i18n-ignore="">„FERTIG“</span> click <span data-i18n-ignore="">„Video öffnen“</span> . Use <span data-i18n-ignore="">„Ordner öffnen“</span> to find the video and both subtitle files.</li>
+</ol>
+<aside class="guide-note"><strong>Good to know</strong><p>For this simple test, Google and Microsoft receive text for translation and speech. The new voice replaces all the original sound, including music. Your original file stays unchanged.</p></aside>
+</section>
+<section aria-labelledby="setup-help-title" class="guide-section" id="installationshilfe">
+<h2 id="setup-help-title">If you get stuck</h2>
+<details class="guide-detail"><summary>How do I open LinguoAI next time?</summary><div><p>Open your extracted LinguoAI folder again. Type this in the address bar at the top: <kbd>powershell</kbd>. Run only the command from step 5. You do not need to install everything again.</p></div></details>
+<details class="guide-detail"><summary>“winget” cannot be found</summary><div><p>Install or update Microsoft’s “App Installer” in the Microsoft Store. Then reopen PowerShell and repeat step 1.</p><a class="text-link" href="https://learn.microsoft.com/de-de/windows/package-manager/winget/" rel="noopener noreferrer" target="_blank">Open Microsoft’s guide ↗</a></div></details>
+<details class="guide-detail"><summary>Python or FFmpeg cannot be found</summary><div><p>Close PowerShell and open it again as in step 3. If that does not help, restart your PC and check the three lines again. This guide requires Python 3.11 to be installed.</p></div></details>
+<details class="guide-detail"><summary>A command reports an error</summary><div><p>Do not run the next line yet. First check that you are in the extracted folder containing <code>pyproject.toml</code> and that you copied the whole line. Keep the exact error message in case you need help.</p></div></details>
+<details class="guide-detail"><summary>It takes a long time or the video never finishes</summary><div><p>Models download on the first run. Keep the window open and check whether progress continues. If LinguoAI shows an error, read the message in the log. Then try a shorter video first.</p></div></details>
+</section>
+<details class="guide-detail guide-advanced" id="mehr-optionen"><summary>More options: Linux, local voices and more</summary><div>
 <details class="guide-detail">
 <summary>Linux</summary>
 <div>
@@ -166,19 +190,6 @@ ffprobe -version
 python -m linguoai</code></pre>
 </div>
 </details>
-<details class="guide-detail">
-<summary>Your first job in the interface</summary>
-<div>
-<ol>
-<li><strong>Select video</strong><p>Click on “File…” under “Start”. The target path is suggested.</p></li>
-<li><strong>Set languages</strong><p>choose target language; the source language may be recognized automatically.</p></li>
-<li><strong>Choose translator</strong><p>For local: NLLB. For a quick test: Google. DeepL/Gemini need their key; the separate Gemini optimization as well.</p></li>
-<li><strong>Determine voice</strong><p>Test Edge or gTTS immediately; You set up Piper or Chatterbox under “Advanced”.</p></li>
-<li><strong>Start processing</strong><p>monitor progress; at the end video and both SRT files open directly.</p></li>
-</ol>
-</div>
-</details>
-</section>
 <section aria-labelledby="voices-title" class="guide-section" id="stimmen">
 <p class="section-kicker">Four ways to get a voice track</p>
 <h2 id="voices-title">Compare voices</h2>
@@ -193,9 +204,9 @@ python -m linguoai</code></pre>
 <summary>Add Piper locally</summary>
 <div>
 <p>Install in the same virtual environment and then load a suitable voice:</p>
-<pre><code>python -m pip install -e ".[desktop,piper]"
+<pre><code>.\.venv\Scripts\python.exe -m pip install -e ".[desktop,piper]"
 New-Item -ItemType Directory -Force ".\Stimmen"
-python -m piper.download_voices --download-dir ".\Stimmen" de_DE-thorsten-medium</code></pre>
+.\.venv\Scripts\python.exe -m piper.download_voices --download-dir ".\Stimmen" de_DE-thorsten-medium</code></pre>
 <p>Piper: ONNX plus matching JSON, optional speaker ID and adjustable speaking rate.</p>
 </div>
 </details>
@@ -204,10 +215,9 @@ python -m piper.download_voices --download-dir ".\Stimmen" de_DE-thorsten-medium
 <div>
 <p>Due to audio/torch dependencies, a dedicated Python-3.11 environment is recommended:</p>
 <pre><code>py -3.11 -m venv .venv-chatterbox
-.\.venv-chatterbox\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-python -m pip install -e ".[desktop,voice-clone]"
-python -m linguoai</code></pre>
+.\.venv-chatterbox\Scripts\python.exe -m pip install --upgrade pip
+.\.venv-chatterbox\Scripts\python.exe -m pip install -e ".[desktop,voice-clone]"
+.\.venv-chatterbox\Scripts\python.exe -m linguoai</code></pre>
 <ul>
 <li>6-10 seconds, one person, little reverb, no music or background noise.</li>
 <li>Approximately 3.7GB model download; CPU is possible, but very slow for longer videos.</li>
@@ -231,7 +241,7 @@ python -m linguoai</code></pre>
 <span>PowerShell · Piper locally</span>
 <button class="copy-button" data-copy="cli-code" type="button"><span aria-hidden="true" class="copy-icon">⧉</span><span data-copy-label="">Copy</span></button>
 </div>
-<pre id="cli-code"><code>python -m linguoai `
+<pre id="cli-code"><code>.\.venv\Scripts\python.exe -m linguoai `
   --input "C:\Videos\quelle.mp4" `
   --output "C:\Videos\quelle.de.mp4" `
   --language de `
@@ -242,7 +252,7 @@ python -m linguoai</code></pre>
   --tts-device cpu `
   --piper-model "C:\Stimmen\de_DE-thorsten-medium.onnx" `
   --piper-config "C:\Stimmen\de_DE-thorsten-medium.onnx.json"</code></pre>
-<p class="code-note">View all options: <code>python -m linguoai --help</code></p>
+<p class="code-note">View all options: <code>.\.venv\Scripts\python.exe -m linguoai --help</code></p>
 </div>
 <details class="guide-detail">
 <summary>Python-Wheel</summary>
@@ -282,8 +292,8 @@ python -m linguoai</code></pre>
 <summary>Set up Parakeet</summary>
 <div>
 <p>Install the optional package and provide a compatible model folder. Models are not downloaded automatically.</p>
-<pre><code>python -m pip install -e ".[parakeet]"
-python -m linguoai --help</code></pre>
+<pre><code>.\.venv\Scripts\python.exe -m pip install -e ".[parakeet]"
+.\.venv\Scripts\python.exe -m linguoai --help</code></pre>
 <p>Use the complete sherpa-onnx model folder with encoder, decoder, joiner, and token file. For the German export, also keep the external encoder file if it is part of the model.</p>
 <p>In the desktop app and Colab, select the speech recognition engine, profile, and model folder. Specify the source language explicitly so that translation receives the correct language code. Parakeet transcribes; the selected translation and voice follow afterwards.</p>
 <p><a href="https://k2-fsa.github.io/sherpa/onnx/pretrained_models/offline-transducer/nemo-transducer-models.html">sherpa-onnx models and setup ↗</a> · <a href="https://huggingface.co/primeline/parakeet-primeline">primeline model card ↗</a></p>
@@ -390,6 +400,7 @@ python -m linguoai --help</code></pre>
 </details>
 <p><a class="text-link" href="/en/colab.html">Open Colab manual <span aria-hidden="true">→</span></a></p>
 </section>
+</div></details>
 </main>
 <footer class="site-footer">
 <div class="container footer-main">

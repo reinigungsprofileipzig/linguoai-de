@@ -27,7 +27,7 @@
 <link href="/assets/simple.css?v=20261023-1" rel="stylesheet"/>
 <link href="/assets/guide.css?v=20261013-1" rel="stylesheet"/>
 <link href="/assets/editorial.css?v=20261027-2" rel="stylesheet"/>
-<link href="/assets/editorial-guides.css?v=20261027-2" rel="stylesheet"/>
+<link href="/assets/editorial-guides.css?v=20261028-1" rel="stylesheet"/>
 <script>
       document.documentElement.classList.replace("no-js", "has-js");
       try {
@@ -59,7 +59,7 @@
       })();
     </script>
 <script defer="" src="/assets/locale.js?v=20261023-1"></script>
-<script defer="" src="/assets/site.js?v=20261027-2"></script>
+<script defer="" src="/assets/site.js?v=20261028-1"></script>
 </head>
 <body class="guide-page editorial">
 <a class="skip-link" href="#main">Doğrudan içeriğe gidin</a>
@@ -104,52 +104,76 @@
 </header>
 <main class="container guide-main" id="main">
 <div class="guide-intro">
-<p class="section-kicker">İleri düzey kullanıcılar için</p>
-<h1>Kurulum ve gelişmiş seçenekler</h1>
-<p>Başlamak için her ayarı bilmenize gerek yok. Daha sonra daha fazla kontrole ihtiyaç duyarsanız, hiçbir gizli vaat olmaksızın tüm kapsamı burada bulacaksınız.</p>
+<p class="section-kicker">Adım adım</p>
+<h1>LinguoAI’ı bilgisayarına kur.</h1>
+<p>Burada nereye tıklayacağını, ne yazacağını ve ne zaman işinin bittiğini görebilirsin. 1. adımdan başla. Ek seçenekler sayfanın en altında.</p>
 <div class="guide-actions">
-<a class="button" href="#desktop">Masaüstü sürümünü kur</a>
+<a class="button" href="#desktop">1. adımdan başla</a>
 <a class="text-link" href="/tr/colab.html">Colab kılavuzunu açın <span aria-hidden="true">→</span></a>
 <a class="text-link" href="/tr/#versionen">Sürüm bul <span aria-hidden="true">→</span></a>
 </div>
 </div>
-<nav aria-label="Bu sayfada" class="guide-toc">
-<a href="#desktop">Yerel olarak yükle</a>
-<a href="#stimmen">Sesler</a>
-<a href="#spracherkennung">Konuşma tanıma</a>
-<a href="#cli">Komut satırı</a>
-<a href="#hardware">CPU / GPU</a>
-<a href="#details">Tüm özellikler ayrıntılı olarak</a>
-<a href="#cloudflare">İsteğe bağlı Cloudflare</a>
-<a href="#webversion">Tarayıcı ve sunucu</a>
-</nav>
+<nav aria-label="Bu sayfada" class="guide-toc"><a href="#desktop">Kurulum</a><a href="#erstes-video">İlk video</a><a href="#installationshilfe">Yardım</a><a href="#mehr-optionen">Diğer seçenekler</a></nav>
 <section aria-labelledby="desktop-title" class="guide-section" id="desktop">
-<p class="section-kicker">Windows ve Linux</p>
-<h2 id="desktop-title">Yerel olarak yükle</h2>
-<p>Python 3.10 veya daha yenisinin yanı sıra FFmpeg ve ffprobe'ye de ihtiyacınız var. Chatterbox için Python 3.11 önerilir. Ardından yeni bir PowerShell açın.</p>
-<p><a class="text-link" download="" href="/downloads/LinguoAI-2.2.1-source.zip">Sürüm 2.2.1'ı yükle ↓</a></p>
-<p>İndirin, paketi tamamen açın ve ardından yerel talimatları izleyin.</p>
-<div class="code-card">
-<div class="code-card-head">
-<span>PowerShell · Temel kurulum</span>
-<button class="copy-button" data-copy="desktop-code" type="button"><span aria-hidden="true" class="copy-icon">⧉</span><span data-copy-label="">Kopyala</span></button>
-</div>
-<pre id="desktop-code"><code><span class="code-comment"># FFmpeg einmalig installieren</span>
-winget install --id Gyan.FFmpeg --exact
-
-<span class="code-comment"># Im entpackten Projektordner ausführen; Pfad anpassen</span>
-cd <span class="code-string">"C:\Pfad\zu\LinguoAI-2.2.1"</span>
-py -3.11 -m venv .venv
-.\.venv\Scripts\Activate.ps1
-
-python -m pip install --upgrade pip
-python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
-python -m pip install -e <span class="code-string">".[desktop]"</span>
-ffmpeg -version
-ffprobe -version
-python -m linguoai</code></pre>
-<p class="code-note">Örnek kasıtlı olarak CPU sürümünü kuruyor. NVIDIA için öncelikle uygun komutu seçin. <a href="https://pytorch.org/get-started/locally/" rel="noopener noreferrer" target="_blank">PyTorch kurulum sihirbazı</a>. Edge TTS ve gTTS zaten dahil edilmiştir. Piper için yükleyeceğiniz <code>.[desktop,piper]</code>, Chatterbox için kendi ortamında <code>.[desktop,voice-clone]</code>.</p>
-</div>
+<p class="section-kicker">Bir kez kur</p>
+<h2 id="desktop-title">Windows bilgisayarına kur</h2>
+<p>İnternet bağlantısı olan bir Windows bilgisayarına ve birkaç gigabayt boş alana ihtiyacın var. Henüz hazır bir kurulum dosyası yok. Aşağıdaki adımlar programı kurar. Programlama bilmen gerekmez.</p>
+<ol class="beginner-steps install-steps">
+<li><div class="step-card-header"><span class="step-pill">01</span></div><div>
+<h3>İki yardımcı programı kur</h3>
+<p>Windows Başlat menüsünü aç ve şunu yaz: <kbd>PowerShell</kbd> ve programı aç. Aşağıdaki satırları tek tek yapıştır ve her birinden sonra Enter tuşuna bas. Bir sonraki satıra geçmeden önce kurulumun tamamlanmasını bekle.</p>
+<div class="code-card"><div class="code-card-head"><span>PowerShell</span></div><div class="command-row"><pre id="requirements-code"><code>winget install --id Python.Python.3.11 --exact --source winget</code></pre><button class="copy-button" data-copy="requirements-code" type="button"><span data-copy-label="">Kopyala</span></button></div><div class="command-row"><pre id="requirements-code-1"><code>winget install --id Gyan.FFmpeg --exact --source winget</code></pre><button class="copy-button" data-copy="requirements-code-1" type="button"><span data-copy-label="">Kopyala</span></button></div></div>
+<p>Python, LinguoAI’ı çalıştırır. FFmpeg videoları okur ve oluşturur. Windows onay isterse bunun bu kurulumla ilgili olduğunu kontrol et.</p>
+<p class="step-result">Tamam mı? Her iki kurulum da başarıyla tamamlandığını veya programın zaten kurulu olduğunu bildirir. Şimdi PowerShell penceresini kapat.</p>
+</div></li>
+<li><div class="step-card-header"><span class="step-pill">02</span></div><div>
+<h3>LinguoAI’ı indir ve dosyalarını ayıkla</h3>
+<p>ZIP dosyasını indir. İndirilenler klasöründe dosyaya sağ tıkla ve «Tümünü ayıkla» seçeneğini seç. Ardından ayıklanan klasörü aç.</p>
+<p><a class="button button-secondary" download="" href="/downloads/LinguoAI-2.2.1-source.zip">LinguoAI 2.2.1 indir ↓</a></p>
+<p class="step-result">Doğru klasördeysen <code>pyproject.toml</code> dosyasını ve <code>linguoai</code> klasörünü görürsün.</p>
+</div></li>
+<li><div class="step-card-header"><span class="step-pill">03</span></div><div>
+<h3>Doğru klasörden başla</h3>
+<p>Açık klasörde üstteki adres çubuğuna tıkla. Şunu yaz: <kbd>powershell</kbd> ve Enter tuşuna bas. Yeni bir pencere açılır. Bu üç kontrol satırını tek tek yapıştır:</p>
+<div class="code-card"><div class="code-card-head"><span>PowerShell</span></div><div class="command-row"><pre id="check-code"><code>py -3.11 --version</code></pre><button class="copy-button" data-copy="check-code" type="button"><span data-copy-label="">Kopyala</span></button></div><div class="command-row"><pre id="check-code-1"><code>ffmpeg -version</code></pre><button class="copy-button" data-copy="check-code-1" type="button"><span data-copy-label="">Kopyala</span></button></div><div class="command-row"><pre id="check-code-2"><code>ffprobe -version</code></pre><button class="copy-button" data-copy="check-code-2" type="button"><span data-copy-label="">Kopyala</span></button></div></div>
+<p class="step-result">Python 3.11 ve iki başka sürüm bilgisi görürsün. «Bulunamadı» mesajı çıkarsa devam etmeden önce aşağıdaki yardıma bak.</p>
+</div></li>
+<li><div class="step-card-header"><span class="step-pill">04</span></div><div>
+<h3>LinguoAI kurulumu</h3>
+<p>Bu pencerede kal. Her satırı tek tek yapıştır ve Enter tuşuna bas. Her seferinde yeniden yazı girebilene kadar bekle. İlk seferde büyük dosyalar indirilir.</p>
+<div class="code-card"><div class="code-card-head"><span>PowerShell</span></div><div class="command-row"><pre id="desktop-code"><code>py -3.11 -m venv .venv</code></pre><button class="copy-button" data-copy="desktop-code" type="button"><span data-copy-label="">Kopyala</span></button></div><div class="command-row"><pre id="desktop-code-1"><code>.\.venv\Scripts\python.exe -m pip install --upgrade pip</code></pre><button class="copy-button" data-copy="desktop-code-1" type="button"><span data-copy-label="">Kopyala</span></button></div><div class="command-row"><pre id="desktop-code-2"><code>.\.venv\Scripts\python.exe -m pip install torch --index-url https://download.pytorch.org/whl/cpu</code></pre><button class="copy-button" data-copy="desktop-code-2" type="button"><span data-copy-label="">Kopyala</span></button></div><div class="command-row"><pre id="desktop-code-3"><code>.\.venv\Scripts\python.exe -m pip install -e ".[desktop]"</code></pre><button class="copy-button" data-copy="desktop-code-3" type="button"><span data-copy-label="">Kopyala</span></button></div></div>
+<p class="step-result">Hata olmadan tamamlandı mı? Kurulum bitti. Bunu yalnızca bir kez yapman gerekir.</p>
+</div></li>
+<li><div class="step-card-header"><span class="step-pill">05</span></div><div>
+<h3>Programı aç</h3>
+<p>Bu satırı aynı pencereye yapıştır:</p>
+<div class="code-card"><div class="code-card-head"><span>PowerShell</span></div><div class="command-row"><pre id="launch-code"><code>.\.venv\Scripts\python.exe -m linguoai</code></pre><button class="copy-button" data-copy="launch-code" type="button"><span data-copy-label="">Kopyala</span></button></div></div>
+<p class="step-result">LinguoAI penceresi açılır. LinguoAI kullanırken PowerShell penceresini açık bırak.</p>
+</div></li>
+</ol>
+</section>
+<section aria-labelledby="first-video-title" class="guide-section" id="erstes-video">
+<p class="section-kicker">Şimdi dene</p><h2 id="first-video-title">İlk çevrilmiş videon</h2>
+<p>Önce konuşmaların net olduğu kısa bir video seç; örneğin 30 saniyelik bir video.</p>
+<ol class="plain-steps">
+<li>Şu bölümde: <span data-i18n-ignore="">„Start“</span> şuna <span data-i18n-ignore="">„Datei …“</span> tıkla ve videonu seç.</li>
+<li>İstediğin hedef dil için <span data-i18n-ignore="">„Zielsprache“</span> alanından seçim yap. Kaynak dil otomatik olarak algılanabilir.</li>
+<li>İlk deneme için “Google Translate · online” ve “Edge TTS · online” seçeneklerini seçin.</li>
+<li>“Erweitert” → “Leistung” bölümünü açın. “Hardware für Spracherkennung” altında “Nur CPU” seçeneğini seçin. Sonra “Start” bölümüne dönün. Diğer ayarları olduğu gibi bırakabilirsiniz.</li>
+<li>Şuna <span data-i18n-ignore="">„Verarbeitung starten“</span> tıkla. İlk seferde LinguoAI konuşma tanıma modelini de indirir. Bu biraz sürebilir.</li>
+<li>Şu durumu gördüğünde: <span data-i18n-ignore="">„FERTIG“</span> şuna <span data-i18n-ignore="">„Video öffnen“</span> tıkla. Şu düğme: <span data-i18n-ignore="">„Ordner öffnen“</span> ile videoyu ve iki altyazı dosyasını bulabilirsin.</li>
+</ol>
+<aside class="guide-note"><strong>Bilmenizde fayda var</strong><p>Bu basit denemede çeviri ve ses oluşturma için Google ve Microsoft’a metin gönderilir. Yeni ses, müzik dahil önceki sesin tamamının yerini alır. Orijinal dosyan korunur.</p></aside>
+</section>
+<section aria-labelledby="setup-help-title" class="guide-section" id="installationshilfe">
+<h2 id="setup-help-title">Devam edemiyorsan</h2>
+<details class="guide-detail"><summary>LinguoAI’ı bir sonraki sefer nasıl açarım?</summary><div><p>Ayıkladığın LinguoAI klasörünü yeniden aç. Üstteki adres çubuğuna şunu yaz: <kbd>powershell</kbd>. Yalnızca 5. adımdaki komutu çalıştır. Kurulumu tekrarlamana gerek yok.</p></div></details>
+<details class="guide-detail"><summary>«winget» bulunamıyor</summary><div><p>Microsoft Store’dan Microsoft’un «Uygulama Yükleyicisi» uygulamasını kur veya güncelle. Ardından PowerShell penceresini yeniden aç ve 1. adımı tekrarla.</p><a class="text-link" href="https://learn.microsoft.com/de-de/windows/package-manager/winget/" rel="noopener noreferrer" target="_blank">Microsoft rehberini aç ↗</a></div></details>
+<details class="guide-detail"><summary>Python veya FFmpeg bulunamıyor</summary><div><p>PowerShell penceresini kapat ve 3. adımdaki gibi yeniden aç. Bu yeterli olmazsa bilgisayarı yeniden başlat ve üç satırı tekrar kontrol et. Bu rehber için Python 3.11 kurulu olmalıdır.</p></div></details>
+<details class="guide-detail"><summary>Bir komut hata veriyor</summary><div><p>Sonraki satırı henüz çalıştırma. Önce ayıklanan klasörde <code>pyproject.toml</code> dosyasının bulunduğunu ve satırın tamamını kopyaladığını kontrol et. Yardım gerektiğinde göstermek için hata mesajının tamamını sakla.</p></div></details>
+<details class="guide-detail"><summary>Çok uzun sürüyor veya video tamamlanmıyor</summary><div><p>İlk açılışta modeller indirilir. Pencereyi açık bırak ve işlemin ilerleyip ilerlemediğini kontrol et. LinguoAI hata gösterirse günlükteki mesajı oku. Sonra daha kısa bir videoyla dene.</p></div></details>
+</section>
+<details class="guide-detail guide-advanced" id="mehr-optionen"><summary>Diğer seçenekler: Linux, yerel sesler ve daha fazlası</summary><div>
 <details class="guide-detail">
 <summary>Linux</summary>
 <div>
@@ -166,19 +190,6 @@ ffprobe -version
 python -m linguoai</code></pre>
 </div>
 </details>
-<details class="guide-detail">
-<summary>Arayüzdeki ilk işleminiz</summary>
-<div>
-<ol>
-<li><strong>Videoyu seçin</strong><p>“Başlat”ın altındaki “Dosya…”ya tıklayın. Hedef yol önerilmektedir.</p></li>
-<li><strong>Dilleri ayarla</strong><p>hedef dili seçin; kaynak dil otomatik olarak tanınabilir.</p></li>
-<li><strong>Çevirmen seç</strong><p>Yerel için: NLLB. Hızlı bir test için: Google. DeepL/Gemini'nin anahtarlarına ihtiyacı var; ayrı Gemini optimizasyonu da.</p></li>
-<li><strong>Sesi belirle</strong><p>Edge veya gTTS'yi hemen test edin; Piper veya Chatterbox'yi "Gelişmiş" altında ayarlarsınız.</p></li>
-<li><strong>İşlemeyi başlat</strong><p>ilerlemeyi izlemek; videonun sonunda ve her iki SRT dosyası doğrudan açılır.</p></li>
-</ol>
-</div>
-</details>
-</section>
 <section aria-labelledby="voices-title" class="guide-section" id="stimmen">
 <p class="section-kicker">Ses kaydı almanın dört yolu</p>
 <h2 id="voices-title">Sesleri karşılaştır</h2>
@@ -193,9 +204,9 @@ python -m linguoai</code></pre>
 <summary>Piper'yi yerel olarak ekleyin</summary>
 <div>
 <p>Aynı sanal ortama kurulum yapın ve ardından uygun bir ses yükleyin:</p>
-<pre><code>python -m pip install -e ".[desktop,piper]"
+<pre><code>.\.venv\Scripts\python.exe -m pip install -e ".[desktop,piper]"
 New-Item -ItemType Directory -Force ".\Stimmen"
-python -m piper.download_voices --download-dir ".\Stimmen" de_DE-thorsten-medium</code></pre>
+.\.venv\Scripts\python.exe -m piper.download_voices --download-dir ".\Stimmen" de_DE-thorsten-medium</code></pre>
 <p>Piper: ONNX artı uyumlu JSON, isteğe bağlı hoparlör kimliği ve ayarlanabilir konuşma hızı.</p>
 </div>
 </details>
@@ -204,10 +215,9 @@ python -m piper.download_voices --download-dir ".\Stimmen" de_DE-thorsten-medium
 <div>
 <p>Ses/el feneri bağımlılıkları nedeniyle özel bir Python-3.11 ortamı önerilir:</p>
 <pre><code>py -3.11 -m venv .venv-chatterbox
-.\.venv-chatterbox\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-python -m pip install -e ".[desktop,voice-clone]"
-python -m linguoai</code></pre>
+.\.venv-chatterbox\Scripts\python.exe -m pip install --upgrade pip
+.\.venv-chatterbox\Scripts\python.exe -m pip install -e ".[desktop,voice-clone]"
+.\.venv-chatterbox\Scripts\python.exe -m linguoai</code></pre>
 <ul>
 <li>6-10 saniye, tek kişi, az yankı, müzik veya arka plan gürültüsü yok.</li>
 <li>Yaklaşık 3,7GB model indirme; CPU mümkündür ancak daha uzun videolar için çok yavaştır.</li>
@@ -231,7 +241,7 @@ python -m linguoai</code></pre>
 <span>PowerShell · Piper yerel olarak</span>
 <button class="copy-button" data-copy="cli-code" type="button"><span aria-hidden="true" class="copy-icon">⧉</span><span data-copy-label="">Kopyala</span></button>
 </div>
-<pre id="cli-code"><code>python -m linguoai `
+<pre id="cli-code"><code>.\.venv\Scripts\python.exe -m linguoai `
   --input "C:\Videos\quelle.mp4" `
   --output "C:\Videos\quelle.de.mp4" `
   --language de `
@@ -242,7 +252,7 @@ python -m linguoai</code></pre>
   --tts-device cpu `
   --piper-model "C:\Stimmen\de_DE-thorsten-medium.onnx" `
   --piper-config "C:\Stimmen\de_DE-thorsten-medium.onnx.json"</code></pre>
-<p class="code-note">Tüm seçenekleri görüntüle: <code>python -m linguoai --help</code></p>
+<p class="code-note">Tüm seçenekleri görüntüle: <code>.\.venv\Scripts\python.exe -m linguoai --help</code></p>
 </div>
 <details class="guide-detail">
 <summary>Python-Wheel</summary>
@@ -282,8 +292,8 @@ python -m linguoai</code></pre>
 <summary>Parakeet kurulumu</summary>
 <div>
 <p>İsteğe bağlı paketi kurun ve uyumlu bir model klasörü hazırlayın. Modeller otomatik olarak indirilmez.</p>
-<pre><code>python -m pip install -e ".[parakeet]"
-python -m linguoai --help</code></pre>
+<pre><code>.\.venv\Scripts\python.exe -m pip install -e ".[parakeet]"
+.\.venv\Scripts\python.exe -m linguoai --help</code></pre>
 <p>Encoder, decoder, joiner ve token dosyasını içeren eksiksiz sherpa-onnx model klasörünü kullanın. Almanca dışa aktarımında modele dahilse harici encoder dosyasını da saklayın.</p>
 <p>Masaüstü uygulamasında ve Colab'da konuşma tanıma motorunu, profili ve model klasörünü seçin. Çevirinin doğru dil kodunu alması için kaynak dili açıkça belirtin. Parakeet konuşmayı metne dönüştürür; ardından seçilen çeviri ve ses uygulanır.</p>
 <p><a href="https://k2-fsa.github.io/sherpa/onnx/pretrained_models/offline-transducer/nemo-transducer-models.html">sherpa-onnx modelleri ve kurulumu ↗</a> · <a href="https://huggingface.co/primeline/parakeet-primeline">primeline model kartı ↗</a></p>
@@ -390,6 +400,7 @@ python -m linguoai --help</code></pre>
 </details>
 <p><a class="text-link" href="/tr/colab.html">Colab kılavuzunu açın <span aria-hidden="true">→</span></a></p>
 </section>
+</div></details>
 </main>
 <footer class="site-footer">
 <div class="container footer-main">

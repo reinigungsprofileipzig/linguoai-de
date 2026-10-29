@@ -248,6 +248,20 @@
   mobileViewport.addEventListener("change", () => closeMenu());
   closeMenu();
 
+  // Keep existing deep links useful when advanced instructions are collapsed.
+  const revealGuideTarget = () => {
+    let id;
+    try { id = decodeURIComponent(window.location.hash.slice(1)); } catch { return; }
+    const target = document.getElementById(id);
+    const advanced = target?.closest('.guide-advanced');
+    if (advanced && !advanced.open) {
+      advanced.open = true;
+      target.scrollIntoView();
+    }
+  };
+  window.addEventListener('hashchange', revealGuideTarget);
+  revealGuideTarget();
+
   const showToast = (message) => {
     if (!toast) return;
     window.clearTimeout(toastTimer);
